@@ -1,0 +1,158 @@
+# Règles SpectKit pour Cursor AI
+
+Ce fichier contient les règles et le contexte pour le développement avec SpectKit.
+
+---
+
+## 🎯 Technologies actives
+
+<!-- TECHNOLOGIES_START -->
+- TypeScript 5.x
+- Fastify
+- Next.js 15
+- PostgreSQL 16
+- Prisma
+- Ant Design
+- Zod
+- pnpm workspaces
+<!-- TECHNOLOGIES_END -->
+
+---
+
+## 📁 Structure du projet
+
+```
+monorepo-root/
+├── .cursor/
+│   ├── commands/          # Commandes SpectKit pour Cursor
+│   └── rules/            # Règles de développement (ce fichier)
+├── .specify/
+│   ├── memory/           # Constitution et mémoire
+│   ├── scripts/powershell/  # Scripts d'automatisation
+│   └── templates/        # Templates de documents
+├── apps/
+│   ├── api/             # Backend API (Fastify)
+│   └── web/             # Frontend (Next.js 15)
+├── packages/
+│   ├── contracts/       # Contrats TypeScript + Zod
+│   ├── ui/              # Composants UI réutilisables
+│   └── utils/           # Utilitaires partagés
+├── specs/               # Spécifications de fonctionnalités
+│   └── ###-feature-name/
+│       ├── spec.md
+│       ├── plan.md
+│       └── tasks.md
+├── package.json
+├── pnpm-workspace.yaml
+└── tsconfig.json
+```
+
+---
+
+## 🔧 Commandes SpectKit disponibles
+
+### 1. `/speckit.specify "description"`
+Crée une nouvelle spécification de fonctionnalité.
+- Exécute `.specify/scripts/powershell/create-new-feature.ps1`
+- Crée branche Git `###-feature-name`
+- Génère `specs/###-feature-name/spec.md`
+
+### 2. `/speckit.plan`
+Génère le plan d'implémentation pour la fonctionnalité en cours.
+- Exécute `.specify/scripts/powershell/setup-plan.ps1`
+- Crée `plan.md` depuis template
+- Vérifie conformité constitution
+
+### 3. `/speckit.tasks`
+Génère les tâches détaillées d'implémentation.
+- Lit `spec.md` et `plan.md`
+- Organise par user stories (P1, P2, P3)
+- Génère `tasks.md` avec dépendances
+
+### 4. `/speckit.analyze`
+Analyse la cohérence entre spec, plan et tasks.
+- Détecte duplications, ambiguïtés, incohérences
+- Génère rapport d'analyse
+
+### 5. `/speckit.implement [task-id]`
+Implémente les tâches listées dans `tasks.md`.
+- Lit `tasks.md`
+- Implémente séquentiellement ou en parallèle
+- Met à jour la progression
+
+### 6. `/speckit.checklist`
+Génère les checklists de validation.
+- Crée `checklist.md` depuis template
+- Remplit automatiquement les sections
+
+### 7. `/speckit.clarify [section]`
+Clarifie les ambiguïtés dans les documents.
+- Identifie les sections ambiguës
+- Propose des clarifications
+- Met à jour les documents
+
+### 8. `/speckit.constitution [action]`
+Gère la constitution du projet.
+- `view` : Affiche la constitution
+- `add-principle` : Ajoute un principe
+- `update-stack` : Met à jour la stack
+
+---
+
+## 📋 Guidelines de développement
+
+### Principes fondamentaux
+- **TDD** : Tests écrits avant l'implémentation
+- **Library-First** : Code réutilisable dans `packages/`
+- **Type Safety** : TypeScript strict, pas de `any` non justifiés
+- **Code Quality** : Linting automatique, `pnpm lint` doit passer
+
+### Standards de code
+- **Nommage** : camelCase pour fonctions, PascalCase pour classes
+- **Structure** : Séparation claire API / Web / Packages
+- **Tests** : Minimum 80% de couverture
+- **Documentation** : JSDoc pour fonctions publiques
+
+### Workflow Git
+- **Branches** : Format `###-feature-name` (ex: `001-authentification`)
+- **Commits** : Messages descriptifs
+- **PR** : Description complète avec checklist
+
+### Base de données
+- **PostgreSQL 16** : Installation auto-détectée à `C:\Program Files\PostgreSQL\16\data`
+- **Prisma** : ORM pour la gestion de la base de données
+- **Mot de passe** : `DevMick@2003`
+- **Migrations** : Utiliser Prisma migrations
+
+### UI Components
+- **Ant Design** : Utiliser les composants Ant Design pour les formulaires
+- **FormField** : Utiliser le composant `FormField` de `@monorepo/ui`
+- **Validation** : Zod pour la validation des formulaires
+
+---
+
+## 🎯 Workflow SpectKit complet
+
+1. **Spécification** : `/speckit.specify "description"` → Crée spec.md
+2. **Planification** : `/speckit.plan` → Crée plan.md
+3. **Tâches** : `/speckit.tasks` → Crée tasks.md
+4. **Analyse** : `/speckit.analyze` → Vérifie cohérence
+5. **Clarification** : `/speckit.clarify` → Résout ambiguïtés
+6. **Implémentation** : `/speckit.implement` → Implémente les tâches
+7. **Validation** : `/speckit.checklist` → Vérifie complétion
+
+---
+
+## 📝 Notes manuelles
+
+<!-- MANUAL_NOTES_START -->
+[Section pour ajouts manuels - ne pas modifier les marqueurs]
+<!-- MANUAL_NOTES_END -->
+
+---
+
+## 🔗 Références
+
+- [Constitution](../../.specify/memory/constitution.md)
+- [Scripts PowerShell](../../.specify/scripts/powershell/)
+- [Templates](../../.specify/templates/)
