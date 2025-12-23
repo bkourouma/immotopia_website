@@ -1,0 +1,257 @@
+.personaPage {
+  background: #fff;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* Hero Section */
+.hero {
+  background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+  padding: 80px 0;
+}
+
+.heroContent {
+  text-align: center;
+}
+
+.heroTitle {
+  font-size: 48px;
+  font-weight: 800;
+  margin-bottom: 24px !important;
+  color: #1a1a1a;
+}
+
+.heroDescription {
+  font-size: 20px;
+  line-height: 1.8;
+  color: #595959;
+  margin-bottom: 32px !important;
+}
+
+.heroMetrics {
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  flex-wrap: wrap;
+  margin-top: 32px;
+}
+
+.metricCard {
+  text-align: center;
+  padding: 16px 24px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.metricValue {
+  font-size: 32px;
+  font-weight: 800;
+  color: #1890ff;
+  line-height: 1;
+  margin-bottom: 8px;
+}
+
+.metricLabel {
+  font-size: 14px;
+  color: #8c8c8c;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Section Styles */
+.section {
+  padding: 64px 0;
+}
+
+.solutionsSection {
+  background: #fafafa;
+}
+
+.sectionTitle {
+  font-size: 36px;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 48px !important;
+  color: #1a1a1a;
+}
+
+/* Problems Section */
+.problemItem {
+  padding: 16px 0;
+  border-bottom: 1px solid #f0f0f0;
+  font-size: 16px;
+}
+
+.problemItem:last-child {
+  border-bottom: none;
+}
+
+.checkIcon {
+  color: #52c41a;
+  font-size: 20px;
+}
+
+/* Solutions Section */
+.solutionCard {
+  height: 100%;
+  border-radius: 8px;
+  transition: all 0.3s;
+}
+
+.solutionCard:hover {
+  box-shadow: 0 4px 16px rgba(24, 144, 255, 0.15);
+  transform: translateY(-4px);
+}
+
+.solutionNumber {
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(135deg, #1890ff 0%, #096dd9 100%);
+  color: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.solutionText {
+  font-size: 16px;
+  color: #595959;
+  margin: 0;
+  line-height: 1.6;
+}
+
+/* Benefits Section */
+.benefitsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+.benefitCard {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 20px;
+  background: #fafafa;
+  border-radius: 8px;
+  transition: all 0.3s;
+}
+
+.benefitCard:hover {
+  background: #f0f9ff;
+  transform: translateX(4px);
+}
+
+.benefitIcon {
+  color: #1890ff;
+  font-size: 24px;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.benefitText {
+  font-size: 16px;
+  color: #1a1a1a;
+  font-weight: 500;
+}
+
+/* CTA Section */
+.ctaSection {
+  background: linear-gradient(135deg, #1890ff 0%, #096dd9 100%);
+  padding: 80px 0;
+}
+
+.ctaCard {
+  text-align: center;
+  border-radius: 12px;
+  background: #fff;
+}
+
+.ctaTitle {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 16px !important;
+  color: #1a1a1a;
+}
+
+.ctaDescription {
+  font-size: 18px;
+  color: #595959;
+  margin-bottom: 32px !important;
+}
+
+.ctaButton {
+  height: 50px;
+  padding: 0 32px;
+  font-size: 16px;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Mobile styles */
+@media (max-width: 767px) {
+  .hero {
+    padding: 48px 0;
+  }
+
+  .heroTitle {
+    font-size: 32px;
+  }
+
+  .heroDescription {
+    font-size: 18px;
+  }
+
+  .section {
+    padding: 48px 0;
+  }
+
+  .sectionTitle {
+    font-size: 28px;
+    margin-bottom: 32px !important;
+  }
+
+  .heroMetrics {
+    gap: 16px;
+  }
+
+  .metricCard {
+    padding: 12px 16px;
+  }
+
+  .metricValue {
+    font-size: 24px;
+  }
+
+  .benefitsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .ctaSection {
+    padding: 48px 0;
+  }
+
+  .ctaTitle {
+    font-size: 24px;
+  }
+
+  .ctaDescription {
+    font-size: 16px;
+  }
+
+  .ctaButton {
+    width: 100%;
+    margin-bottom: 12px;
+  }
+}

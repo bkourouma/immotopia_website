@@ -18,3 +18,5 @@ export const CreateUserSchema = z.object({
 
 export type CreateUser = z.infer<typeof CreateUserSchema>;
 
+export * from './demo-request';
+

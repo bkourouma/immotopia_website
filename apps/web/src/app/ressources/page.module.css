@@ -1,0 +1,98 @@
+.ressourcesPage {
+  background: #fff;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* Hero Section */
+.hero {
+  background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+  padding: 80px 0;
+  text-align: center;
+}
+
+.title {
+  font-size: 48px;
+  font-weight: 800;
+  margin-bottom: 24px !important;
+  color: #1a1a1a;
+}
+
+.highlight {
+  background: linear-gradient(135deg, #1890ff 0%, #096dd9 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.description {
+  font-size: 20px;
+  line-height: 1.8;
+  color: #595959;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+/* Section */
+.section {
+  padding: 80px 0;
+}
+
+.resourceCard {
+  height: 100%;
+  border-radius: 12px;
+  text-align: center;
+  transition: all 0.3s;
+}
+
+.resourceCard:hover {
+  box-shadow: 0 4px 16px rgba(24, 144, 255, 0.15);
+  transform: translateY(-4px);
+}
+
+.iconWrapper {
+  font-size: 48px;
+  margin-bottom: 24px;
+}
+
+.resourceTitle {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 12px !important;
+  color: #1a1a1a;
+}
+
+.resourceDescription {
+  color: #595959;
+  line-height: 1.6;
+  margin-bottom: 24px;
+}
+
+.resourceLink {
+  font-weight: 600;
+  padding: 0;
+}
+
+/* Mobile styles */
+@media (max-width: 767px) {
+  .hero {
+    padding: 48px 0;
+  }
+
+  .title {
+    font-size: 32px;
+  }
+
+  .description {
+    font-size: 18px;
+  }
+
+  .section {
+    padding: 48px 0;
+  }
+}
+

@@ -1,0 +1,165 @@
+.pourquoiPage {
+  background: #fff;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* Hero Section */
+.hero {
+  background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+  padding: 80px 0;
+  text-align: center;
+}
+
+.title {
+  font-size: 48px;
+  font-weight: 800;
+  margin-bottom: 24px !important;
+  color: #1a1a1a;
+}
+
+.highlight {
+  background: linear-gradient(135deg, #1890ff 0%, #096dd9 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.description {
+  font-size: 20px;
+  line-height: 1.8;
+  color: #595959;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+/* Metrics Section */
+.metricsSection {
+  padding: 64px 0;
+  background: #fafafa;
+}
+
+.metricCard {
+  text-align: center;
+  padding: 32px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.metricValue {
+  font-size: 48px;
+  font-weight: 800;
+  color: #1890ff;
+  line-height: 1;
+  margin-bottom: 12px;
+}
+
+.metricLabel {
+  font-size: 16px;
+  color: #8c8c8c;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Section */
+.section {
+  padding: 80px 0;
+}
+
+.sectionTitle {
+  font-size: 36px;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 48px !important;
+  color: #1a1a1a;
+}
+
+.advantageCard {
+  height: 100%;
+  border-radius: 8px;
+  text-align: center;
+  transition: all 0.3s;
+}
+
+.advantageCard:hover {
+  box-shadow: 0 4px 16px rgba(24, 144, 255, 0.15);
+  transform: translateY(-4px);
+}
+
+.cardIcon {
+  font-size: 32px;
+  color: #1890ff;
+  margin-bottom: 16px;
+}
+
+.advantageTitle {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 12px !important;
+  color: #1a1a1a;
+}
+
+.advantageDescription {
+  color: #595959;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.comparisonSection {
+  background: #fafafa;
+}
+
+.comparisonCard {
+  height: 100%;
+  border-radius: 12px;
+}
+
+.withImmoTopia {
+  border: 2px solid #1890ff;
+}
+
+.comparisonTitle {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 24px !important;
+  text-align: center;
+}
+
+.comparisonCard :global(.ant-list-item) {
+  padding: 12px 0;
+  font-size: 16px;
+}
+
+/* Mobile styles */
+@media (max-width: 767px) {
+  .hero {
+    padding: 48px 0;
+  }
+
+  .title {
+    font-size: 32px;
+  }
+
+  .description {
+    font-size: 18px;
+  }
+
+  .section {
+    padding: 48px 0;
+  }
+
+  .sectionTitle {
+    font-size: 28px;
+    margin-bottom: 32px !important;
+  }
+
+  .metricValue {
+    font-size: 36px;
+  }
+}
+
