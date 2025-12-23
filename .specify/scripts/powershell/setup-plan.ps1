@@ -21,7 +21,7 @@ try {
         throw "Not on a feature branch. Current branch: $branch"
     }
     
-    $featureDir = Join-Path $repoRoot "specs" $branch
+    $featureDir = Join-Path $repoRoot "specs" | Join-Path -ChildPath $branch
     $specFile = Join-Path $featureDir "spec.md"
     
     if (-not (Test-Path $specFile)) {
@@ -31,14 +31,18 @@ try {
     # Create plan.md from template
     $planFile = Join-Path $featureDir "plan.md"
     if (-not (Test-Path $planFile)) {
-        $templatePath = Join-Path $repoRoot ".specify" "templates" "plan-template.md"
+        $templatePath = Join-Path $repoRoot ".specify" | Join-Path -ChildPath "templates" | Join-Path -ChildPath "plan-template.md"
         if (-not (Test-Path $templatePath)) {
             throw "Plan template not found at $templatePath"
         }
         
+        $currentDate = Get-Date -Format "yyyy-MM-dd"
+        $featureNumber = ($branch -split '-')[0]
         $templateContent = Get-Content $templatePath -Raw
-        $templateContent = $templateContent -replace '{{BRANCH_NAME}}', $branch
-        $templateContent = $templateContent -replace '{{FEATURE_DIR}}', $featureDir
+        $templateContent = $templateContent -replace '\{\{BRANCH_NAME\}\}', $branch
+        $templateContent = $templateContent -replace '\{\{FEATURE_DIR\}\}', $featureDir
+        $templateContent = $templateContent -replace '\{\{FEATURE_NUMBER\}\}', $featureNumber
+        $templateContent = $templateContent -replace '\{\{DATE\}\}', $currentDate
         
         Set-Content -Path $planFile -Value $templateContent -NoNewline
     }
