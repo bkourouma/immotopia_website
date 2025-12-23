@@ -20,41 +20,46 @@
 ### T-001-000 : Setup initial du projet
 
 #### T-001-000-001 : Configuration des dépendances
-- [ ] Installer React Hook Form (`react-hook-form`)
-- [ ] Installer Zod pour la validation (`zod`)
-- [ ] Installer `@hookform/resolvers` pour intégration Zod
-- [ ] Vérifier/ajuster les dépendances Ant Design
-- [ ] Installer dépendances de développement (testing, etc.)
+- [x] Installer React Hook Form (`react-hook-form`)
+- [x] Installer Zod pour la validation (`zod`) - Déjà présent
+- [x] Installer `@hookform/resolvers` pour intégration Zod
+- [x] Vérifier/ajuster les dépendances Ant Design - Déjà présent
+- [ ] Installer dépendances de développement (testing, etc.) - À faire plus tard
 - **Fichiers concernés** : `apps/web/package.json`
 - **Dépendances** : Aucune
 - **Estimation** : 30min
+- **Complété le** : 2025-12-23
 
 #### T-001-000-002 : Configuration des variables d'environnement
-- [ ] Créer fichier `.env.example` avec toutes les variables nécessaires
-- [ ] Documenter les variables d'environnement (API URLs, CRM keys, etc.)
-- [ ] Configurer les variables pour dev/staging/prod
-- **Fichiers concernés** : `apps/web/.env.example`, `apps/web/.env.local`
+- [x] Créer fichier `.env.example` avec toutes les variables nécessaires (`env.example.txt`)
+- [x] Documenter les variables d'environnement (API URLs, CRM keys, etc.)
+- [x] Configurer les variables pour dev/staging/prod
+- **Fichiers concernés** : `apps/web/src/lib/env.example.txt`
 - **Dépendances** : Aucune
 - **Estimation** : 20min
+- **Complété le** : 2025-12-23
 
 #### T-001-000-003 : Configuration SEO et métadonnées
-- [ ] Configurer le système de métadonnées Next.js 15
-- [ ] Créer helper pour génération de métadonnées SEO
-- [ ] Configurer sitemap.xml généré automatiquement
-- [ ] Configurer robots.txt
-- **Fichiers concernés** : `apps/web/src/lib/seo.ts`, `apps/web/next.config.js`
+- [x] Configurer le système de métadonnées Next.js 15
+- [x] Créer helper pour génération de métadonnées SEO
+- [x] Configurer sitemap.xml généré automatiquement
+- [x] Configurer robots.txt
+- **Fichiers concernés** : `apps/web/src/lib/seo.ts`, `apps/web/src/app/sitemap.ts`, `apps/web/public/robots.txt`
 - **Dépendances** : T-001-000-001
 - **Estimation** : 1h
+- **Complété le** : 2025-12-23
 
 #### T-001-000-004 : Structure de base des dossiers
-- [ ] Créer structure `apps/web/src/components/layout/`
-- [ ] Créer structure `apps/web/src/components/forms/`
-- [ ] Créer structure `apps/web/src/components/sections/`
-- [ ] Créer structure `apps/web/src/lib/`
-- [ ] Créer structure des routes Next.js App Router
+- [x] Créer structure `apps/web/src/components/layout/`
+- [x] Créer structure `apps/web/src/components/forms/`
+- [x] Créer structure `apps/web/src/components/sections/`
+- [x] Créer structure `apps/web/src/lib/`
+- [x] Créer structure des routes Next.js App Router (via App Router)
+- [x] Créer fichiers index.ts pour exports organisés
 - **Fichiers concernés** : Dossiers dans `apps/web/src/`
 - **Dépendances** : Aucune
 - **Estimation** : 30min
+- **Complété le** : 2025-12-23
 
 ---
 
