@@ -68,54 +68,60 @@
 ### US-001-P1-001 : Page d'accueil professionnelle
 
 #### T-001-P1-001-001 : Composant Hero
-- [ ] Créer composant `Hero.tsx` dans `apps/web/src/components/sections/`
-- [ ] Intégrer message clair orienté professionnels
-- [ ] Ajouter CTA principal "Demander une démo"
-- [ ] Styling responsive (mobile, tablette, desktop)
-- [ ] Intégration avec Ant Design
-- **Fichiers concernés** : `apps/web/src/components/sections/Hero.tsx`
+- [x] Créer composant `Hero.tsx` dans `apps/web/src/components/sections/`
+- [x] Intégrer message clair orienté professionnels
+- [x] Ajouter CTA principal "Demander une démo"
+- [x] Styling responsive (mobile, tablette, desktop)
+- [x] Intégration avec Ant Design
+- **Fichiers concernés** : `apps/web/src/components/sections/Hero.tsx`, `Hero.module.css`
 - **Dépendances** : T-001-000-004
 - **Estimation** : 2h
+- **Complété le** : 2025-12-23
 - **[P]** : Peut être fait en parallèle avec T-001-P1-001-002
 
 #### T-001-P1-001-002 : Section présentation des personas
-- [ ] Créer composant `PersonasPreview.tsx`
-- [ ] Afficher les 5 personas cibles avec cartes
-- [ ] Ajouter liens vers pages personas détaillées
-- [ ] Styling responsive
-- **Fichiers concernés** : `apps/web/src/components/sections/PersonasPreview.tsx`
+- [x] Créer composant `PersonasPreview.tsx`
+- [x] Créer données personas (`lib/personas.ts`)
+- [x] Afficher les 5 personas cibles avec cartes
+- [x] Ajouter liens vers pages personas détaillées
+- [x] Styling responsive
+- **Fichiers concernés** : `apps/web/src/components/sections/PersonasPreview.tsx`, `PersonasPreview.module.css`, `apps/web/src/lib/personas.ts`
 - **Dépendances** : T-001-000-004
 - **Estimation** : 2h
+- **Complété le** : 2025-12-23
 - **[P]** : Peut être fait en parallèle avec T-001-P1-001-001
 
 #### T-001-P1-001-003 : Layout Header et Navigation
-- [ ] Créer composant `Header.tsx` dans `apps/web/src/components/layout/`
-- [ ] Créer composant `Navigation.tsx` avec menu
-- [ ] Intégrer logo ImmoTopia
-- [ ] Navigation responsive avec menu mobile
-- [ ] CTA dans le header
-- **Fichiers concernés** : `apps/web/src/components/layout/Header.tsx`, `Navigation.tsx`
+- [x] Créer composant `Header.tsx` dans `apps/web/src/components/layout/`
+- [x] Créer composant `Navigation.tsx` avec menu
+- [x] Intégrer logo ImmoTopia
+- [x] Navigation responsive avec menu mobile (Drawer)
+- [x] CTA dans le header
+- **Fichiers concernés** : `apps/web/src/components/layout/Header.tsx`, `Header.module.css`, `Navigation.tsx`
 - **Dépendances** : T-001-000-004
 - **Estimation** : 3h
+- **Complété le** : 2025-12-23
 
 #### T-001-P1-001-004 : Layout Footer
-- [ ] Créer composant `Footer.tsx` dans `apps/web/src/components/layout/`
-- [ ] Ajouter liens navigation, contact, réseaux sociaux
-- [ ] Ajouter informations légales
-- [ ] Styling responsive
-- **Fichiers concernés** : `apps/web/src/components/layout/Footer.tsx`
+- [x] Créer composant `Footer.tsx` dans `apps/web/src/components/layout/`
+- [x] Ajouter liens navigation, contact, réseaux sociaux
+- [x] Ajouter informations légales
+- [x] Styling responsive
+- **Fichiers concernés** : `apps/web/src/components/layout/Footer.tsx`, `Footer.module.css`
 - **Dépendances** : T-001-000-004
 - **Estimation** : 2h
+- **Complété le** : 2025-12-23
 
 #### T-001-P1-001-005 : Page d'accueil complète
-- [ ] Créer/modifier `apps/web/src/app/page.tsx`
-- [ ] Intégrer Hero, PersonasPreview
-- [ ] Ajouter autres sections (features preview, CTA final)
-- [ ] Intégrer Header et Footer via layout
-- [ ] Optimisation images (lazy loading, WebP)
+- [x] Créer/modifier `apps/web/src/app/page.tsx`
+- [x] Intégrer Hero, PersonasPreview
+- [ ] Ajouter autres sections (features preview, CTA final) - À faire plus tard
+- [x] Intégrer Header et Footer via layout
+- [ ] Optimisation images (lazy loading, WebP) - À faire plus tard
 - **Fichiers concernés** : `apps/web/src/app/page.tsx`, `layout.tsx`
 - **Dépendances** : T-001-P1-001-001, T-001-P1-001-002, T-001-P1-001-003, T-001-P1-001-004
 - **Estimation** : 2h
+- **Complété le** : 2025-12-23 (partiellement)
 
 #### T-001-P1-001-006 : Tests page d'accueil
 - [ ] Tests unitaires Hero component

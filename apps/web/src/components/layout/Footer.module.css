@@ -1,0 +1,149 @@
+.footer {
+  background: #001529;
+  color: #fff;
+  padding: 0;
+  margin-top: auto;
+}
+
+.footerContainer {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 48px 24px 24px;
+}
+
+.section {
+  margin-bottom: 24px;
+}
+
+.title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 16px;
+  background: linear-gradient(135deg, #40a9ff 0%, #1890ff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.description {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 14px;
+  line-height: 1.6;
+  margin-bottom: 16px;
+}
+
+.sectionTitle {
+  font-size: 16px;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 16px;
+}
+
+.linkList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.linkList li {
+  margin-bottom: 12px;
+}
+
+.linkList a {
+  color: rgba(255, 255, 255, 0.85);
+  text-decoration: none;
+  font-size: 14px;
+  transition: color 0.3s;
+}
+
+.linkList a:hover {
+  color: #40a9ff;
+}
+
+.socialLinks {
+  margin-top: 16px;
+}
+
+.socialLinks a {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 20px;
+  transition: color 0.3s;
+}
+
+.socialLinks a:hover {
+  color: #40a9ff;
+}
+
+.contactInfo {
+  margin-top: 16px;
+}
+
+.contactItem {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 14px;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.contactItem a {
+  color: rgba(255, 255, 255, 0.85);
+  text-decoration: none;
+}
+
+.contactItem a:hover {
+  color: #40a9ff;
+}
+
+.bottomBar {
+  margin-top: 48px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.copyright {
+  color: rgba(255, 255, 255, 0.65);
+  font-size: 14px;
+  margin: 0;
+}
+
+.legalLinks {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.legalLinks a {
+  color: rgba(255, 255, 255, 0.65);
+  text-decoration: none;
+  font-size: 14px;
+  transition: color 0.3s;
+}
+
+.legalLinks a:hover {
+  color: #40a9ff;
+}
+
+.separator {
+  color: rgba(255, 255, 255, 0.3);
+}
+
+@media (max-width: 767px) {
+  .footerContainer {
+    padding: 32px 16px 16px;
+  }
+
+  .bottomBar {
+    margin-top: 32px;
+  }
+
+  .legalLinks {
+    justify-content: flex-start;
+    margin-top: 16px;
+  }
+}
+

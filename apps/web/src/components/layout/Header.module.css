@@ -1,0 +1,124 @@
+.header {
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  padding: 0;
+  height: auto;
+  min-height: 70px;
+}
+
+.headerContainer {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 70px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  font-size: 24px;
+  font-weight: 700;
+  color: #1890ff;
+}
+
+.logoText {
+  background: linear-gradient(135deg, #1890ff 0%, #096dd9 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.desktopNav {
+  display: none;
+}
+
+.menu {
+  border-bottom: none;
+  background: transparent;
+  line-height: 70px;
+}
+
+.menu :global(.ant-menu-item) {
+  margin: 0 8px;
+  padding: 0 16px;
+}
+
+.menu :global(.ant-menu-item a) {
+  color: #333;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.menu :global(.ant-menu-item:hover a),
+.menu :global(.ant-menu-item-selected a) {
+  color: #1890ff;
+}
+
+.cta {
+  display: none;
+}
+
+.ctaButton {
+  height: 40px;
+  font-weight: 600;
+}
+
+.mobileMenuButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  font-size: 20px;
+  color: #333;
+  cursor: pointer;
+  padding: 8px;
+}
+
+.mobileDrawer :global(.ant-drawer-body) {
+  padding: 24px 0;
+}
+
+.mobileDrawer :global(.ant-menu) {
+  border-right: none;
+}
+
+.mobileCta {
+  margin-top: 24px;
+  padding: 0 24px;
+}
+
+/* Desktop styles */
+@media (min-width: 768px) {
+  .desktopNav {
+    display: block;
+    flex: 1;
+    margin: 0 32px;
+  }
+
+  .cta {
+    display: block;
+  }
+
+  .mobileMenuButton {
+    display: none;
+  }
+}
+
+@media (min-width: 992px) {
+  .headerContainer {
+    padding: 0 48px;
+  }
+
+  .menu :global(.ant-menu-item) {
+    margin: 0 16px;
+  }
+}
+
