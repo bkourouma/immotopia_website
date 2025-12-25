@@ -3,12 +3,12 @@ import PersonaPageTemplate from '../../../components/templates/PersonaPageTempla
 import { generateMetadata } from '../../../lib/seo';
 
 export const metadata = generateMetadata({
-  title: 'Pour les propriétaires bailleurs - ImmoTopia',
+  title: 'Gestion location particuliers - Logiciel propriétaire bailleur',
   description:
-    'Professionnalisez votre gestion locative et gagnez 50% de temps sur la gestion de vos biens. Portail propriétaire dédié, suivi des loyers en temps réel.',
-  keywords: ['propriétaire bailleur', 'gestion locative', 'portail propriétaire'],
+    'Solution de gestion locative pour propriétaires bailleurs. Portail dédié, suivi des loyers en temps réel, gain de temps de 50% sur la gestion de vos biens.',
   canonicalUrl: '/pour-qui/proprietaires',
-});
+  usePageKeywords: true,
+}, '/pour-qui/proprietaires');
 
 export default function ProprietairesPage() {
   const persona = getPersonaById('proprietaires');

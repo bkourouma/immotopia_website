@@ -3,12 +3,12 @@ import PersonaPageTemplate from '../../../components/templates/PersonaPageTempla
 import { generateMetadata } from '../../../lib/seo';
 
 export const metadata = generateMetadata({
-  title: 'Pour les promoteurs immobiliers - ImmoTopia',
+  title: 'Plateforme promoteur immobilier - Commercialisation projets',
   description:
-    'Pilotez vos projets immobiliers et vendez plus vite avec un suivi complet de la commercialisation. Réduisez le délai de commercialisation de 30%.',
-  keywords: ['promoteur immobilier', 'commercialisation immobilière', 'suivi projet immobilier'],
+    'Solution complète pour promoteurs immobiliers en Afrique de l\'Ouest. Pilotez vos projets, commercialisez efficacement, réduisez le délai de vente de 30%.',
   canonicalUrl: '/pour-qui/promoteurs',
-});
+  usePageKeywords: true,
+}, '/pour-qui/promoteurs');
 
 export default function PromoteursPage() {
   const persona = getPersonaById('promoteurs');

@@ -23,7 +23,7 @@ export const FormField: React.FC<FormFieldProps> = ({
       label={label}
       rules={[
         { required, message: `${label} est requis` },
-        ...(type === 'email' ? [{ type: 'email', message: 'Email invalide' }] : []),
+        ...(type === 'email' ? [{ type: 'email' as const, message: 'Email invalide' }] : []),
       ]}
       {...props}
     >

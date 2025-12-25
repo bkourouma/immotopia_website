@@ -1,8 +1,11 @@
-// Section components exports
 export { default as Hero } from './Hero';
-export { default as PersonasPreview } from './PersonasPreview';
+export { default as HeroStatsSection } from './HeroStatsSection';
+export { default as FeaturesPreview } from './FeaturesPreview';
 export { default as FeatureCard } from './FeatureCard';
-// TODO: Uncomment when components are created
-// export { default as Features } from './Features';
-// export { default as Testimonials } from './Testimonials';
-
+export { default as PersonasPreview } from './PersonasPreview';
+export { default as PersonaCard } from './PersonaCard';
+export { default as Testimonials } from './Testimonials';
+export { default as FinalCTA } from './FinalCTA';
+export { default as StatsSection } from './StatsSection';
+export { default as PricingCard } from './PricingCard';
+export type { PricingPlan } from './PricingCard';

@@ -1,14 +1,14 @@
 .footer {
-  background: #001529;
-  color: #fff;
+  background: var(--color-gray-900);
+  color: var(--color-text-inverse);
   padding: 0;
   margin-top: auto;
 }
 
 .footerContainer {
-  max-width: 1200px;
+  max-width: 1440px;
   margin: 0 auto;
-  padding: 48px 24px 24px;
+  padding: var(--spacing-12) var(--spacing-6) var(--spacing-6);
 }
 
 .section {
@@ -16,28 +16,24 @@
 }
 
 .title {
-  font-size: 20px;
-  font-weight: 700;
-  color: #fff;
-  margin-bottom: 16px;
-  background: linear-gradient(135deg, #40a9ff 0%, #1890ff 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  font-size: var(--font-size-h4-desktop);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-inverse);
+  margin-bottom: var(--spacing-4);
 }
 
 .description {
-  color: rgba(255, 255, 255, 0.85);
-  font-size: 14px;
-  line-height: 1.6;
-  margin-bottom: 16px;
+  color: var(--color-gray-400);
+  font-size: var(--font-size-small-desktop);
+  line-height: var(--line-height-normal);
+  margin-bottom: var(--spacing-4);
 }
 
 .sectionTitle {
-  font-size: 16px;
-  font-weight: 600;
-  color: #fff;
-  margin-bottom: 16px;
+  font-size: var(--font-size-body-desktop);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-inverse);
+  margin-bottom: var(--spacing-4);
 }
 
 .linkList {
@@ -51,14 +47,14 @@
 }
 
 .linkList a {
-  color: rgba(255, 255, 255, 0.85);
+  color: var(--color-gray-300);
   text-decoration: none;
-  font-size: 14px;
-  transition: color 0.3s;
+  font-size: var(--font-size-small-desktop);
+  transition: color var(--transition-base);
 }
 
 .linkList a:hover {
-  color: #40a9ff;
+  color: var(--color-text-inverse);
 }
 
 .socialLinks {
@@ -66,13 +62,13 @@
 }
 
 .socialLinks a {
-  color: rgba(255, 255, 255, 0.85);
+  color: var(--color-gray-300);
   font-size: 20px;
-  transition: color 0.3s;
+  transition: color var(--transition-base);
 }
 
 .socialLinks a:hover {
-  color: #40a9ff;
+  color: var(--color-text-inverse);
 }
 
 .contactInfo {
@@ -80,21 +76,21 @@
 }
 
 .contactItem {
-  color: rgba(255, 255, 255, 0.85);
-  font-size: 14px;
-  margin-bottom: 8px;
+  color: var(--color-gray-300);
+  font-size: var(--font-size-small-desktop);
+  margin-bottom: var(--spacing-2);
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: var(--spacing-2);
 }
 
 .contactItem a {
-  color: rgba(255, 255, 255, 0.85);
+  color: var(--color-gray-300);
   text-decoration: none;
 }
 
 .contactItem a:hover {
-  color: #40a9ff;
+  color: var(--color-text-inverse);
 }
 
 .bottomBar {
@@ -104,8 +100,8 @@
 }
 
 .copyright {
-  color: rgba(255, 255, 255, 0.65);
-  font-size: 14px;
+  color: var(--color-gray-400);
+  font-size: var(--font-size-caption-desktop);
   margin: 0;
 }
 
@@ -118,14 +114,14 @@
 }
 
 .legalLinks a {
-  color: rgba(255, 255, 255, 0.65);
+  color: var(--color-gray-400);
   text-decoration: none;
-  font-size: 14px;
-  transition: color 0.3s;
+  font-size: var(--font-size-caption-desktop);
+  transition: color var(--transition-base);
 }
 
 .legalLinks a:hover {
-  color: #40a9ff;
+  color: var(--color-text-inverse);
 }
 
 .separator {

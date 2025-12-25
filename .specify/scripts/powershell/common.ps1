@@ -123,7 +123,7 @@ function Get-NextFeatureNumber {
     }
     
     $nextNumber = ($numbers | Measure-Object -Maximum).Maximum + 1
-    return "{0:D3}" -f $nextNumber
+    return "{0:000}" -f $nextNumber
 }
 
 function Get-SanitizedFeatureName {

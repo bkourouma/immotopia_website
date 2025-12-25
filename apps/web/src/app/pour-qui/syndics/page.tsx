@@ -3,12 +3,12 @@ import PersonaPageTemplate from '../../../components/templates/PersonaPageTempla
 import { generateMetadata } from '../../../lib/seo';
 
 export const metadata = generateMetadata({
-  title: 'Pour les syndics de copropriété - ImmoTopia',
+  title: 'Gestion syndic copropriété - Logiciel syndic professionnel',
   description:
-    'Automatisez votre gestion de copropriété et réduisez de 60% le temps administratif. Gestion automatisée des charges, portail copropriétaires.',
-  keywords: ['syndic copropriété', 'gestion copropriété', 'logiciel syndic'],
+    'Logiciel de gestion de copropriété pour syndics professionnels en Afrique de l\'Ouest. Automatisez les charges, simplifiez l\'administration, réduisez le temps de gestion de 60%.',
   canonicalUrl: '/pour-qui/syndics',
-});
+  usePageKeywords: true,
+}, '/pour-qui/syndics');
 
 export default function SyndicsPage() {
   const persona = getPersonaById('syndics');

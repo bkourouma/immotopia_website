@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { getSEOKeywordsForPage, generateMetaKeywords } from './seo/keywords';
 
 export interface SEOConfig {
   title: string;
@@ -8,36 +9,54 @@ export interface SEOConfig {
   ogImage?: string;
   noindex?: boolean;
   nofollow?: boolean;
+  /** Utiliser automatiquement les keywords de la configuration par page */
+  usePageKeywords?: boolean;
 }
 
 /**
  * Génère les métadonnées SEO pour une page
  * @param config Configuration SEO
+ * @param pathname Chemin de la page (pour récupérer les keywords auto)
  * @returns Metadata object pour Next.js
  */
-export function generateMetadata(config: SEOConfig): Metadata {
+export function generateMetadata(config: SEOConfig, pathname?: string): Metadata {
   const {
     title,
     description,
-    keywords = [],
+    keywords: configKeywords = [],
     canonicalUrl,
     ogImage,
     noindex = false,
     nofollow = false,
+    usePageKeywords = false,
   } = config;
 
   const siteName = process.env.NEXT_PUBLIC_SITE_NAME || 'ImmoTopia';
   const siteUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://immotopia.com';
-  const fullTitle = `${title} | ${siteName}`;
+  
+  // Limiter le title à 60 caractères (recommandation SEO)
+  const truncatedTitle = title.length > 60 ? title.substring(0, 57) + '...' : title;
+  const fullTitle = `${truncatedTitle} | ${siteName}`;
+  
+  // Limiter la description à 155 caractères (recommandation SEO)
+  const truncatedDescription = description.length > 155 ? description.substring(0, 152) + '...' : description;
+  
   const imageUrl = ogImage
     ? ogImage.startsWith('http')
       ? ogImage
       : `${siteUrl}${ogImage}`
     : `${siteUrl}/og-image.jpg`;
 
+  // Utiliser les keywords de la page si activé
+  let keywords = configKeywords;
+  if (usePageKeywords && pathname) {
+    const metaKeywordsString = generateMetaKeywords(pathname);
+    keywords = metaKeywordsString ? metaKeywordsString.split(', ') : keywords;
+  }
+
   return {
     title: fullTitle,
-    description,
+    description: truncatedDescription,
     keywords: keywords.length > 0 ? keywords.join(', ') : undefined,
     robots: {
       index: !noindex,

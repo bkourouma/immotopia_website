@@ -1,0 +1,9 @@
+# Ce dossier contiendra les résultats des tests
+
+Les fichiers de résultats seront créés lors de l'exécution des tests :
+- functional-tests.md
+- load-tests.md
+- security-scan.md
+- accessibility-report.md
+- user-testing-results.md
+

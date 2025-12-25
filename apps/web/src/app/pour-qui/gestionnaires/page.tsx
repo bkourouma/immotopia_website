@@ -3,12 +3,12 @@ import PersonaPageTemplate from '../../../components/templates/PersonaPageTempla
 import { generateMetadata } from '../../../lib/seo';
 
 export const metadata = generateMetadata({
-  title: 'Pour les gestionnaires locatifs - ImmoTopia',
+  title: 'Logiciel gestion locative - Gestionnaire locatif professionnel',
   description:
-    'Simplifiez votre gestion locative avec l\'automatisation des paiements et du suivi. Réduction des impayés de 40%.',
-  keywords: ['gestionnaire locatif', 'gestion locative', 'logiciel gestion locative'],
+    'Solution de gestion locative complète pour gestionnaires professionnels. Automatisez les paiements, suivez les loyers, réduisez les impayés de 40%.',
   canonicalUrl: '/pour-qui/gestionnaires',
-});
+  usePageKeywords: true,
+}, '/pour-qui/gestionnaires');
 
 export default function GestionnairesPage() {
   const persona = getPersonaById('gestionnaires');

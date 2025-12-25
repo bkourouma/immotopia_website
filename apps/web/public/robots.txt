@@ -7,6 +7,6 @@ Allow: /
 Disallow: /api/
 Disallow: /admin/
 
-# Sitemap location
-Sitemap: https://immotopia.com/sitemap.xml
+# Sitemap location (dynamique via Next.js)
+Sitemap: ${process.env.NEXT_PUBLIC_APP_URL || 'https://immotopia.com'}/sitemap.xml
 

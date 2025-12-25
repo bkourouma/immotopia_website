@@ -3,17 +3,12 @@ import PersonaPageTemplate from '../../../components/templates/PersonaPageTempla
 import { generateMetadata } from '../../../lib/seo';
 
 export const metadata = generateMetadata({
-  title: 'Pour les agences immobilières - ImmoTopia',
+  title: 'Logiciel pour agence immobilière - ImmoTopia',
   description:
-    'Centralisez toute votre activité immobilière sur une seule plateforme. Augmentez votre productivité de 40% avec ImmoTopia.',
-  keywords: [
-    'agence immobilière',
-    'logiciel agence immobilière',
-    'CRM immobilier',
-    'gestion agence immobilière',
-  ],
+    'Solution complète pour agences immobilières en Afrique de l\'Ouest. Gestion des biens, CRM, commercialisation, prospection. Augmentez votre productivité de 40%.',
   canonicalUrl: '/pour-qui/agences-immobilieres',
-});
+  usePageKeywords: true,
+}, '/pour-qui/agences-immobilieres');
 
 export default function AgencesPage() {
   const persona = getPersonaById('agences-immobilieres');

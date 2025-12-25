@@ -1,0 +1,87 @@
+/* Textarea Wrapper */
+.textareaWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+  width: 100%;
+}
+
+/* Label */
+.label {
+  font-size: var(--font-size-small-desktop);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-primary);
+  margin-bottom: var(--spacing-2);
+}
+
+/* Textarea Base */
+.textarea {
+  width: 100%;
+  min-height: 100px;
+  max-height: 300px;
+  padding: var(--spacing-3) var(--spacing-4);
+  border: var(--border-width-thin) solid var(--border-color-default);
+  border-radius: var(--border-radius-md);
+  background-color: var(--color-bg-primary);
+  font-size: var(--font-size-body-desktop);
+  font-family: var(--font-family-base);
+  color: var(--color-text-primary);
+  line-height: var(--line-height-normal);
+  transition: all var(--transition-base);
+  outline: none;
+  resize: vertical;
+}
+
+.textarea::placeholder {
+  color: var(--color-text-tertiary);
+}
+
+.textarea:focus {
+  border-color: var(--border-color-focus);
+  border-width: var(--border-width-medium);
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
+}
+
+.textarea:disabled {
+  background-color: var(--color-bg-secondary);
+  border-color: var(--color-gray-300);
+  color: var(--color-text-tertiary);
+  cursor: not-allowed;
+}
+
+/* Textarea Error */
+.textarea--error {
+  border-color: var(--border-color-error);
+  border-width: var(--border-width-medium);
+}
+
+.textarea--error:focus {
+  border-color: var(--border-color-error);
+  box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.2);
+}
+
+/* Error Message */
+.errorMessage {
+  font-size: var(--font-size-caption-desktop);
+  color: var(--color-error);
+  margin-top: var(--spacing-1);
+}
+
+/* Helper Text */
+.helperText {
+  font-size: var(--font-size-caption-desktop);
+  color: var(--color-text-secondary);
+  margin-top: var(--spacing-1);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .textarea {
+    font-size: var(--font-size-body-mobile);
+  }
+  
+  .label {
+    font-size: var(--font-size-small-mobile);
+  }
+}
+

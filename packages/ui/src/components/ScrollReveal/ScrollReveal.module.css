@@ -1,0 +1,55 @@
+/* Scroll Reveal Base */
+.scrollReveal {
+  opacity: 0;
+  transition: opacity var(--transition-slow), transform var(--transition-slow);
+}
+
+/* Direction Up */
+.scrollReveal--up {
+  transform: translateY(30px);
+}
+
+.scrollReveal--up.scrollReveal--visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Direction Down */
+.scrollReveal--down {
+  transform: translateY(-30px);
+}
+
+.scrollReveal--down.scrollReveal--visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Direction Left */
+.scrollReveal--left {
+  transform: translateX(30px);
+}
+
+.scrollReveal--left.scrollReveal--visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Direction Right */
+.scrollReveal--right {
+  transform: translateX(-30px);
+}
+
+.scrollReveal--right.scrollReveal--visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Fade */
+.scrollReveal--fade {
+  transform: none;
+}
+
+.scrollReveal--fade.scrollReveal--visible {
+  opacity: 1;
+}
+

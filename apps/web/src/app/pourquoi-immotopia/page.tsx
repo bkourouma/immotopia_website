@@ -1,21 +1,9 @@
-import { Row, Col, Card, Typography, List } from 'antd';
-import { CheckCircleOutlined } from '@ant-design/icons';
-import { generateMetadata } from '../../lib/seo';
-import styles from './page.module.css';
+'use client';
 
-const { Title, Paragraph } = Typography;
-
-export const metadata = generateMetadata({
-  title: 'Pourquoi ImmoTopia ? - Avantages et différenciation',
-  description:
-    'Découvrez pourquoi ImmoTopia est la solution de gestion immobilière la plus complète et performante du marché.',
-  keywords: [
-    'pourquoi ImmoTopia',
-    'avantages ImmoTopia',
-    'différenciation logiciel immobilier',
-  ],
-  canonicalUrl: '/pourquoi-immotopia',
-});
+import { CheckCircle, X } from 'lucide-react';
+import { Card, CardContent } from '@/components/ui/card';
+import { ScrollReveal } from '@monorepo/ui';
+import { Testimonials } from '../../components/sections';
 
 const advantages = [
   {
@@ -56,120 +44,138 @@ const metrics = [
   { value: '100%', label: 'centralisé' },
 ];
 
+const withoutImmoTopia = [
+  'Multiples outils non connectés',
+  'Tâches administratives chronophages',
+  'Manque de visibilité globale',
+  'Communication dispersée',
+  'Erreurs manuelles fréquentes',
+];
+
+const withImmoTopia = [
+  'Plateforme unique centralisée',
+  'Automatisation des tâches répétitives',
+  'Vue d\'ensemble en temps réel',
+  'Communication unifiée',
+  'Réduction drastique des erreurs',
+];
+
 export default function PourquoiImmoTopiaPage() {
   return (
-    <div className={styles.pourquoiPage}>
+    <div className="bg-white">
       {/* Hero Section */}
-      <section className={styles.hero}>
-        <div className={styles.container}>
-          <Title level={1} className={styles.title}>
-            Pourquoi choisir{' '}
-            <span className={styles.highlight}>ImmoTopia</span> ?
-          </Title>
-          <Paragraph className={styles.description}>
-            ImmoTopia se distingue par sa complétude, son innovation et son approche centrée sur
-            les besoins réels des professionnels de l'immobilier.
-          </Paragraph>
+      <section className="bg-gradient-to-br from-blue-50 to-sky-100 py-20 text-center md:py-32">
+        <div className="container mx-auto max-w-[1200px] px-6">
+          <ScrollReveal direction="fade">
+            <h1 className="mb-6 text-4xl font-extrabold text-gray-900 md:text-5xl lg:text-6xl">
+              Pourquoi choisir{' '}
+              <span className="bg-gradient-to-r from-primary to-primary/80 bg-clip-text text-transparent">
+                ImmoTopia
+              </span>{' '}
+              ?
+            </h1>
+            <p className="mx-auto max-w-[700px] text-lg leading-relaxed text-gray-600 md:text-xl">
+              ImmoTopia se distingue par sa complétude, son innovation et son approche centrée sur
+              les besoins réels des professionnels de l'immobilier.
+            </p>
+          </ScrollReveal>
         </div>
       </section>
 
       {/* Metrics Section */}
-      <section className={styles.metricsSection}>
-        <div className={styles.container}>
-          <Row gutter={[32, 32]} justify="center">
+      <section className="bg-white py-20 md:py-32">
+        <div className="container mx-auto max-w-[1200px] px-6">
+          <div className="grid grid-cols-1 gap-8 sm:grid-cols-3">
             {metrics.map((metric, index) => (
-              <Col xs={24} sm={8} key={index}>
-                <div className={styles.metricCard}>
-                  <div className={styles.metricValue}>{metric.value}</div>
-                  <div className={styles.metricLabel}>{metric.label}</div>
+              <ScrollReveal key={index} direction="up" delay={index * 100}>
+                <div className="text-center">
+                  <div className="mb-2 text-4xl font-extrabold text-primary md:text-5xl">
+                    {metric.value}
+                  </div>
+                  <div className="text-base text-gray-600 md:text-lg">{metric.label}</div>
                 </div>
-              </Col>
+              </ScrollReveal>
             ))}
-          </Row>
+          </div>
         </div>
       </section>
 
       {/* Advantages Section */}
-      <section className={styles.section}>
-        <div className={styles.container}>
-          <Title level={2} className={styles.sectionTitle}>
-            Nos avantages différenciants
-          </Title>
-          <Row gutter={[24, 24]}>
+      <section className="bg-gray-50 py-20 md:py-32">
+        <div className="container mx-auto max-w-[1200px] px-6">
+          <ScrollReveal direction="fade">
+            <h2 className="mb-12 text-center text-3xl font-bold text-gray-900 md:text-4xl">
+              Nos avantages différenciants
+            </h2>
+          </ScrollReveal>
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {advantages.map((advantage, index) => (
-              <Col xs={24} sm={12} lg={8} key={index}>
-                <Card className={styles.advantageCard} hoverable>
-                  <div className={styles.cardIcon}>
-                    <CheckCircleOutlined />
-                  </div>
-                  <Title level={4} className={styles.advantageTitle}>
-                    {advantage.title}
-                  </Title>
-                  <Paragraph className={styles.advantageDescription}>
-                    {advantage.description}
-                  </Paragraph>
+              <ScrollReveal key={index} direction="up" delay={index * 50}>
+                <Card className="h-full transition-all hover:shadow-lg">
+                  <CardContent className="p-6">
+                    <div className="mb-4">
+                      <CheckCircle className="h-6 w-6 text-primary" />
+                    </div>
+                    <h3 className="mb-3 text-xl font-semibold text-gray-900">
+                      {advantage.title}
+                    </h3>
+                    <p className="text-gray-600">{advantage.description}</p>
+                  </CardContent>
                 </Card>
-              </Col>
+              </ScrollReveal>
             ))}
-          </Row>
+          </div>
         </div>
       </section>
 
       {/* Comparison Section */}
-      <section className={`${styles.section} ${styles.comparisonSection}`}>
-        <div className={styles.container}>
-          <Title level={2} className={styles.sectionTitle}>
-            Avant vs Après ImmoTopia
-          </Title>
-          <Row gutter={[32, 32]}>
-            <Col xs={24} md={12}>
-              <Card className={styles.comparisonCard}>
-                <Title level={3} className={styles.comparisonTitle}>
-                  Sans ImmoTopia
-                </Title>
-                <List
-                  dataSource={[
-                    'Multiples outils non connectés',
-                    'Tâches administratives chronophages',
-                    'Manque de visibilité globale',
-                    'Communication dispersée',
-                    'Erreurs manuelles fréquentes',
-                  ]}
-                  renderItem={(item) => (
-                    <List.Item>
-                      <span style={{ color: '#ff4d4f' }}>✗</span>
-                      <span style={{ marginLeft: 12 }}>{item}</span>
-                    </List.Item>
-                  )}
-                />
+      <section className="bg-white py-20 md:py-32">
+        <div className="container mx-auto max-w-[1200px] px-6">
+          <ScrollReveal direction="fade">
+            <h2 className="mb-12 text-center text-3xl font-bold text-gray-900 md:text-4xl">
+              Avant vs Après ImmoTopia
+            </h2>
+          </ScrollReveal>
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
+            {/* Sans ImmoTopia */}
+            <ScrollReveal direction="up" delay={0}>
+              <Card className="h-full">
+                <CardContent className="p-6">
+                  <h3 className="mb-6 text-2xl font-bold text-gray-900">Sans ImmoTopia</h3>
+                  <ul className="space-y-4">
+                    {withoutImmoTopia.map((item, index) => (
+                      <li key={index} className="flex items-start gap-3">
+                        <X className="mt-0.5 h-5 w-5 shrink-0 text-destructive" />
+                        <span className="text-gray-700">{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </CardContent>
               </Card>
-            </Col>
-            <Col xs={24} md={12}>
-              <Card className={`${styles.comparisonCard} ${styles.withImmoTopia}`}>
-                <Title level={3} className={styles.comparisonTitle}>
-                  Avec ImmoTopia
-                </Title>
-                <List
-                  dataSource={[
-                    'Plateforme unique centralisée',
-                    'Automatisation des tâches répétitives',
-                    'Vue d\'ensemble en temps réel',
-                    'Communication unifiée',
-                    'Réduction drastique des erreurs',
-                  ]}
-                  renderItem={(item) => (
-                    <List.Item>
-                      <span style={{ color: '#52c41a' }}>✓</span>
-                      <span style={{ marginLeft: 12 }}>{item}</span>
-                    </List.Item>
-                  )}
-                />
+            </ScrollReveal>
+
+            {/* Avec ImmoTopia */}
+            <ScrollReveal direction="up" delay={100}>
+              <Card className="h-full border-2 border-primary">
+                <CardContent className="p-6">
+                  <h3 className="mb-6 text-2xl font-bold text-gray-900">Avec ImmoTopia</h3>
+                  <ul className="space-y-4">
+                    {withImmoTopia.map((item, index) => (
+                      <li key={index} className="flex items-start gap-3">
+                        <CheckCircle className="mt-0.5 h-5 w-5 shrink-0 text-primary" />
+                        <span className="text-gray-700">{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </CardContent>
               </Card>
-            </Col>
-          </Row>
+            </ScrollReveal>
+          </div>
         </div>
       </section>
+
+      {/* Preuves sociales */}
+      <Testimonials className="bg-gray-50" />
     </div>
   );
 }
-

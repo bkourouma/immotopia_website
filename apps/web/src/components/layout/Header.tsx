@@ -1,12 +1,17 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Layout, Menu, Button as AntButton, Drawer } from 'antd';
-import { MenuOutlined, CloseOutlined } from '@ant-design/icons';
 import Link from 'next/link';
-import styles from './Header.module.css';
-
-const { Header: AntHeader } = Layout;
+import { usePathname } from 'next/navigation';
+import { Menu } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import {
+  Sheet,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+} from '@/components/ui/sheet';
+import { cn } from '@/lib/utils';
 
 interface HeaderProps {
   className?: string;
@@ -15,112 +20,159 @@ interface HeaderProps {
 const menuItems = [
   {
     key: 'solution',
-    label: <Link href="/la-solution">La Solution</Link>,
+    label: 'La Solution',
+    href: '/la-solution',
   },
   {
     key: 'fonctionnalites',
-    label: <Link href="/fonctionnalites">Fonctionnalités</Link>,
+    label: 'Fonctionnalités',
+    href: '/fonctionnalites',
   },
   {
     key: 'pour-qui',
-    label: <Link href="/pour-qui">Pour Qui ?</Link>,
+    label: 'Pour Qui ?',
+    href: '/pour-qui',
   },
   {
     key: 'tarifs',
-    label: <Link href="/tarifs">Tarifs</Link>,
+    label: 'Tarifs',
+    href: '/tarifs',
   },
   {
     key: 'ressources',
-    label: <Link href="/ressources">Ressources</Link>,
+    label: 'Ressources',
+    href: '/ressources',
   },
   {
     key: 'contact',
-    label: <Link href="/contact">Contact</Link>,
+    label: 'Contact',
+    href: '/contact',
   },
 ];
 
 export default function Header({ className }: HeaderProps) {
+  const pathname = usePathname();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  const toggleMobileMenu = () => {
-    setMobileMenuOpen(!mobileMenuOpen);
+  const isActive = (href: string) => {
+    if (href === '/') {
+      return pathname === '/';
+    }
+    return pathname?.startsWith(href);
   };
 
-  const handleMenuClick = () => {
+  const handleMenuClose = () => {
     setMobileMenuOpen(false);
   };
 
   return (
-    <>
-      <AntHeader className={`${styles.header} ${className || ''}`}>
-        <div className={styles.headerContainer}>
+    <header
+      className={cn(
+        'sticky top-0 z-[1020] bg-background/98 backdrop-blur-md border-b border-border/40 shadow-sm transition-all duration-300',
+        className
+      )}
+    >
+      <div className="mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-20">
+        <div className="flex h-16 items-center justify-between">
           {/* Logo */}
-          <Link href="/" className={styles.logo}>
-            <span className={styles.logoText}>ImmoTopia</span>
+          <Link
+            href="/"
+            className="text-lg sm:text-xl font-bold text-primary transition-all duration-200 hover:text-primary/90 hover:scale-105"
+          >
+            ImmoTopia
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className={styles.desktopNav}>
-            <Menu
-              mode="horizontal"
-              items={menuItems}
-              className={styles.menu}
-              selectedKeys={[]}
-            />
+          <nav className="hidden flex-1 items-center md:flex md:mx-8">
+            <ul className="flex items-center gap-2 lg:gap-8">
+              {menuItems.map((item) => (
+                <li key={item.key}>
+                  <Link
+                    href={item.href}
+                    className={cn(
+                      'px-4 py-2 text-sm font-medium transition-all duration-200 hover:text-primary relative group',
+                      isActive(item.href)
+                        ? 'text-primary'
+                        : 'text-foreground'
+                    )}
+                  >
+                    {item.label}
+                    <span className={cn(
+                      'absolute bottom-0 left-1/2 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full group-hover:left-0',
+                      isActive(item.href) && 'w-full left-0'
+                    )} />
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </nav>
 
-          {/* CTA Button */}
-          <div className={styles.cta}>
-            <AntButton
-              type="primary"
-              size="large"
-              className={styles.ctaButton}
-              href="/contact?demo=true"
+          {/* Desktop CTA Button */}
+          <div className="hidden md:block relative z-10">
+            <Button 
+              asChild 
+              variant="default"
+              className="relative z-10 !bg-[#2563EB] !text-white font-semibold px-6 py-2.5 shadow-lg hover:shadow-xl hover:!bg-[#1D4ED8] transition-all duration-200 hover:scale-105 active:scale-100 border-0"
             >
-              Demander une démo
-            </AntButton>
+              <Link href="/contact?demo=true">Demander une démo</Link>
+            </Button>
           </div>
 
           {/* Mobile Menu Button */}
           <button
-            className={styles.mobileMenuButton}
-            onClick={toggleMobileMenu}
+            className="flex items-center justify-center p-2 text-foreground transition-colors hover:text-primary active:scale-95 md:hidden"
+            onClick={() => setMobileMenuOpen(true)}
             aria-label="Toggle menu"
           >
-            {mobileMenuOpen ? <CloseOutlined /> : <MenuOutlined />}
+            <Menu className="h-6 w-6" />
           </button>
         </div>
-      </AntHeader>
+      </div>
 
-      {/* Mobile Drawer */}
-      <Drawer
-        title="Menu"
-        placement="right"
-        onClose={toggleMobileMenu}
-        open={mobileMenuOpen}
-        className={styles.mobileDrawer}
-      >
-        <Menu
-          mode="vertical"
-          items={menuItems.map((item) => ({
-            ...item,
-            onClick: handleMenuClick,
-          }))}
-          selectedKeys={[]}
-        />
-        <div className={styles.mobileCta}>
-          <AntButton
-            type="primary"
-            size="large"
-            block
-            href="/contact?demo=true"
-            onClick={handleMenuClick}
-          >
-            Demander une démo
-          </AntButton>
-        </div>
-      </Drawer>
-    </>
+      {/* Mobile Menu Sheet */}
+      <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
+        <SheetContent side="right" className="w-[85vw] max-w-[400px] flex flex-col p-0">
+          <SheetHeader className="border-b border-gray-200 px-6 py-4 flex-shrink-0">
+            <SheetTitle className="text-lg font-semibold text-gray-900">Menu</SheetTitle>
+          </SheetHeader>
+          
+          {/* Navigation Links */}
+          <nav className="flex-1 overflow-y-auto px-4 py-6">
+            <ul className="flex flex-col space-y-2">
+              {menuItems.map((item) => (
+                <li key={item.key}>
+                  <Link
+                    href={item.href}
+                    onClick={handleMenuClose}
+                    className={cn(
+                      'block rounded-lg px-4 py-3 text-base font-medium transition-all duration-200 hover:bg-gray-100 active:scale-95',
+                      isActive(item.href)
+                        ? 'bg-primary/10 text-primary'
+                        : 'text-gray-900'
+                    )}
+                  >
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
+          
+          {/* CTA Button at bottom */}
+          <div className="border-t border-gray-200 p-4 flex-shrink-0">
+            <Button
+              asChild
+              variant="default"
+              className="w-full !bg-[#2563EB] !text-white font-semibold shadow-md hover:shadow-lg hover:!bg-[#1D4ED8] transition-all duration-200 active:scale-95"
+              onClick={handleMenuClose}
+            >
+              <Link href="/contact?demo=true" className="flex items-center justify-center">
+                Demander une démo
+              </Link>
+            </Button>
+          </div>
+        </SheetContent>
+      </Sheet>
+    </header>
   );
 }
-

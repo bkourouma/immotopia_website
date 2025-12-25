@@ -1,13 +1,5 @@
 .featureCard {
   height: 100%;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
-  transition: all 0.3s ease;
-}
-
-.featureCard:hover {
-  box-shadow: 0 4px 16px rgba(24, 144, 255, 0.15);
-  transform: translateY(-4px);
 }
 
 .cardContent {
@@ -17,39 +9,56 @@
 }
 
 .icon {
-  font-size: 32px;
-  margin-bottom: 16px;
-  color: #1890ff;
+  width: 32px;
+  height: 32px;
+  margin-bottom: var(--spacing-4);
+  color: var(--color-primary);
 }
 
 .featureTitle {
-  font-size: 20px;
-  font-weight: 700;
-  color: #1a1a1a;
-  margin-bottom: 12px !important;
+  font-size: var(--font-size-h3-desktop);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+  margin-bottom: var(--spacing-2);
+  line-height: var(--line-height-tight);
 }
 
 .featureDescription {
-  font-size: 14px;
-  color: #595959;
-  line-height: 1.6;
-  margin-bottom: 16px;
+  font-size: var(--font-size-body-desktop);
+  color: var(--color-text-secondary);
+  line-height: var(--line-height-normal);
+  margin-bottom: var(--spacing-4);
   flex-grow: 1;
+}
+
+.cardLink {
+  color: var(--color-primary);
+  font-size: var(--font-size-small-desktop);
+  font-weight: var(--font-weight-medium);
+  text-decoration: none;
+  margin-top: var(--spacing-4);
+  display: inline-block;
+  transition: color var(--transition-base);
+}
+
+.cardLink:hover {
+  color: var(--color-primary-hover);
+  text-decoration: underline;
 }
 
 .benefitsList {
   list-style: none;
   padding: 0;
   margin: 0;
-  padding-top: 16px;
-  border-top: 1px solid #f0f0f0;
+  padding-top: var(--spacing-4);
+  border-top: var(--border-width-thin) solid var(--border-color-default);
 }
 
 .benefitsList li {
-  font-size: 14px;
-  color: #595959;
-  margin-bottom: 8px;
-  padding-left: 20px;
+  font-size: var(--font-size-small-desktop);
+  color: var(--color-text-secondary);
+  margin-bottom: var(--spacing-2);
+  padding-left: var(--spacing-5);
   position: relative;
 }
 
@@ -57,10 +66,21 @@
   content: '✓';
   position: absolute;
   left: 0;
-  color: #52c41a;
-  font-weight: 700;
+  color: var(--color-success);
+  font-weight: var(--font-weight-bold);
 }
 
 .benefitsList li:last-child {
   margin-bottom: 0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .featureTitle {
+    font-size: var(--font-size-h3-mobile);
+  }
+  
+  .featureDescription {
+    font-size: var(--font-size-body-mobile);
+  }
 }
