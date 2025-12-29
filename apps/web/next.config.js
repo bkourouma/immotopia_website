@@ -14,7 +14,7 @@ const nextConfig = {
   },
   
   // Optimisation du build
-  swcMinify: true,
+  // swcMinify removed: deprecated in Next.js 15 (SWC minification is default)
   compress: true,
   
   // Headers de sécurité et performance
