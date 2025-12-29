@@ -420,3 +420,4 @@ Pour toute question ou problème, consultez :
 - Les [règles Cursor](.cursor/rules/specify-rules.mdc)
 - Les commandes SpectKit dans `.cursor/commands/`
 
+"# immotopia_website" 
