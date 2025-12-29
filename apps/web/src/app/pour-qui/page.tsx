@@ -65,11 +65,11 @@ export default function PourQuiPage() {
           
           <ScrollReveal direction="fade" delay={100}>
             <h1 className="mb-6 text-4xl font-extrabold leading-tight text-gray-900 md:text-5xl lg:text-6xl">
-              Une solution adaptée à{' '}
+              Une solution adaptée aux{' '}
               <span className="relative inline-block">
                 <span className="absolute inset-0 bg-gradient-to-r from-[#2563EB] via-[#3B82F6] to-[#2563EB] bg-[length:200%_100%] bg-clip-text opacity-75 blur-sm animate-gradient" />
                 <span className="relative bg-gradient-to-r from-[#2563EB] via-[#1D4ED8] to-[#2563EB] bg-[length:200%_100%] bg-clip-text text-transparent animate-gradient">
-                  chaque professionnel
+                  agences, gestionnaires et syndics
                 </span>
               </span>
             </h1>
@@ -77,7 +77,7 @@ export default function PourQuiPage() {
           
           <ScrollReveal direction="fade" delay={200}>
             <p className="mx-auto max-w-[700px] text-lg leading-relaxed text-gray-700 md:text-xl font-medium">
-              ImmoTopia s'adapte aux besoins spécifiques de chaque acteur de l'immobilier. Découvrez
+              ImmoTopia s'adapte aux besoins spécifiques des agences immobilières, gestionnaires locatifs et syndics. Découvrez
               comment notre solution répond à vos défis quotidiens.
             </p>
           </ScrollReveal>

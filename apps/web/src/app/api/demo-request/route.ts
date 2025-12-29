@@ -40,15 +40,23 @@ export async function POST(request: NextRequest) {
     }
 
     // Envoyer l'email de notification si configuré
+    let emailSent = false;
     if (isEmailConfigured()) {
       try {
         await sendNotificationEmail(validatedData);
-      } catch (emailError) {
+        emailSent = true;
+        console.log('✅ Email notification sent successfully');
+      } catch (emailError: any) {
         // On log l'erreur mais on continue
-        console.error('Email notification error (non-blocking):', emailError);
+        console.error('❌ Email notification error (non-blocking):', emailError);
+        console.error('Error details:', {
+          message: emailError?.message,
+          stack: emailError?.stack,
+        });
       }
     } else {
-      console.log('Email not configured, skipping email notification');
+      console.warn('⚠️ Email not configured, skipping email notification');
+      console.warn('Please set SMTP_HOST, SMTP_USER, and SMTP_PASS in .env.local');
     }
 
     // Log pour debug (peut être retiré en production)
@@ -56,12 +64,14 @@ export async function POST(request: NextRequest) {
       nom: validatedData.nom,
       email: validatedData.email,
       persona: validatedData.persona,
+      emailSent,
     });
 
     return NextResponse.json(
       {
         success: true,
         message: 'Demande de démo enregistrée avec succès',
+        emailSent, // Include email status in response for debugging
       },
       { status: 200 }
     );

@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import React, { useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
@@ -33,22 +33,21 @@ export default function DemoRequestForm({
 }: DemoRequestFormProps) {
   const [loading, setLoading] = useState(false);
   const [honeypot, setHoneypot] = useState('');
-  
+
   const {
     control,
     handleSubmit,
     reset,
   } = useForm<DemoRequest>({
     resolver: zodResolver(DemoRequestSchema),
-    mode: 'onBlur', // Validation en temps réel au blur (quand l'utilisateur quitte le champ)
-    reValidateMode: 'onChange', // Re-validation au changement après une première erreur
+    mode: 'onBlur',
+    reValidateMode: 'onChange',
     defaultValues: {
       persona: defaultPersona as DemoRequest['persona'] | undefined,
     },
   });
 
   const onSubmit = async (data: DemoRequest) => {
-    // Protection anti-spam : si le champ honeypot est rempli, c'est un bot
     if (honeypot) {
       console.warn('Spam detected: honeypot field filled');
       toast.error('Erreur de sécurité. Veuillez réessayer.');
@@ -72,12 +71,11 @@ export default function DemoRequestForm({
       }
 
       toast.success('Votre demande a été envoyée avec succès ! Nous vous contacterons sous peu.');
-      
-      // Track form submission
+
       trackFormSubmission('demo_request', data.persona);
-      
+
       reset();
-      setHoneypot(''); // Reset honeypot
+      setHoneypot('');
       onSuccess?.();
     } catch (error: any) {
       console.error('Error submitting demo request:', error);
@@ -185,27 +183,74 @@ export default function DemoRequestForm({
         <Controller
           name="telephone"
           control={control}
-          render={({ field, fieldState }) => (
-            <>
-              <Input
-                {...field}
-                id="telephone"
-                type="tel"
-                placeholder="+33 X XX XX XX XX"
-                disabled={loading}
-                autoComplete="tel"
-                aria-invalid={fieldState.invalid}
-                aria-describedby={fieldState.error ? 'telephone-error' : undefined}
-                className={cn(
-                  fieldState.invalid && 'border-destructive focus-visible:ring-destructive'
-                )}
-              />
-              <FormMessage
-                id="telephone-error"
-                error={fieldState.error?.message}
-              />
-            </>
-          )}
+          render={({ field, fieldState }) => {
+            // Format phone number with +225 prefix
+            const formatPhoneNumber = (value: string) => {
+              // Remove all non-digit characters except +
+              let cleaned = value.replace(/[^\d+]/g, '');
+
+              // Ensure it starts with +225
+              if (!cleaned.startsWith('+225')) {
+                if (cleaned.startsWith('225')) {
+                  cleaned = '+' + cleaned;
+                } else if (cleaned.startsWith('+')) {
+                  cleaned = '+225' + cleaned.substring(1);
+                } else {
+                  cleaned = '+225' + cleaned;
+                }
+              }
+
+              // Extract digits after +225
+              const digits = cleaned.substring(4).replace(/\D/g, '');
+
+              // Limit to 10 digits (Ivory Coast numbers are 10 digits)
+              const limitedDigits = digits.substring(0, 10);
+
+              // Format: +225 XX XX XX XX XX
+              if (limitedDigits.length === 0) {
+                return '+225';
+              } else if (limitedDigits.length <= 2) {
+                return `+225 ${limitedDigits}`;
+              } else if (limitedDigits.length <= 4) {
+                return `+225 ${limitedDigits.substring(0, 2)} ${limitedDigits.substring(2)}`;
+              } else if (limitedDigits.length <= 6) {
+                return `+225 ${limitedDigits.substring(0, 2)} ${limitedDigits.substring(2, 4)} ${limitedDigits.substring(4)}`;
+              } else if (limitedDigits.length <= 8) {
+                return `+225 ${limitedDigits.substring(0, 2)} ${limitedDigits.substring(2, 4)} ${limitedDigits.substring(4, 6)} ${limitedDigits.substring(6)}`;
+              } else {
+                return `+225 ${limitedDigits.substring(0, 2)} ${limitedDigits.substring(2, 4)} ${limitedDigits.substring(4, 6)} ${limitedDigits.substring(6, 8)} ${limitedDigits.substring(8)}`;
+              }
+            };
+
+            const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+              const formatted = formatPhoneNumber(e.target.value);
+              field.onChange(formatted);
+            };
+
+            return (
+              <>
+                <Input
+                  {...field}
+                  id="telephone"
+                  type="tel"
+                  placeholder="+225 01 01 51 01 30"
+                  disabled={loading}
+                  autoComplete="tel"
+                  value={field.value || ''}
+                  onChange={handleChange}
+                  aria-invalid={fieldState.invalid}
+                  aria-describedby={fieldState.error ? 'telephone-error' : undefined}
+                  className={cn(
+                    fieldState.invalid && 'border-destructive focus-visible:ring-destructive'
+                  )}
+                />
+                <FormMessage
+                  id="telephone-error"
+                  error={fieldState.error?.message}
+                />
+              </>
+            );
+          }}
         />
       </div>
 

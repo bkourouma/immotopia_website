@@ -8,33 +8,53 @@
 import {
   Hero,
   HeroStatsSection,
+  ProblemSolution,
   FeaturesPreview,
-  StatsSection,
+  HowItWorks,
   PersonasPreview,
   Testimonials,
+  StatsSection,
+  PricingPreview,
+  FAQ,
   FinalCTA,
 } from '../sections';
+import TopBarCTA from '../layout/TopBarCTA';
 
 export default function HomePageContent() {
   return (
     <main className="relative overflow-hidden">
-      {/* Hero Section */}
+      {/* Top CTA Bar avec informations */}
+      <TopBarCTA />
+
+      {/* Hero Section with integrated header */}
       <Hero />
 
-      {/* Hero Stats Section */}
+      {/* Hero Stats Section - Proof social près du Hero */}
       <HeroStatsSection />
+
+      {/* Problem/Solution Section */}
+      <ProblemSolution />
 
       {/* Features Preview Section */}
       <FeaturesPreview />
 
-      {/* Stats Section - Transition visuelle entre Features et Personas */}
-      <StatsSection />
+      {/* How it Works Section */}
+      <HowItWorks />
 
       {/* Personas Preview Section */}
       <PersonasPreview />
 
       {/* Testimonials Section */}
       <Testimonials />
+
+      {/* Stats Section - Métriques */}
+      <StatsSection />
+
+      {/* Pricing Preview Section */}
+      <PricingPreview />
+
+      {/* FAQ Section */}
+      <FAQ />
 
       {/* Final CTA Section */}
       <FinalCTA />

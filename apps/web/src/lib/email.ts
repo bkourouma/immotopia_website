@@ -1,13 +1,14 @@
 /**
  * Email service helpers
- * Supporte SendGrid et Resend (configuré via variables d'environnement)
+ * Supporte SendGrid, Resend et SMTP via Nodemailer (configuré via variables d'environnement)
  */
 
 import type { DemoRequest } from '@monorepo/contracts';
+import nodemailer from 'nodemailer';
 
-const EMAIL_SERVICE = process.env.EMAIL_SERVICE || 'resend'; // 'sendgrid' | 'resend' | 'nodemailer'
-const EMAIL_FROM = process.env.EMAIL_FROM || 'noreply@immotopia.com';
-const EMAIL_TO = process.env.EMAIL_TO || 'contact@immotopia.com';
+const EMAIL_SERVICE = process.env.EMAIL_SERVICE || 'nodemailer'; // 'sendgrid' | 'resend' | 'nodemailer'
+const EMAIL_FROM = process.env.EMAIL_FROM || process.env.SMTP_FROM || 'noreply@immotopia.com';
+const EMAIL_TO = process.env.EMAIL_TO || 'agent@immo-annonces.fr';
 
 const personaLabels: Record<DemoRequest['persona'], string> = {
   'agences-immobilieres': 'Agence immobilière',
@@ -176,23 +177,75 @@ async function sendViaResend(data: DemoRequest): Promise<void> {
 }
 
 /**
+ * Envoi via SMTP (Nodemailer)
+ */
+async function sendViaSMTP(data: DemoRequest): Promise<void> {
+
+  const smtpHost = process.env.SMTP_HOST;
+  const smtpPort = parseInt(process.env.SMTP_PORT || '587', 10);
+  const smtpSecure = process.env.SMTP_SECURE === 'true';
+  const smtpUser = process.env.SMTP_USER;
+  const smtpPass = process.env.SMTP_PASS;
+
+  if (!smtpHost || !smtpUser || !smtpPass) {
+    throw new Error('SMTP configuration is incomplete. SMTP_HOST, SMTP_USER, and SMTP_PASS are required.');
+  }
+
+  // Create transporter
+  const transporter = nodemailer.createTransport({
+    host: smtpHost,
+    port: smtpPort,
+    secure: smtpSecure, // true for 465, false for other ports
+    auth: {
+      user: smtpUser,
+      pass: smtpPass,
+    },
+  });
+
+  // Verify connection
+  await transporter.verify();
+
+  // Send email
+  const info = await transporter.sendMail({
+    from: EMAIL_FROM,
+    to: EMAIL_TO,
+    subject: 'Nouvelle demande de démo - ImmoTopia',
+    html: generateEmailTemplate(data),
+    text: generateEmailText(data),
+  });
+
+  console.log('Email sent via SMTP:', info.messageId);
+}
+
+/**
  * Envoie l'email de notification
  */
 export async function sendNotificationEmail(data: DemoRequest): Promise<void> {
+  // Check if SMTP is configured
+  const isSMTPConfigured = !!(
+    process.env.SMTP_HOST &&
+    process.env.SMTP_USER &&
+    process.env.SMTP_PASS
+  );
+
+  // Check if other email services are configured
   const apiKey = process.env.EMAIL_API_KEY || process.env.SENDGRID_API_KEY || process.env.RESEND_API_KEY;
 
-  if (!apiKey) {
-    console.warn('Email API key not configured, skipping email notification');
+  if (!isSMTPConfigured && !apiKey) {
+    console.warn('Email service not configured, skipping email notification');
     return;
   }
 
   try {
-    if (EMAIL_SERVICE === 'sendgrid') {
+    // Use SMTP (nodemailer) only if it's configured
+    if (isSMTPConfigured) {
+      await sendViaSMTP(data);
+    } else if (EMAIL_SERVICE === 'sendgrid') {
       await sendViaSendGrid(data);
     } else if (EMAIL_SERVICE === 'resend') {
       await sendViaResend(data);
     } else {
-      throw new Error(`Unsupported email service: ${EMAIL_SERVICE}`);
+      throw new Error(`Email service not properly configured. Please set SMTP credentials or API keys for ${EMAIL_SERVICE}`);
     }
 
     console.log('Notification email sent successfully');
@@ -208,6 +261,20 @@ export async function sendNotificationEmail(data: DemoRequest): Promise<void> {
  * Vérifie si l'email est configuré
  */
 export function isEmailConfigured(): boolean {
-  return !!(process.env.EMAIL_API_KEY || process.env.SENDGRID_API_KEY || process.env.RESEND_API_KEY);
+  // Check SMTP configuration
+  const isSMTPConfigured = !!(
+    process.env.SMTP_HOST &&
+    process.env.SMTP_USER &&
+    process.env.SMTP_PASS
+  );
+
+  // Check other email services
+  const isOtherServiceConfigured = !!(
+    process.env.EMAIL_API_KEY ||
+    process.env.SENDGRID_API_KEY ||
+    process.env.RESEND_API_KEY
+  );
+
+  return isSMTPConfigured || isOtherServiceConfigured;
 }
 

@@ -7,6 +7,7 @@ import { ScrollReveal } from '@monorepo/ui';
 import { ArrowRight } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { trackCTAClick } from '@/lib/analytics';
+import { trackClarity } from '@/lib/clarity';
 
 interface FinalCTAProps {
   className?: string;
@@ -36,18 +37,17 @@ export default function FinalCTA({ className }: FinalCTAProps) {
             </span>
           </div>
           <h2 className="mb-6 text-3xl font-bold md:text-4xl lg:text-5xl">
-            Prêt à transformer votre{' '}
+            Prêt à gérer votre agence{' '}
             <span className="relative inline-block">
               <span className="absolute inset-0 bg-white/20 blur-sm" />
-              <span className="relative">gestion immobilière</span>
+              <span className="relative">plus efficacement</span>
             </span>
             {' '}?
           </h2>
         </ScrollReveal>
         <ScrollReveal direction="fade" delay={100}>
           <p className="mb-8 text-lg text-white/90 md:text-xl">
-            Rejoignez les professionnels qui font confiance à ImmoTopia pour centraliser et
-            automatiser leur activité immobilière.
+            Créez votre compte en quelques minutes et découvrez comment ImmoTopia transforme la gestion immobilière pour les professionnels.
           </p>
         </ScrollReveal>
         <ScrollReveal direction="up" delay={200}>
@@ -57,10 +57,14 @@ export default function FinalCTA({ className }: FinalCTAProps) {
               size="lg"
               variant="secondary"
               className="group bg-white text-primary shadow-xl transition-all duration-300 hover:scale-105 hover:bg-gray-100 hover:shadow-2xl"
-              onClick={() => trackCTAClick('Demander une démo gratuite', 'final_cta')}
+              onClick={() => {
+                trackCTAClick('Créer mon compte', 'final_cta');
+                trackClarity('cta_creer_mon_compte_final');
+              }}
+              id="cta-final-signup"
             >
-              <Link href="/contact?demo=true" className="flex items-center">
-                Demander une démo gratuite
+              <Link href="/contact?signup=true" className="flex items-center">
+                Créer mon compte
                 <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
               </Link>
             </Button>
@@ -74,6 +78,10 @@ export default function FinalCTA({ className }: FinalCTAProps) {
               <Link href="/tarifs">Voir les tarifs</Link>
             </Button>
           </div>
+          {/* Micro-copy de réassurance */}
+          <p className="mt-6 text-center text-sm text-white/80">
+            Sans engagement · Configuration rapide · Support inclus
+          </p>
         </ScrollReveal>
       </div>
     </section>

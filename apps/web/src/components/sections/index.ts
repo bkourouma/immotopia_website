@@ -9,3 +9,8 @@ export { default as FinalCTA } from './FinalCTA';
 export { default as StatsSection } from './StatsSection';
 export { default as PricingCard } from './PricingCard';
 export type { PricingPlan } from './PricingCard';
+export { default as ProblemSolution } from './ProblemSolution';
+export { default as HowItWorks } from './HowItWorks';
+export { default as PricingPreview } from './PricingPreview';
+export { default as FAQ } from './FAQ';
+export { default as HeroHeader } from './HeroHeader';

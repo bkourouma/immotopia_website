@@ -6,6 +6,8 @@ import { Check, Sparkles } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { cn } from '@/lib/utils';
+import { trackCTAClick } from '@/lib/analytics';
+import { trackClarity } from '@/lib/clarity';
 
 export interface PricingPlan {
   name: string;
@@ -30,6 +32,9 @@ const getGradientForPlan = (planName: string): string => {
     'Starter': 'from-blue-500 to-cyan-500',
     'Professional': 'from-purple-500 to-pink-500',
     'Enterprise': 'from-orange-500 to-amber-500',
+    'Basic': 'from-blue-500 to-cyan-500',
+    'Pro': 'from-purple-500 to-pink-500',
+    'Elite': 'from-orange-500 to-amber-500',
   };
   return gradientMap[planName] || 'from-[#2563EB] to-[#1D4ED8]';
 };
@@ -46,7 +51,7 @@ export default function PricingCard({ plan, className }: PricingCardProps) {
             `bg-gradient-to-r ${gradient}`
           )}>
             <Sparkles className="h-3 w-3" />
-            Le plus populaire
+            Recommandé
           </div>
         </div>
       )}
@@ -131,6 +136,10 @@ export default function PricingCard({ plan, className }: PricingCardProps) {
               ? `bg-gradient-to-r ${gradient} text-white shadow-md hover:shadow-lg hover:scale-105 border-0` 
               : "hover:border-[#2563EB] hover:text-[#2563EB] hover:scale-105 border-2"
           )}
+          onClick={() => {
+            trackCTAClick(plan.cta, 'pricing_select_plan');
+            trackClarity(`cta_selection_plan_${plan.name.toLowerCase()}`);
+          }}
         >
           <Link href={plan.ctaLink || '/contact?demo=true'}>{plan.cta}</Link>
         </Button>

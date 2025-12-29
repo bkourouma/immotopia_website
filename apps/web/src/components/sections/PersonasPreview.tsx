@@ -15,6 +15,11 @@ interface PersonasPreviewProps {
 }
 
 export default function PersonasPreview({ className, showTitle = true }: PersonasPreviewProps) {
+  // Filter to show only Agences and Gestionnaires on landing page (2 main personas)
+  const mainPersonas = personas.filter(
+    (p) => p.id === 'agences-immobilieres' || p.id === 'gestionnaires'
+  );
+
   return (
     <section className={cn('relative overflow-hidden py-16 md:py-24 lg:py-32', className)}>
       {/* Enhanced Background with animated gradients */}
@@ -39,24 +44,24 @@ export default function PersonasPreview({ className, showTitle = true }: Persona
                 </span>
               </div>
               <h2 className="mb-6 text-3xl font-extrabold leading-tight text-gray-900 sm:text-4xl md:text-5xl lg:text-6xl">
-                Une solution adaptée à{' '}
+                Une solution adaptée aux{' '}
                 <span className="relative inline-block">
                   <span className="absolute inset-0 bg-gradient-to-r from-[#2563EB] via-[#3B82F6] to-[#2563EB] bg-[length:200%_100%] bg-clip-text opacity-50 blur-sm" />
                   <span className="relative bg-gradient-to-r from-[#2563EB] via-[#1D4ED8] to-[#2563EB] bg-[length:200%_100%] bg-clip-text text-transparent">
-                    chaque professionnel
+                    agences, gestionnaires et syndics
                   </span>
                 </span>
               </h2>
               <p className="mx-auto max-w-3xl text-base leading-relaxed text-gray-700 sm:text-lg md:text-xl">
-                ImmoTopia s'adapte aux besoins spécifiques de chaque acteur de l'immobilier pour optimiser votre activité
+                ImmoTopia s'adapte aux besoins spécifiques des agences immobilières, gestionnaires locatifs et syndics pour optimiser votre activité
               </p>
             </div>
           </ScrollReveal>
         )}
 
         {/* Enhanced Grid with hover effects */}
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {personas.map((persona: Persona, index: number) => (
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
+          {mainPersonas.map((persona: Persona, index: number) => (
             <ScrollReveal key={persona.id} direction="up" delay={index * 100}>
               <div className="group relative">
                 <div className="absolute -inset-0.5 rounded-2xl bg-gradient-to-r from-[#2563EB]/20 via-[#3B82F6]/20 to-[#2563EB]/20 opacity-0 blur transition-opacity duration-300 group-hover:opacity-100" />

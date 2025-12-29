@@ -11,15 +11,15 @@ const contactInfo = [
   {
     icon: Mail,
     label: 'Email',
-    value: 'contact@immotopia.com',
-    link: 'mailto:contact@immotopia.com',
+    value: 'agent@immo-annonces.fr',
+    link: 'mailto:agent@immo-annonces.fr',
     gradient: 'from-blue-500 to-cyan-500',
   },
   {
     icon: Phone,
     label: 'Téléphone',
-    value: '+33 X XX XX XX XX',
-    link: 'tel:+33XXXXXXXXX',
+    value: '+225 07 07 66 41 05',
+    link: 'tel:+2250707664105',
     gradient: 'from-emerald-500 to-teal-500',
   },
   {
@@ -46,7 +46,7 @@ const benefits = [
 
 export default function ContactPage() {
   const searchParams = useSearchParams();
-  const isDemo = searchParams?.get('demo') === 'true';
+  const isDemo = searchParams?.get('demo') === 'true' || searchParams?.get('signup') === 'true';
   const persona = searchParams?.get('persona') || undefined;
 
   return (

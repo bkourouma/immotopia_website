@@ -1,9 +1,9 @@
 import { generateMetadata } from '../../lib/seo';
 
 export const metadata = generateMetadata({
-  title: 'Tarifs logiciel immobilier - Prix solution immobilière',
+  title: 'Tarifs ImmoTopia — Logiciel immobilier (SaaS) & Licence Perpétuelle',
   description:
-    'Découvrez nos formules tarifaires adaptées à votre activité. Formules flexibles pour agences, promoteurs, syndics et gestionnaires. Tarification SaaS transparente.',
+    'Tarifs transparents pour logiciel immobilier, gestion locative et CRM immobilier. Abonnements mensuels (Basic 35k, Pro 50k, Elite 100k FCFA). Licence perpétuelle disponible. Paiement Mobile Money accepté.',
   canonicalUrl: '/tarifs',
   usePageKeywords: true,
 }, '/tarifs');

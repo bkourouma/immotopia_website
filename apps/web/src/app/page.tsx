@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import { generateMetadata as generateSEOMetadata } from '../lib/seo';
 import HomePageContent from '../components/pages/HomePageContent';
+import HomePageClient from '../components/pages/HomePageClient';
 
 /**
  * Métadonnées SEO pour la page d'accueil
@@ -8,9 +9,9 @@ import HomePageContent from '../components/pages/HomePageContent';
  */
 export const metadata: Metadata = generateSEOMetadata(
   {
-    title: 'Plateforme immobilière Afrique de l\'Ouest - ImmoTopia',
+    title: 'Logiciel Immobilier - Gestion Locative & CRM Immobilier | ImmoTopia',
     description:
-      'Solution SaaS complète pour la gestion immobilière professionnelle en Afrique de l\'Ouest. Logiciel de gestion immobilière, CRM, gestion locative, syndic, promotion immobilière.',
+      'Gérez votre agence immobilière en un seul outil. Logiciel de gestion immobilière, CRM immobilier, gestion locative et portail d\'annonces pour les professionnels en Afrique de l\'Ouest. Créez votre compte gratuitement.',
     canonicalUrl: '/',
     usePageKeywords: true,
   },
@@ -18,5 +19,5 @@ export const metadata: Metadata = generateSEOMetadata(
 );
 
 export default function Home() {
-  return <HomePageContent />;
+  return <HomePageClient><HomePageContent /></HomePageClient>;
 }

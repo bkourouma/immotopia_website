@@ -9,6 +9,7 @@ import { ScrollReveal } from '@monorepo/ui';
 import type { Persona } from '../../lib/personas';
 import { cn } from '@/lib/utils';
 import { trackCTAClick } from '@/lib/analytics';
+import { trackClarity } from '@/lib/clarity';
 
 interface PersonaPageTemplateProps {
   persona: Persona;
@@ -276,7 +277,10 @@ export default function PersonaPageTemplate({ persona }: PersonaPageTemplateProp
                   size="lg"
                   variant="secondary"
                   className="group bg-white text-[#2563EB] shadow-xl transition-all duration-300 hover:scale-105 hover:bg-gray-100 hover:shadow-2xl"
-                  onClick={() => trackCTAClick('Demander une démo personnalisée', `persona_${persona.id}_cta`)}
+                  onClick={() => {
+                    trackCTAClick('Demander une démo personnalisée', `persona_${persona.id}_cta`);
+                    trackClarity(`cta_demander_une_demo_persona_${persona.id}`);
+                  }}
                 >
                   <Link href={`/contact?demo=true&persona=${persona.id}`} className="flex items-center font-bold">
                     Demander une démo personnalisée

@@ -22,20 +22,24 @@ export const seoKeywords: Record<string, PageSEOConfig> = {
   // Page d'accueil
   '/': {
     primaryKeywords: [
-      'plateforme immobilière Afrique de l\'Ouest',
+      'logiciel immobilier',
+      'gestion locative',
+      'CRM immobilier',
+      'portail d\'annonces',
       'logiciel gestion immobilière',
-      'SaaS immobilier',
-      'solution immobilière digitale',
+      'logiciel agence immobilière',
     ],
     secondaryKeywords: [
       'gestion immobilière professionnelle',
-      'logiciel agence immobilière',
       'plateforme SaaS immobilier',
       'outil gestion locative',
+      'CRM pour agence immobilière',
+      'logiciel gestion biens immobiliers',
     ],
     longTailKeywords: [
       'meilleur logiciel gestion immobilière Afrique de l\'Ouest',
       'solution SaaS pour professionnels immobilier',
+      'créer compte logiciel immobilier',
     ],
   },
 

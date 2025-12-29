@@ -15,6 +15,7 @@ interface Testimonial {
   name: string;
   role: string;
   company: string;
+  location?: string;
   content: string;
   avatar?: string;
   rating?: number;
@@ -26,6 +27,7 @@ const testimonials: Testimonial[] = [
     name: 'Sophie Martin',
     role: 'Directrice',
     company: 'Agence Immobilière Pro',
+    location: 'Bouaké',
     content:
       "ImmoTopia a transformé notre façon de travailler. Nous avons gagné un temps considérable sur les tâches administratives et notre productivité a augmenté de 40%.",
     rating: 5,
@@ -35,15 +37,17 @@ const testimonials: Testimonial[] = [
     name: 'Jean Dupont',
     role: 'Promoteur',
     company: 'Développement Immobilier SA',
+    location: 'Abidjan, Bingerville',
     content:
       "La plateforme centralise tout : gestion des biens, CRM, suivi des ventes. C'est exactement ce qu'il nous fallait pour gérer nos projets efficacement.",
     rating: 5,
   },
   {
     id: '3',
-    name: 'Marie Leclerc',
+    name: 'Marie Yapi',
     role: 'Syndic',
     company: 'Syndicat Professionnel',
+    location: 'Abidjan Angré',
     content:
       "L'automatisation des tâches administratives pour les copropriétés est un vrai plus. Nos clients apprécient la transparence et la rapidité de traitement.",
     rating: 5,
@@ -118,6 +122,11 @@ export default function Testimonials({ className }: TestimonialsProps) {
                     <div className="text-sm text-gray-600">
                       {testimonial.role}, {testimonial.company}
                     </div>
+                    {testimonial.location && (
+                      <div className="mt-1 text-xs text-gray-500">
+                        {testimonial.location}
+                      </div>
+                    )}
                   </div>
                 </CardContent>
                 

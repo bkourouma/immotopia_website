@@ -12,6 +12,8 @@ import {
   SheetTitle,
 } from '@/components/ui/sheet';
 import { cn } from '@/lib/utils';
+import { trackCTAClick } from '@/lib/analytics';
+import { trackClarity } from '@/lib/clarity';
 
 interface HeaderProps {
   className?: string;
@@ -19,19 +21,9 @@ interface HeaderProps {
 
 const menuItems = [
   {
-    key: 'solution',
-    label: 'La Solution',
-    href: '/la-solution',
-  },
-  {
     key: 'fonctionnalites',
     label: 'Fonctionnalités',
     href: '/fonctionnalites',
-  },
-  {
-    key: 'pour-qui',
-    label: 'Pour Qui ?',
-    href: '/pour-qui',
   },
   {
     key: 'tarifs',
@@ -113,8 +105,17 @@ export default function Header({ className }: HeaderProps) {
               asChild 
               variant="default"
               className="relative z-10 !bg-[#2563EB] !text-white font-semibold px-6 py-2.5 shadow-lg hover:shadow-xl hover:!bg-[#1D4ED8] transition-all duration-200 hover:scale-105 active:scale-100 border-0"
+              id="cta-header-signup"
             >
-              <Link href="/contact?demo=true">Demander une démo</Link>
+              <Link 
+                href="/contact?signup=true"
+                onClick={() => {
+                  trackCTAClick('Créer mon compte', 'header');
+                  trackClarity('cta_creer_mon_compte_header');
+                }}
+              >
+                Créer mon compte
+              </Link>
             </Button>
           </div>
 
@@ -164,10 +165,18 @@ export default function Header({ className }: HeaderProps) {
               asChild
               variant="default"
               className="w-full !bg-[#2563EB] !text-white font-semibold shadow-md hover:shadow-lg hover:!bg-[#1D4ED8] transition-all duration-200 active:scale-95"
-              onClick={handleMenuClose}
+              id="cta-header-mobile-signup"
             >
-              <Link href="/contact?demo=true" className="flex items-center justify-center">
-                Demander une démo
+              <Link 
+                href="/contact?signup=true" 
+                className="flex items-center justify-center"
+                onClick={() => {
+                  handleMenuClose();
+                  trackCTAClick('Créer mon compte', 'header_mobile');
+                  trackClarity('cta_creer_mon_compte_header_mobile');
+                }}
+              >
+                Créer mon compte
               </Link>
             </Button>
           </div>
