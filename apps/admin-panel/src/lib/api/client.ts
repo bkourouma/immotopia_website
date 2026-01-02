@@ -3,7 +3,8 @@
  * Centralized fetch wrapper with error handling
  */
 
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3002';
+// Use relative path in production, or VITE_API_URL if set (for dev)
+const API_URL = import.meta.env.VITE_API_URL || (import.meta.env.PROD ? '' : 'http://localhost:3002');
 
 export interface ApiError {
   error: string;
