@@ -2,11 +2,11 @@ import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import Script from 'next/script';
 import './globals.css';
-import { Header, Footer } from '../components/layout';
 import { generateMetadata as generateSEOMetadata, defaultSEO } from '../lib/seo';
 import { Toaster } from '@/components/ui/sonner';
 import GoogleAnalytics from '@/components/analytics/GoogleAnalytics';
 import StructuredData from '@/components/seo/StructuredData';
+import ConditionalLayout from '@/components/layout/ConditionalLayout';
 import {
   generateOrganizationSchema,
   generateWebsiteSchema,
@@ -32,12 +32,12 @@ export default function RootLayout({
   return (
     <html lang="fr">
       <head>
-        <StructuredData data={[organizationSchema, websiteSchema]} />
         {/* Preconnect to external domains for performance */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
       </head>
       <body className={inter.className}>
+        <StructuredData data={[organizationSchema, websiteSchema]} />
         <GoogleAnalytics />
         {/* Microsoft Clarity - Chargé après l'interactivité pour ne pas impacter les performances */}
         <Script
@@ -53,14 +53,7 @@ export default function RootLayout({
             `,
           }}
         />
-        <div className="flex flex-col min-h-screen">
-          {/* Header conditionnel - masqué sur la page d'accueil (géré dans HomePageContent) */}
-          <div id="main-header-wrapper">
-            <Header />
-          </div>
-          <main className="flex-1">{children}</main>
-          <Footer />
-        </div>
+        <ConditionalLayout>{children}</ConditionalLayout>
         <Toaster />
       </body>
     </html>

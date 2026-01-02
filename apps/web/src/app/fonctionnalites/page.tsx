@@ -479,6 +479,54 @@ export default function FonctionnalitesPage() {
         </div>
       </section>
 
+      {/* Section : Toutes les fonctionnalités - Liste complète avec liens */}
+      <section className="bg-white py-16 md:py-20">
+        <div className="container mx-auto max-w-6xl px-6">
+          <ScrollReveal direction="up" delay={0}>
+            <div className="mb-8 text-center">
+              <h2 className="mb-3 text-2xl font-bold text-gray-900 md:text-3xl">
+                Toutes les fonctionnalités
+              </h2>
+              <p className="mb-6 text-base text-gray-600 md:text-lg">
+                Découvrez en détail chacune de nos fonctionnalités dédiées aux professionnels de l'immobilier
+              </p>
+            </div>
+          </ScrollReveal>
+
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+            {features.map((feature, index) => (
+              <ScrollReveal key={feature.id} direction="up" delay={index * 50}>
+                <Link
+                  href={feature.slug}
+                  className="group block no-underline"
+                  onClick={() => {
+                    trackCTAClick(`Voir ${feature.name}`, 'fonctionnalites_all_features_list');
+                  }}
+                >
+                  <div className="flex items-start gap-4 rounded-lg border border-gray-200 bg-white p-4 transition-all duration-300 hover:border-[#2563EB]/30 hover:shadow-md">
+                    <div className="mt-1 flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-lg bg-[#2563EB]/10 text-[#2563EB] transition-colors duration-300 group-hover:bg-[#2563EB]/20">
+                      <span className="text-lg font-semibold">{feature.name.charAt(0)}</span>
+                    </div>
+                    <div className="flex-1">
+                      <h3 className="mb-1 text-base font-semibold text-gray-900 transition-colors duration-300 group-hover:text-[#2563EB]">
+                        {feature.name}
+                      </h3>
+                      <p className="mb-2 text-sm leading-relaxed text-gray-600">
+                        {feature.description}
+                      </p>
+                      <div className="flex items-center text-xs font-medium text-[#2563EB] transition-all duration-300 group-hover:gap-1">
+                        Découvrir en détail
+                        <ArrowRight className="ml-1 h-3 w-3 transition-transform duration-300 group-hover:translate-x-1" />
+                      </div>
+                    </div>
+                  </div>
+                </Link>
+              </ScrollReveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* CTA Final */}
       <section className="bg-gradient-to-br from-[#2563EB] to-[#1D4ED8] py-16 text-white md:py-24">
         <div className="container mx-auto max-w-4xl px-6 text-center">

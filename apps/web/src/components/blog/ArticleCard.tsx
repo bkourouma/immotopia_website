@@ -10,6 +10,7 @@ import { OptimizedImage } from '@/components/ui';
 import { BlogPostMetadata } from '@/lib/content/types';
 import { Calendar, Clock, User, ArrowRight } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { trackClarity } from '@/lib/clarity';
 
 interface ArticleCardProps {
   /** Métadonnées de l'article */
@@ -32,7 +33,7 @@ function getGradientForArticle(slug: string, tags?: string[]): string {
   ];
 
   // Si l'article a des tags, utiliser le premier tag pour déterminer le gradient
-  if (tags && tags.length > 0) {
+  if (tags && tags.length > 0 && tags[0]) {
     const tagHash = tags[0].split('').reduce((acc, char) => acc + char.charCodeAt(0), 0);
     return gradients[tagHash % gradients.length];
   }
@@ -53,7 +54,7 @@ function getBorderGradientForArticle(slug: string, tags?: string[]): string {
     'from-violet-500 via-purple-500 to-fuchsia-500',
   ];
 
-  if (tags && tags.length > 0) {
+  if (tags && tags.length > 0 && tags[0]) {
     const tagHash = tags[0].split('').reduce((acc, char) => acc + char.charCodeAt(0), 0);
     return gradients[tagHash % gradients.length];
   }
@@ -64,8 +65,8 @@ function getBorderGradientForArticle(slug: string, tags?: string[]): string {
 }
 
 export default function ArticleCard({ article, className, featured = false }: ArticleCardProps) {
-  const gradient = getGradientForArticle(article.slug, article.tags);
-  const borderGradient = getBorderGradientForArticle(article.slug, article.tags);
+  const gradient = getGradientForArticle(article.slug, article.tags || []);
+  const borderGradient = getBorderGradientForArticle(article.slug, article.tags || []);
 
   const formatDate = (dateString: string) => {
     const date = new Date(dateString);
@@ -86,8 +87,9 @@ export default function ArticleCard({ article, className, featured = false }: Ar
         )}
       />
       <Link
-        href={`/ressources/blog/${article.slug}`}
+        href={`/blog/${article.slug}`}
         className="relative block transition-all duration-300 group-hover:-translate-y-2"
+        onClick={() => trackClarity('blog_open_post')}
       >
         <Card className="relative h-full overflow-hidden border-2 border-gray-200 bg-white transition-all duration-300 group-hover:border-transparent group-hover:shadow-2xl">
           {/* Background Gradient on Hover */}
@@ -98,10 +100,10 @@ export default function ArticleCard({ article, className, featured = false }: Ar
             )}
           />
 
-        {article.featuredImage && (
+        {article.coverImage && (
           <div className={cn('relative w-full overflow-hidden bg-gray-200', featured ? 'h-64' : 'h-48')}>
             <OptimizedImage
-              src={article.featuredImage}
+              src={article.coverImage}
               alt={article.title}
               width={800}
               height={featured ? 400 : 300}
@@ -116,6 +118,15 @@ export default function ArticleCard({ article, className, featured = false }: Ar
         )}
 
         <CardContent className={cn('relative p-6', featured && 'p-8')}>
+          {/* Category tag */}
+          {article.category && (
+            <div className="mb-3">
+              <span className="inline-flex rounded-full bg-blue-100 px-3 py-1 text-xs font-semibold text-blue-700">
+                {article.category}
+              </span>
+            </div>
+          )}
+          
           {article.tags && article.tags.length > 0 && (
             <div className="mb-3 flex flex-wrap gap-2">
               {article.tags.slice(0, 3).map((tag, index) => (

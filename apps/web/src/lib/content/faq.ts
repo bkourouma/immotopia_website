@@ -6,11 +6,53 @@ import { FAQData, FAQSection, FAQItem } from './types';
 
 /**
  * Charge les données FAQ
+ * Tente d'abord depuis la DB, fallback vers fichiers
  * @returns Données FAQ complètes
  */
 export async function getFAQData(): Promise<FAQData> {
-  // TODO: Implémenter la lecture depuis content/faq/faq-data.json
-  // Pour l'instant, retourne une structure vide
+  // Try to get from DB first
+  try {
+    const { getPublishedFAQItems } = await import('@/lib/api/public');
+    const dbItems = await getPublishedFAQItems();
+    // Si dbItems est null, c'est une erreur (fallback nécessaire)
+    // Si dbItems est un tableau (même vide []), c'est une réponse valide
+    if (dbItems !== null) {
+      // dbItems peut être [] (vide) ou un tableau avec des items
+      if (dbItems.length === 0) {
+        return { sections: [] };
+      }
+
+      // Group by category for compatibility with existing structure
+      const categoryMap = new Map<string, FAQItem[]>();
+      
+      dbItems.forEach((item: any) => {
+        const category = item.category || 'general';
+        if (!categoryMap.has(category)) {
+          categoryMap.set(category, []);
+        }
+        categoryMap.get(category)!.push({
+          question: item.question,
+          answer: item.answer,
+          category: item.category,
+          order: item.order,
+        });
+      });
+
+      // Convert to FAQSection format (grouped by persona/category)
+      const sections: FAQSection[] = Array.from(categoryMap.entries()).map(([category, items]) => ({
+        persona: category as any, // Map category to persona for compatibility
+        items: items.sort((a, b) => (a.order || 0) - (b.order || 0)),
+      }));
+
+      return { sections };
+    }
+  } catch (error) {
+    if (process.env.NODE_ENV === 'development') {
+      console.warn('[FAQ Content] Could not load FAQ from DB, falling back to files:', error);
+    }
+  }
+
+  // Fallback: return empty structure (uniquement si l'API a échoué)
   return {
     sections: [],
   };

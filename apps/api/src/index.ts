@@ -1,17 +1,52 @@
 import Fastify from 'fastify';
+import cookie from '@fastify/cookie';
+import cors from '@fastify/cors';
+import { authRoutes } from './routes/admin/auth.js';
+import { blogRoutes } from './routes/admin/blog.js';
+import { guidesRoutes } from './routes/admin/guides.js';
+import { faqRoutes } from './routes/admin/faq.js';
+import { menusRoutes } from './routes/admin/menus.js';
+import { mediaRoutes } from './routes/admin/media.js';
+import { settingsRoutes } from './routes/admin/settings.js';
+import { csrfRoutes } from './routes/admin/csrf.js';
+import { publicBlogRoutes } from './routes/public/blog.js';
+import { publicGuidesRoutes } from './routes/public/guides.js';
+import { publicFaqRoutes } from './routes/public/faq.js';
 
 const fastify = Fastify({
   logger: true,
 });
 
-// Health check endpoint
-fastify.get('/health', async () => {
-  return { status: 'ok', timestamp: new Date().toISOString() };
-});
-
 // Start server
 const start = async () => {
   try {
+    // Register plugins
+    await fastify.register(cookie);
+    await fastify.register(cors, {
+      origin: process.env.FRONTEND_URL || 'http://localhost:3003',
+      credentials: true,
+    });
+
+    // Health check endpoint
+    fastify.get('/health', async () => {
+      return { status: 'ok', timestamp: new Date().toISOString() };
+    });
+
+    // Register admin routes
+    await fastify.register(authRoutes);
+    await fastify.register(blogRoutes);
+    await fastify.register(guidesRoutes);
+    await fastify.register(faqRoutes);
+    await fastify.register(menusRoutes);
+    await fastify.register(mediaRoutes);
+    await fastify.register(settingsRoutes);
+    await fastify.register(csrfRoutes);
+
+    // Public routes (no auth required)
+    await fastify.register(publicBlogRoutes);
+    await fastify.register(publicGuidesRoutes);
+    await fastify.register(publicFaqRoutes);
+
     const port = Number(process.env.PORT) || 3002;
     const host = process.env.HOST || '0.0.0.0';
     

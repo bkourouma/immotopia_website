@@ -158,15 +158,32 @@ export default async function GuidePage({ params }: GuidePageProps) {
             </div>
 
             {/* Sidebar - Download Form */}
-            <div className="lg:col-span-1">
-              <div className="sticky top-8">
-                <GuideDownloadForm
-                  guideSlug={guide.slug}
-                  guideTitle={guide.title}
-                  pdfUrl={pdfUrl}
-                />
+            {guide.gatedDownload && guide.id && (
+              <div className="lg:col-span-1">
+                <div className="sticky top-8">
+                  <GuideDownloadForm
+                    guideId={guide.id}
+                    guideSlug={guide.slug}
+                    guideTitle={guide.title}
+                    pdfUrl={pdfUrl}
+                  />
+                </div>
               </div>
-            </div>
+            )}
+            {!guide.gatedDownload && guide.pdfUrl && (
+              <div className="lg:col-span-1">
+                <div className="sticky top-8">
+                  <a
+                    href={guide.pdfUrl}
+                    download
+                    className="flex w-full items-center justify-center gap-2 rounded-lg bg-primary px-6 py-3 font-semibold text-white transition-colors hover:bg-primary/90"
+                  >
+                    <FileText className="h-5 w-5" />
+                    Télécharger le guide
+                  </a>
+                </div>
+              </div>
+            )}
           </div>
         </div>
       </div>

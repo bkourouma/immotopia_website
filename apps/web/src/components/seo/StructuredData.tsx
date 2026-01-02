@@ -1,5 +1,3 @@
-'use client';
-
 import Script from 'next/script';
 
 interface StructuredDataProps {
@@ -8,7 +6,8 @@ interface StructuredDataProps {
 }
 
 /**
- * Composant pour injecter les données structurées JSON-LD dans le head
+ * Composant pour injecter les données structurées JSON-LD
+ * Server Component - peut être utilisé dans le layout
  */
 export default function StructuredData({ data, id }: StructuredDataProps) {
   const jsonLd = Array.isArray(data) ? data : [data];
@@ -20,6 +19,7 @@ export default function StructuredData({ data, id }: StructuredDataProps) {
           key={id || `structured-data-${index}`}
           id={id || `structured-data-${index}`}
           type="application/ld+json"
+          strategy="beforeInteractive"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(item) }}
         />
       ))}

@@ -29,11 +29,11 @@ export default function ArticleContent({ article, className = '' }: ArticleConte
 
   return (
     <article className={className}>
-      {/* Featured Image */}
-      {article.featuredImage && (
+      {/* Cover Image */}
+      {(article.coverImage || article.featuredImage) && (
         <div className="mb-8 overflow-hidden rounded-lg">
           <OptimizedImage
-            src={article.featuredImage}
+            src={article.coverImage || article.featuredImage || ''}
             alt={generateImageAlt(article.title, 'Article')}
             width={1200}
             height={600}

@@ -20,15 +20,15 @@ export const metadata: Metadata = generateSEOMetadata({
 export default async function FAQPage() {
   const faqData = await getFAQData();
 
-  // Générer le structured data FAQPage
-  const faqSchema = generateFAQSchema(
-    faqData.sections.flatMap((section) =>
-      section.items.map((item) => ({
-        question: item.question,
-        answer: item.answer,
-      }))
-    )
-  );
+  // Générer le structured data FAQPage uniquement s'il y a des questions
+  const questions = faqData.sections?.flatMap((section) =>
+    section.items?.map((item) => ({
+      question: item.question,
+      answer: item.answer,
+    })) || []
+  ) || [];
+
+  const faqSchema = questions.length > 0 ? generateFAQSchema({ questions }) : null;
 
   const breadcrumbs = [
     { label: 'Accueil', href: '/' },
@@ -38,7 +38,7 @@ export default async function FAQPage() {
 
   return (
     <>
-      <StructuredData data={faqSchema} />
+      {faqSchema && <StructuredData data={faqSchema} />}
       <div className="bg-white">
         {/* Breadcrumbs */}
         <div className="border-b border-gray-200 bg-gray-50 py-4">

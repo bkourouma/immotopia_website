@@ -10,12 +10,318 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-// Example model - replace with your actual models
-model User {
-  id        String   @id @default(uuid())
-  email     String   @unique
-  name      String?
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+// ============================================
+// CMS Models
+// ============================================
+
+// Admin User (single admin for MVP)
+model AdminUser {
+  id           String   @id @default(uuid())
+  email        String   @unique
+  passwordHash String
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  sessions  Session[]
+  auditLogs AuditLog[]
+  revisions Revision[]
+
+  @@map("admin_users")
 }
 
+// Session (if using server-side sessions)
+model Session {
+  id          String   @id @default(uuid())
+  adminUserId String
+  token       String   @unique
+  expiresAt   DateTime
+  ip          String?
+  userAgent   String?
+  createdAt   DateTime @default(now())
+
+  adminUser AdminUser @relation(fields: [adminUserId], references: [id], onDelete: Cascade)
+
+  @@index([token])
+  @@index([adminUserId])
+  @@index([expiresAt])
+  @@map("sessions")
+}
+
+// Media Library
+model Media {
+  id         String    @id @default(uuid())
+  url        String // Full URL or storage key
+  storageKey String? // S3 key or local path
+  type       String // image/pdf
+  mimeType   String? // image/jpeg, application/pdf, etc.
+  size       Int // bytes
+  width      Int? // for images
+  height     Int? // for images
+  altText    String?
+  title      String?
+  createdAt  DateTime  @default(now())
+  deletedAt  DateTime?
+
+  // Relations
+  blogCoverImages BlogPost[]    @relation("BlogCoverImage")
+  blogOgImages    BlogPost[]    @relation("BlogOgImage")
+  guidePdfs       Guide[]
+  pageOgImages    Page[]
+  siteSettings    SiteSetting[]
+
+  @@index([type])
+  @@index([deletedAt])
+  @@map("media")
+}
+
+// Blog Models
+model BlogCategory {
+  id          String   @id @default(uuid())
+  name        String
+  slug        String   @unique
+  description String?
+  locale      String   @default("fr")
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  posts BlogPost[]
+
+  @@unique([slug, locale])
+  @@index([locale])
+  @@map("blog_categories")
+}
+
+model BlogTag {
+  id        String   @id @default(uuid())
+  name      String
+  slug      String   @unique
+  locale    String   @default("fr")
+  createdAt DateTime @default(now())
+
+  posts BlogPostTag[]
+
+  @@unique([slug, locale])
+  @@index([locale])
+  @@map("blog_tags")
+}
+
+model BlogPost {
+  id             String    @id @default(uuid())
+  title          String
+  slug           String    @unique
+  description    String // excerpt
+  content        String // Markdown
+  status         String    @default("draft") // draft, published, scheduled
+  publishedAt    DateTime?
+  categoryId     String?
+  author         String?
+  coverImageId   String?
+  ogImageId      String?
+  seoTitle       String?
+  seoDescription String?
+  locale         String    @default("fr")
+  readingTime    Int? // minutes
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+  deletedAt      DateTime?
+
+  category   BlogCategory? @relation(fields: [categoryId], references: [id])
+  coverImage Media?        @relation("BlogCoverImage", fields: [coverImageId], references: [id])
+  ogImage    Media?        @relation("BlogOgImage", fields: [ogImageId], references: [id])
+  tags       BlogPostTag[]
+
+  @@index([slug])
+  @@index([status])
+  @@index([publishedAt])
+  @@index([locale])
+  @@index([deletedAt])
+  @@index([status, publishedAt])
+  @@map("blog_posts")
+}
+
+model BlogPostTag {
+  blogPostId String
+  tagId      String
+
+  blogPost BlogPost @relation(fields: [blogPostId], references: [id], onDelete: Cascade)
+  tag      BlogTag  @relation(fields: [tagId], references: [id], onDelete: Cascade)
+
+  @@id([blogPostId, tagId])
+  @@map("blog_post_tags")
+}
+
+// Guides
+model Guide {
+  id                     String    @id @default(uuid())
+  title                  String
+  slug                   String    @unique
+  description            String
+  content                String // Markdown
+  status                 String    @default("draft") // draft, published, scheduled
+  publishedAt            DateTime?
+  category               String?
+  downloadablePdfMediaId String?
+  gatedDownload          Boolean   @default(false)
+  seoTitle               String?
+  seoDescription         String?
+  locale                 String    @default("fr")
+  createdAt              DateTime  @default(now())
+  updatedAt              DateTime  @updatedAt
+  deletedAt              DateTime?
+
+  pdfMedia Media?      @relation(fields: [downloadablePdfMediaId], references: [id])
+  leads    GuideLead[]
+
+  @@index([slug])
+  @@index([status])
+  @@index([publishedAt])
+  @@index([locale])
+  @@index([deletedAt])
+  @@map("guides")
+}
+
+model GuideLead {
+  id        String   @id @default(uuid())
+  guideId   String
+  name      String
+  email     String
+  phone     String?
+  company   String?
+  persona   String?
+  createdAt DateTime @default(now())
+
+  guide Guide @relation(fields: [guideId], references: [id], onDelete: Cascade)
+
+  @@index([guideId])
+  @@index([email])
+  @@index([createdAt])
+  @@map("guide_leads")
+}
+
+// FAQ
+model FaqItem {
+  id        String    @id @default(uuid())
+  question  String
+  answer    String // Markdown supported
+  category  String?
+  order     Int       @default(0)
+  locale    String    @default("fr")
+  status    String    @default("draft") // draft, published
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  deletedAt DateTime?
+
+  @@index([category])
+  @@index([status])
+  @@index([locale])
+  @@index([order])
+  @@index([deletedAt])
+  @@map("faq_items")
+}
+
+// Menus
+model Menu {
+  id        String   @id @default(uuid())
+  name      String   @unique // header, footer
+  locale    String   @default("fr")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  items MenuItem[]
+
+  @@unique([name, locale])
+  @@map("menus")
+}
+
+model MenuItem {
+  id        String    @id @default(uuid())
+  menuId    String
+  label     String
+  href      String
+  order     Int       @default(0)
+  parentId  String?
+  external  Boolean   @default(false)
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  deletedAt DateTime?
+
+  menu     Menu       @relation(fields: [menuId], references: [id], onDelete: Cascade)
+  parent   MenuItem?  @relation("MenuItemParent", fields: [parentId], references: [id])
+  children MenuItem[] @relation("MenuItemParent")
+
+  @@index([menuId])
+  @@index([parentId])
+  @@index([order])
+  @@index([deletedAt])
+  @@map("menu_items")
+}
+
+// Pages (optional - for marketing page blocks)
+model Page {
+  id             String   @id @default(uuid())
+  path           String   @unique // /, /la-solution, etc.
+  title          String?
+  seoTitle       String?
+  seoDescription String?
+  ogImageId      String?
+  blocksJson     Json? // Typed JSON blocks
+  locale         String   @default("fr")
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  ogImage Media? @relation(fields: [ogImageId], references: [id])
+
+  @@index([path])
+  @@index([locale])
+  @@map("pages")
+}
+
+// Site Settings (SEO global)
+model SiteSetting {
+  id        String   @id @default(uuid())
+  key       String   @unique
+  value     String // JSON string for complex values
+  ogImageId String?
+  updatedAt DateTime @updatedAt
+
+  ogImage Media? @relation(fields: [ogImageId], references: [id])
+
+  @@map("site_settings")
+}
+
+// Versioning
+model Revision {
+  id           String   @id @default(uuid())
+  entityType   String // BlogPost, Guide, FaqItem, Page, Menu
+  entityId     String
+  snapshotJson Json // Full entity snapshot
+  createdBy    String
+  createdAt    DateTime @default(now())
+
+  adminUser AdminUser? @relation(fields: [createdBy], references: [id])
+
+  @@index([entityType, entityId])
+  @@index([createdAt])
+  @@map("revisions")
+}
+
+// Audit Log
+model AuditLog {
+  id          String   @id @default(uuid())
+  adminUserId String?
+  action      String // create, update, delete, publish, schedule, upload, login, logout
+  entityType  String? // BlogPost, Guide, etc.
+  entityId    String?
+  ip          String?
+  userAgent   String?
+  diffJson    Json? // Before/after diff
+  createdAt   DateTime @default(now())
+
+  adminUser AdminUser? @relation(fields: [adminUserId], references: [id])
+
+  @@index([adminUserId])
+  @@index([action])
+  @@index([entityType, entityId])
+  @@index([createdAt])
+  @@map("audit_logs")
+}

@@ -1,7 +1,16 @@
+const createMDX = require('@next/mdx');
+const remarkGfm = require('remark-gfm');
+const rehypeSlug = require('rehype-slug');
+const rehypeAutolinkHeadings = require('rehype-autolink-headings');
+const rehypePrettyCode = require('rehype-pretty-code');
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
   transpilePackages: ['@monorepo/ui', '@monorepo/contracts', '@monorepo/utils'],
+  
+  // Configuration MDX
+  pageExtensions: ['js', 'jsx', 'mdx', 'ts', 'tsx'],
   
   // Optimisation des images
   images: {
@@ -16,6 +25,22 @@ const nextConfig = {
   // Optimisation du build
   // swcMinify removed: deprecated in Next.js 15 (SWC minification is default)
   compress: true,
+  
+  // Redirections (301 permanent redirects)
+  async redirects() {
+    return [
+      {
+        source: '/ressources/blog',
+        destination: '/blog',
+        permanent: true, // 301 redirect
+      },
+      {
+        source: '/ressources/blog/:slug',
+        destination: '/blog/:slug',
+        permanent: true, // 301 redirect
+      },
+    ];
+  },
   
   // Headers de sécurité et performance
   async headers() {
@@ -54,5 +79,29 @@ const nextConfig = {
   },
 };
 
-module.exports = nextConfig;
+const withMDX = createMDX({
+  options: {
+    remarkPlugins: [remarkGfm],
+    rehypePlugins: [
+      rehypeSlug,
+      [
+        rehypeAutolinkHeadings,
+        {
+          behavior: 'wrap',
+          properties: {
+            className: ['anchor'],
+          },
+        },
+      ],
+      [
+        rehypePrettyCode,
+        {
+          theme: 'github-dark',
+        },
+      ],
+    ],
+  },
+});
+
+module.exports = withMDX(nextConfig);
 

@@ -11,22 +11,30 @@ export interface BlogPostMetadata {
   title: string;
   /** Description/sous-titre */
   description: string;
-  /** Date de publication (format ISO) */
+  /** Date de publication (format YYYY-MM-DD) */
   date: string;
   /** Date de mise à jour (optionnelle) */
   updatedAt?: string;
   /** Auteur de l'article */
   author: string;
+  /** Catégorie de l'article */
+  category: string;
   /** Tags/catégories */
-  tags?: string[];
-  /** Image principale/featured */
-  featuredImage?: string;
-  /** Slug URL (généré depuis le titre ou défini manuellement) */
+  tags: string[];
+  /** Image de couverture (optionnelle) */
+  coverImage?: string;
+  /** Image Open Graph pour SEO (optionnelle) */
+  ogImage?: string;
+  /** Titre SEO personnalisé pour les moteurs de recherche (optionnel) */
+  seoTitle?: string;
+  /** Description SEO personnalisée pour les moteurs de recherche (optionnelle) */
+  seoDescription?: string;
+  /** Slug URL (généré depuis le nom de fichier) */
   slug: string;
   /** Temps de lecture estimé (en minutes) */
-  readingTime?: number;
-  /** Article publié ou brouillon */
-  published: boolean;
+  readingTime: number;
+  /** Article publié ou brouillon (par défaut true pour MVP) */
+  published?: boolean;
 }
 
 /**
@@ -67,8 +75,16 @@ export interface GuideMetadata {
  * Guide complet
  */
 export interface Guide extends GuideMetadata {
+  /** ID du guide (pour API) */
+  id?: string;
+  /** URL du PDF (alternative à pdfPath) */
+  pdfUrl?: string;
+  /** Capture de leads activée */
+  gatedDownload?: boolean;
   /** Contenu HTML/markdown de la page de présentation (optionnel) */
   previewContent?: string;
+  /** Contenu markdown du guide */
+  content?: string;
 }
 
 /**

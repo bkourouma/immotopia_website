@@ -123,7 +123,8 @@ export default function Footer() {
               <h4 className="mb-6 text-base font-semibold text-white">Ressources</h4>
               <ul className="space-y-3">
                 {[
-                  { href: '/ressources/blog', label: 'Blog' },
+                  { href: '/blog', label: 'Blog' },
+                  { href: '/ressources/faq', label: 'FAQ' },
                   { href: '/ressources/guides', label: 'Guides pratiques' },
                   { href: '/ressources/actualites', label: 'Actualités' },
                   { href: '/pourquoi-immotopia', label: 'Pourquoi ImmoTopia' },

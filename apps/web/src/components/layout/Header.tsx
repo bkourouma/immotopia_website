@@ -31,6 +31,16 @@ const menuItems = [
     href: '/tarifs',
   },
   {
+    key: 'blog',
+    label: 'Blog',
+    href: '/blog',
+  },
+  {
+    key: 'faq',
+    label: 'FAQ',
+    href: '/ressources/faq',
+  },
+  {
     key: 'ressources',
     label: 'Ressources',
     href: '/ressources',

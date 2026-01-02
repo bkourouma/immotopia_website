@@ -71,7 +71,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
     },
     datePublished: article.date,
     dateModified: article.updatedAt || article.date,
-    image: article.featuredImage ? `${siteUrl}${article.featuredImage}` : undefined,
+    image: article.coverImage ? `${siteUrl}${article.coverImage}` : undefined,
     mainEntityOfPage: {
       '@type': 'WebPage',
       '@id': `${siteUrl}/ressources/blog/${slug}`,
