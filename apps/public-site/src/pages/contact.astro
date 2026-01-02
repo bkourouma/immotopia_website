@@ -202,7 +202,9 @@ const contactPhone = import.meta.env.PUBLIC_CONTACT_PHONE || '+225 07 07 66 41 0
       // Re-enable button
       if (submitButton) {
         submitButton.disabled = false;
-        submitButton.textContent = {isDemo ? 'Demander une démo' : 'Envoyer le message'};
+        const urlParams = new URLSearchParams(window.location.search);
+        const isDemo = urlParams.get('demo') === 'true' || urlParams.get('signup') === 'true';
+        submitButton.textContent = isDemo ? 'Demander une démo' : 'Envoyer le message';
       }
     }
   });
