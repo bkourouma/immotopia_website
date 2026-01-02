@@ -8,7 +8,8 @@ import type { APIRoute } from 'astro';
 export const POST: APIRoute = async ({ request }) => {
   try {
     const data = await request.json();
-    const API_URL = import.meta.env.PUBLIC_API_URL || 'http://localhost:3002';
+    // Use relative path in production, or PUBLIC_API_URL if set, or localhost for dev
+    const API_URL = import.meta.env.PUBLIC_API_URL || (import.meta.env.PROD ? '' : 'http://localhost:3002');
 
     const response = await fetch(`${API_URL}/api/demo-request`, {
       method: 'POST',

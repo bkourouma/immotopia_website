@@ -3,7 +3,8 @@
  * Fetches FAQ items from the Fastify API
  */
 
-const API_URL = import.meta.env.PUBLIC_API_URL || 'http://localhost:3002';
+// Use relative path in production, or PUBLIC_API_URL if set, or localhost for dev
+const API_URL = import.meta.env.PUBLIC_API_URL || (import.meta.env.PROD ? '' : 'http://localhost:3002');
 
 async function fetchAPI(endpoint: string): Promise<any> {
   try {

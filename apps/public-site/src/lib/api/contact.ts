@@ -3,7 +3,8 @@
  * Handles contact form submissions
  */
 
-const API_URL = import.meta.env.PUBLIC_API_URL || 'http://localhost:3002';
+// Use relative path in production, or PUBLIC_API_URL if set, or localhost for dev
+const API_URL = import.meta.env.PUBLIC_API_URL || (import.meta.env.PROD ? '' : 'http://localhost:3002');
 
 export interface ContactFormData {
   name: string;
