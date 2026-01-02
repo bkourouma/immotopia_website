@@ -15,7 +15,9 @@ async function apiRequest<T>(
   endpoint: string,
   options: RequestInit = {}
 ): Promise<T> {
-  const response = await fetch(`${API_URL}${endpoint}`, {
+  // Ensure endpoint starts with /api/ for admin routes
+  const apiEndpoint = endpoint.startsWith('/api/') ? endpoint : `/api${endpoint}`;
+  const response = await fetch(`${API_URL}${apiEndpoint}`, {
     ...options,
     credentials: 'include', // Include cookies for session
     headers: {
