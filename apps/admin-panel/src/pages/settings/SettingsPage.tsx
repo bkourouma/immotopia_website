@@ -2,7 +2,7 @@
  * Settings Page
  */
 
-import { useState } from 'react';
+// import { useState } from 'react'; // TODO: Uncomment when implementing save functionality
 
 export default function SettingsPage() {
   // const [isSaving, setIsSaving] = useState(false); // TODO: Implement save functionality
