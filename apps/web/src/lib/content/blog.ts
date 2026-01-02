@@ -23,61 +23,26 @@ function getSlugFromFilename(filename: string): string {
  * @returns Liste de tous les articles triés par date (plus récent en premier)
  */
 export async function getAllBlogPosts(): Promise<BlogPost[]> {
-  // Try to get from DB first
+  // Try to get from DB first - match Astro behavior (API only, no MDX fallback)
   try {
     const { getPublishedBlogPosts } = await import('@/lib/api/public');
     const dbPosts = await getPublishedBlogPosts();
     // Si l'API retourne un tableau vide, on considère que c'est intentionnel (pas de fallback)
-    // Le fallback MDX n'est utilisé QUE si l'API échoue (erreur réseau, etc.)
+    // Return API results directly to match Astro behavior exactly
     if (dbPosts !== null) {
       // dbPosts peut être [] (vide) ou un tableau avec des posts
+      console.log(`[Blog Content] Loaded ${dbPosts.length} posts from API`);
       return dbPosts;
     }
   } catch (error) {
-    if (process.env.NODE_ENV === 'development') {
-      console.warn('[Blog Content] Could not load blog posts from DB, falling back to files:', error);
-    }
-  }
-
-  // Fallback to MDX files (uniquement si l'API a échoué, pas si elle retourne [])
-  try {
-    const filenames = await readdir(blogDirectory);
-    const mdxFiles = filenames.filter((name) => name.endsWith('.mdx') || name.endsWith('.md'));
-
-    const posts = await Promise.all(
-      mdxFiles.map(async (filename) => {
-        const filePath = join(blogDirectory, filename);
-        const fileContents = await readFile(filePath, 'utf8');
-        const { data, content } = matter(fileContents);
-        const slug = getSlugFromFilename(filename);
-        const readingTimeResult = readingTime(content);
-
-        return {
-          title: data.title || '',
-          description: data.description || '',
-          date: data.date || '',
-          author: data.author || '',
-          category: data.category || '',
-          tags: Array.isArray(data.tags) ? data.tags : [],
-          coverImage: data.coverImage,
-          slug,
-          readingTime: readingTimeResult.minutes,
-          published: data.published !== false, // Par défaut true
-          content,
-        } as BlogPost;
-      })
-    );
-
-    // Trier par date (plus récent en premier)
-    return posts.sort((a, b) => {
-      const dateA = new Date(a.date).getTime();
-      const dateB = new Date(b.date).getTime();
-      return dateB - dateA;
-    });
-  } catch (error) {
-    console.error('Error reading blog posts:', error);
+    console.error('[Blog Content] API error:', error);
+    // Return empty array if API fails - match Astro behavior
     return [];
   }
+
+  // NO fallback to MDX files - we want to match Astro exactly
+  // Both apps should use the same API endpoint and show the same posts
+  return [];
 }
 
 /**

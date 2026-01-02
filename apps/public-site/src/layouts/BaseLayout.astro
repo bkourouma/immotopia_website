@@ -1,0 +1,73 @@
+---
+import Header from '../components/layout/Header.astro';
+import Footer from '../components/layout/Footer.astro';
+import { generateOrganizationSchema, generateWebsiteSchema } from '../lib/structured-data';
+import '../styles/globals.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+  currentPath?: string;
+  structuredData?: object | object[];
+}
+
+const {
+  title = 'ImmoTopia - Logiciel Immobilier Professionnel',
+  description = 'Gérez votre agence immobilière en un seul outil. Logiciel de gestion immobilière, CRM immobilier, gestion locative et portail d\'annonces pour les professionnels.',
+  currentPath = Astro.url.pathname,
+  structuredData,
+} = Astro.props;
+
+const siteUrl = import.meta.env.PUBLIC_APP_URL || 'https://immotopia.com';
+
+// Générer structured data par défaut si non fourni
+const defaultStructuredData = [
+  generateOrganizationSchema(),
+  generateWebsiteSchema(),
+];
+
+const jsonLd = structuredData 
+  ? (Array.isArray(structuredData) ? structuredData : [structuredData])
+  : defaultStructuredData;
+---
+
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content={description} />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    
+    <!-- SEO -->
+    <title>{title}</title>
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={`${siteUrl}${currentPath}`} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href={`${siteUrl}${currentPath}`} />
+    
+    <!-- Structured Data (JSON-LD) -->
+    {jsonLd.map((data, index) => (
+      <script
+        type="application/ld+json"
+        set:html={JSON.stringify(data)}
+        is:inline
+      />
+    ))}
+  </head>
+  <body class="min-h-screen flex flex-col">
+    <Header currentPath={currentPath} />
+    <main class="flex-1">
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>
+

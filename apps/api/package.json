@@ -10,7 +10,8 @@
     "type-check": "tsc --noEmit",
     "lint": "eslint src --ext .ts",
     "clean": "rm -rf dist",
-    "migrate:content": "tsx src/scripts/migrate-content.ts"
+    "migrate:content": "tsx src/scripts/migrate-content.ts",
+    "seed:faqs": "tsx src/scripts/seed-faqs.ts"
   },
   "dependencies": {
     "@fastify/cookie": "^9.0.0",

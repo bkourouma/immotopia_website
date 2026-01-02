@@ -169,6 +169,12 @@ export async function blogRoutes(fastify: FastifyInstance) {
     // Calculate reading time
     const readingTimeResult = readingTime(data.content);
 
+    // Auto-set publishedAt if status is published and publishedAt is not set
+    let publishedAt = data.publishedAt ? new Date(data.publishedAt) : null;
+    if (data.status === 'published' && !publishedAt) {
+      publishedAt = new Date();
+    }
+
     // Create post
     const post = await prisma.blogPost.create({
       data: {
@@ -177,7 +183,7 @@ export async function blogRoutes(fastify: FastifyInstance) {
         description: data.description,
         content: data.content,
         status: data.status,
-        publishedAt: data.publishedAt ? new Date(data.publishedAt) : null,
+        publishedAt,
         categoryId: data.categoryId || null,
         author: data.author || null,
         coverImageId: data.coverImageId || null,
@@ -277,6 +283,11 @@ export async function blogRoutes(fastify: FastifyInstance) {
     if (data.seoTitle !== undefined) updateData.seoTitle = data.seoTitle || null;
     if (data.seoDescription !== undefined) updateData.seoDescription = data.seoDescription || null;
     if (readingTimeMinutes !== undefined) updateData.readingTime = readingTimeMinutes;
+
+    // Auto-set publishedAt if status is being changed to published and publishedAt is not set
+    if (data.status === 'published' && !existing.publishedAt && !data.publishedAt) {
+      updateData.publishedAt = new Date();
+    }
 
     const post = await prisma.blogPost.update({
       where: { id },

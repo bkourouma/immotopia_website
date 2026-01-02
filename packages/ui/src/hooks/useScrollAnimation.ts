@@ -11,39 +11,66 @@ interface UseScrollAnimationOptions {
 export const useScrollAnimation = (options: UseScrollAnimationOptions = {}) => {
   const {
     threshold = 0.1,
-    rootMargin = '0px',
+    rootMargin = '-100px 0px -100px 0px',
     triggerOnce = true,
   } = options;
 
   const [isVisible, setIsVisible] = useState(false);
-  const elementRef = useRef<HTMLElement>(null);
+  const elementRef = useRef<HTMLElement | null>(null);
 
   useEffect(() => {
     const element = elementRef.current;
     if (!element) return;
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const entry = entries[0];
-        if (entry?.isIntersecting) {
-          setIsVisible(true);
-          if (triggerOnce) {
-            observer.unobserve(element);
-          }
-        } else if (!triggerOnce) {
-          setIsVisible(false);
-        }
-      },
-      {
-        threshold,
-        rootMargin,
+    // Check if element is already visible on mount
+    const checkInitialVisibility = () => {
+      const rect = element.getBoundingClientRect();
+      const windowHeight = window.innerHeight || document.documentElement.clientHeight;
+      // If element is within 300px of viewport top, consider it visible
+      if (rect.top < windowHeight + 300 && rect.bottom > -100) {
+        setIsVisible(true);
+        return true;
       }
-    );
+      return false;
+    };
 
-    observer.observe(element);
+    let observer: IntersectionObserver | null = null;
+
+    // Small delay to ensure DOM is fully rendered
+    const timeoutId = setTimeout(() => {
+      const isInitiallyVisible = checkInitialVisibility();
+      
+      // If initially visible and triggerOnce, we don't need observer
+      if (isInitiallyVisible && triggerOnce) {
+        return;
+      }
+
+      observer = new IntersectionObserver(
+        (entries) => {
+          const entry = entries[0];
+          if (entry?.isIntersecting) {
+            setIsVisible(true);
+            if (triggerOnce && observer) {
+              observer.unobserve(element);
+            }
+          } else if (!triggerOnce) {
+            setIsVisible(false);
+          }
+        },
+        {
+          threshold,
+          rootMargin,
+        }
+      );
+
+      observer.observe(element);
+    }, 100);
 
     return () => {
-      observer.unobserve(element);
+      clearTimeout(timeoutId);
+      if (observer) {
+        observer.unobserve(element);
+      }
     };
   }, [threshold, rootMargin, triggerOnce]);
 

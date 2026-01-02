@@ -13,6 +13,11 @@ DATABASE_URL="postgresql://postgres:DevMick@2003@localhost:5432/monorepo?schema=
 PORT=3002
 HOST=0.0.0.0
 NODE_ENV=development
+
+# CORS - URLs des frontends autorisées
+PUBLIC_SITE_URL=http://localhost:4321          # Astro dev server
+ADMIN_PANEL_URL=http://localhost:5173          # Vite dev server
+FRONTEND_URL=http://localhost:3003             # Legacy Next.js (temporary, à supprimer après migration)
 ```
 
 ### Base de données

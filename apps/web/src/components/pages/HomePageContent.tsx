@@ -22,7 +22,7 @@ import TopBarCTA from '../layout/TopBarCTA';
 
 export default function HomePageContent() {
   return (
-    <main className="relative overflow-hidden">
+    <div className="relative">
       {/* Top CTA Bar avec informations */}
       <TopBarCTA />
 
@@ -58,7 +58,7 @@ export default function HomePageContent() {
 
       {/* Final CTA Section */}
       <FinalCTA />
-    </main>
+    </div>
   );
 }
 

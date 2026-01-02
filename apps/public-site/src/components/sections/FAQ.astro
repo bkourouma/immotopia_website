@@ -1,0 +1,186 @@
+---
+interface Props {
+  class?: string;
+}
+
+const { class: className } = Astro.props;
+
+interface FAQItem {
+  question: string;
+  answer: string;
+}
+
+const faqItems: FAQItem[] = [
+  {
+    question: 'Comment fonctionne l\'essai gratuit ?',
+    answer: 'Vous pouvez créer votre compte gratuitement et accéder à toutes les fonctionnalités pendant la période d\'essai. Aucune carte bancaire n\'est requise pour commencer. Si vous êtes satisfait, vous pourrez choisir votre plan d\'abonnement.',
+  },
+  {
+    question: 'Puis-je changer de plan plus tard ?',
+    answer: 'Oui, absolument ! Vous pouvez mettre à niveau ou rétrograder votre plan à tout moment selon vos besoins. Les changements prennent effet immédiatement, et nous ajustons la facturation de manière équitable.',
+  },
+  {
+    question: 'Quelle est la différence entre SaaS et Licence perpétuelle ?',
+    answer: 'Le modèle SaaS vous permet de payer un abonnement mensuel avec un frais d\'activation unique. C\'est flexible et sans engagement. La licence perpétuelle est un achat unique qui vous donne la propriété définitive du logiciel. Contactez-nous pour discuter de l\'option qui vous convient.',
+  },
+  {
+    question: 'Mes données sont-elles sécurisées ?',
+    answer: 'Absolument. Nous utilisons des technologies de cryptage de niveau bancaire et nos serveurs sont hébergés de manière sécurisée. Vos données sont sauvegardées régulièrement et vous restez propriétaire de toutes vos informations.',
+  },
+  {
+    question: 'Y a-t-il une limite au nombre d\'utilisateurs ?',
+    answer: 'Cela dépend du plan que vous choisissez. Le plan Basic inclut un nombre défini d\'utilisateurs, tandis que les plans Pro et Elite offrent plus de flexibilité. Contactez-nous pour connaître les détails de chaque plan.',
+  },
+  {
+    question: 'Le support est-il disponible en français ?',
+    answer: 'Oui, notre équipe de support est disponible en français et répond à vos questions du lundi au vendredi. Le support est inclus dans tous nos plans, avec des temps de réponse garantis selon votre niveau d\'abonnement.',
+  },
+  {
+    question: 'Puis-je importer mes données existantes ?',
+    answer: 'Oui, vous pouvez importer vos données depuis Excel, CSV ou d\'autres formats. Notre équipe peut également vous aider dans le processus de migration pour s\'assurer que toutes vos informations sont correctement transférées.',
+  },
+  {
+    question: 'Que se passe-t-il si j\'annule mon abonnement ?',
+    answer: 'Si vous avez choisi le modèle SaaS, vous pouvez annuler à tout moment sans engagement. Vos données resteront accessibles jusqu\'à la fin de votre période de facturation. Vous pourrez également exporter toutes vos données avant l\'expiration de votre compte.',
+  },
+];
+
+// Generate JSON-LD for FAQ schema.org
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqItems.map((item) => ({
+    '@type': 'Question',
+    name: item.question,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: item.answer,
+    },
+  })),
+};
+---
+
+<!-- JSON-LD Schema -->
+<script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+<section class:list={['relative overflow-hidden py-16 md:py-24 lg:py-32', className]}>
+  <!-- Background -->
+  <div class="pointer-events-none absolute inset-0">
+    <div class="absolute inset-0 bg-gradient-to-br from-gray-50 via-white to-blue-50" />
+    <div class="absolute top-1/2 left-1/2 h-[900px] w-[900px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#2563EB]/4 blur-3xl" />
+  </div>
+
+  <div class="container relative z-10 mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+    <!-- Header -->
+    <div class="mb-12 md:mb-16 text-center">
+      <div class="mb-6 inline-flex items-center gap-2 rounded-full border border-[#2563EB]/20 bg-white/80 backdrop-blur-sm px-5 py-2.5 shadow-lg">
+        <svg class="h-4 w-4 text-[#2563EB]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+        </svg>
+        <span class="text-xs font-bold uppercase tracking-wider text-[#2563EB]">
+          Questions fréquentes
+        </span>
+      </div>
+      <h2 class="mb-4 text-3xl font-extrabold leading-tight text-gray-900 sm:text-4xl md:text-5xl">
+        Vous avez des{' '}
+        <span class="relative inline-block">
+          <span class="absolute inset-0 bg-gradient-to-r from-[#2563EB] via-[#3B82F6] to-[#2563EB] bg-[length:200%_100%] bg-clip-text opacity-50 blur-sm" />
+          <span class="relative bg-gradient-to-r from-[#2563EB] via-[#1D4ED8] to-[#2563EB] bg-[length:200%_100%] bg-clip-text text-transparent">
+            questions
+          </span>
+        </span>
+        {' '}?
+      </h2>
+      <p class="mx-auto max-w-2xl text-base text-gray-600 sm:text-lg md:text-xl">
+        Trouvez rapidement les réponses aux questions les plus courantes sur ImmoTopia
+      </p>
+    </div>
+
+    <!-- FAQ Items -->
+    <div class="rounded-2xl border border-gray-200 bg-white shadow-lg">
+      {faqItems.map((item, index) => (
+        <div
+          class="faq-item border-b border-gray-200 transition-colors last:border-b-0"
+          data-index={index}
+        >
+          <button
+            type="button"
+            class="faq-button flex w-full items-center justify-between px-6 py-5 text-left transition-colors hover:bg-gray-50 sm:px-8"
+            aria-expanded="false"
+            aria-controls={`faq-answer-${index}`}
+          >
+            <h3 class="pr-8 text-base font-semibold text-gray-900 sm:text-lg">
+              {item.question}
+            </h3>
+            <svg
+              class="faq-icon h-5 w-5 shrink-0 text-gray-500 transition-transform duration-300"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+            </svg>
+          </button>
+          <div
+            id={`faq-answer-${index}`}
+            class="faq-answer overflow-hidden transition-all duration-300 ease-in-out max-h-0 opacity-0"
+            aria-hidden="true"
+          >
+            <div class="px-6 pb-5 text-base leading-relaxed text-gray-600 sm:px-8 sm:text-lg">
+              {item.answer}
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<script>
+  // FAQ accordion functionality
+  document.addEventListener('DOMContentLoaded', () => {
+    const faqButtons = document.querySelectorAll('.faq-button');
+
+    faqButtons.forEach((button) => {
+      button.addEventListener('click', () => {
+        const faqItem = button.closest('.faq-item');
+        const faqAnswer = faqItem?.querySelector('.faq-answer');
+        const faqIcon = button.querySelector('.faq-icon');
+        const isExpanded = button.getAttribute('aria-expanded') === 'true';
+
+        // Close all other FAQ items
+        faqButtons.forEach((otherButton) => {
+          if (otherButton !== button) {
+            const otherItem = otherButton.closest('.faq-item');
+            const otherAnswer = otherItem?.querySelector('.faq-answer');
+            const otherIcon = otherButton.querySelector('.faq-icon');
+
+            otherButton.setAttribute('aria-expanded', 'false');
+            otherAnswer?.setAttribute('aria-hidden', 'true');
+            otherAnswer?.classList.remove('max-h-[1000px]', 'opacity-100');
+            otherAnswer?.classList.add('max-h-0', 'opacity-0');
+            otherIcon?.classList.remove('rotate-180', 'text-[#2563EB]');
+            otherItem?.classList.remove('bg-gray-50');
+          }
+        });
+
+        // Toggle current FAQ item
+        if (isExpanded) {
+          button.setAttribute('aria-expanded', 'false');
+          faqAnswer?.setAttribute('aria-hidden', 'true');
+          faqAnswer?.classList.remove('max-h-[1000px]', 'opacity-100');
+          faqAnswer?.classList.add('max-h-0', 'opacity-0');
+          faqIcon?.classList.remove('rotate-180', 'text-[#2563EB]');
+          faqItem?.classList.remove('bg-gray-50');
+        } else {
+          button.setAttribute('aria-expanded', 'true');
+          faqAnswer?.setAttribute('aria-hidden', 'false');
+          faqAnswer?.classList.remove('max-h-0', 'opacity-0');
+          faqAnswer?.classList.add('max-h-[1000px]', 'opacity-100');
+          faqIcon?.classList.add('rotate-180', 'text-[#2563EB]');
+          faqItem?.classList.add('bg-gray-50');
+        }
+      });
+    });
+  });
+</script>

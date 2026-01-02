@@ -1,0 +1,93 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getAllGuides } from '../../lib/api/guides';
+
+const title = 'Guides pratiques | ImmoTopia';
+const description = 'Téléchargez nos guides gratuits pour améliorer votre gestion immobilière.';
+
+// Fetch guides
+const guides = await getAllGuides();
+---
+
+<BaseLayout title={title} description={description} currentPath="/ressources/guides">
+  <div class="bg-white">
+    <!-- Breadcrumbs -->
+    <div class="border-b border-gray-200 bg-gray-50 py-4">
+      <div class="container mx-auto max-w-7xl px-6">
+        <nav class="flex items-center gap-2 text-sm text-gray-600">
+          <a href="/" class="hover:text-[#2563EB]">Accueil</a>
+          <span>/</span>
+          <a href="/ressources" class="hover:text-[#2563EB]">Ressources</a>
+          <span>/</span>
+          <span class="text-gray-900">Guides</span>
+        </nav>
+      </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-br from-blue-50 to-sky-100 py-20 text-center md:py-32">
+      <div class="container mx-auto max-w-4xl px-6">
+        <h1 class="mb-6 text-4xl font-extrabold text-gray-900 md:text-5xl">
+          Guides pratiques
+        </h1>
+        <p class="text-lg text-gray-600 md:text-xl">
+          Téléchargez nos guides gratuits pour améliorer votre gestion immobilière.
+        </p>
+      </div>
+    </section>
+
+    <!-- Guides List -->
+    <section class="py-20 md:py-32">
+      <div class="container mx-auto max-w-7xl px-6">
+        {guides.length === 0 ? (
+          <div class="py-20 text-center">
+            <p class="text-lg text-gray-600">
+              Aucun guide disponible pour le moment.
+            </p>
+          </div>
+        ) : (
+          <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+            {guides.map((guide) => (
+              <article class="border border-gray-200 rounded-lg overflow-hidden hover:shadow-lg transition-shadow duration-200">
+                <div class="p-6">
+                  <h2 class="mb-2 text-xl font-bold text-gray-900">
+                    <a href={`/ressources/guides/${guide.slug}`} class="hover:text-[#2563EB] transition-colors">
+                      {guide.title}
+                    </a>
+                  </h2>
+                  {guide.description && (
+                    <p class="mb-4 text-gray-600 line-clamp-3">
+                      {guide.description}
+                    </p>
+                  )}
+                  <div class="flex items-center justify-between">
+                    <a
+                      href={`/ressources/guides/${guide.slug}`}
+                      class="text-[#2563EB] font-semibold hover:underline"
+                    >
+                      Lire le guide
+                    </a>
+                    {guide.pdfUrl && (
+                      <a
+                        href={guide.pdfUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="text-gray-600 hover:text-[#2563EB]"
+                        title="Télécharger le PDF"
+                      >
+                        <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                        </svg>
+                      </a>
+                    )}
+                  </div>
+                </div>
+              </article>
+            ))}
+          </div>
+        )}
+      </div>
+    </section>
+  </div>
+</BaseLayout>
+

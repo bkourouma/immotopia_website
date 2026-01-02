@@ -1,0 +1,63 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import TopBarCTA from '../components/sections/TopBarCTA.astro';
+import Hero from '../components/sections/Hero.astro';
+import HeroStatsSection from '../components/sections/HeroStatsSection.astro';
+import ProblemSolution from '../components/sections/ProblemSolution.astro';
+import FeaturesPreview from '../components/sections/FeaturesPreview.astro';
+import HowItWorks from '../components/sections/HowItWorks.astro';
+import PersonasPreview from '../components/sections/PersonasPreview.astro';
+import Testimonials from '../components/sections/Testimonials.astro';
+import StatsSection from '../components/sections/StatsSection.astro';
+import PricingPreview from '../components/sections/PricingPreview.astro';
+import FAQ from '../components/sections/FAQ.astro';
+import FinalCTA from '../components/sections/FinalCTA.astro';
+
+const siteUrl = import.meta.env.PUBLIC_APP_URL || 'https://immotopia.com';
+const title = 'Logiciel Immobilier - Gestion Locative & CRM Immobilier | ImmoTopia';
+const description = 'Gérez votre agence immobilière en un seul outil. Logiciel de gestion immobilière, CRM immobilier, gestion locative et portail d\'annonces pour les professionnels en Afrique de l\'Ouest. Créez votre compte gratuitement.';
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  currentPath="/"
+>
+  <main class="relative">
+    <!-- Top CTA Bar -->
+    <TopBarCTA />
+
+    <!-- Hero Section with integrated header -->
+    <Hero />
+
+    <!-- Hero Stats Section - Proof social près du Hero -->
+    <HeroStatsSection />
+
+    <!-- Problem/Solution Section -->
+    <ProblemSolution />
+
+    <!-- Features Preview Section -->
+    <FeaturesPreview />
+
+    <!-- How it Works Section -->
+    <HowItWorks />
+
+    <!-- Personas Preview Section -->
+    <PersonasPreview />
+
+    <!-- Testimonials Section -->
+    <Testimonials />
+
+    <!-- Stats Section - Métriques -->
+    <StatsSection />
+
+    <!-- Pricing Preview Section -->
+    <PricingPreview />
+
+    <!-- FAQ Section -->
+    <FAQ />
+
+    <!-- Final CTA Section -->
+    <FinalCTA />
+  </main>
+</BaseLayout>

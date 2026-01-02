@@ -1,40 +1,65 @@
 # @monorepo/ui
 
-Composants React réutilisables basés sur Ant Design.
+Package de composants UI réutilisables pour le monorepo.
 
-## Usage
+## Compatibilité
 
-```typescript
-import { Button, FormField } from '@monorepo/ui';
+Ce package est compatible avec :
+- **Astro** : Composants React utilisables via islands
+- **Vite + React** : Composants React standards
+- **Next.js** : Compatible (mais sans dépendances Next.js)
 
-// Button
-<Button type="primary" onClick={handleClick}>
-  Cliquer
+## Composants
+
+### Button
+
+Composant bouton réutilisable avec support pour différents types de liens.
+
+#### Utilisation avec Astro
+
+```astro
+---
+import { Button } from '@monorepo/ui';
+---
+
+<Button href="/contact">Contactez-nous</Button>
+```
+
+#### Utilisation avec Vite + React Router
+
+```tsx
+import { Button } from '@monorepo/ui';
+import { Link } from 'react-router-dom';
+
+<Button href="/admin/blog/posts" LinkComponent={Link}>
+  Voir les articles
 </Button>
-
-// FormField
-<FormField
-  name="email"
-  label="Email"
-  type="email"
-  required
-  placeholder="Entrez votre email"
-/>
 ```
 
-## Structure
+#### Utilisation standard (bouton)
 
+```tsx
+import { Button } from '@monorepo/ui';
+
+<Button onClick={handleClick} variant="primary">
+  Cliquez ici
+</Button>
 ```
-packages/ui/
-├── src/
-│   ├── components/   # Composants React
-│   └── index.ts      # Exports
-└── package.json
+
+## Installation
+
+Le package est déjà inclus dans le workspace. Pour l'utiliser :
+
+```bash
+pnpm add @monorepo/ui
 ```
 
-## Ajouter un nouveau composant
+Ou dans le workspace :
 
-1. Créer le composant dans `src/components/`
-2. Exporter dans `src/index.ts`
-3. Utiliser dans le Web
-
+```json
+{
+  "dependencies": {
+    "@monorepo/ui": "workspace:*"
+  }
+}
+```

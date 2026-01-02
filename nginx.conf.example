@@ -1,0 +1,109 @@
+# Nginx Configuration for ImmoTopia
+# Copy this to /etc/nginx/sites-available/immotopia and symlink to sites-enabled
+
+# Upstream for Fastify API
+upstream api_backend {
+    server 127.0.0.1:3002;
+    keepalive 64;
+}
+
+# HTTP Server - Redirect to HTTPS
+server {
+    listen 80;
+    listen [::]:80;
+    server_name immotopia.com www.immotopia.com;
+
+    # Redirect all HTTP to HTTPS
+    return 301 https://$server_name$request_uri;
+}
+
+# HTTPS Server - Main Site
+server {
+    listen 443 ssl http2;
+    listen [::]:443 ssl http2;
+    server_name immotopia.com www.immotopia.com;
+
+    # SSL Configuration
+    ssl_certificate /etc/letsencrypt/live/immotopia.com/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/immotopia.com/privkey.pem;
+    ssl_protocols TLSv1.2 TLSv1.3;
+    ssl_ciphers HIGH:!aNULL:!MD5;
+    ssl_prefer_server_ciphers on;
+
+    # Security Headers
+    add_header Strict-Transport-Security "max-age=31536000; includeSubDomains" always;
+    add_header X-Frame-Options "SAMEORIGIN" always;
+    add_header X-Content-Type-Options "nosniff" always;
+    add_header X-XSS-Protection "1; mode=block" always;
+
+    # Root directory for static files (Astro build output)
+    root /var/www/immotopia/public-site/dist;
+    index index.html;
+
+    # Gzip Compression
+    gzip on;
+    gzip_vary on;
+    gzip_min_length 1024;
+    gzip_types text/plain text/css text/xml text/javascript application/javascript application/xml+rss application/json;
+
+    # Cache static assets
+    location ~* \.(jpg|jpeg|png|gif|ico|css|js|svg|woff|woff2|ttf|eot)$ {
+        expires 1y;
+        add_header Cache-Control "public, immutable";
+        access_log off;
+    }
+
+    # API Proxy - Forward to Fastify
+    location /api/ {
+        proxy_pass http://api_backend;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection 'upgrade';
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_cache_bypass $http_upgrade;
+        
+        # CORS headers (if needed)
+        add_header Access-Control-Allow-Origin $http_origin always;
+        add_header Access-Control-Allow-Credentials true always;
+        add_header Access-Control-Allow-Methods "GET, POST, PUT, DELETE, OPTIONS" always;
+        add_header Access-Control-Allow-Headers "Content-Type, Authorization, X-CSRF-Token" always;
+        
+        if ($request_method = OPTIONS) {
+            return 204;
+        }
+    }
+
+    # Admin Panel - Serve Vite build
+    location /admin {
+        alias /var/www/immotopia/admin-panel/dist;
+        try_files $uri $uri/ /admin/index.html;
+        
+        # Cache control for admin assets
+        location ~* \.(js|css)$ {
+            expires 1h;
+            add_header Cache-Control "public";
+        }
+    }
+
+    # Public Site - Astro static files
+    location / {
+        try_files $uri $uri/ /index.html;
+        
+        # Cache HTML files for a short time
+        location ~* \.html$ {
+            expires 1h;
+            add_header Cache-Control "public, must-revalidate";
+        }
+    }
+
+    # Deny access to hidden files
+    location ~ /\. {
+        deny all;
+        access_log off;
+        log_not_found off;
+    }
+}
+

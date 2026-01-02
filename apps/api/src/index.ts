@@ -22,8 +22,34 @@ const start = async () => {
   try {
     // Register plugins
     await fastify.register(cookie);
+    
+    // CORS configuration - Support for multiple origins (Astro + Vite)
+    const allowedOrigins = [
+      process.env.PUBLIC_SITE_URL || 'http://localhost:4321', // Astro dev server
+      process.env.ADMIN_PANEL_URL || 'http://localhost:5173', // Vite dev server
+      process.env.FRONTEND_URL || 'http://localhost:3003', // Legacy Next.js (temporary)
+    ].filter(Boolean);
+    
     await fastify.register(cors, {
-      origin: process.env.FRONTEND_URL || 'http://localhost:3003',
+      origin: (origin, callback) => {
+        // Allow requests with no origin (mobile apps, Postman, etc.)
+        if (!origin) {
+          return callback(null, true);
+        }
+        
+        // Check if origin is in allowed list
+        if (allowedOrigins.includes(origin)) {
+          return callback(null, true);
+        }
+        
+        // In development, allow all origins
+        if (process.env.NODE_ENV === 'development') {
+          return callback(null, true);
+        }
+        
+        // Reject origin
+        callback(new Error('Not allowed by CORS'), false);
+      },
       credentials: true,
     });
 

@@ -6,18 +6,25 @@ const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3002';
 
 async function fetchPublicAPI(endpoint: string, options: RequestInit = {}) {
   try {
-    // En développement, réduire le cache pour faciliter le développement
+    // En développement, pas de cache pour garantir des données fraîches
     // En production, utiliser 300s (5 minutes) pour de bonnes performances
-    const revalidateTime = process.env.NODE_ENV === 'development' ? 30 : 300;
-    
-    const response = await fetch(`${API_URL}${endpoint}`, {
+    const fetchOptions: RequestInit = {
       ...options,
       headers: {
         'Content-Type': 'application/json',
         ...options.headers,
       },
-      next: { revalidate: revalidateTime }, // ISR: revalidate every 5 minutes (30s en dev)
-    });
+    };
+    
+    // In development, disable caching to match Astro behavior (always fresh)
+    // In production, use ISR for performance
+    if (process.env.NODE_ENV === 'development') {
+      fetchOptions.cache = 'no-store';
+    } else {
+      (fetchOptions as any).next = { revalidate: 300 };
+    }
+    
+    const response = await fetch(`${API_URL}${endpoint}`, fetchOptions);
 
     if (!response.ok) {
       if (process.env.NODE_ENV === 'development') {

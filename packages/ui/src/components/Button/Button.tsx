@@ -1,5 +1,4 @@
 import React from 'react';
-import Link from 'next/link';
 import styles from './Button.module.css';
 
 export type ButtonVariant = 'primary' | 'secondary' | 'ghost';
@@ -9,9 +8,10 @@ export interface ButtonProps extends Omit<React.ButtonHTMLAttributes<HTMLButtonE
   variant?: ButtonVariant;
   size?: ButtonSize;
   isLoading?: boolean;
-  as?: 'button' | 'a' | typeof Link;
+  as?: 'button' | 'a' | React.ComponentType<any>;
   href?: string;
   children: React.ReactNode;
+  LinkComponent?: React.ComponentType<any>; // For React Router or other Link components
 }
 
 export const Button: React.FC<ButtonProps> = ({
@@ -23,6 +23,7 @@ export const Button: React.FC<ButtonProps> = ({
   as = 'button',
   href,
   children,
+  LinkComponent,
   ...props
 }) => {
   const classes = [
@@ -57,15 +58,31 @@ export const Button: React.FC<ButtonProps> = ({
     );
   }
 
-  if (as === Link && href) {
+  // Use LinkComponent if provided (for React Router, etc.)
+  if (LinkComponent && href) {
     return (
-      <Link
+      <LinkComponent
+        className={classes}
+        to={href}
+        href={href}
+        {...(props as any)}
+      >
+        {content}
+      </LinkComponent>
+    );
+  }
+
+  // Use custom component if provided via 'as' prop
+  if (as && typeof as !== 'string' && href) {
+    const CustomLink = as;
+    return (
+      <CustomLink
         className={classes}
         href={href}
         {...(props as any)}
       >
         {content}
-      </Link>
+      </CustomLink>
     );
   }
 

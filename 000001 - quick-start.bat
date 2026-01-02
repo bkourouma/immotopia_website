@@ -1,6 +1,7 @@
 @echo off
 echo ========================================
 echo   ImmoTopia Quick Start
+echo   Architecture: Astro + Vite + Fastify
 echo ========================================
 echo.
 
@@ -40,17 +41,25 @@ if not exist "node_modules\concurrently" (
 
 echo [INFO] Starting ImmoTopia...
 echo.
-echo   API:  http://localhost:3002
-echo   Web:  http://localhost:3003
+echo   API (Fastify):     http://localhost:3002
+echo   Public Site (Astro): http://localhost:4321
+echo   Admin Panel (Vite):  http://localhost:5173
+echo.
+echo   Legacy Next.js:    http://localhost:3003 (si encore actif)
 echo.
 echo Press Ctrl+C to stop the servers
 echo ========================================
 echo.
 
-start cmd /k "pnpm dev"
+REM Start all services
+start cmd /k "pnpm dev:all"
 
 echo.
 echo [INFO] Application launched in new window
 echo.
+echo [NOTE] Pour lancer individuellement:
+echo   - API:        pnpm dev:api
+echo   - Public Site: pnpm dev:public-site
+echo   - Admin Panel: pnpm dev:admin-panel
+echo.
 pause
-

@@ -1,0 +1,363 @@
+---
+// Header component for Astro - transparent over hero, sticky white on scroll
+const menuItems = [
+  { key: 'fonctionnalites', label: 'Fonctionnalités', href: '/fonctionnalites' },
+  { key: 'tarifs', label: 'Tarifs', href: '/tarifs' },
+  { key: 'blog', label: 'Blog', href: '/blog' },
+  { key: 'faq', label: 'FAQ', href: '/faq' },
+  { key: 'ressources', label: 'Ressources', href: '/ressources' },
+  { key: 'contact', label: 'Contact', href: '/contact' },
+];
+
+interface Props {
+  currentPath?: string;
+}
+
+const { currentPath = '' } = Astro.props;
+
+const isActive = (href: string) => {
+  if (href === '/') {
+    return currentPath === '/';
+  }
+  return currentPath.startsWith(href);
+};
+
+const isHomePage = currentPath === '/';
+---
+
+<header
+  id="main-header"
+  class={`
+    fixed top-[44px] left-0 right-0 z-[40]
+    transition-all duration-300 ease-in-out
+    ${isHomePage ? 'bg-transparent border-transparent' : 'bg-white border-gray-200 shadow-sm'}
+  `}
+  data-header-mode={isHomePage ? 'over-hero' : 'scrolled'}
+>
+  <div class="mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-20">
+    <div class="flex h-16 items-center justify-between">
+      <!-- Logo -->
+      <a
+        href="/"
+        class={`
+          text-lg sm:text-xl font-bold
+          transition-all duration-300 ease-in-out
+          hover:scale-105 active:scale-100
+          header-logo
+          ${isHomePage ? 'text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]' : 'text-[#2563EB]'}
+        `}
+        aria-label="ImmoTopia - Retour à l'accueil"
+      >
+        ImmoTopia
+      </a>
+
+      <!-- Desktop Navigation -->
+      <nav class="hidden flex-1 items-center md:flex md:mx-8" aria-label="Navigation principale">
+        <ul class="flex items-center gap-2 lg:gap-8">
+          {menuItems.map((item) => (
+            <li>
+              <a
+                href={item.href}
+                class={`
+                  px-4 py-2 text-sm font-semibold
+                  transition-all duration-300 ease-in-out
+                  hover:scale-105 active:scale-100
+                  relative group header-link
+                  ${isHomePage ? 'text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]' : 'text-gray-700 hover:text-[#2563EB]'}
+                  ${isActive(item.href) ? 'header-link-active' : ''}
+                `}
+                aria-current={isActive(item.href) ? 'page' : undefined}
+              >
+                {item.label}
+                <span
+                  class={`
+                    absolute bottom-0 left-1/2 h-0.5
+                    transition-all duration-300 ease-in-out
+                    group-hover:w-full group-hover:left-0
+                    ${isHomePage ? 'bg-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.6)]' : 'bg-[#2563EB]'}
+                    ${isActive(item.href) ? 'w-full left-0' : 'w-0'}
+                  `}
+                  aria-hidden="true"
+                />
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+
+      <!-- Desktop CTA Button -->
+      <div class="hidden md:block relative z-10">
+        <a
+          href="/contact?signup=true"
+          class="
+            relative z-10 bg-[#2563EB] text-white font-semibold
+            px-6 py-2.5 rounded-lg
+            shadow-xl hover:shadow-2xl
+            hover:bg-[#1D4ED8]
+            transition-all duration-300 ease-in-out
+            hover:scale-105 active:scale-100
+            drop-shadow-[0_4px_12px_rgba(0,0,0,0.4)]
+          "
+          id="cta-header-signup"
+        >
+          Créer mon compte
+        </a>
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <button
+        class={`
+          flex items-center justify-center p-2
+          transition-all duration-300 ease-in-out
+          hover:scale-105 active:scale-95
+          md:hidden header-menu-button
+          ${isHomePage ? 'text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]' : 'text-gray-700'}
+        `}
+        id="mobile-menu-button"
+        aria-label="Ouvrir le menu"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+      >
+        <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div
+    id="mobile-menu"
+    class="hidden md:hidden border-t border-gray-200 bg-white shadow-lg"
+    role="dialog"
+    aria-modal="true"
+    aria-label="Menu de navigation mobile"
+  >
+    <nav class="px-4 py-6" aria-label="Navigation mobile">
+      <ul class="flex flex-col space-y-2">
+        {menuItems.map((item) => (
+          <li>
+            <a
+              href={item.href}
+              class={`
+                block rounded-lg px-4 py-3 text-base font-medium
+                transition-all duration-200
+                hover:bg-gray-100 active:scale-95
+                ${isActive(item.href) ? 'bg-[#2563EB]/10 text-[#2563EB]' : 'text-gray-900'}
+              `}
+              aria-current={isActive(item.href) ? 'page' : undefined}
+            >
+              {item.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+    <div class="border-t border-gray-200 p-4">
+      <a
+        href="/contact?signup=true"
+        class="
+          block w-full text-center
+          bg-[#2563EB] text-white font-semibold
+          py-3 rounded-lg
+          shadow-md hover:shadow-lg
+          hover:bg-[#1D4ED8]
+          transition-all duration-200
+          active:scale-95
+        "
+        id="cta-header-mobile-signup"
+      >
+        Créer mon compte
+      </a>
+    </div>
+  </div>
+</header>
+
+<script>
+  // Header behavior with IntersectionObserver for optimal performance
+  document.addEventListener('DOMContentLoaded', () => {
+    const header = document.getElementById('main-header');
+    const menuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    if (!header) return;
+
+    // Check if user prefers reduced motion
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReducedMotion) {
+      header.style.transition = 'none';
+    }
+
+    // Mobile menu toggle
+    if (menuButton && mobileMenu) {
+      menuButton.addEventListener('click', () => {
+        const isExpanded = mobileMenu.classList.toggle('hidden');
+        menuButton.setAttribute('aria-expanded', isExpanded ? 'false' : 'true');
+        menuButton.setAttribute('aria-label', isExpanded ? 'Ouvrir le menu' : 'Fermer le menu');
+      });
+
+      // Close mobile menu when clicking a link
+      const mobileLinks = mobileMenu.querySelectorAll('a');
+      mobileLinks.forEach(link => {
+        link.addEventListener('click', () => {
+          mobileMenu.classList.add('hidden');
+          menuButton.setAttribute('aria-expanded', 'false');
+          menuButton.setAttribute('aria-label', 'Ouvrir le menu');
+        });
+      });
+    }
+
+    // Get initial header mode from data attribute
+    const initialMode = header.dataset.headerMode;
+    const isHomePage = initialMode === 'over-hero';
+
+    // If not on homepage, always use scrolled style
+    if (!isHomePage) {
+      applyScrolledStyle();
+      return;
+    }
+
+    // Homepage behavior: use IntersectionObserver for better performance
+    const sentinel = document.getElementById('hero-sentinel');
+
+    if (sentinel && 'IntersectionObserver' in window) {
+      // Use IntersectionObserver (modern approach)
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              // Sentinel is visible = we're at the top of the page
+              applyTransparentStyle();
+            } else {
+              // Sentinel is not visible = we've scrolled down
+              applyScrolledStyle();
+            }
+          });
+        },
+        {
+          // Trigger when sentinel crosses the header area
+          rootMargin: '-44px 0px 0px 0px', // Account for top bar
+          threshold: 0,
+        }
+      );
+
+      observer.observe(sentinel);
+    } else {
+      // Fallback for browsers without IntersectionObserver
+      const handleScroll = () => {
+        const scrollY = window.scrollY;
+        if (scrollY > 10) {
+          applyScrolledStyle();
+        } else {
+          applyTransparentStyle();
+        }
+      };
+
+      handleScroll(); // Initial check
+      window.addEventListener('scroll', handleScroll, { passive: true });
+    }
+
+    /**
+     * Apply transparent style (over hero)
+     */
+    function applyTransparentStyle() {
+      if (!header) return;
+
+      // Update header classes
+      header.classList.remove('bg-white', 'backdrop-blur-md', 'border-gray-200', 'shadow-sm');
+      header.classList.add('bg-transparent', 'border-transparent');
+      header.dataset.headerMode = 'over-hero';
+
+      // Update logo
+      const logo = header.querySelector('.header-logo');
+      if (logo) {
+        logo.classList.remove('text-[#2563EB]');
+        logo.classList.add('text-white', 'drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]');
+      }
+
+      // Update navigation links
+      const links = header.querySelectorAll('.header-link');
+      links.forEach((link) => {
+        link.classList.remove('text-gray-700', 'hover:text-[#2563EB]');
+        link.classList.add('text-white', 'drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]');
+
+        // Update underline color
+        const underline = link.querySelector('span');
+        if (underline) {
+          underline.classList.remove('bg-[#2563EB]');
+          underline.classList.add('bg-white', 'drop-shadow-[0_2px_4px_rgba(0,0,0,0.6)]');
+        }
+      });
+
+      // Update mobile menu button
+      const menuBtn = header.querySelector('.header-menu-button');
+      if (menuBtn) {
+        menuBtn.classList.remove('text-gray-700');
+        menuBtn.classList.add('text-white', 'drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]');
+      }
+    }
+
+    /**
+     * Apply scrolled style (white background)
+     */
+    function applyScrolledStyle() {
+      if (!header) return;
+
+      // Update header classes
+      header.classList.remove('bg-transparent', 'border-transparent');
+      header.classList.add('bg-white', 'backdrop-blur-md', 'border-gray-200', 'shadow-sm');
+      header.dataset.headerMode = 'scrolled';
+
+      // Update logo
+      const logo = header.querySelector('.header-logo');
+      if (logo) {
+        logo.classList.remove('text-white', 'drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]');
+        logo.classList.add('text-[#2563EB]');
+      }
+
+      // Update navigation links
+      const links = header.querySelectorAll('.header-link');
+      links.forEach((link) => {
+        link.classList.remove('text-white', 'drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]');
+        link.classList.add('text-gray-700', 'hover:text-[#2563EB]');
+
+        // Update underline color
+        const underline = link.querySelector('span');
+        if (underline) {
+          underline.classList.remove('bg-white', 'drop-shadow-[0_2px_4px_rgba(0,0,0,0.6)]');
+          underline.classList.add('bg-[#2563EB]');
+        }
+      });
+
+      // Update mobile menu button
+      const menuBtn = header.querySelector('.header-menu-button');
+      if (menuBtn) {
+        menuBtn.classList.remove('text-white', 'drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]');
+        menuBtn.classList.add('text-gray-700');
+      }
+    }
+  });
+</script>
+
+<style>
+  /* Ensure smooth transitions respect user preferences */
+  @media (prefers-reduced-motion: reduce) {
+    #main-header,
+    #main-header * {
+      transition: none !important;
+      animation: none !important;
+    }
+  }
+
+  /* Ensure header stays above content */
+  #main-header {
+    will-change: background-color, border-color, box-shadow;
+  }
+
+  /* Focus visible for accessibility */
+  #main-header a:focus-visible,
+  #main-header button:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 2px;
+  }
+</style>

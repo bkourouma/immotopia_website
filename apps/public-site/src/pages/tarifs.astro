@@ -1,0 +1,428 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { generateFAQSchema } from '../lib/structured-data';
+
+const title = 'Tarifs | ImmoTopia - Plans et Prix';
+const description = 'Découvrez nos tarifs transparents pour la gestion immobilière. Plans Basic, Pro et Elite adaptés à votre activité.';
+
+const plans = [
+  {
+    name: 'Basic',
+    price: '35 000',
+    period: 'FCFA / mois',
+    description: 'Parfait pour les petites agences et le démarrage',
+    features: [
+      'Centralisez vos biens et dossiers',
+      'Suivez vos clients et demandes',
+      'Gagnez du temps sur l\'administratif',
+      'Accès cloud 24/7',
+    ],
+    popular: false,
+  },
+  {
+    name: 'Pro',
+    price: '50 000',
+    period: 'FCFA / mois',
+    description: 'Pour les agences en croissance',
+    features: [
+      'Suivi prospects plus efficace (CRM)',
+      'Relances et activités mieux organisées',
+      'Meilleure visibilité sur vos performances',
+      'Collaboration d\'équipe facilitée',
+    ],
+    popular: true,
+  },
+  {
+    name: 'Elite',
+    price: '100 000',
+    period: 'FCFA / mois',
+    description: 'Pour les grandes agences, promoteurs et syndics',
+    features: [
+      'Gestion avancée (agence + gestion + syndic)',
+      'Reporting plus complet',
+      'Automatisation et gain de temps maximal',
+      'Priorité support',
+    ],
+    popular: false,
+  },
+];
+
+const faqData = [
+  {
+    question: 'À quoi sert le frais d\'activation ?',
+    answer: 'Le frais d\'activation de 250 000 FCFA (paiement unique) couvre la configuration de votre compte entreprise, l\'accompagnement au démarrage personnalisé, la formation de votre équipe et l\'activation de toutes les fonctionnalités. C\'est un investissement unique qui garantit une mise en place rapide et efficace.',
+  },
+  {
+    question: 'Puis-je changer d\'offre ?',
+    answer: 'Oui, vous pouvez passer d\'une offre à une autre à tout moment. Les changements sont appliqués au prochain cycle de facturation. Si vous passez à une offre supérieure, vous bénéficiez immédiatement des nouvelles fonctionnalités.',
+  },
+  {
+    question: 'Y a-t-il un engagement ?',
+    answer: 'Non, nos abonnements sont sans engagement. Vous pouvez résilier votre abonnement à tout moment, sans frais de résiliation. Nous croyons en la qualité de notre service et préférons que vous restiez parce que vous êtes satisfait.',
+  },
+  {
+    question: 'Qu\'est-ce qui est inclus dans le support ?',
+    answer: 'Tous les plans incluent le support par email et chat. Le plan Elite bénéficie d\'un support prioritaire avec réponse garantie sous 2 heures. Le support couvre l\'assistance technique, l\'aide à l\'utilisation et les questions sur les fonctionnalités.',
+  },
+  {
+    question: 'Comment fonctionne la licence perpétuelle ?',
+    answer: 'La licence perpétuelle est une solution premium pour les grands comptes. Vous effectuez un paiement unique (sur devis) et bénéficiez de la licence à vie. Après 12 mois, une maintenance annuelle obligatoire de 400 000 FCFA/an est requise pour les mises à jour et le support technique.',
+  },
+  {
+    question: 'Paiement Mobile Money disponible ?',
+    answer: 'Oui, nous acceptons les paiements par Mobile Money (Orange Money, MTN Mobile Money, Moov Money) ainsi que les virements bancaires et les cartes bancaires. Les paiements sont sécurisés et vous recevez une facture automatique.',
+  },
+  {
+    question: 'Et si je veux uniquement publier des annonces ?',
+    answer: 'La publication d\'annonces standard est gratuite sur notre portail. Vous pouvez publier vos biens sans abonnement SaaS. Des options payantes sont disponibles pour booster vos annonces (1 000 FCFA/jour) ou recevoir des leads par WhatsApp (200 FCFA/lead).',
+  },
+  {
+    question: 'Les prix incluent-ils la TVA ?',
+    answer: 'Tous les prix affichés sont en FCFA TTC (Toutes Taxes Comprises). Les factures sont émises conformément à la législation en vigueur en Afrique de l\'Ouest.',
+  },
+  {
+    question: 'Puis-je tester avant de m\'engager ?',
+    answer: 'Oui, nous proposons une période d\'essai gratuite pour tous nos plans. Contactez-nous pour demander une démo personnalisée et tester toutes les fonctionnalités avant de vous engager.',
+  },
+  {
+    question: 'Que se passe-t-il si je ne suis pas satisfait ?',
+    answer: 'Si vous n\'êtes pas satisfait dans les 30 premiers jours, nous vous remboursons intégralement votre frais d\'activation et votre premier mois d\'abonnement. Nous sommes convaincus de la qualité de notre solution et voulons que vous soyez pleinement satisfait.',
+  },
+];
+
+const faqSchema = generateFAQSchema({ questions: faqData });
+---
+
+<BaseLayout title={title} description={description} currentPath="/tarifs" structuredData={faqSchema}>
+  <div class="bg-white">
+    <!-- Hero Section -->
+    <section class="relative overflow-hidden bg-gradient-to-br from-blue-50 via-sky-50 to-blue-100 py-20 text-center md:py-32">
+      <div class="pointer-events-none absolute inset-0">
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_20%_50%,rgba(37,99,235,0.1),transparent_50%)]"></div>
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_80%_80%,rgba(29,78,216,0.1),transparent_50%)]"></div>
+      </div>
+
+      <div class="container relative z-10 mx-auto max-w-4xl px-6">
+        <h1 class="mb-6 text-4xl font-extrabold leading-tight text-gray-900 md:text-5xl lg:text-6xl">
+          Des tarifs simples, pensés pour les professionnels de l'immobilier
+        </h1>
+        <p class="mx-auto mb-8 max-w-2xl text-lg leading-relaxed text-gray-700 md:text-xl">
+          Choisissez l'offre adaptée à votre agence ou votre activité de gestion. Centralisez vos biens, clients et locations sur une seule plateforme.
+        </p>
+
+        <div class="mb-6 flex flex-col items-center justify-center gap-4 sm:flex-row">
+          <a href="/contact?signup=true" class="group inline-flex items-center bg-[#2563EB] text-white font-bold px-6 py-3 rounded-lg shadow-lg hover:bg-[#1D4ED8] hover:scale-105 transition-all duration-300">
+            Créer mon compte
+            <svg class="ml-2 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+            </svg>
+          </a>
+          <a href="/contact?demo=true" class="border-2 border-gray-300 bg-white font-semibold px-6 py-3 rounded-lg hover:border-[#2563EB] hover:scale-105 hover:shadow-lg transition-all duration-300">
+            Demander une démo
+          </a>
+        </div>
+
+        <p class="text-sm text-gray-600">
+          Sans jargon · Mise en place rapide · Support
+        </p>
+      </div>
+    </section>
+
+    <!-- Pricing Cards -->
+    <section class="bg-white py-20 md:py-32">
+      <div class="container mx-auto max-w-7xl px-6">
+        <div class="mb-12 text-center">
+          <h2 class="mb-4 text-3xl font-bold text-gray-900 md:text-4xl">
+            Logiciel de gestion (SaaS)
+          </h2>
+          <p class="mx-auto max-w-2xl text-lg text-gray-600">
+            Choisissez l'abonnement mensuel qui correspond à votre activité
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 gap-8 md:grid-cols-3">
+          {plans.map((plan) => (
+            <div class={`rounded-xl border-2 p-8 transition-all duration-300 hover:shadow-lg ${
+              plan.popular ? 'border-[#2563EB] bg-blue-50' : 'border-gray-200 bg-white'
+            }`}>
+              {plan.popular && (
+                <div class="mb-4 text-center">
+                  <span class="inline-block rounded-full bg-[#2563EB] px-3 py-1 text-xs font-bold text-white uppercase">
+                    Populaire
+                  </span>
+                </div>
+              )}
+              <h3 class="mb-2 text-2xl font-bold text-gray-900">{plan.name}</h3>
+              <div class="mb-4">
+                <span class="text-4xl font-extrabold text-gray-900">{plan.price}</span>
+                <span class="text-gray-600"> {plan.period}</span>
+              </div>
+              <p class="mb-6 text-gray-600">{plan.description}</p>
+              <ul class="mb-8 space-y-3">
+                {plan.features.map((feature) => (
+                  <li class="flex items-start gap-2">
+                    <svg class="h-5 w-5 shrink-0 text-[#2563EB]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span class="text-sm text-gray-700">{feature}</span>
+                  </li>
+                ))}
+              </ul>
+              <a
+                href={`/contact?signup=true&plan=${plan.name.toLowerCase()}`}
+                class={`block w-full rounded-lg px-6 py-3 text-center font-semibold transition-all duration-300 ${
+                  plan.popular
+                    ? 'bg-[#2563EB] text-white hover:bg-[#1D4ED8]'
+                    : 'border-2 border-[#2563EB] text-[#2563EB] hover:bg-[#2563EB] hover:text-white'
+                }`}
+              >
+                Choisir {plan.name}
+              </a>
+            </div>
+          ))}
+        </div>
+
+        <div class="mt-12 rounded-xl border-2 border-blue-200 bg-blue-50 p-6 text-center">
+          <div class="mb-2 flex items-center justify-center gap-2">
+            <svg class="h-5 w-5 text-[#2563EB]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+            </svg>
+            <h3 class="text-lg font-semibold text-gray-900">
+              Frais d'activation : 250 000 FCFA
+            </h3>
+          </div>
+          <p class="text-sm text-gray-600">
+            Paiement unique incluant la configuration, l'accompagnement au démarrage et l'activation du compte entreprise
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Licence Perpétuelle Section -->
+    <section class="relative overflow-hidden bg-gradient-to-br from-gray-50 to-gray-100 py-20 md:py-32">
+      <div class="container mx-auto max-w-4xl px-6">
+        <div class="rounded-xl border-2 border-[#2563EB] bg-white shadow-2xl overflow-hidden">
+          <div class="bg-gradient-to-r from-[#2563EB] to-[#1D4ED8] text-center text-white p-8">
+            <div class="mb-2 inline-flex items-center gap-2 rounded-full bg-white/20 px-4 py-1.5">
+              <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+              </svg>
+              <span class="text-xs font-bold uppercase tracking-wider">Enterprise</span>
+            </div>
+            <h2 class="text-3xl font-bold md:text-4xl">
+              Licence Perpétuelle ImmoTopia
+            </h2>
+          </div>
+          <div class="p-8">
+            <div class="mb-6 text-center">
+              <div class="mb-2 text-2xl font-bold text-gray-900">
+                Tarification : Nous appeler
+              </div>
+              <p class="text-gray-600">
+                Solution premium pour grands comptes
+              </p>
+            </div>
+
+            <div class="mb-6 space-y-4">
+              <div class="flex items-start gap-3">
+                <svg class="mt-0.5 h-5 w-5 shrink-0 text-[#2563EB]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <div>
+                  <p class="font-semibold text-gray-900">Paiement unique</p>
+                  <p class="text-sm text-gray-600">Investissement unique pour une licence à vie</p>
+                </div>
+              </div>
+              <div class="flex items-start gap-3">
+                <svg class="mt-0.5 h-5 w-5 shrink-0 text-[#2563EB]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <div>
+                  <p class="font-semibold text-gray-900">Solution premium</p>
+                  <p class="text-sm text-gray-600">Toutes les fonctionnalités + personnalisations</p>
+                </div>
+              </div>
+              <div class="flex items-start gap-3">
+                <svg class="mt-0.5 h-5 w-5 shrink-0 text-[#2563EB]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <div>
+                  <p class="font-semibold text-gray-900">Maintenance annuelle</p>
+                  <p class="text-sm text-gray-600">
+                    Obligatoire après 12 mois
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <a
+              href="/contact?demo=true&plan=enterprise"
+              class="flex items-center justify-center gap-2 w-full bg-gradient-to-r from-[#2563EB] to-[#1D4ED8] text-white font-bold px-6 py-3 rounded-lg shadow-lg hover:scale-105 hover:shadow-xl transition-all duration-300"
+            >
+              <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+              </svg>
+              Parler à un conseiller
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Options Marketing Section -->
+    <section class="relative overflow-hidden bg-white py-20 md:py-32">
+      <div class="container mx-auto max-w-4xl px-6">
+        <div class="mb-12 text-center">
+          <h2 class="mb-4 text-3xl font-bold text-gray-900 md:text-4xl">
+            Options marketing — Portail d'annonces
+          </h2>
+          <p class="mx-auto max-w-2xl text-lg text-gray-600">
+            Boostez la visibilité de vos annonces et générez plus de leads
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
+          <div class="rounded-xl border-2 border-gray-200 bg-white p-6 transition-all duration-300 hover:border-[#2563EB]/30 hover:shadow-lg">
+            <div class="mb-4 flex items-center gap-3">
+              <div class="flex h-12 w-12 items-center justify-center rounded-lg bg-green-100">
+                <svg class="h-6 w-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg>
+              </div>
+              <div>
+                <h3 class="text-lg font-bold text-gray-900">Publication standard</h3>
+                <p class="text-2xl font-extrabold text-green-600">Gratuite</p>
+              </div>
+            </div>
+            <p class="text-sm text-gray-600">
+              Publiez vos annonces sur notre portail sans frais supplémentaires
+            </p>
+          </div>
+
+          <div class="rounded-xl border-2 border-gray-200 bg-white p-6 transition-all duration-300 hover:border-[#2563EB]/30 hover:shadow-lg">
+            <div class="mb-4 flex items-center gap-3">
+              <div class="flex h-12 w-12 items-center justify-center rounded-lg bg-blue-100">
+                <svg class="h-6 w-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                </svg>
+              </div>
+              <div>
+                <h3 class="text-lg font-bold text-gray-900">Booster d'annonce</h3>
+                <p class="text-2xl font-extrabold text-blue-600">1 000 FCFA / jour</p>
+              </div>
+            </div>
+            <p class="text-sm text-gray-600">
+              Augmentez la visibilité de vos annonces en tête de liste
+            </p>
+          </div>
+
+          <div class="rounded-xl border-2 border-gray-200 bg-white p-6 transition-all duration-300 hover:border-[#2563EB]/30 hover:shadow-lg">
+            <div class="mb-4 flex items-center gap-3">
+              <div class="flex h-12 w-12 items-center justify-center rounded-lg bg-purple-100">
+                <svg class="h-6 w-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                </svg>
+              </div>
+              <div>
+                <h3 class="text-lg font-bold text-gray-900">Push WhatsApp</h3>
+                <p class="text-2xl font-extrabold text-purple-600">200 FCFA / lead</p>
+              </div>
+            </div>
+            <p class="text-sm text-gray-600">
+              Recevez les leads qualifiés directement sur WhatsApp
+            </p>
+          </div>
+
+          <div class="rounded-xl border-2 border-gray-200 bg-white p-6 transition-all duration-300 hover:border-[#2563EB]/30 hover:shadow-lg">
+            <div class="mb-4 flex items-center gap-3">
+              <div class="flex h-12 w-12 items-center justify-center rounded-lg bg-orange-100">
+                <svg class="h-6 w-6 text-orange-600" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                </svg>
+              </div>
+              <div>
+                <h3 class="text-lg font-bold text-gray-900">Campagnes Email</h3>
+                <p class="text-sm font-semibold text-orange-600">Sur devis</p>
+              </div>
+            </div>
+            <p class="text-sm text-gray-600">
+              Campagnes email personnalisées pour vos prospects
+            </p>
+          </div>
+        </div>
+
+        <div class="mt-8 text-center">
+          <a
+            href="/contact?demo=true&interest=marketing"
+            class="inline-block border-2 border-[#2563EB] text-[#2563EB] font-semibold px-6 py-3 rounded-lg hover:bg-[#2563EB] hover:text-white transition-all duration-300"
+          >
+            Découvrir les options marketing
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="bg-gray-50 py-20 md:py-32">
+      <div class="container mx-auto max-w-4xl px-6">
+        <div class="mb-4 inline-flex items-center gap-2 rounded-full border border-[#2563EB]/30 bg-white px-4 py-2 shadow-sm">
+          <svg class="h-4 w-4 text-[#2563EB]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+          <span class="text-xs font-bold uppercase tracking-wider text-[#2563EB]">
+            Questions Fréquentes
+          </span>
+        </div>
+        <h2 class="mb-12 text-center text-3xl font-bold text-gray-900 md:text-4xl">
+          Questions fréquentes sur les tarifs
+        </h2>
+        <div class="space-y-4">
+          {faqData.map((faq, index) => (
+            <details class="rounded-lg border border-gray-200 bg-white p-6">
+              <summary class="cursor-pointer font-semibold text-gray-900">
+                {faq.question}
+              </summary>
+              <p class="mt-4 text-gray-600">{faq.answer}</p>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Final CTA Section -->
+    <section class="relative overflow-hidden bg-gradient-to-br from-[#2563EB] via-indigo-600 to-[#1D4ED8] py-20 text-white md:py-32">
+      <div class="pointer-events-none absolute inset-0">
+        <div class="absolute top-0 left-1/4 h-96 w-96 rounded-full bg-white/10 blur-3xl animate-pulse"></div>
+        <div class="absolute bottom-0 right-1/4 h-96 w-96 rounded-full bg-white/10 blur-3xl animate-pulse" style="animation-delay: 1s;"></div>
+      </div>
+
+      <div class="container relative z-10 mx-auto max-w-4xl px-6 text-center">
+        <h2 class="mb-6 text-3xl font-bold md:text-4xl lg:text-5xl">
+          Prêt à simplifier votre gestion immobilière ?
+        </h2>
+        <p class="mb-8 text-lg text-white/90 md:text-xl">
+          Rejoignez les professionnels qui font confiance à ImmoTopia pour gérer leur activité immobilière.
+        </p>
+
+        <div class="flex flex-col items-center justify-center gap-4 sm:flex-row">
+          <a
+            href="/contact?signup=true"
+            class="group inline-flex items-center bg-white text-[#2563EB] font-bold px-6 py-3 rounded-lg shadow-xl hover:bg-gray-100 hover:scale-105 hover:shadow-2xl transition-all duration-300"
+          >
+            Créer mon compte
+            <svg class="ml-2 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+            </svg>
+          </a>
+          <a
+            href="/contact?demo=true"
+            class="border-2 border-white/30 bg-white/10 backdrop-blur-sm text-white font-semibold px-6 py-3 rounded-lg hover:border-white/50 hover:bg-white/20 hover:scale-105 transition-all duration-300"
+          >
+            Demander une démo
+          </a>
+        </div>
+      </div>
+    </section>
+  </div>
+</BaseLayout>
+

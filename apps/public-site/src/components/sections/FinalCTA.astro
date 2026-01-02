@@ -1,0 +1,78 @@
+---
+interface Props {
+  class?: string;
+}
+
+const { class: className } = Astro.props;
+---
+
+<section
+  class:list={[
+    'relative overflow-hidden py-20 text-white md:py-32',
+    'bg-gradient-to-br from-primary via-indigo-600 to-primary',
+    className
+  ]}
+>
+  <!-- Animated background -->
+  <div class="pointer-events-none absolute inset-0">
+    <div class="absolute top-0 left-1/4 h-96 w-96 rounded-full bg-white/10 blur-3xl animate-pulse" />
+    <div class="absolute bottom-0 right-1/4 h-96 w-96 rounded-full bg-white/10 blur-3xl animate-pulse" style="animation-delay: 1s;" />
+    <div class="absolute top-1/2 left-1/2 h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-white/5 blur-3xl" />
+  </div>
+
+  <div class="container relative z-10 mx-auto max-w-4xl px-6 text-center">
+    <div class="mb-4 inline-block rounded-full border border-white/20 bg-white/10 px-4 py-1.5 backdrop-blur-sm">
+      <span class="text-xs font-semibold uppercase tracking-wider text-white">
+        Commencez dès aujourd'hui
+      </span>
+    </div>
+    <h2 class="mb-6 text-3xl font-bold md:text-4xl lg:text-5xl">
+      Prêt à gérer votre agence{' '}
+      <span class="relative inline-block">
+        <span class="absolute inset-0 bg-white/20 blur-sm" />
+        <span class="relative">plus efficacement</span>
+      </span>
+      {' '}?
+    </h2>
+    <p class="mb-8 text-lg text-white/90 md:text-xl">
+      Créez votre compte en quelques minutes et découvrez comment ImmoTopia transforme la gestion immobilière pour les professionnels.
+    </p>
+    <div class="flex flex-col items-center justify-center gap-4 sm:flex-row">
+      <a
+        href="/contact?signup=true"
+        class="group inline-flex items-center bg-white text-primary shadow-xl transition-all duration-300 hover:scale-105 hover:bg-gray-100 hover:shadow-2xl rounded-lg px-6 py-3 font-semibold text-base"
+        id="cta-final-signup"
+      >
+        Créer mon compte
+        <svg class="ml-2 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+        </svg>
+      </a>
+      <a
+        href="/tarifs"
+        class="group inline-flex items-center border-2 border-white/30 bg-white/10 backdrop-blur-sm text-white transition-all duration-300 hover:scale-105 hover:border-white/50 hover:bg-white/20 rounded-lg px-6 py-3 font-semibold text-base"
+      >
+        Voir les tarifs
+      </a>
+    </div>
+    <!-- Micro-copy de réassurance -->
+    <p class="mt-6 text-center text-sm text-white/80">
+      Sans engagement · Configuration rapide · Support inclus
+    </p>
+  </div>
+</section>
+
+<style>
+  .from-primary {
+    --tw-gradient-from: #2563EB;
+  }
+  .via-indigo-600 {
+    --tw-gradient-via: #4F46E5;
+  }
+  .to-primary {
+    --tw-gradient-to: #2563EB;
+  }
+  .text-primary {
+    color: #2563EB;
+  }
+</style>

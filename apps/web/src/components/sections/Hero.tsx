@@ -26,6 +26,13 @@ export default function Hero({ className }: HeroProps) {
         className
       )}
     >
+      {/* Sentinel pour détecter la sortie du hero (utilisé par HeroHeader pour le changement d'état) */}
+      <div 
+        id="hero-sentinel" 
+        className="absolute top-[42px] left-0 right-0 h-1 pointer-events-none z-0"
+        aria-hidden="true"
+      />
+      
       {/* Integrated Header - Overlay on video */}
       <HeroHeader />
       {/* Video Background */}

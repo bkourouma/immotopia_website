@@ -1,0 +1,571 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SimpleFeatureCard from '../components/sections/SimpleFeatureCard.astro';
+
+const title = 'Fonctionnalités | ImmoTopia';
+const description = 'Pilotez toute votre activité immobilière depuis une seule plateforme. CRM immobilier, gestion de biens, gestion locative, paiements Mobile Money et plus encore.';
+
+// Features data (embedded inline from apps/web/src/lib/features.ts)
+const features = [
+  {
+    id: 'gestion-biens',
+    name: 'Gestion des biens',
+    title: 'Gestion complète des biens immobiliers',
+    description: 'Centralisez la gestion de tous vos biens immobiliers avec un suivi complet et des alertes automatiques.',
+    detailedDescription: 'Gérez efficacement votre portefeuille immobilier avec un outil centralisé. Suivi des locations, maintenance, travaux, et toutes les informations essentielles de chaque bien.',
+    personas: ['agences-immobilieres', 'promoteurs', 'gestionnaires', 'proprietaires'],
+    benefits: [
+      'Base de données centralisée',
+      'Suivi en temps réel',
+      'Alertes automatiques',
+      'Historique complet',
+    ],
+    slug: '/fonctionnalites/gestion-biens',
+  },
+  {
+    id: 'crm-immobilier',
+    name: 'CRM immobilier',
+    title: 'CRM immobilier intégré',
+    description: 'Gérez vos contacts, prospects et clients avec un CRM spécialement conçu pour l\'immobilier.',
+    detailedDescription: 'Un CRM puissant adapté aux besoins de l\'immobilier. Suivez vos prospects, gérez vos clients, planifiez vos rendez-vous et automatisez vos communications.',
+    personas: ['agences-immobilieres', 'promoteurs'],
+    benefits: ['Pipeline de vente', 'Suivi des rendez-vous', 'Communication automatisée', 'Rapports détaillés'],
+    slug: '/fonctionnalites/crm-immobilier',
+  },
+  {
+    id: 'gestion-locative',
+    name: 'Gestion locative',
+    title: 'Gestion locative simplifiée',
+    description: 'Automatisez la gestion de vos locations : contrats, loyers, quittances et suivi des locataires.',
+    detailedDescription: 'Simplifiez la gestion locative avec des outils dédiés. Générez automatiquement les contrats, suivez les paiements, créez les quittances et gérez la communication avec les locataires.',
+    personas: ['gestionnaires', 'proprietaires', 'syndics'],
+    benefits: ['Génération automatique des contrats', 'Suivi des loyers', 'Quittances automatiques', 'Communication facilitée'],
+    slug: '/fonctionnalites/gestion-locative',
+  },
+  {
+    id: 'syndic-copropriete',
+    name: 'Syndic de copropriété',
+    title: 'Gestion de copropriété automatisée',
+    description: 'Automatisez la gestion administrative de vos copropriétés : charges, assemblées, documents.',
+    detailedDescription: 'Simplifiez la gestion de copropriété avec des outils automatisés. Gérez les charges, planifiez les assemblées, publiez les documents et communiquez facilement avec les copropriétaires via le portail dédié.',
+    personas: ['syndics'],
+    benefits: ['Gestion automatisée des charges', 'Portail copropriétaires', 'Documents centralisés', 'Communication facilitée'],
+    slug: '/fonctionnalites/syndic-copropriete',
+  },
+  {
+    id: 'promotion-immobiliere',
+    name: 'Promotion immobilière',
+    title: 'Promotion et commercialisation',
+    description: 'Pilotez vos projets immobiliers et commercialisez efficacement vos biens.',
+    detailedDescription: 'Optimisez la commercialisation de vos projets immobiliers. Suivez les ventes, gérez les réservations, pilotez les projets et générez des rapports détaillés.',
+    personas: ['promoteurs'],
+    benefits: ['Suivi de projet', 'Gestion des réservations', 'Portail de commercialisation', 'Reporting automatique'],
+    slug: '/fonctionnalites/promotion-immobiliere',
+  },
+  {
+    id: 'paiements-mobile-money',
+    name: 'Paiements Mobile Money',
+    title: 'Paiements Mobile Money intégrés',
+    description: 'Acceptez et gérez les paiements via Mobile Money directement depuis la plateforme.',
+    detailedDescription: 'Intégrez les paiements Mobile Money pour faciliter les transactions. Acceptez les loyers, charges et autres paiements directement depuis la plateforme avec un suivi automatique.',
+    personas: ['syndics', 'gestionnaires', 'proprietaires'],
+    benefits: ['Paiements en ligne', 'Suivi automatique', 'Sécurité renforcée', 'Réduction des impayés'],
+    slug: '/fonctionnalites/paiements-mobile-money',
+  },
+  {
+    id: 'automatisation-ia',
+    name: 'Automatisation IA',
+    title: 'Automatisation par Intelligence Artificielle',
+    description: 'Automatisez vos tâches répétitives grâce à l\'IA : triage des emails, suggestions intelligentes, rapports automatiques.',
+    detailedDescription: 'L\'IA au service de votre productivité. Automatisez le triage des emails, recevez des suggestions intelligentes, générez des rapports automatiques et optimisez vos processus.',
+    personas: ['agences-immobilieres', 'promoteurs', 'syndics', 'gestionnaires'],
+    benefits: ['Automatisation intelligente', 'Suggestions personnalisées', 'Rapports automatiques', 'Gain de temps'],
+    slug: '/fonctionnalites/automatisation-ia',
+  },
+];
+
+// Get CRM feature (major feature)
+const crmFeature = features.find((f) => f.id === 'crm-immobilier');
+
+// Group features by usage
+const gestionFeatures = features.filter(
+  (f) => f.id === 'gestion-biens' || f.id === 'gestion-locative' || f.id === 'syndic-copropriete'
+);
+
+const commercialFeatures = features.filter(
+  (f) => f.id === 'promotion-immobiliere'
+);
+
+const encaissementFeatures = features.filter(
+  (f) => f.id === 'paiements-mobile-money' || f.id === 'automatisation-ia'
+);
+
+// CRM capabilities
+const crmCapabilities = [
+  {
+    title: 'Pipeline de vente intelligent',
+    description: 'Suivez chaque prospect de la première prise de contact jusqu\'à la signature, avec des étapes personnalisables',
+    icon: 'target',
+  },
+  {
+    title: 'Gestion des rendez-vous',
+    description: 'Planifiez et suivez tous vos rendez-vous avec rappels automatiques et synchronisation calendrier',
+    icon: 'calendar',
+  },
+  {
+    title: 'Communication automatisée',
+    description: 'Relances automatiques par email et SMS, templates personnalisables, historique complet des échanges',
+    icon: 'message-square',
+  },
+  {
+    title: 'Rapports et analyses',
+    description: 'Tableaux de bord en temps réel, taux de conversion, performance commerciale, prévisions de ventes',
+    icon: 'bar-chart',
+  },
+  {
+    title: 'Base de contacts centralisée',
+    description: 'Tous vos contacts, prospects et clients dans une seule base, avec historique complet et notes',
+    icon: 'users',
+  },
+  {
+    title: 'Aucun prospect oublié',
+    description: 'Alertes automatiques pour les relances, suivi des opportunités, suggestions d\'actions prioritaires',
+    icon: 'check-circle',
+  },
+];
+
+// Concrete benefits
+const benefits = [
+  {
+    title: 'Moins d\'administratif',
+    description: 'Automatisez les tâches répétitives et concentrez-vous sur vos ventes',
+    icon: 'clock',
+  },
+  {
+    title: 'Meilleur suivi commercial',
+    description: 'Aucun prospect oublié, chaque opportunité est suivie',
+    icon: 'trending-up',
+  },
+  {
+    title: 'Paiements sécurisés et tracés',
+    description: 'Loyers et frais encaissés en toute transparence',
+    icon: 'dollar-sign',
+  },
+  {
+    title: 'Décisions plus rapides',
+    description: 'Des données claires pour piloter votre activité',
+    icon: 'brain',
+  },
+];
+
+// African market points
+const africanMarketPoints = [
+  {
+    title: 'Compatible Mobile Money',
+    description: 'Acceptez les paiements via Mobile Money directement depuis la plateforme',
+    icon: 'smartphone',
+  },
+  {
+    title: 'Adapté aux petites et grandes agences',
+    description: 'Une solution qui s\'adapte à votre taille et à votre croissance',
+    icon: 'users',
+  },
+  {
+    title: 'Connexion possible même avec internet instable',
+    description: 'Fonctionne en mode dégradé pour rester opérationnel',
+    icon: 'wifi',
+  },
+  {
+    title: 'Support humain et local',
+    description: 'Une équipe à votre écoute, disponible dans votre fuseau horaire',
+    icon: 'headphones',
+  },
+];
+
+// SVG Icons
+const icons = {
+  'clock': '<svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>',
+  'trending-up': '<svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>',
+  'dollar-sign': '<svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>',
+  'brain': '<svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>',
+  'target': '<svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>',
+  'calendar': '<svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>',
+  'message-square': '<svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>',
+  'bar-chart': '<svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><line x1="12" y1="20" x2="12" y2="10"/><line x1="18" y1="20" x2="18" y2="4"/><line x1="6" y1="20" x2="6" y2="16"/></svg>',
+  'users': '<svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>',
+  'check-circle': '<svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>',
+  'smartphone': '<svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>',
+  'wifi': '<svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg>',
+  'headphones': '<svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/></svg>',
+  'share': '<svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>',
+  'zap': '<svg class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>',
+  'arrow-right': '<svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>',
+  'arrow-right-sm': '<svg class="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>',
+  'arrow-right-xs': '<svg class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>',
+};
+---
+
+<BaseLayout title={title} description={description} currentPath="/fonctionnalites">
+  <div class="bg-white">
+    <!-- Hero Section - Simplified -->
+    <section class="bg-gradient-to-br from-[#F0F7FF] to-[#E8F2FF] py-16 text-center md:py-24">
+      <div class="container mx-auto max-w-4xl px-6">
+        <h1 class="mb-4 text-3xl font-bold leading-tight text-gray-900 md:text-4xl lg:text-5xl">
+          Pilotez toute votre activité immobilière depuis une seule plateforme
+        </h1>
+
+        <p class="mx-auto mb-8 max-w-2xl text-lg leading-relaxed text-gray-700 md:text-xl">
+          ImmoTopia centralise vos biens, clients, locations, paiements et performances — sans Excel, sans dispersion.
+        </p>
+
+        <div class="flex flex-col items-center justify-center gap-4 sm:flex-row">
+          <a
+            href="/contact?demo=true"
+            class="flex items-center font-semibold bg-[#2563EB] text-white px-6 py-3 rounded-lg shadow-lg transition-all duration-300 hover:bg-[#1D4ED8] hover:shadow-xl"
+          >
+            Voir la démo
+            <span class="ml-2" set:html={icons['arrow-right']} />
+          </a>
+          <a
+            href="/contact?signup=true"
+            class="border-2 border-[#2563EB] text-[#2563EB] font-semibold px-6 py-3 rounded-lg transition-all duration-300 hover:bg-[#2563EB] hover:text-white"
+          >
+            Créer mon compte
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Ce que vous gagnez concrètement -->
+    <section class="bg-white py-16 md:py-20">
+      <div class="container mx-auto max-w-6xl px-6">
+        <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
+          {benefits.map((benefit) => (
+            <div class="rounded-lg border border-gray-200 bg-white p-6 transition-all duration-300 hover:border-[#2563EB]/30 hover:shadow-md">
+              <div class="mb-3 inline-flex h-12 w-12 items-center justify-center rounded-lg bg-[#2563EB]/10 text-[#2563EB]">
+                <span set:html={icons[benefit.icon]} />
+              </div>
+              <h3 class="mb-2 text-lg font-semibold text-gray-900">
+                {benefit.title}
+              </h3>
+              <p class="text-sm leading-relaxed text-gray-600">
+                {benefit.description}
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Section CRM - Mise en avant spéciale -->
+    {crmFeature && (
+      <section class="bg-gradient-to-br from-emerald-50 via-teal-50 to-cyan-50 py-16 md:py-24">
+        <div class="container mx-auto max-w-6xl px-6">
+          <div class="mb-8 text-center">
+            <div class="mb-4 inline-flex items-center gap-2 rounded-full border border-emerald-200 bg-white/80 backdrop-blur-sm px-4 py-2 shadow-sm">
+              <span class="text-emerald-600" set:html={icons['target']} />
+              <span class="text-xs font-bold uppercase tracking-wider text-emerald-600">
+                Fonctionnalité phare
+              </span>
+            </div>
+            <h2 class="mb-4 text-3xl font-bold text-gray-900 md:text-4xl lg:text-5xl">
+              CRM immobilier : votre copilote commercial
+            </h2>
+            <p class="mx-auto max-w-3xl text-lg leading-relaxed text-gray-700 md:text-xl">
+              Un CRM puissant et complet, spécialement conçu pour l'immobilier. Transformez vos prospects en clients avec un suivi intelligent et des automatisations qui font la différence.
+            </p>
+          </div>
+
+          <div class="mb-12 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {crmCapabilities.map((capability) => (
+              <div class="rounded-xl border border-emerald-200 bg-white p-6 shadow-sm transition-all duration-300 hover:border-emerald-300 hover:shadow-md">
+                <div class="mb-3 inline-flex h-12 w-12 items-center justify-center rounded-lg bg-gradient-to-br from-emerald-500 to-teal-500 text-white shadow-sm">
+                  <span set:html={icons[capability.icon]} />
+                </div>
+                <h3 class="mb-2 text-lg font-semibold text-gray-900">
+                  {capability.title}
+                </h3>
+                <p class="text-sm leading-relaxed text-gray-600">
+                  {capability.description}
+                </p>
+              </div>
+            ))}
+          </div>
+
+          <div class="rounded-2xl border-2 border-emerald-200 bg-white p-8 shadow-lg md:p-12">
+            <div class="mb-6 text-center">
+              <h3 class="mb-3 text-2xl font-bold text-gray-900 md:text-3xl">
+                {crmFeature.title}
+              </h3>
+              <p class="mx-auto max-w-2xl text-base leading-relaxed text-gray-700 md:text-lg">
+                {crmFeature.detailedDescription || crmFeature.description}
+              </p>
+            </div>
+
+            {crmFeature.benefits && crmFeature.benefits.length > 0 && (
+              <div class="mb-8 grid grid-cols-1 gap-4 md:grid-cols-2">
+                {crmFeature.benefits.map((benefit) => (
+                  <div class="flex items-start gap-3">
+                    <span class="mt-0.5 h-5 w-5 flex-shrink-0 text-emerald-600" set:html={icons['check-circle']} />
+                    <span class="text-sm text-gray-700 md:text-base">{benefit}</span>
+                  </div>
+                ))}
+              </div>
+            )}
+
+            <!-- Intégration Portail d'annonces -->
+            <div class="mb-8 rounded-xl border-2 border-purple-200 bg-gradient-to-br from-purple-50 to-pink-50 p-6">
+              <div class="mb-4 flex items-center gap-3">
+                <div class="flex h-10 w-10 items-center justify-center rounded-lg bg-gradient-to-br from-purple-500 to-pink-500 text-white shadow-sm">
+                  <span set:html={icons['share']} />
+                </div>
+                <div>
+                  <h4 class="text-lg font-semibold text-gray-900">Publication d'annonces en un clic</h4>
+                  <p class="text-sm text-gray-600">Intégration native avec le portail d'annonces</p>
+                </div>
+              </div>
+              <p class="mb-4 text-sm leading-relaxed text-gray-700">
+                Ajoutez vos biens directement depuis votre CRM sur notre plateforme d'annonces en un seul clic.
+                Publiez automatiquement sur plusieurs sites d'annonces, réseaux sociaux et votre site web ImmoTopia.
+              </p>
+              <div class="flex flex-wrap items-center gap-2">
+                <div class="flex items-center gap-2 rounded-lg bg-white/80 px-3 py-1.5 text-xs font-medium text-gray-700">
+                  <span class="text-purple-600" set:html={icons['zap']} />
+                  Publication en 1 clic
+                </div>
+                <div class="flex items-center gap-2 rounded-lg bg-white/80 px-3 py-1.5 text-xs font-medium text-gray-700">
+                  <span class="text-purple-600" set:html={icons['check-circle']} />
+                  Multi-plateformes
+                </div>
+                <div class="flex items-center gap-2 rounded-lg bg-white/80 px-3 py-1.5 text-xs font-medium text-gray-700">
+                  <span class="text-purple-600" set:html={icons['bar-chart']} />
+                  Suivi des performances
+                </div>
+              </div>
+              <div class="mt-4">
+                <a
+                  href="/la-solution/portail-annonces"
+                  class="inline-flex items-center text-sm border border-purple-300 text-purple-700 px-4 py-2 rounded-lg hover:bg-purple-100 transition-colors duration-300"
+                >
+                  Découvrir le portail d'annonces
+                  <span class="ml-2" set:html={icons['arrow-right-xs']} />
+                </a>
+              </div>
+            </div>
+
+            <div class="flex flex-col items-center justify-center gap-4 sm:flex-row">
+              <a
+                href={crmFeature.slug}
+                class="flex items-center font-semibold bg-gradient-to-r from-emerald-600 to-teal-600 text-white px-6 py-3 rounded-lg shadow-lg transition-all duration-300 hover:from-emerald-700 hover:to-teal-700 hover:shadow-xl"
+              >
+                Découvrir le CRM en détail
+                <span class="ml-2" set:html={icons['arrow-right']} />
+              </a>
+              <a
+                href="/contact?demo=true&feature=crm"
+                class="border-2 border-emerald-600 text-emerald-600 font-semibold px-6 py-3 rounded-lg transition-all duration-300 hover:bg-emerald-600 hover:text-white"
+              >
+                Voir la démo CRM
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+    )}
+
+    <!-- Section 1: Gérer votre parc immobilier -->
+    <section class="bg-gray-50 py-16 md:py-20">
+      <div class="container mx-auto max-w-6xl px-6">
+        <div class="mb-8">
+          <h2 class="mb-3 text-2xl font-bold text-gray-900 md:text-3xl">
+            🔹 Gérer votre parc immobilier
+          </h2>
+          <p class="mb-2 text-lg text-gray-700">
+            <strong>Objectif :</strong> centralisation et contrôle
+          </p>
+          <p class="mb-6 text-base italic text-gray-600">
+            Tous vos biens et dossiers accessibles en un seul endroit
+          </p>
+        </div>
+
+        <div class="space-y-3">
+          {gestionFeatures.map((feature) => (
+            <SimpleFeatureCard feature={feature} />
+          ))}
+        </div>
+
+        <div class="mt-6 text-center">
+          <a
+            href="/fonctionnalites#gestion"
+            class="inline-block border border-[#2563EB] text-[#2563EB] font-semibold px-6 py-3 rounded-lg hover:bg-[#2563EB] hover:text-white transition-all duration-300"
+          >
+            Voir les détails
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 2: Développer vos ventes et locations -->
+    {commercialFeatures.length > 0 && (
+      <section class="bg-white py-16 md:py-20">
+        <div class="container mx-auto max-w-6xl px-6">
+          <div class="mb-8">
+            <h2 class="mb-3 text-2xl font-bold text-gray-900 md:text-3xl">
+              🔹 Développer vos ventes et locations
+            </h2>
+            <p class="mb-2 text-lg text-gray-700">
+              <strong>Objectif :</strong> transformation commerciale
+            </p>
+            <p class="mb-6 text-base italic text-gray-600">
+              Complétez votre CRM avec des outils de promotion et de commercialisation
+            </p>
+          </div>
+
+          <div class="space-y-3">
+            {commercialFeatures.map((feature) => (
+              <SimpleFeatureCard feature={feature} />
+            ))}
+          </div>
+
+          <div class="mt-6 text-center">
+            <a
+              href="/fonctionnalites/promotion-immobiliere"
+              class="inline-block border border-[#2563EB] text-[#2563EB] font-semibold px-6 py-3 rounded-lg hover:bg-[#2563EB] hover:text-white transition-all duration-300"
+            >
+              Voir les détails
+            </a>
+          </div>
+        </div>
+      </section>
+    )}
+
+    <!-- Section 3: Encaisser, automatiser, sécuriser -->
+    <section class="bg-gray-50 py-16 md:py-20">
+      <div class="container mx-auto max-w-6xl px-6">
+        <div class="mb-8">
+          <h2 class="mb-3 text-2xl font-bold text-gray-900 md:text-3xl">
+            🔹 Encaisser, automatiser, sécuriser
+          </h2>
+          <p class="mb-2 text-lg text-gray-700">
+            <strong>Objectif :</strong> fiabilité et gain de temps
+          </p>
+          <p class="mb-6 text-base italic text-gray-600">
+            Sécurisez vos flux financiers et automatisez ce qui vous fait perdre du temps
+          </p>
+        </div>
+
+        <div class="space-y-3">
+          {encaissementFeatures.map((feature) => (
+            <SimpleFeatureCard feature={feature} />
+          ))}
+        </div>
+
+        <div class="mt-6 text-center">
+          <a
+            href="/fonctionnalites/paiements-mobile-money"
+            class="inline-block border border-[#2563EB] text-[#2563EB] font-semibold px-6 py-3 rounded-lg hover:bg-[#2563EB] hover:text-white transition-all duration-300"
+          >
+            Voir comment ça marche
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pensé pour le marché africain -->
+    <section class="bg-white py-16 md:py-20">
+      <div class="container mx-auto max-w-6xl px-6">
+        <div class="mb-8 text-center">
+          <h2 class="mb-4 text-2xl font-bold text-gray-900 md:text-3xl">
+            Pensé pour les réalités du marché africain
+          </h2>
+        </div>
+
+        <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
+          {africanMarketPoints.map((point) => (
+            <div class="rounded-lg border border-gray-200 bg-white p-6 text-center transition-all duration-300 hover:border-[#2563EB]/30 hover:shadow-md">
+              <div class="mb-3 inline-flex h-12 w-12 items-center justify-center rounded-lg bg-[#2563EB]/10 text-[#2563EB]">
+                <span set:html={icons[point.icon]} />
+              </div>
+              <h3 class="mb-2 text-base font-semibold text-gray-900">
+                {point.title}
+              </h3>
+              <p class="text-sm leading-relaxed text-gray-600">
+                {point.description}
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Section : Toutes les fonctionnalités - Liste complète avec liens -->
+    <section class="bg-white py-16 md:py-20">
+      <div class="container mx-auto max-w-6xl px-6">
+        <div class="mb-8 text-center">
+          <h2 class="mb-3 text-2xl font-bold text-gray-900 md:text-3xl">
+            Toutes les fonctionnalités
+          </h2>
+          <p class="mb-6 text-base text-gray-600 md:text-lg">
+            Découvrez en détail chacune de nos fonctionnalités dédiées aux professionnels de l'immobilier
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+          {features.map((feature) => (
+            <a
+              href={feature.slug}
+              class="group block no-underline"
+            >
+              <div class="flex items-start gap-4 rounded-lg border border-gray-200 bg-white p-4 transition-all duration-300 hover:border-[#2563EB]/30 hover:shadow-md">
+                <div class="mt-1 flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-lg bg-[#2563EB]/10 text-[#2563EB] transition-colors duration-300 group-hover:bg-[#2563EB]/20">
+                  <span class="text-lg font-semibold">{feature.name.charAt(0)}</span>
+                </div>
+                <div class="flex-1">
+                  <h3 class="mb-1 text-base font-semibold text-gray-900 transition-colors duration-300 group-hover:text-[#2563EB]">
+                    {feature.name}
+                  </h3>
+                  <p class="mb-2 text-sm leading-relaxed text-gray-600">
+                    {feature.description}
+                  </p>
+                  <div class="flex items-center text-xs font-medium text-[#2563EB] transition-all duration-300 group-hover:gap-1">
+                    Découvrir en détail
+                    <span class="ml-1 transition-transform duration-300 group-hover:translate-x-1" set:html={icons['arrow-right-sm']} />
+                  </div>
+                </div>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Final -->
+    <section class="bg-gradient-to-br from-[#2563EB] to-[#1D4ED8] py-16 text-white md:py-24">
+      <div class="container mx-auto max-w-4xl px-6 text-center">
+        <h2 class="mb-4 text-3xl font-bold md:text-4xl lg:text-5xl">
+          Passez à une gestion immobilière plus simple et plus rentable
+        </h2>
+
+        <p class="mb-8 text-lg text-white/90 md:text-xl">
+          Moins d'administratif, plus de ventes. Une seule plateforme, toute votre activité.
+        </p>
+
+        <div class="flex flex-col items-center justify-center gap-4 sm:flex-row">
+          <a
+            href="/contact?demo=true"
+            class="group flex items-center font-bold bg-white text-[#2563EB] px-6 py-3 rounded-lg shadow-xl transition-all duration-300 hover:bg-gray-100 hover:shadow-2xl"
+          >
+            Demander une démo
+            <span class="ml-2 transition-transform duration-300 group-hover:translate-x-1" set:html={icons['arrow-right']} />
+          </a>
+          <a
+            href="/contact?signup=true"
+            class="font-semibold border-2 border-white/30 bg-white/10 backdrop-blur-sm text-white px-6 py-3 rounded-lg transition-all duration-300 hover:border-white/50 hover:bg-white/20"
+          >
+            Créer mon compte
+          </a>
+        </div>
+      </div>
+    </section>
+  </div>
+</BaseLayout>

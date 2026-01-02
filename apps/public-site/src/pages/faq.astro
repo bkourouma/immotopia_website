@@ -1,0 +1,220 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getFAQData } from '../lib/api/faq';
+import { generateFAQSchema } from '../lib/structured-data';
+
+const title = 'FAQ ImmoTopia - Questions fréquentes gestion immobilière';
+const description = 'Trouvez rapidement les réponses à vos questions sur ImmoTopia : plateforme de gestion immobilière, fonctionnalités, tarifs, support.';
+
+// Fetch FAQ data
+const faqData = await getFAQData();
+
+// Generate structured data
+const questions = faqData.items.map((item) => ({
+  question: item.question,
+  answer: item.answer,
+}));
+
+const faqSchema = questions.length > 0 ? generateFAQSchema({ questions }) : null;
+---
+
+<BaseLayout title={title} description={description} currentPath="/faq" structuredData={faqSchema}>
+  <div class="bg-white">
+    <!-- Breadcrumbs -->
+    <div class="border-b border-gray-200 bg-gray-50 py-4">
+      <div class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <nav class="flex items-center gap-2 text-sm text-gray-600">
+          <a href="/" class="hover:text-[#2563EB] transition-colors">Accueil</a>
+          <span>/</span>
+          <span class="text-gray-900 font-medium">FAQ</span>
+        </nav>
+      </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="relative overflow-hidden bg-gradient-to-br from-blue-50 via-white to-sky-50 py-16 md:py-24">
+      <div class="absolute inset-0">
+        <div class="absolute top-1/2 left-1/2 h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#2563EB]/5 blur-3xl" />
+      </div>
+      <div class="container relative z-10 mx-auto max-w-7xl px-4 text-center sm:px-6 lg:px-8">
+        <div class="mb-6 inline-flex items-center gap-2 rounded-full border border-[#2563EB]/20 bg-white/80 backdrop-blur-sm px-5 py-2.5 shadow-lg">
+          <svg class="h-4 w-4 text-[#2563EB]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+          </svg>
+          <span class="text-xs font-bold uppercase tracking-wider text-[#2563EB]">
+            Questions fréquentes
+          </span>
+        </div>
+        <h1 class="mb-6 text-4xl font-extrabold leading-tight text-gray-900 sm:text-5xl md:text-6xl">
+          Vous avez des{' '}
+          <span class="relative inline-block">
+            <span class="absolute inset-0 bg-gradient-to-r from-[#2563EB] via-[#3B82F6] to-[#2563EB] bg-[length:200%_100%] bg-clip-text opacity-50 blur-sm" />
+            <span class="relative bg-gradient-to-r from-[#2563EB] via-[#1D4ED8] to-[#2563EB] bg-[length:200%_100%] bg-clip-text text-transparent">
+              questions
+            </span>
+          </span>
+          {' '}?
+        </h1>
+        <p class="mx-auto max-w-3xl text-lg text-gray-600 sm:text-xl md:text-2xl">
+          Trouvez rapidement les réponses aux questions les plus courantes sur ImmoTopia
+        </p>
+      </div>
+    </section>
+
+    <!-- FAQ Content -->
+    <section class="py-12 md:py-20">
+      <div class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        {faqData.items.length === 0 ? (
+          <div class="py-20 text-center">
+            <svg class="mx-auto h-16 w-16 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+            <p class="mt-4 text-lg text-gray-600">
+              Aucune question disponible pour le moment.
+            </p>
+          </div>
+        ) : (
+          <>
+            <!-- Category Filter -->
+            {faqData.categories.length > 0 && (
+              <div class="mb-8 flex flex-wrap justify-center gap-3">
+                <button
+                  class="category-filter active rounded-full border-2 border-[#2563EB] bg-[#2563EB] px-6 py-2.5 text-sm font-semibold text-white shadow-md transition-all hover:bg-[#1D4ED8] hover:shadow-lg"
+                  data-category="all"
+                >
+                  Toutes
+                </button>
+                {faqData.categories.map((category) => (
+                  <button
+                    class="category-filter rounded-full border-2 border-gray-300 bg-white px-6 py-2.5 text-sm font-semibold text-gray-700 transition-all hover:border-[#2563EB] hover:bg-blue-50 hover:text-[#2563EB]"
+                    data-category={category}
+                  >
+                    {category}
+                  </button>
+                ))}
+              </div>
+            )}
+
+            <!-- FAQ Grid -->
+            <div class="faq-container grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+              {faqData.items.map((item) => {
+                const category = item.category || 'Autres';
+                return (
+                  <div
+                    class="faq-item group overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm transition-all hover:border-[#2563EB]/30 hover:shadow-md"
+                    data-category={category}
+                  >
+                    <button
+                      type="button"
+                      class="faq-button flex w-full items-start justify-between gap-4 px-5 py-4 text-left transition-colors hover:bg-gray-50"
+                      aria-expanded="false"
+                      aria-controls={`faq-answer-${item.id}`}
+                    >
+                      <h3 class="flex-1 text-base font-semibold leading-snug text-gray-900 group-hover:text-[#2563EB]">
+                        {item.question}
+                      </h3>
+                      <svg
+                        class="faq-icon h-5 w-5 shrink-0 text-gray-400 transition-all duration-300 group-hover:text-[#2563EB]"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                      </svg>
+                    </button>
+                    <div
+                      id={`faq-answer-${item.id}`}
+                      class="faq-answer overflow-hidden transition-all duration-300 ease-in-out max-h-0 opacity-0"
+                      aria-hidden="true"
+                    >
+                      <div class="px-5 pb-4 text-sm leading-relaxed text-gray-600" set:html={item.answer} />
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </>
+        )}
+      </div>
+    </section>
+  </div>
+
+  <script>
+    // FAQ accordion and filter functionality
+    document.addEventListener('DOMContentLoaded', () => {
+      const faqButtons = document.querySelectorAll('.faq-button');
+      const categoryFilters = document.querySelectorAll('.category-filter');
+      const faqItems = document.querySelectorAll('.faq-item');
+
+      // Accordion functionality
+      faqButtons.forEach((button) => {
+        button.addEventListener('click', () => {
+          const faqItem = button.closest('.faq-item');
+          const faqAnswer = faqItem?.querySelector('.faq-answer');
+          const faqIcon = button.querySelector('.faq-icon');
+          const isExpanded = button.getAttribute('aria-expanded') === 'true';
+
+          // Toggle current FAQ item
+          if (isExpanded) {
+            button.setAttribute('aria-expanded', 'false');
+            faqAnswer?.setAttribute('aria-hidden', 'true');
+            faqAnswer?.classList.remove('max-h-[500px]', 'opacity-100');
+            faqAnswer?.classList.add('max-h-0', 'opacity-0');
+            faqIcon?.classList.remove('rotate-180', 'text-[#2563EB]');
+          } else {
+            button.setAttribute('aria-expanded', 'true');
+            faqAnswer?.setAttribute('aria-hidden', 'false');
+            faqAnswer?.classList.remove('max-h-0', 'opacity-0');
+            faqAnswer?.classList.add('max-h-[500px]', 'opacity-100');
+            faqIcon?.classList.add('rotate-180', 'text-[#2563EB]');
+          }
+        });
+      });
+
+      // Category filter functionality
+      categoryFilters.forEach((filter) => {
+        filter.addEventListener('click', () => {
+          const selectedCategory = filter.getAttribute('data-category');
+
+          // Update active filter button
+          categoryFilters.forEach((f) => {
+            if (f === filter) {
+              f.classList.remove('border-gray-300', 'bg-white', 'text-gray-700', 'hover:border-[#2563EB]', 'hover:bg-blue-50', 'hover:text-[#2563EB]');
+              f.classList.add('border-[#2563EB]', 'bg-[#2563EB]', 'text-white', 'hover:bg-[#1D4ED8]');
+            } else {
+              f.classList.remove('border-[#2563EB]', 'bg-[#2563EB]', 'text-white', 'hover:bg-[#1D4ED8]');
+              f.classList.add('border-gray-300', 'bg-white', 'text-gray-700', 'hover:border-[#2563EB]', 'hover:bg-blue-50', 'hover:text-[#2563EB]');
+            }
+          });
+
+          // Filter FAQ items
+          if (selectedCategory === 'all') {
+            faqItems.forEach((item) => {
+              item.classList.remove('hidden');
+            });
+          } else {
+            faqItems.forEach((item) => {
+              const itemCategory = item.getAttribute('data-category');
+              if (itemCategory === selectedCategory) {
+                item.classList.remove('hidden');
+              } else {
+                item.classList.add('hidden');
+              }
+            });
+          }
+        });
+      });
+    });
+  </script>
+
+  <style>
+    .faq-answer {
+      transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
+    }
+    
+    .faq-icon {
+      transition: transform 0.3s ease-in-out, color 0.2s ease-in-out;
+    }
+  </style>
+</BaseLayout>
+

@@ -1,0 +1,259 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const title = 'Ressources | ImmoTopia';
+const description = 'Accédez à nos ressources pour améliorer votre gestion immobilière et découvrir les meilleures pratiques du secteur.';
+
+// Resources data (embedded inline)
+const resources = [
+  {
+    title: 'Blog',
+    description: 'Articles, conseils et actualités sur la gestion immobilière professionnelle.',
+    link: '/ressources/blog',
+    gradient: 'from-blue-500 to-cyan-500',
+    bgGradient: 'from-blue-50 to-cyan-50',
+    icon: 'file-text',
+  },
+  {
+    title: 'Guides pratiques',
+    description: 'Guides téléchargeables pour optimiser votre gestion immobilière.',
+    link: '/ressources/guides',
+    gradient: 'from-emerald-500 to-teal-500',
+    bgGradient: 'from-emerald-50 to-teal-50',
+    icon: 'book-open',
+  },
+  {
+    title: 'Actualités',
+    description: 'Suivez les dernières nouveautés et mises à jour d\'ImmoTopia.',
+    link: '/ressources/actualites',
+    gradient: 'from-orange-500 to-amber-500',
+    bgGradient: 'from-orange-50 to-amber-50',
+    icon: 'bell',
+  },
+];
+
+const benefits = [
+  {
+    title: 'Conseils experts',
+    description: 'Des articles rédigés par des professionnels du secteur immobilier.',
+    icon: 'trending-up',
+  },
+  {
+    title: 'Ressources gratuites',
+    description: 'Téléchargez nos guides pratiques et outils gratuitement.',
+    icon: 'download',
+  },
+  {
+    title: 'Communauté active',
+    description: 'Rejoignez une communauté de professionnels passionnés.',
+    icon: 'users',
+  },
+];
+
+// SVG icons
+const icons = {
+  'file-text': '<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><line x1="16" x2="8" y1="13" y2="13"/><line x1="16" x2="8" y1="17" y2="17"/><line x1="10" x2="8" y1="9" y2="9"/></svg>',
+  'book-open': '<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>',
+  'bell': '<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>',
+  'trending-up': '<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>',
+  'download': '<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>',
+  'users': '<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>',
+  'sparkles': '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/><path d="M5 3v4"/><path d="M19 17v4"/><path d="M3 5h4"/><path d="M17 19h4"/></svg>',
+  'arrow-right': '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>',
+};
+---
+
+<BaseLayout title={title} description={description}>
+  <div class="bg-white">
+    <!-- Hero Section - Enhanced -->
+    <section class="relative overflow-hidden bg-gradient-to-br from-[#F0F7FF] via-[#E8F2FF] to-[#D6EBFF] py-20 text-center md:py-32">
+      <!-- Animated Background -->
+      <div class="pointer-events-none absolute inset-0 overflow-hidden">
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_20%_50%,rgba(37,99,235,0.12),transparent_50%)]"></div>
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_80%_80%,rgba(29,78,216,0.12),transparent_50%)]"></div>
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_20%,rgba(59,130,246,0.10),transparent_50%)]"></div>
+
+        <!-- Animated floating orbs -->
+        <div class="absolute top-20 left-10 h-72 w-72 rounded-full bg-[#2563EB]/15 blur-3xl animate-pulse"></div>
+        <div class="absolute bottom-20 right-10 h-96 w-96 rounded-full bg-[#1D4ED8]/15 blur-3xl animate-pulse" style="animation-delay: 1s;"></div>
+        <div class="absolute top-1/2 left-1/2 h-64 w-64 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#3B82F6]/15 blur-3xl animate-pulse" style="animation-delay: 2s;"></div>
+
+        <!-- Grid pattern overlay -->
+        <div class="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]"></div>
+      </div>
+
+      <div class="container relative z-10 mx-auto max-w-[1200px] px-6">
+        <div class="mb-6 inline-flex items-center gap-2 rounded-full border border-[#2563EB]/30 bg-white/80 backdrop-blur-md px-4 py-2 shadow-lg transition-all duration-300 hover:scale-105">
+          <span class="h-4 w-4 text-[#2563EB] animate-pulse" set:html={icons['sparkles']} />
+          <span class="text-xs font-bold uppercase tracking-wider text-[#2563EB]">
+            Ressources Gratuites
+          </span>
+        </div>
+
+        <h1 class="mb-6 text-4xl font-extrabold leading-tight text-gray-900 md:text-5xl lg:text-6xl">
+          Ressources pour{' '}
+          <span class="relative inline-block">
+            <span class="absolute inset-0 bg-gradient-to-r from-[#2563EB] via-[#3B82F6] to-[#2563EB] bg-[length:200%_100%] bg-clip-text opacity-75 blur-sm animate-gradient"></span>
+            <span class="relative bg-gradient-to-r from-[#2563EB] via-[#1D4ED8] to-[#2563EB] bg-[length:200%_100%] bg-clip-text text-transparent animate-gradient">
+              professionnels
+            </span>
+          </span>
+        </h1>
+
+        <p class="mx-auto max-w-[700px] text-lg leading-relaxed text-gray-700 md:text-xl font-medium">
+          Accédez à nos ressources pour améliorer votre gestion immobilière et découvrir les
+          meilleures pratiques du secteur.
+        </p>
+      </div>
+    </section>
+
+    <!-- Resources Grid - Enhanced -->
+    <section class="relative overflow-hidden bg-gradient-to-b from-white to-gray-50 py-20 md:py-32">
+      <div class="pointer-events-none absolute inset-0">
+        <div class="absolute top-1/4 right-0 h-[600px] w-[600px] rounded-full bg-[#2563EB]/5 blur-3xl animate-pulse" style="animation-duration: 6s;"></div>
+        <div class="absolute bottom-1/4 left-0 h-[500px] w-[500px] rounded-full bg-[#3B82F6]/5 blur-3xl animate-pulse" style="animation-duration: 7s; animation-delay: 1.5s;"></div>
+      </div>
+
+      <div class="container relative z-10 mx-auto max-w-[1200px] px-6">
+        <div class="mb-12 text-center">
+          <h2 class="mb-4 text-3xl font-bold text-gray-900 md:text-4xl lg:text-5xl">
+            Explorez nos ressources
+          </h2>
+          <p class="mx-auto max-w-[600px] text-lg text-gray-600 md:text-xl">
+            Tout ce dont vous avez besoin pour exceller dans la gestion immobilière.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 gap-8 md:grid-cols-3">
+          {resources.map((resource) => (
+            <a href={resource.link} class="block no-underline group">
+              <div class="group relative h-full overflow-hidden border-2 border-transparent bg-white rounded-lg transition-all duration-500 hover:border-[#2563EB]/20 hover:shadow-2xl hover:-translate-y-2">
+                <!-- Gradient background on hover -->
+                <div class={`absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-5 bg-gradient-to-br ${resource.bgGradient}`}></div>
+
+                <!-- Animated border gradient -->
+                <div class={`absolute -inset-0.5 rounded-lg opacity-0 blur-sm transition-opacity duration-500 group-hover:opacity-20 bg-gradient-to-r ${resource.gradient}`}></div>
+
+                <div class="relative z-10 flex h-full flex-col p-8 text-center">
+                  <!-- Icon with animated background -->
+                  <div class={`mb-6 inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br text-white shadow-lg transition-all duration-500 group-hover:scale-110 group-hover:rotate-3 group-hover:shadow-xl mx-auto ${resource.gradient}`}>
+                    <span set:html={icons[resource.icon]} />
+                  </div>
+
+                  <h3 class="mb-4 text-2xl font-semibold text-gray-900 transition-colors duration-300 group-hover:text-[#2563EB]">
+                    {resource.title}
+                  </h3>
+
+                  <p class="mb-6 flex-grow text-gray-600 leading-relaxed">
+                    {resource.description}
+                  </p>
+
+                  <div class="flex items-center justify-center p-0 text-[#2563EB] transition-all duration-300 hover:text-[#1D4ED8] font-semibold group-hover:gap-2">
+                    Découvrir
+                    <span class="ml-2 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1 inline-block" set:html={icons['arrow-right']} />
+                  </div>
+                </div>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="relative overflow-hidden bg-white py-20 md:py-32">
+      <div class="pointer-events-none absolute inset-0">
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(37,99,235,0.04),transparent_70%)]"></div>
+        <div class="absolute inset-0 bg-[linear-gradient(to_right,#80808006_1px,transparent_1px),linear-gradient(to_bottom,#80808006_1px,transparent_1px)] bg-[size:40px_40px] opacity-30"></div>
+      </div>
+
+      <div class="container relative z-10 mx-auto max-w-[1200px] px-6">
+        <div class="mb-12 text-center">
+          <h2 class="mb-4 text-3xl font-bold text-gray-900 md:text-4xl lg:text-5xl">
+            Pourquoi nos ressources ?
+          </h2>
+          <p class="mx-auto max-w-[600px] text-lg text-gray-600 md:text-xl">
+            Des contenus de qualité pour vous aider à progresser.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 gap-6 md:grid-cols-3">
+          {benefits.map((benefit) => (
+            <div class="group relative rounded-2xl border border-gray-200 bg-white p-8 transition-all duration-300 hover:border-[#2563EB]/30 hover:shadow-xl hover:-translate-y-1">
+              <div class="mb-4 inline-flex h-14 w-14 items-center justify-center rounded-xl bg-gradient-to-br from-[#2563EB] to-[#1D4ED8] text-white shadow-lg transition-all duration-300 group-hover:scale-110 group-hover:rotate-3">
+                <span set:html={icons[benefit.icon]} />
+              </div>
+              <h3 class="mb-3 text-xl font-semibold text-gray-900">
+                {benefit.title}
+              </h3>
+              <p class="text-gray-600 leading-relaxed">
+                {benefit.description}
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Final CTA Section -->
+    <section class="relative overflow-hidden bg-gradient-to-br from-[#2563EB] via-indigo-600 to-[#1D4ED8] py-20 text-white md:py-32">
+      <div class="pointer-events-none absolute inset-0">
+        <div class="absolute top-0 left-1/4 h-96 w-96 rounded-full bg-white/10 blur-3xl animate-pulse"></div>
+        <div class="absolute bottom-0 right-1/4 h-96 w-96 rounded-full bg-white/10 blur-3xl animate-pulse" style="animation-delay: 1s;"></div>
+        <div class="absolute top-1/2 left-1/2 h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-white/5 blur-3xl"></div>
+      </div>
+
+      <div class="container relative z-10 mx-auto max-w-4xl px-6 text-center">
+        <div class="mb-4 inline-block rounded-full border border-white/20 bg-white/10 px-4 py-1.5 backdrop-blur-sm">
+          <span class="text-xs font-semibold uppercase tracking-wider text-white">
+            Commencez dès aujourd'hui
+          </span>
+        </div>
+        <h2 class="mb-6 text-3xl font-bold md:text-4xl lg:text-5xl">
+          Prêt à améliorer votre{' '}
+          <span class="relative inline-block">
+            <span class="absolute inset-0 bg-white/20 blur-sm"></span>
+            <span class="relative">gestion immobilière</span>
+          </span>
+          {' '}?
+        </h2>
+
+        <p class="mb-8 text-lg text-white/90 md:text-xl">
+          Explorez nos ressources gratuites et découvrez comment ImmoTopia peut transformer
+          votre façon de travailler.
+        </p>
+
+        <div class="flex flex-col items-center justify-center gap-4 sm:flex-row">
+          <a
+            href="/ressources/guides"
+            class="group inline-flex items-center justify-center rounded-lg bg-white text-[#2563EB] shadow-xl transition-all duration-300 hover:scale-105 hover:bg-gray-100 hover:shadow-2xl px-6 py-3 text-base font-bold no-underline"
+          >
+            Voir les guides
+            <span class="ml-2 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1 inline-block" set:html={icons['arrow-right']} />
+          </a>
+          <a
+            href="/ressources/blog"
+            class="group inline-flex items-center justify-center rounded-lg border-2 border-white/30 bg-white/10 backdrop-blur-sm text-white transition-all duration-300 hover:scale-105 hover:border-white/50 hover:bg-white/20 px-6 py-3 text-base font-semibold no-underline"
+          >
+            Lire le blog
+          </a>
+        </div>
+      </div>
+    </section>
+  </div>
+</BaseLayout>
+
+<style>
+  @keyframes gradient {
+    0%, 100% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+  }
+
+  .animate-gradient {
+    animation: gradient 3s ease infinite;
+  }
+</style>

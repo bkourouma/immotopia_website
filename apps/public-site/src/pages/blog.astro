@@ -1,0 +1,139 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getAllBlogPosts } from '../lib/api/blog';
+
+const title = 'Blog | ImmoTopia - Articles et Conseils Immobiliers';
+const description = 'Découvrez nos articles sur la gestion immobilière, le CRM immobilier, la gestion locative et les meilleures pratiques pour les professionnels de l\'immobilier.';
+
+// Fetch blog posts
+const allPosts = await getAllBlogPosts();
+
+// Simple pagination (9 posts per page)
+const POSTS_PER_PAGE = 9;
+const url = Astro.url;
+const currentPage = parseInt(url.searchParams.get('page') || '1', 10);
+const totalPages = Math.ceil(allPosts.length / POSTS_PER_PAGE);
+const startIndex = (currentPage - 1) * POSTS_PER_PAGE;
+const endIndex = startIndex + POSTS_PER_PAGE;
+const paginatedPosts = allPosts.slice(startIndex, endIndex);
+---
+
+<BaseLayout title={title} description={description} currentPath="/blog">
+  <div class="bg-white">
+    <!-- Breadcrumbs -->
+    <div class="border-b border-gray-200 bg-gray-50 py-4">
+      <div class="container mx-auto max-w-7xl px-6">
+        <nav class="flex items-center gap-2 text-sm text-gray-600">
+          <a href="/" class="hover:text-[#2563EB]">Accueil</a>
+          <span>/</span>
+          <span class="text-gray-900">Blog</span>
+        </nav>
+      </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="border-b border-gray-200 bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 py-16">
+      <div class="container mx-auto max-w-7xl px-6">
+        <div class="text-center">
+          <h1 class="mb-4 bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 bg-clip-text text-4xl font-extrabold text-transparent md:text-5xl">
+            Blog ImmoTopia
+          </h1>
+          <p class="text-lg text-gray-700 md:text-xl">
+            Articles, conseils et actualités sur la gestion immobilière professionnelle
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Articles List -->
+    <section class="py-12 md:py-20">
+      <div class="container mx-auto max-w-7xl px-6">
+        {allPosts.length === 0 ? (
+          <div class="py-20 text-center">
+            <p class="text-lg text-gray-600">
+              Aucun article disponible pour le moment.
+            </p>
+          </div>
+        ) : (
+          <>
+            <div class="mb-8 flex items-center justify-between">
+              <p class="text-sm text-gray-600">
+                {allPosts.length} article{allPosts.length > 1 ? 's' : ''} disponible{allPosts.length > 1 ? 's' : ''}
+                {totalPages > 1 && ` • Page ${currentPage} sur ${totalPages}`}
+              </p>
+            </div>
+            <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+              {paginatedPosts.map((post) => (
+                <article class="border border-gray-200 rounded-lg overflow-hidden hover:shadow-lg transition-shadow duration-200">
+                  {post.coverImage && (
+                    <img 
+                      src={post.coverImage} 
+                      alt={post.title} 
+                      class="w-full h-48 object-cover"
+                      loading="lazy"
+                      decoding="async"
+                      width="400"
+                      height="192"
+                    />
+                  )}
+                  <div class="p-6">
+                    {post.category && (
+                      <span class="inline-block mb-2 text-xs font-semibold text-[#2563EB] uppercase tracking-wider">
+                        {post.category}
+                      </span>
+                    )}
+                    <h2 class="mb-2 text-xl font-bold text-gray-900">
+                      <a href={`/blog/${post.slug}`} class="hover:text-[#2563EB] transition-colors">
+                        {post.title}
+                      </a>
+                    </h2>
+                    {post.description && (
+                      <p class="mb-4 text-gray-600 line-clamp-3">
+                        {post.description}
+                      </p>
+                    )}
+                    <div class="flex items-center justify-between text-sm text-gray-500">
+                      <span>{new Date(post.date).toLocaleDateString('fr-FR')}</span>
+                      {post.readingTime > 0 && (
+                        <span>{post.readingTime} min de lecture</span>
+                      )}
+                    </div>
+                  </div>
+                </article>
+              ))}
+            </div>
+            
+            <!-- Pagination -->
+            {totalPages > 1 && (
+              <div class="mt-12 flex justify-center gap-2">
+                {currentPage > 1 && (
+                  <a href={`/blog?page=${currentPage - 1}`} class="px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50">
+                    Précédent
+                  </a>
+                )}
+                {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
+                  <a
+                    href={`/blog?page=${page}`}
+                    class={`px-4 py-2 border rounded-lg ${
+                      page === currentPage
+                        ? 'bg-[#2563EB] text-white border-[#2563EB]'
+                        : 'border-gray-300 hover:bg-gray-50'
+                    }`}
+                  >
+                    {page}
+                  </a>
+                ))}
+                {currentPage < totalPages && (
+                  <a href={`/blog?page=${currentPage + 1}`} class="px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50">
+                    Suivant
+                  </a>
+                )}
+              </div>
+            )}
+          </>
+        )}
+      </div>
+    </section>
+  </div>
+</BaseLayout>
+

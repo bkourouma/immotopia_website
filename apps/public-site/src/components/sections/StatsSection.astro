@@ -1,0 +1,63 @@
+---
+interface Props {
+  class?: string;
+}
+
+const { class: className } = Astro.props;
+
+interface Stat {
+  value: string;
+  label: string;
+}
+
+const stats: Stat[] = [
+  {
+    value: '500+',
+    label: 'Professionnels actifs',
+  },
+  {
+    value: '10K+',
+    label: 'Biens gérés',
+  },
+  {
+    value: '99.9%',
+    label: 'Disponibilité',
+  },
+  {
+    value: '24/7',
+    label: 'Support disponible',
+  },
+];
+---
+
+<section class:list={['relative overflow-hidden py-16 md:py-24 bg-gradient-to-r from-primary to-indigo-600', className]}>
+  <!-- Background decoration -->
+  <div class="pointer-events-none absolute inset-0">
+    <div class="absolute top-0 left-0 h-full w-full bg-[radial-gradient(circle_at_30%_50%,rgba(255,255,255,0.1),transparent_50%)]" />
+    <div class="absolute bottom-0 right-0 h-full w-full bg-[radial-gradient(circle_at_70%_50%,rgba(255,255,255,0.1),transparent_50%)]" />
+  </div>
+
+  <div class="container relative z-10 mx-auto max-w-7xl px-6">
+    <div class="grid grid-cols-2 gap-8 md:grid-cols-4 md:gap-12">
+      {stats.map((stat) => (
+        <div class="group text-center">
+          <div class="mb-2 text-3xl font-extrabold leading-none text-white transition-all duration-300 group-hover:scale-110 md:text-4xl lg:text-5xl">
+            {stat.value}
+          </div>
+          <div class="text-sm font-medium text-white/90 md:text-base">
+            {stat.label}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .from-primary {
+    --tw-gradient-from: #2563EB;
+  }
+  .to-indigo-600 {
+    --tw-gradient-to: #4F46E5;
+  }
+</style>

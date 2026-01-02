@@ -1,0 +1,167 @@
+---
+interface Props {
+  class?: string;
+  showTitle?: boolean;
+}
+
+const { class: className, showTitle = true } = Astro.props;
+
+interface Persona {
+  id: string;
+  name: string;
+  description: string;
+  metrics: {
+    label: string;
+    value: string;
+  }[];
+  slug: string;
+  gradient: string;
+}
+
+const personas: Persona[] = [
+  {
+    id: 'agences-immobilieres',
+    name: 'Agences immobilières',
+    description: 'Centralisez toute votre activité sur une seule plateforme et augmentez votre productivité de 40%.',
+    metrics: [
+      { label: 'Productivité', value: '+40%' },
+      { label: 'Gain de temps', value: '-60%' },
+    ],
+    slug: '/pour-qui/agences-immobilieres',
+    gradient: 'from-blue-500 to-cyan-500',
+  },
+  {
+    id: 'gestionnaires',
+    name: 'Gestionnaires locatifs',
+    description: 'Simplifiez votre gestion locative avec l\'automatisation des paiements et du suivi.',
+    metrics: [
+      { label: 'Paiements', value: '100%' },
+      { label: 'Impaiements', value: '-40%' },
+    ],
+    slug: '/pour-qui/gestionnaires',
+    gradient: 'from-emerald-500 to-teal-500',
+  },
+];
+---
+
+<section class:list={['relative overflow-hidden py-16 md:py-24 lg:py-32', className]}>
+  <!-- Enhanced Background with animated gradients -->
+  <div class="pointer-events-none absolute inset-0">
+    <div class="absolute inset-0 bg-gradient-to-br from-white via-[#F8FAFF] to-[#F0F7FF]" />
+    <div class="absolute top-1/4 right-0 h-[700px] w-[700px] rounded-full bg-[#2563EB]/8 blur-3xl animate-pulse" style="animation-duration: 5s;" />
+    <div class="absolute bottom-1/4 left-0 h-[600px] w-[600px] rounded-full bg-[#3B82F6]/6 blur-3xl animate-pulse" style="animation-duration: 6s; animation-delay: 1.5s;" />
+    <div class="absolute top-1/2 left-1/2 h-[500px] w-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#1D4ED8]/5 blur-3xl animate-pulse" style="animation-duration: 7s; animation-delay: 3s;" />
+
+    <!-- Grid pattern overlay -->
+    <div class="absolute inset-0 bg-[linear-gradient(to_right,#80808006_1px,transparent_1px),linear-gradient(to_bottom,#80808006_1px,transparent_1px)] bg-[size:40px_40px] opacity-30" />
+  </div>
+
+  <div class="container relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    {showTitle && (
+      <div class="mb-12 md:mb-16 text-center">
+        <div class="mb-6 inline-flex items-center gap-2 rounded-full border border-[#2563EB]/20 bg-white/80 backdrop-blur-sm px-5 py-2.5 shadow-lg transition-all duration-300 hover:scale-105 hover:border-[#2563EB]/30 hover:shadow-xl">
+          <svg class="h-4 w-4 text-[#2563EB] animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
+          </svg>
+          <span class="text-xs font-bold uppercase tracking-wider text-[#2563EB]">
+            Solutions par profil
+          </span>
+        </div>
+        <h2 class="mb-6 text-3xl font-extrabold leading-tight text-gray-900 sm:text-4xl md:text-5xl lg:text-6xl">
+          Une solution adaptée aux{' '}
+          <span class="relative inline-block">
+            <span class="absolute inset-0 bg-gradient-to-r from-[#2563EB] via-[#3B82F6] to-[#2563EB] bg-[length:200%_100%] bg-clip-text opacity-50 blur-sm" />
+            <span class="relative bg-gradient-to-r from-[#2563EB] via-[#1D4ED8] to-[#2563EB] bg-[length:200%_100%] bg-clip-text text-transparent">
+              agences, gestionnaires et syndics
+            </span>
+          </span>
+        </h2>
+        <p class="mx-auto max-w-3xl text-base leading-relaxed text-gray-700 sm:text-lg md:text-xl">
+          ImmoTopia s'adapte aux besoins spécifiques des agences immobilières, gestionnaires locatifs et syndics pour optimiser votre activité
+        </p>
+      </div>
+    )}
+
+    <!-- Enhanced Grid with hover effects -->
+    <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
+      {personas.map((persona) => (
+        <div class="group relative">
+          <div class="absolute -inset-0.5 rounded-2xl bg-gradient-to-r from-[#2563EB]/20 via-[#3B82F6]/20 to-[#2563EB]/20 opacity-0 blur transition-opacity duration-300 group-hover:opacity-100" />
+          <div class="relative">
+            <a href={persona.slug} class="block no-underline group">
+              <div class="group relative h-full overflow-hidden border-2 border-transparent bg-white rounded-lg transition-all duration-500 hover:border-[#2563EB]/20 hover:shadow-2xl hover:-translate-y-2">
+                <!-- Gradient background on hover -->
+                <div class:list={[
+                  "absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-5",
+                  `bg-gradient-to-br ${persona.gradient}`
+                ]} />
+
+                <!-- Animated border gradient on hover -->
+                <div class:list={[
+                  "absolute -inset-0.5 rounded-lg opacity-0 blur-sm transition-opacity duration-500 group-hover:opacity-20",
+                  `bg-gradient-to-r ${persona.gradient}`
+                ]} />
+
+                <div class="relative z-10 flex h-full flex-col p-6">
+                  <!-- Icon with animated background -->
+                  <div class:list={[
+                    "mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br text-white shadow-lg transition-all duration-500 group-hover:scale-110 group-hover:rotate-3 group-hover:shadow-xl",
+                    persona.gradient
+                  ]}>
+                    <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/>
+                    </svg>
+                  </div>
+
+                  <h3 class="mb-3 text-xl font-semibold text-gray-900 transition-colors duration-300 group-hover:text-[#2563EB]">
+                    {persona.name}
+                  </h3>
+
+                  <p class="mb-6 flex-grow text-gray-600 leading-relaxed">
+                    {persona.description}
+                  </p>
+
+                  <div class="mb-6 grid grid-cols-2 gap-4 border-t border-gray-200 pt-4">
+                    {persona.metrics.map((metric) => (
+                      <div class="text-center transition-all duration-300 group-hover:scale-105">
+                        <div class:list={[
+                          "text-2xl font-bold transition-all duration-200 group-hover:scale-110",
+                          `bg-gradient-to-r ${persona.gradient} bg-clip-text text-transparent`
+                        ]}>
+                          {metric.value}
+                        </div>
+                        <div class="text-xs font-medium text-gray-600 mt-1">{metric.label}</div>
+                      </div>
+                    ))}
+                  </div>
+
+                  <div class="w-full flex items-center justify-center text-[#2563EB] transition-all duration-300 group-hover:text-[#1D4ED8] group-hover:gap-2 font-semibold">
+                    <span class="flex items-center">
+                      En savoir plus
+                      <svg class="ml-2 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                      </svg>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Enhanced CTA -->
+    <div class="mt-16 md:mt-20 text-center">
+      <a
+        href="/pour-qui"
+        class="group relative inline-flex items-center justify-center overflow-hidden border-2 border-[#2563EB]/30 bg-white/90 backdrop-blur-sm px-8 py-6 text-base font-semibold shadow-lg transition-all duration-300 hover:scale-110 hover:border-[#2563EB] hover:bg-white hover:shadow-2xl rounded-lg"
+      >
+        Voir toutes les solutions
+        <svg class="ml-2 h-5 w-5 transition-transform duration-300 group-hover:translate-x-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>

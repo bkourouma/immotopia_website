@@ -21,7 +21,7 @@ export const ScrollReveal: React.FC<ScrollRevealProps> = ({
 
   return (
     <div
-      ref={elementRef as React.RefObject<HTMLDivElement>}
+      ref={elementRef as React.MutableRefObject<HTMLDivElement | null>}
       className={[
         styles.scrollReveal,
         styles[`scrollReveal--${direction}`],

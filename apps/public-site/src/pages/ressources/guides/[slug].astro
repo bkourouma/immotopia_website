@@ -1,0 +1,76 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { getAllGuides, getGuide } from '../../../lib/api/guides';
+import '../../../styles/markdown.css';
+
+const { slug } = Astro.params;
+
+if (!slug) {
+  return Astro.redirect('/ressources/guides');
+}
+
+const guide = await getGuide(slug);
+
+if (!guide) {
+  return Astro.redirect('/ressources/guides');
+}
+
+const title = guide.seoTitle || guide.title;
+const description = guide.seoDescription || guide.description;
+---
+
+<BaseLayout title={`${title} | Guides ImmoTopia`} description={description} currentPath={`/ressources/guides/${slug}`}>
+  <article class="bg-white">
+    <!-- Breadcrumbs -->
+    <div class="border-b border-gray-200 bg-gray-50 py-4">
+      <div class="container mx-auto max-w-7xl px-6">
+        <nav class="flex items-center gap-2 text-sm text-gray-600">
+          <a href="/" class="hover:text-[#2563EB]">Accueil</a>
+          <span>/</span>
+          <a href="/ressources" class="hover:text-[#2563EB]">Ressources</a>
+          <span>/</span>
+          <a href="/ressources/guides" class="hover:text-[#2563EB]">Guides</a>
+          <span>/</span>
+          <span class="text-gray-900">{guide.title}</span>
+        </nav>
+      </div>
+    </div>
+
+    <!-- Guide Header -->
+    <header class="border-b border-gray-200 bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 py-16">
+      <div class="container mx-auto max-w-4xl px-6">
+        <h1 class="mb-4 text-4xl font-extrabold text-gray-900 md:text-5xl">
+          {guide.title}
+        </h1>
+        {guide.description && (
+          <p class="mb-6 text-xl text-gray-700">
+            {guide.description}
+          </p>
+        )}
+        {guide.pdfUrl && (
+          <a
+            href={guide.pdfUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 rounded-lg bg-[#2563EB] px-6 py-3 text-white font-semibold hover:bg-[#1D4ED8] transition-colors"
+          >
+            <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+            </svg>
+            Télécharger le PDF
+          </a>
+        )}
+      </div>
+    </header>
+
+    <!-- Guide Content -->
+    <div class="py-12 md:py-20">
+      <div class="container mx-auto max-w-4xl px-6">
+        <div class="prose prose-lg max-w-none">
+          <div set:html={guide.content} />
+        </div>
+      </div>
+    </div>
+  </article>
+</BaseLayout>
+
