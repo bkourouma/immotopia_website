@@ -362,3 +362,4 @@ ls -la apps/web/.next/BUILD_ID
 4. Configure log rotation for PM2 logs
 5. Set up monitoring/alerting (optional)
 
+

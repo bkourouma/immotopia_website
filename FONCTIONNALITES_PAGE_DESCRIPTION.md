@@ -623,3 +623,4 @@ La page utilise `trackCTAClick` pour tracker les clics sur les boutons d'action 
 
 La page `/fonctionnalites` est une page marketing complète et moderne qui présente les 7 fonctionnalités principales d'ImmoTopia de manière organisée et visuellement attrayante. Elle utilise des animations subtiles, un design responsive, et des appels à l'action clairs pour guider les visiteurs vers l'engagement. La structure modulaire permet une maintenance facile et l'ajout de nouvelles fonctionnalités.
 
+

@@ -237,3 +237,4 @@ Multiple Next.js apps running can cause CPU contention:
 4. **Use PM2 ecosystem files** for production deployments
 5. **Test locally first** before configuring Nginx
 
+

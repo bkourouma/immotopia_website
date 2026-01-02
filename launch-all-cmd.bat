@@ -1,2 +1,2 @@
 @echo off
-start cmd /k "cd /d "D:\APP\VERSIONS ANGE\ImmoTopia Website" && pnpm dev"
+start cmd /k "cd /d "%~dp0" && pnpm dev"
