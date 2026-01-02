@@ -5,7 +5,7 @@
 import { useState } from 'react';
 
 export default function SettingsPage() {
-  const [isSaving, setIsSaving] = useState(false);
+  // const [isSaving, setIsSaving] = useState(false); // TODO: Implement save functionality
 
   return (
     <div className="space-y-6">

@@ -15,6 +15,7 @@ export interface BlogPost {
   content: string;
   status: 'draft' | 'published';
   publishedAt?: string;
+  author?: string;
   category?: { id: string; name: string };
   tags?: Array<{ id: string; name: string }>;
   coverImage?: { id: string; url: string };
@@ -83,6 +84,7 @@ export interface Guide {
   status: 'draft' | 'published';
   publishedAt?: string;
   downloadablePdfMediaId?: string;
+  gatedDownload?: boolean;
   seoTitle?: string;
   seoDescription?: string;
 }

@@ -5,7 +5,7 @@
 import { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { getGuide, createGuide, updateGuide } from '../../lib/api/admin';
-import type { Guide } from '../../lib/api/admin';
+// import type { Guide } from '../../lib/api/admin'; // Unused
 import MarkdownEditor from '../../components/editor/MarkdownEditor';
 import { ArrowLeft, Save } from 'lucide-react';
 

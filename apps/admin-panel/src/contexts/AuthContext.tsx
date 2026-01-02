@@ -2,7 +2,8 @@
  * Authentication Context for Admin Panel
  */
 
-import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
+import { createContext, useContext, useState, useEffect } from 'react';
+import type { ReactNode } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { getCurrentUser, logout as apiLogout } from '../lib/api/auth';
 import type { User } from '../lib/api/auth';

@@ -5,7 +5,7 @@
 import { useEffect, useState, useRef } from 'react';
 import { getMedia } from '../../lib/api/admin';
 import type { Media } from '../../lib/api/admin';
-import { Upload, Image as ImageIcon, File, X } from 'lucide-react';
+import { Upload, Image as ImageIcon, File } from 'lucide-react';
 
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3002';
 

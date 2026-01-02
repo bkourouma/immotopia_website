@@ -5,7 +5,7 @@
 import { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { getFAQItem, createFAQItem, updateFAQItem } from '../../lib/api/admin';
-import type { FAQItem } from '../../lib/api/admin';
+// import type { FAQItem } from '../../lib/api/admin'; // Unused
 import { ArrowLeft, Save } from 'lucide-react';
 
 export default function FAQEditPage() {
