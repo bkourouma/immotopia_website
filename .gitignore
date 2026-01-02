@@ -2,6 +2,7 @@
 node_modules/
 .pnp
 .pnp.js
+.pnpm-store/
 
 # Build outputs
 dist/
@@ -9,6 +10,9 @@ build/
 .next/
 out/
 *.tsbuildinfo
+.nuxt/
+.output/
+.astro/
 
 # Environment variables
 .env
@@ -16,6 +20,7 @@ out/
 .env.development.local
 .env.test.local
 .env.production.local
+.env*.local
 
 # IDE
 .vscode/
@@ -23,10 +28,12 @@ out/
 *.swp
 *.swo
 *~
+.cursor/
 
 # OS
 .DS_Store
 Thumbs.db
+desktop.ini
 
 # Logs
 logs/
@@ -36,10 +43,14 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
+*.log.*
 
 # Testing
 coverage/
 .nyc_output/
+.nyc_output/
+test-results/
+playwright-report/
 
 # Prisma
 prisma/migrations/
@@ -48,4 +59,75 @@ prisma/migrations/
 tmp/
 temp/
 *.tmp
+*.bak
+*.backup
+*.old
+
+# Old development scripts and batch files
+000*.bat
+001*.bat
+*-quick-start.bat
+start-debug.bat
+test-simple.bat
+launch-all-cmd.bat
+
+# Old/temporary deployment scripts
+RESTART_BUILD_FIXED.sh
+CHECK_BUILD_STATUS.sh
+verify-deployment.sh
+nginx-site-config.conf
+
+# PM2 (keep ecosystem.config.js if needed, but exclude runtime files)
+.pm2/
+
+# Cache directories
+.cache/
+.parcel-cache/
+.turbo/
+.eslintcache
+.stylelintcache
+
+# Temporary documentation files (development notes)
+*_STATUS.md
+*_DEBUG*.md
+*_FIX*.md
+*_SUMMARY.md
+*_GUIDE.md
+*_QUICK*.md
+*_TROUBLESHOOT*.md
+DEPLOYMENT_*.md
+DEBUG_*.md
+CHECK_*.md
+COPY_*.md
+GET_*.md
+README_*.md
+MIGRATION-*.md
+VALIDATION.md
+PROGRESS*.md
+PHASE_*.md
+QUICKSTART.md
+QUICK_START.md
+SETUP.md
+TESTING.md
+TROUBLESHOOTING.md
+
+# Keep essential docs
+!README.md
+!docs/
+!specs/
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+
+# Backup files
+*.backup
+*~
+.#*
+
+# Lock files (optional - uncomment if you want to ignore)
+# pnpm-lock.yaml
+# package-lock.json
+# yarn.lock
 
