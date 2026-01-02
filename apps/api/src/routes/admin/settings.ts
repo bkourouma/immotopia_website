@@ -166,7 +166,7 @@ export async function settingsRoutes(fastify: FastifyInstance) {
     if (!verifyCsrfHeader(request, reply)) return;
 
     const { path } = request.params as { path: string };
-    const body = PageSeoUpdateSchema.safeParse({ ...request.body, path });
+    const body = PageSeoUpdateSchema.safeParse({ ...(request.body as any), path });
 
     if (!body.success) {
       reply.code(400).send({ error: 'Invalid input', details: body.error.errors });

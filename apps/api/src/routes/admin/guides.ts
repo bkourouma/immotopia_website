@@ -179,7 +179,7 @@ export async function guidesRoutes(fastify: FastifyInstance) {
     if (!verifyCsrfHeader(request, reply)) return;
 
     const { id } = request.params as { id: string };
-    const body = GuideUpdateSchema.safeParse({ ...request.body, id });
+    const body = GuideUpdateSchema.safeParse({ ...(request.body as any), id });
     if (!body.success) {
       reply.code(400).send({ error: 'Invalid input', details: body.error.errors });
       return;
@@ -317,7 +317,7 @@ export async function guidesRoutes(fastify: FastifyInstance) {
    */
   fastify.post('/api/guides/:id/capture-lead', async (request, reply) => {
     const { id } = request.params as { id: string };
-    const body = GuideLeadCaptureSchema.safeParse({ ...request.body, guideId: id });
+    const body = GuideLeadCaptureSchema.safeParse({ ...(request.body as any), guideId: id });
 
     if (!body.success) {
       reply.code(400).send({ error: 'Invalid input', details: body.error.errors });

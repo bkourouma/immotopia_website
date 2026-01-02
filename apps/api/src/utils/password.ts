@@ -1,3 +1,4 @@
+// @ts-ignore - bcryptjs has its own types
 import bcrypt from 'bcryptjs';
 
 const SALT_ROUNDS = 12;

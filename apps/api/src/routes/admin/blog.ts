@@ -232,7 +232,7 @@ export async function blogRoutes(fastify: FastifyInstance) {
     if (!verifyCsrfHeader(request, reply)) return;
 
     const { id } = request.params as { id: string };
-    const body = BlogPostUpdateSchema.safeParse({ ...request.body, id });
+    const body = BlogPostUpdateSchema.safeParse({ ...(request.body as any), id });
     if (!body.success) {
       reply.code(400).send({ error: 'Invalid input', details: body.error.errors });
       return;
