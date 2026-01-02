@@ -15,6 +15,8 @@ module.exports = {
         NODE_ENV: 'production',
         PORT: 3002,
         HOST: '0.0.0.0',
+        // Database and other env vars should be loaded from apps/api/.env
+        // PM2 will automatically load .env from the cwd, but we need to ensure it's available
       },
       error_file: './logs/api-error.log',
       out_file: './logs/api-out.log',
