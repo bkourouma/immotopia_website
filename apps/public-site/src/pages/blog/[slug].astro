@@ -3,15 +3,32 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getAllBlogPosts, getBlogPost } from '../../lib/api/blog';
 import '../../styles/markdown.css';
 
-const { slug } = Astro.params;
-
-if (!slug) {
-  return Astro.redirect('/blog');
+export async function getStaticPaths() {
+  try {
+    const posts = await getAllBlogPosts();
+    
+    // Return all blog post slugs for static generation
+    return posts.map((post) => ({
+      params: { slug: post.slug },
+      props: { post },
+    }));
+  } catch (error) {
+    console.warn('[getStaticPaths] Failed to fetch blog posts:', error);
+    // Return empty array - pages will be generated on-demand or via ISR
+    return [];
+  }
 }
 
-const post = await getBlogPost(slug);
+const { slug } = Astro.params;
+const { post: preloadedPost } = Astro.props;
 
-if (!post) {
+// Try to use preloaded post, otherwise fetch
+let post = preloadedPost;
+if (!post && slug) {
+  post = await getBlogPost(slug);
+}
+
+if (!post || !slug) {
   return Astro.redirect('/blog');
 }
 

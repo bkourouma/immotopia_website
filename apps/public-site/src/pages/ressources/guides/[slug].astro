@@ -3,15 +3,32 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import { getAllGuides, getGuide } from '../../../lib/api/guides';
 import '../../../styles/markdown.css';
 
-const { slug } = Astro.params;
-
-if (!slug) {
-  return Astro.redirect('/ressources/guides');
+export async function getStaticPaths() {
+  try {
+    const guides = await getAllGuides();
+    
+    // Return all guide slugs for static generation
+    return guides.map((guide) => ({
+      params: { slug: guide.slug },
+      props: { guide },
+    }));
+  } catch (error) {
+    console.warn('[getStaticPaths] Failed to fetch guides:', error);
+    // Return empty array - pages will be generated on-demand or via ISR
+    return [];
+  }
 }
 
-const guide = await getGuide(slug);
+const { slug } = Astro.params;
+const { guide: preloadedGuide } = Astro.props;
 
-if (!guide) {
+// Try to use preloaded guide, otherwise fetch
+let guide = preloadedGuide;
+if (!guide && slug) {
+  guide = await getGuide(slug);
+}
+
+if (!guide || !slug) {
   return Astro.redirect('/ressources/guides');
 }
 
