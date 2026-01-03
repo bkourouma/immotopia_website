@@ -3,7 +3,7 @@
  * Génère les données structurées JSON-LD pour le SEO
  */
 
-const siteUrl = import.meta.env.PUBLIC_APP_URL || 'https://immotopia.com';
+const siteUrl = import.meta.env.PUBLIC_APP_URL || 'https://immotopia.immo-annonces.fr';
 const siteName = import.meta.env.PUBLIC_SITE_NAME || 'ImmoTopia';
 
 export interface OrganizationSchema {

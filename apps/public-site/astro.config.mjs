@@ -7,7 +7,7 @@ import sitemap from '@astrojs/sitemap';
 // https://astro.build/config
 export default defineConfig({
   output: 'static',
-  site: import.meta.env.PUBLIC_APP_URL || 'https://immotopia.com',
+  site: import.meta.env.PUBLIC_APP_URL || 'https://immotopia.immo-annonces.fr',
   integrations: [
     tailwind({
       applyBaseStyles: true,

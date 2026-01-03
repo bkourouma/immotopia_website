@@ -3,7 +3,7 @@
  */
 
 export function GET() {
-  const siteUrl = import.meta.env.PUBLIC_APP_URL || 'https://immotopia.com';
+  const siteUrl = import.meta.env.PUBLIC_APP_URL || 'https://immotopia.immo-annonces.fr';
   
   const robots = `User-agent: *
 Allow: /

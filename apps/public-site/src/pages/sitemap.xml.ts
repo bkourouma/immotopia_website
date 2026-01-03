@@ -8,7 +8,7 @@ import { getAllGuides } from '../lib/api/guides';
 import { getAllFeatureSlugs } from '../lib/features-content';
 
 export async function GET() {
-  const siteUrl = import.meta.env.PUBLIC_APP_URL || 'https://immotopia.com';
+  const siteUrl = import.meta.env.PUBLIC_APP_URL || 'https://immotopia.immo-annonces.fr';
   
   // Fetch content
   const [blogPosts, guides, featureSlugs] = await Promise.all([
