@@ -1,15 +1,14 @@
 import { MetadataRoute } from 'next';
 import { getAllBlogPosts } from '@/lib/content/blog';
 import { getAllGuides } from '@/lib/content/guides';
-
-const siteUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://immotopia.com';
+import { SITE_URL } from '@/lib/seo';
 
 /**
  * Génère automatiquement le sitemap.xml pour le site
  * Inclut les articles de blog et guides publiés depuis la DB
  */
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = siteUrl.replace(/\/$/, '');
+  const baseUrl = SITE_URL.replace(/\/$/, '');
   
   // Récupérer tous les articles de blog publiés (depuis DB ou fichiers) pour avoir les dates
   const blogPosts = await getAllBlogPosts();

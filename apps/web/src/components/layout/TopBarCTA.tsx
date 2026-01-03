@@ -36,11 +36,11 @@ export default function TopBarCTA({ className }: TopBarCTAProps) {
         <div className="hidden md:flex items-center gap-6 text-sm">
           {/* Phone */}
           <Link
-            href="tel:+2250123456789"
+            href="tel:+2250101510136"
             className="flex items-center gap-2 text-white/90 hover:text-white transition-colors"
           >
             <Phone className="h-4 w-4" />
-            <span>+225 01 23 45 67 89</span>
+            <span>+225 01 01 51 01 36</span>
           </Link>
 
           {/* Assistance */}
@@ -65,7 +65,7 @@ export default function TopBarCTA({ className }: TopBarCTAProps) {
         {/* Mobile: Icônes seulement */}
         <div className="md:hidden flex items-center gap-4">
           <Link
-            href="tel:+2250123456789"
+            href="tel:+2250101510136"
             className="text-white/90 hover:text-white transition-colors"
             aria-label="Appeler"
           >

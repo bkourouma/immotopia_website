@@ -22,11 +22,11 @@ export default function InfoBar({ className }: InfoBarProps) {
       <div className="mx-auto max-w-[1440px] flex items-center justify-end gap-6 text-sm">
         {/* Phone */}
         <Link
-          href="tel:+2250123456789"
+          href="tel:+2250101510136"
           className="flex items-center gap-2 text-gray-700 hover:text-[#2563EB] transition-colors"
         >
           <Phone className="h-4 w-4" />
-          <span className="hidden sm:inline">+225 01 23 45 67 89</span>
+          <span className="hidden sm:inline">+225 01 01 51 01 36</span>
           <span className="sm:hidden">Appeler</span>
         </Link>
 

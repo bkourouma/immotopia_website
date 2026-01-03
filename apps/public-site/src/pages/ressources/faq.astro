@@ -1,13 +1,32 @@
 ---
-// Redirect /faq to /ressources/faq for consistency
-return Astro.redirect('/ressources/faq', 301);
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getFAQData } from '../../lib/api/faq';
+import { generateFAQSchema } from '../../lib/structured-data';
+
+const title = 'FAQ ImmoTopia - Questions fréquentes gestion immobilière';
+const description = 'Trouvez rapidement les réponses à vos questions sur ImmoTopia : plateforme de gestion immobilière, fonctionnalités, tarifs, support.';
+
+// Fetch FAQ data
+const faqData = await getFAQData();
+
+// Generate structured data
+const questions = faqData.items.map((item) => ({
+  question: item.question,
+  answer: item.answer,
+}));
+
+const faqSchema = questions.length > 0 ? generateFAQSchema({ questions }) : null;
 ---
+
+<BaseLayout title={title} description={description} currentPath="/ressources/faq" structuredData={faqSchema}>
   <div class="bg-white">
     <!-- Breadcrumbs -->
     <div class="border-b border-gray-200 bg-gray-50 py-4">
       <div class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <nav class="flex items-center gap-2 text-sm text-gray-600">
           <a href="/" class="hover:text-[#2563EB] transition-colors">Accueil</a>
+          <span>/</span>
+          <a href="/ressources" class="hover:text-[#2563EB] transition-colors">Ressources</a>
           <span>/</span>
           <span class="text-gray-900 font-medium">FAQ</span>
         </nav>

@@ -70,3 +70,5 @@ Toutes les routes `/admin/*` (sauf `/admin/login`) sont protégées par :
 
 L'UI admin Next.js doit maintenant être créée pour utiliser ces routes API.
 
+
+

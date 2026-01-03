@@ -47,8 +47,8 @@ ADMIN_PANEL_URL=https://immotopia.com/admin
 ```env
 PUBLIC_API_URL=https://immotopia.com/api
 PUBLIC_APP_URL=https://immotopia.com
-PUBLIC_CONTACT_EMAIL=contact@immotopia.com
-PUBLIC_CONTACT_PHONE=+225 01 23 45 67 89
+PUBLIC_CONTACT_EMAIL=agent@immo-annonces.fr
+PUBLIC_CONTACT_PHONE=+225 01 01 51 01 36
 ```
 
 **Admin Panel** (`apps/admin-panel/.env`):
@@ -223,4 +223,6 @@ pm2 logs immotopia-api
 - Vérifier les permissions: `sudo chown -R www-data:www-data /var/www/immotopia`
 - Vérifier les logs Nginx
 - Vérifier que les builds sont à jour
+
+
 

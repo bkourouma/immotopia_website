@@ -2,8 +2,8 @@
 // Footer component for Astro - simplified version
 const currentYear = new Date().getFullYear();
 
-const contactEmail = import.meta.env.PUBLIC_CONTACT_EMAIL || 'contact@immotopia.com';
-const contactPhone = import.meta.env.PUBLIC_CONTACT_PHONE || '+33 X XX XX XX XX';
+const contactEmail = import.meta.env.PUBLIC_CONTACT_EMAIL || 'agent@immo-annonces.fr';
+const contactPhone = import.meta.env.PUBLIC_CONTACT_PHONE || '+225 01 01 51 01 36';
 
 const facebookUrl = import.meta.env.PUBLIC_FACEBOOK_URL;
 const linkedinUrl = import.meta.env.PUBLIC_LINKEDIN_URL;
@@ -19,7 +19,7 @@ const navigationLinks = [
 const resourcesLinks = [
   { href: '/blog', label: 'Blog' },
   { href: '/ressources/guides', label: 'Guides' },
-  { href: '/faq', label: 'FAQ' },
+  { href: '/ressources/faq', label: 'FAQ' },
 ];
 ---
 
@@ -168,4 +168,6 @@ const resourcesLinks = [
     </div>
   </div>
 </footer>
+
+
 

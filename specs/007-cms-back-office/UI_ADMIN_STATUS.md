@@ -53,3 +53,5 @@
 - Les composants utilisent shadcn/ui déjà configuré
 - Le design suit les patterns existants du site
 
+
+

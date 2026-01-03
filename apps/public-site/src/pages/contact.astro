@@ -9,8 +9,8 @@ const url = Astro.url;
 const isDemo = url.searchParams.get('demo') === 'true' || url.searchParams.get('signup') === 'true';
 const persona = url.searchParams.get('persona') || undefined;
 
-const contactEmail = import.meta.env.PUBLIC_CONTACT_EMAIL || 'contact@immotopia.com';
-const contactPhone = import.meta.env.PUBLIC_CONTACT_PHONE || '+225 07 07 66 41 05';
+const contactEmail = import.meta.env.PUBLIC_CONTACT_EMAIL || 'agent@immo-annonces.fr';
+const contactPhone = import.meta.env.PUBLIC_CONTACT_PHONE || '+225 01 01 51 01 36';
 ---
 
 <BaseLayout title={title} description={description} currentPath="/contact">

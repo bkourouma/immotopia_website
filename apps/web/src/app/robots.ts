@@ -1,12 +1,11 @@
 import { MetadataRoute } from 'next';
-
-const siteUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://immotopia.com';
+import { SITE_URL } from '@/lib/seo';
 
 /**
  * Génère automatiquement le robots.txt pour le site
  */
 export default function robots(): MetadataRoute.Robots {
-  const baseUrl = siteUrl.replace(/\/$/, '');
+  const baseUrl = SITE_URL.replace(/\/$/, '');
 
   return {
     rules: {

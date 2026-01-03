@@ -52,3 +52,5 @@ export const PageSeoResponseSchema = z.object({
 
 export type PageSeoResponse = z.infer<typeof PageSeoResponseSchema>;
 
+
+

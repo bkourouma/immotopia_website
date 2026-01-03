@@ -184,3 +184,5 @@ Avant de considérer le CMS comme complet :
 
 **Le code de base est solide. Les patterns sont établis. Il reste principalement de la répétition du pattern pour les routes restantes et la création de l'UI admin.**
 
+
+

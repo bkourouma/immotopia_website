@@ -13,8 +13,8 @@ import {
 } from 'lucide-react';
 import { ScrollReveal } from '@monorepo/ui';
 
-const contactEmail = process.env.NEXT_PUBLIC_CONTACT_EMAIL || 'contact@immotopia.com';
-const contactPhone = process.env.NEXT_PUBLIC_CONTACT_PHONE || '+33 X XX XX XX XX';
+const contactEmail = process.env.NEXT_PUBLIC_CONTACT_EMAIL || 'agent@immo-annonces.fr';
+const contactPhone = process.env.NEXT_PUBLIC_CONTACT_PHONE || '+225 01 01 51 01 36';
 
 const facebookUrl = process.env.NEXT_PUBLIC_FACEBOOK_URL;
 const linkedinUrl = process.env.NEXT_PUBLIC_LINKEDIN_URL;

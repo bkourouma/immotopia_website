@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { getSEOKeywordsForPage, generateMetaKeywords } from './seo/keywords';
 
+/**
+ * URL de base du site (utilisée pour les canonical, sitemap, etc.)
+ * Priorité: NEXT_PUBLIC_SITE_URL > NEXT_PUBLIC_APP_URL > fallback production
+ */
+export const SITE_URL =
+  process.env.NEXT_PUBLIC_SITE_URL ||
+  process.env.NEXT_PUBLIC_APP_URL ||
+  'https://immotopia.immo-annonces.fr';
+
 export interface SEOConfig {
   title: string;
   description: string;
@@ -32,7 +41,7 @@ export function generateMetadata(config: SEOConfig, pathname?: string): Metadata
   } = config;
 
   const siteName = process.env.NEXT_PUBLIC_SITE_NAME || 'ImmoTopia';
-  const siteUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://immotopia.com';
+  const siteUrl = SITE_URL;
   
   // Limiter le title à 60 caractères (recommandation SEO)
   const truncatedTitle = title.length > 60 ? title.substring(0, 57) + '...' : title;
@@ -54,6 +63,13 @@ export function generateMetadata(config: SEOConfig, pathname?: string): Metadata
     keywords = metaKeywordsString ? metaKeywordsString.split(', ') : keywords;
   }
 
+  // Construire l'URL canonique complète
+  const fullCanonicalUrl = canonicalUrl
+    ? canonicalUrl.startsWith('http')
+      ? canonicalUrl
+      : `${siteUrl}${canonicalUrl.startsWith('/') ? canonicalUrl : `/${canonicalUrl}`}`
+    : undefined;
+
   return {
     title: fullTitle,
     description: truncatedDescription,
@@ -67,7 +83,7 @@ export function generateMetadata(config: SEOConfig, pathname?: string): Metadata
       },
     },
     alternates: {
-      canonical: canonicalUrl || undefined,
+      canonical: fullCanonicalUrl,
     },
     openGraph: {
       type: 'website',

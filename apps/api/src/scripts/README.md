@@ -56,3 +56,5 @@ published: true  # optionnel, par défaut true
 - Les catégories et tags sont créés avec `locale: 'fr'` par défaut
 - Les slugs des catégories/tags sont générés automatiquement (lowercase, tirets)
 
+
+

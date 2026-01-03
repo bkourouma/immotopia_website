@@ -816,3 +816,5 @@ pm2 restart ecosystem.config.js --only immotopia-website
 **Statut** : 📝 Draft  
 **Prochaine étape** : Générer le plan d'implémentation avec `/speckit.plan`
 
+
+

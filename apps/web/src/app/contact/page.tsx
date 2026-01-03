@@ -18,8 +18,8 @@ const contactInfo = [
   {
     icon: Phone,
     label: 'Téléphone',
-    value: '+225 07 07 66 41 05',
-    link: 'tel:+2250707664105',
+    value: '+225 01 01 51 01 36',
+    link: 'tel:+2250101510136',
     gradient: 'from-emerald-500 to-teal-500',
   },
   {

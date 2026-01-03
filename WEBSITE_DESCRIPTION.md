@@ -247,7 +247,7 @@ Atteindre un taux de conversion visite → lead ≥ 5% en présentant une soluti
   - Message de confirmation
 - Informations de contact :
   - Email : agent@immo-annonces.fr
-  - Téléphone : +225 07 07 66 41 05
+  - Téléphone : +225 01 01 51 01 36
   - Support : Réponse sous 24h
 - Avantages : Réponse rapide, Accompagnement personnalisé
 - CTA : Demander une démo / Contacter le support
@@ -722,4 +722,6 @@ Le site ImmoTopia est une plateforme vitrine complète et professionnelle conçu
 
 *Document généré le 28 décembre 2025*
 *Basé sur l'analyse complète du codebase ImmoTopia Website*
+
+
 

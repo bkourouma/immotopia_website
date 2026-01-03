@@ -69,3 +69,5 @@ pnpm prisma migrate deploy
 
 Vérifiez `DATABASE_URL` dans `apps/api/.env`
 
+
+

@@ -32,7 +32,7 @@ export function generateOrganizationSchema(config?: Partial<OrganizationSchema>)
       'Plateforme SaaS complète pour la gestion immobilière professionnelle',
     contactPoint: config?.contactPoint || {
       contactType: 'Customer Service',
-      email: 'contact@immotopia.com',
+      email: 'agent@immo-annonces.fr',
     },
     sameAs: config?.sameAs || [],
   };

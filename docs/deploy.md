@@ -208,3 +208,5 @@ Les médias sont stockés dans `apps/web/public/uploads/`. Sauvegardez ce dossie
 
 4. **Backups** : Automatisez les sauvegardes DB et médias
 
+
+

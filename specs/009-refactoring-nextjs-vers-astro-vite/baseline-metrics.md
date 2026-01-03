@@ -207,3 +207,5 @@
 3. **Comparer** avant/après pour valider les objectifs
 4. **Optimiser** si nécessaire après migration
 
+
+

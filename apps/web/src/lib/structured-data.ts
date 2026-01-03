@@ -3,7 +3,9 @@
  * Génère les données structurées JSON-LD pour le SEO
  */
 
-const siteUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://immotopia.com';
+import { SITE_URL } from './seo';
+
+const siteUrl = SITE_URL;
 const siteName = process.env.NEXT_PUBLIC_SITE_NAME || 'ImmoTopia';
 
 export interface OrganizationSchema {
@@ -32,7 +34,7 @@ export function generateOrganizationSchema(config?: Partial<OrganizationSchema>)
       'Plateforme SaaS complète pour la gestion immobilière professionnelle',
     contactPoint: config?.contactPoint || {
       contactType: 'Customer Service',
-      email: 'contact@immotopia.com',
+      email: 'agent@immo-annonces.fr',
     },
     sameAs: config?.sameAs || [],
   };
@@ -230,6 +232,50 @@ export function generateHowToSchema(config: HowToSchema): object {
 
   if (config.totalTime) {
     schema.totalTime = config.totalTime;
+  }
+
+  return schema;
+}
+
+export interface SoftwareApplicationSchema {
+  name: string;
+  description: string;
+  applicationCategory: string;
+  operatingSystem: string;
+  offers?: Array<{
+    '@type': string;
+    name: string;
+    price: string;
+    priceCurrency: string;
+    availability?: string;
+    url?: string;
+  }>;
+  aggregateRating?: {
+    '@type': string;
+    ratingValue: string;
+    ratingCount: string;
+  };
+}
+
+/**
+ * Génère le Schema.org pour SoftwareApplication
+ */
+export function generateSoftwareApplicationSchema(config: SoftwareApplicationSchema): object {
+  const schema: any = {
+    '@context': 'https://schema.org',
+    '@type': 'SoftwareApplication',
+    name: config.name,
+    description: config.description,
+    applicationCategory: config.applicationCategory,
+    operatingSystem: config.operatingSystem,
+  };
+
+  if (config.offers && config.offers.length > 0) {
+    schema.offers = config.offers;
+  }
+
+  if (config.aggregateRating) {
+    schema.aggregateRating = config.aggregateRating;
   }
 
   return schema;

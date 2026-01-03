@@ -6,11 +6,12 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import PricingCard, { type PricingPlan } from '@/components/sections/PricingCard';
 import StructuredData from '@/components/seo/StructuredData';
-import { generateFAQSchema } from '@/lib/structured-data';
+import { generateFAQSchema, generateSoftwareApplicationSchema } from '@/lib/structured-data';
 import { trackCTAClick } from '@/lib/analytics';
 import { trackClarity } from '@/lib/clarity';
 import { cn } from '@/lib/utils';
 import FAQItem from '@/components/faq/FAQItem';
+import { SITE_URL } from '@/lib/seo';
 
 // Plans SaaS
 const plans: PricingPlan[] = [
@@ -121,9 +122,44 @@ const faqData = [
 export default function TarifsPage() {
   const faqSchema = generateFAQSchema({ questions: faqData });
 
+  // SoftwareApplication schema avec les offres
+  const softwareSchema = generateSoftwareApplicationSchema({
+    name: 'ImmoTopia',
+    description:
+      'Plateforme SaaS complète pour la gestion immobilière professionnelle. Gestion des biens, CRM immobilier, gestion locative, syndic de copropriété, promotion immobilière et paiements Mobile Money intégrés.',
+    applicationCategory: 'BusinessApplication',
+    operatingSystem: 'Web',
+    offers: [
+      {
+        '@type': 'Offer',
+        name: 'Basic',
+        price: '35000',
+        priceCurrency: 'XOF',
+        availability: 'https://schema.org/InStock',
+        url: `${SITE_URL}/contact?signup=true&plan=basic`,
+      },
+      {
+        '@type': 'Offer',
+        name: 'Pro',
+        price: '50000',
+        priceCurrency: 'XOF',
+        availability: 'https://schema.org/InStock',
+        url: `${SITE_URL}/contact?signup=true&plan=pro`,
+      },
+      {
+        '@type': 'Offer',
+        name: 'Elite',
+        price: '100000',
+        priceCurrency: 'XOF',
+        availability: 'https://schema.org/InStock',
+        url: `${SITE_URL}/contact?signup=true&plan=elite`,
+      },
+    ],
+  });
+
   return (
     <>
-      <StructuredData data={faqSchema} id="tarifs-faq" />
+      <StructuredData data={[faqSchema, softwareSchema]} id="tarifs-schemas" />
       <div className="bg-white">
         {/* Hero Section */}
         <section className="relative overflow-hidden bg-gradient-to-br from-blue-50 via-sky-50 to-blue-100 py-20 text-center md:py-32">

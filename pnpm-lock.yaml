@@ -146,6 +146,9 @@ importers:
       jsonwebtoken:
         specifier: ^9.0.0
         version: 9.0.3
+      nodemailer:
+        specifier: ^6.10.1
+        version: 6.10.1
       reading-time:
         specifier: ^1.5.0
         version: 1.5.0
@@ -165,6 +168,9 @@ importers:
       '@types/node':
         specifier: ^20.11.0
         version: 20.19.27
+      '@types/nodemailer':
+        specifier: ^6.4.21
+        version: 6.4.21
       '@typescript-eslint/eslint-plugin':
         specifier: ^6.19.0
         version: 6.21.0(@typescript-eslint/parser@6.21.0(eslint@8.57.1)(typescript@5.9.3))(eslint@8.57.1)(typescript@5.9.3)
@@ -8112,7 +8118,7 @@ snapshots:
   '@types/nodemailer@6.4.21':
     dependencies:
       '@aws-sdk/client-ses': 3.958.0
-      '@types/node': 20.19.27
+      '@types/node': 24.10.4
     transitivePeerDependencies:
       - aws-crt
 
