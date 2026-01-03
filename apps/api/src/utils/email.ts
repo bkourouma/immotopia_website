@@ -5,7 +5,8 @@
 
 import nodemailer from 'nodemailer';
 
-const EMAIL_FROM = process.env.SMTP_FROM || process.env.EMAIL_FROM || 'noreply@immotopia.com';
+const EMAIL_FROM_RAW = process.env.SMTP_FROM || process.env.EMAIL_FROM || 'noreply@immotopia.com';
+const EMAIL_FROM = `ImmoTopia <${EMAIL_FROM_RAW}>`;
 const EMAIL_TO = process.env.EMAIL_TO || 'agent@immo-annonces.fr';
 
 interface ContactFormData {
