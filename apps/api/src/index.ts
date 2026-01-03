@@ -12,6 +12,7 @@ import { csrfRoutes } from './routes/admin/csrf.js';
 import { publicBlogRoutes } from './routes/public/blog.js';
 import { publicGuidesRoutes } from './routes/public/guides.js';
 import { publicFaqRoutes } from './routes/public/faq.js';
+import { publicContactRoutes } from './routes/public/contact.js';
 
 const fastify = Fastify({
   logger: true,
@@ -72,6 +73,7 @@ const start = async () => {
     await fastify.register(publicBlogRoutes);
     await fastify.register(publicGuidesRoutes);
     await fastify.register(publicFaqRoutes);
+    await fastify.register(publicContactRoutes);
 
     const port = Number(process.env.PORT) || 3002;
     const host = process.env.HOST || '0.0.0.0';

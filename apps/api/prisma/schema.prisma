@@ -305,6 +305,22 @@ model Revision {
   @@map("revisions")
 }
 
+// Contact/Demo Requests
+model ContactRequest {
+  id        String   @id @default(uuid())
+  name      String
+  email     String
+  phone     String?
+  company   String?
+  message   String?
+  persona   String?
+  createdAt DateTime @default(now())
+
+  @@index([email])
+  @@index([createdAt])
+  @@map("contact_requests")
+}
+
 // Audit Log
 model AuditLog {
   id          String   @id @default(uuid())
