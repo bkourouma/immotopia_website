@@ -16,11 +16,26 @@ const ContactFormSchema = z.object({
 
 export async function publicContactRoutes(fastify: FastifyInstance) {
   /**
+   * POST /contact
+   * Submit contact/demo request form (alias for /demo-request)
+   * Note: Nginx strips /api prefix, so this is registered as /contact
+   */
+  fastify.post('/contact', async (request, reply) => {
+    // Reuse the same handler logic
+    return handleContactRequest(fastify, request, reply);
+  });
+
+  /**
    * POST /demo-request
    * Submit contact/demo request form
    * Note: Nginx strips /api prefix, so this is registered as /demo-request
    */
   fastify.post('/demo-request', async (request, reply) => {
+    return handleContactRequest(fastify, request, reply);
+  });
+}
+
+async function handleContactRequest(fastify: FastifyInstance, request: any, reply: any) {
     try {
       const body = request.body as any;
       
@@ -63,6 +78,5 @@ export async function publicContactRoutes(fastify: FastifyInstance) {
         error: 'Failed to process contact request',
       });
     }
-  });
 }
 
