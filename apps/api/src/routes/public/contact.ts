@@ -1,7 +1,7 @@
 import { FastifyInstance } from 'fastify';
 import { PrismaClient } from '@prisma/client';
 import { z } from 'zod';
-import { sendContactNotificationEmail, isEmailConfigured } from '../../utils/email.js';
+import { sendContactNotificationEmail, sendCustomerConfirmationEmail, isEmailConfigured } from '../../utils/email.js';
 
 const prisma = new PrismaClient();
 
@@ -64,26 +64,40 @@ async function handleContactRequest(fastify: FastifyInstance, request: any, repl
         },
       });
 
-      // Send email notification (non-blocking)
+      // Prepare email data
+      const emailData = {
+        name: data.name,
+        email: data.email,
+        phone: data.phone,
+        company: data.company,
+        message: data.message,
+        persona: data.persona,
+      };
+
+      // Send emails (non-blocking)
       let emailSent = false;
+      let customerEmailSent = false;
+      
       if (isEmailConfigured()) {
+        // Send notification email to admin
         try {
-          await sendContactNotificationEmail({
-            name: data.name,
-            email: data.email,
-            phone: data.phone,
-            company: data.company,
-            message: data.message,
-            persona: data.persona,
-          });
+          await sendContactNotificationEmail(emailData);
           emailSent = true;
           fastify.log.info('✅ Contact notification email sent successfully');
         } catch (emailError: any) {
-          // Log error but don't fail the request
           fastify.log.error({ err: emailError }, '❌ Failed to send contact notification email');
         }
+
+        // Send confirmation/marketing email to customer
+        try {
+          await sendCustomerConfirmationEmail(emailData);
+          customerEmailSent = true;
+          fastify.log.info('✅ Customer confirmation email sent successfully');
+        } catch (emailError: any) {
+          fastify.log.error({ err: emailError }, '❌ Failed to send customer confirmation email');
+        }
       } else {
-        fastify.log.warn('⚠️ Email not configured, skipping email notification');
+        fastify.log.warn('⚠️ Email not configured, skipping email notifications');
       }
 
       // TODO: Integrate with CRM (HubSpot/Pipedrive)
@@ -93,6 +107,7 @@ async function handleContactRequest(fastify: FastifyInstance, request: any, repl
         message: 'Contact request submitted successfully',
         id: contactRequest.id,
         emailSent,
+        customerEmailSent,
       });
     } catch (error) {
       fastify.log.error(error);
