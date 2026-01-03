@@ -68,12 +68,19 @@ async function handleContactRequest(fastify: FastifyInstance, request: any, repl
       let emailSent = false;
       if (isEmailConfigured()) {
         try {
-          await sendContactNotificationEmail(data);
+          await sendContactNotificationEmail({
+            name: data.name,
+            email: data.email,
+            phone: data.phone,
+            company: data.company,
+            message: data.message,
+            persona: data.persona,
+          });
           emailSent = true;
           fastify.log.info('✅ Contact notification email sent successfully');
-        } catch (emailError) {
+        } catch (emailError: any) {
           // Log error but don't fail the request
-          fastify.log.error('❌ Failed to send contact notification email:', emailError);
+          fastify.log.error({ err: emailError }, '❌ Failed to send contact notification email');
         }
       } else {
         fastify.log.warn('⚠️ Email not configured, skipping email notification');
