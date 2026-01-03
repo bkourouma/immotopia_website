@@ -138,6 +138,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: 'monthly' as const,
       priority: 0.7,
     },
+    {
+      url: `${baseUrl}/gestion-locative-cote-divoire`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.9,
+    },
   ];
 
   // Ajouter toutes les routes d'articles de blog avec leurs vraies dates
