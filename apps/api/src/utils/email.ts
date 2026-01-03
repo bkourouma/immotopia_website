@@ -196,9 +196,9 @@ function generateCustomerEmailTemplate(data: ContactFormData): string {
           <p style="font-size: 14px; color: #666; margin-top: 30px; padding-top: 20px; border-top: 1px solid #e5e5e5;">
             Si vous avez des questions urgentes, n'hésitez pas à nous contacter directement :
             <br>
-            📧 <a href="mailto:contact@immotopia.com" style="color: #2563EB;">contact@immotopia.com</a>
+            📧 <a href="mailto:agent@immo-annonces.fr" style="color: #2563EB;">agent@immo-annonces.fr</a>
             <br>
-            📞 <a href="tel:+2250707664105" style="color: #2563EB;">+225 07 07 66 41 05</a>
+            📞 <a href="tel:+2250101510136" style="color: #2563EB;">+225 01 01 51 01 36</a>
           </p>
         </div>
         
@@ -239,8 +239,8 @@ En attendant, découvrez ImmoTopia :
 Découvrez nos fonctionnalités : https://immotopia.immo-annonces.fr/fonctionnalites
 
 Si vous avez des questions urgentes, n'hésitez pas à nous contacter :
-Email : contact@immotopia.com
-Téléphone : +225 07 07 66 41 05
+Email : agent@immo-annonces.fr
+Téléphone : +225 01 01 51 01 36
 
 © ${new Date().getFullYear()} ImmoTopia. Tous droits réservés.
   `.trim();
