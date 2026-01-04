@@ -76,7 +76,7 @@ export const seoKeywords: Record<string, PageSEOConfig> = {
   },
 
   // Pages métiers - Promoteurs
-  '/pour-qui/promoteurs': {
+  '/pour-qui/promoteurs-immobiliers': {
     primaryKeywords: [
       'plateforme promoteur immobilier',
       'logiciel promotion immobilière',
@@ -92,7 +92,7 @@ export const seoKeywords: Record<string, PageSEOConfig> = {
   },
 
   // Pages métiers - Gestionnaires
-  '/pour-qui/gestionnaires': {
+  '/pour-qui/gestionnaires-locatifs': {
     primaryKeywords: [
       'logiciel gestion locative',
       'gestion locative professionnelle',
@@ -108,7 +108,7 @@ export const seoKeywords: Record<string, PageSEOConfig> = {
   },
 
   // Pages métiers - Propriétaires
-  '/pour-qui/proprietaires': {
+  '/pour-qui/proprietaires-bailleurs': {
     primaryKeywords: [
       'gestion location particuliers',
       'logiciel propriétaire bailleur',

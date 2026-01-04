@@ -8,7 +8,9 @@
       "Bash(findstr:*)",
       "Bash(curl:*)",
       "Bash(pnpm add:*)",
-      "Bash(timeout /t:*)"
+      "Bash(timeout /t:*)",
+      "Bash(node check-links.js:*)",
+      "Bash(dir /s /b \"D:\\\\APP\\\\VERSIONS_ANGE\\\\ImmoTopiaWebsite\\\\*.astro\")"
     ]
   }
 }

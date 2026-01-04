@@ -1,0 +1,247 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { generateFAQSchema } from '../lib/structured-data';
+
+const title = 'Logiciel syndic de copropriété en Côte d\'Ivoire | Module ERP ImmoTopia';
+const description = 'Syndic de copropriété en Côte d\'Ivoire : gestion des lots et tantièmes, AG, appels de charges, impayés, paiements Mobile Money et espace copropriétaires, dans l\'ERP ImmoTopia.';
+
+const faqItems = [
+  {
+    question: 'Peut-on gérer plusieurs résidences et immeubles dans ImmoTopia ?',
+    answer: 'Oui, ImmoTopia permet de gérer un portefeuille illimité de résidences et immeubles depuis une seule interface. Chaque résidence peut avoir ses propres lots, copropriétaires, budgets et règles de gestion, tout en bénéficiant d\'un reporting consolidé au niveau du syndic.',
+  },
+  {
+    question: 'Comment paramétrer les lots et tantièmes dans le module Syndic ?',
+    answer: 'Le paramétrage des lots et tantièmes se fait depuis l\'interface de gestion de l\'immeuble. Vous pouvez créer chaque lot, lui attribuer un ou plusieurs copropriétaires, définir ses tantièmes (millièmes de copropriété) et ses charges spécifiques. Le système calcule automatiquement les répartitions lors des appels de fonds.',
+  },
+  {
+    question: 'Peut-on faire des appels de charges mensuels et exceptionnels ?',
+    answer: 'Absolument. ImmoTopia permet de créer des appels de charges récurrents (mensuels, trimestriels, annuels) avec automatisation complète, ainsi que des appels exceptionnels pour travaux, charges spéciales ou provisions. Chaque appel peut être personnalisé par lot et génère automatiquement les notifications aux copropriétaires.',
+  },
+  {
+    question: 'Les copropriétaires ont-ils un espace sécurisé pour consulter leurs documents ?',
+    answer: 'Oui, chaque copropriétaire dispose d\'un espace personnel sécurisé accessible par identifiants. Il peut y consulter ses appels de charges, ses soldes, ses reçus de paiement, les PV d\'assemblées générales, les documents de copropriété et recevoir des notifications personnalisées.',
+  },
+  {
+    question: 'Peut-on payer les charges via Mobile Money (Orange Money, MTN Mobile Money) ?',
+    answer: 'Oui, ImmoTopia intègre les paiements Mobile Money pour le règlement des charges de copropriété. Les copropriétaires peuvent payer via Orange Money, MTN Mobile Money, Moov Money ou Wave directement depuis leur espace, avec référencement automatique et génération immédiate du reçu.',
+  },
+];
+
+const faqSchema = generateFAQSchema({ questions: faqItems });
+---
+
+<BaseLayout 
+  title={title} 
+  description={description} 
+  currentPath="/logiciel-syndic-copropriete-cote-divoire"
+  structuredData={faqSchema}
+>
+  <main class="bg-white">
+    <article class="max-w-5xl mx-auto px-4 py-8 md:py-12">
+      <!-- Hero Section -->
+      <section class="bg-gradient-to-br from-blue-50 to-indigo-100 py-20 px-4">
+        <div class="max-w-7xl mx-auto text-center">
+          <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+            Logiciel de syndic de copropriété en Côte d&apos;Ivoire
+          </h1>
+          <p class="text-xl md:text-2xl text-gray-700 mb-8 max-w-3xl mx-auto">
+            Module copropriété intégré à un ERP immobilier complet pour gérer vos résidences, lots, charges et assemblées générales avec traçabilité et transparence. Découvrez{' '}
+            <a href="/pour-qui/syndics" class="font-semibold text-[#2563EB] hover:underline">
+              notre solution pour les syndics
+            </a>
+            {' '}et{' '}
+            <a href="/fonctionnalites" class="font-semibold text-[#2563EB] hover:underline">
+              toutes nos fonctionnalités syndic
+            </a>
+            .
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <a
+              href="/contact?demo=true"
+              class="bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors inline-flex items-center justify-center"
+            >
+              Demander une démo
+              <svg class="ml-2 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+              </svg>
+            </a>
+            <a
+              href="/logiciel-immobilier-cote-divoire"
+              class="bg-white text-blue-600 border-2 border-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-blue-50 transition-colors inline-flex items-center justify-center"
+            >
+              Découvrir l&apos;ERP ImmoTopia
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section Problèmes -->
+      <section class="py-16 px-4 bg-white">
+        <div class="max-w-7xl mx-auto">
+          <h2 class="text-3xl font-bold text-gray-900 mb-8">
+            Les défis de la gestion de copropriété en Côte d&apos;Ivoire
+          </h2>
+          <div class="prose prose-lg max-w-none">
+            <p class="text-gray-700 mb-6">
+              La gestion d&apos;une copropriété en Côte d&apos;Ivoire, particulièrement à Abidjan où les résidences se multiplient, présente des défis récurrents pour les syndics et administrateurs de biens.
+            </p>
+            <div class="grid md:grid-cols-2 gap-6 mb-8">
+              <div class="bg-red-50 border-l-4 border-red-500 p-6 rounded">
+                <h3 class="font-semibold text-gray-900 mb-3">Gestion dispersée des lots et tantièmes</h3>
+                <p class="text-gray-700">
+                  Les informations sur les lots, copropriétaires et tantièmes sont souvent éparpillées entre Excel, documents papier et conversations WhatsApp, rendant difficile le suivi précis et la mise à jour en temps réel.
+                </p>
+              </div>
+              <div class="bg-red-50 border-l-4 border-red-500 p-6 rounded">
+                <h3 class="font-semibold text-gray-900 mb-3">Suivi manuel des appels de charges</h3>
+                <p class="text-gray-700">
+                  Les appels de charges sont généralement gérés manuellement, avec des risques d&apos;erreurs de calcul, d&apos;oublis de relances et de difficultés à tracer l&apos;historique des paiements et impayés.
+                </p>
+              </div>
+              <div class="bg-red-50 border-l-4 border-red-500 p-6 rounded">
+                <h3 class="font-semibold text-gray-900 mb-3">Impayés et relances non structurées</h3>
+                <p class="text-gray-700">
+                  Sans système centralisé, les relances d&apos;impayés se font de manière disparate, sans traçabilité claire des échéances, des montants dus et des actions entreprises, compliquant le recouvrement.
+                </p>
+              </div>
+              <div class="bg-red-50 border-l-4 border-red-500 p-6 rounded">
+                <h3 class="font-semibold text-gray-900 mb-3">Organisation complexe des Assemblées Générales</h3>
+                <p class="text-gray-700">
+                  L&apos;organisation des AG, de la convocation à la rédaction du PV en passant par la gestion des votes, reste chronophage et sujette à des erreurs, avec des difficultés à archiver et retrouver les documents.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section Solutions -->
+      <section class="py-16 px-4 bg-gray-50">
+        <div class="max-w-7xl mx-auto">
+          <h2 class="text-3xl font-bold text-gray-900 mb-8">
+            Comment ImmoTopia transforme la gestion de copropriété
+          </h2>
+          <div class="prose prose-lg max-w-none">
+            <p class="text-gray-700 mb-8">
+              Le module Syndic ImmoTopia automatise les processus, centralise les données et offre une transparence totale aux copropriétaires.
+            </p>
+            <div class="grid md:grid-cols-2 gap-8">
+              <div class="bg-white p-6 rounded-lg shadow-sm">
+                <h3 class="text-xl font-semibold text-gray-900 mb-4 flex items-center">
+                  <span class="bg-blue-100 text-blue-600 rounded-full w-10 h-10 flex items-center justify-center mr-3">1</span>
+                  Centraliser
+                </h3>
+                <p class="text-gray-700">
+                  Toutes les données de la copropriété sont centralisées : immeubles, résidences, lots, copropriétaires, tantièmes, budgets, appels de fonds, historique des paiements. Une seule source de vérité accessible en temps réel.
+                </p>
+              </div>
+              <div class="bg-white p-6 rounded-lg shadow-sm">
+                <h3 class="text-xl font-semibold text-gray-900 mb-4 flex items-center">
+                  <span class="bg-blue-100 text-blue-600 rounded-full w-10 h-10 flex items-center justify-center mr-3">2</span>
+                  Automatiser
+                </h3>
+                <p class="text-gray-700">
+                  Les appels de charges récurrents sont générés automatiquement, les relances d&apos;impayés sont programmées, les reçus et états de compte sont créés sans intervention manuelle, réduisant les erreurs et le temps administratif.
+                </p>
+              </div>
+              <div class="bg-white p-6 rounded-lg shadow-sm">
+                <h3 class="text-xl font-semibold text-gray-900 mb-4 flex items-center">
+                  <span class="bg-blue-100 text-blue-600 rounded-full w-10 h-10 flex items-center justify-center mr-3">3</span>
+                  Transparence
+                </h3>
+                <p class="text-gray-700">
+                  Chaque copropriétaire dispose d&apos;un espace personnel pour consulter ses appels de charges, ses soldes, ses reçus et les documents de copropriété. La communication est facilitée et la confiance renforcée.
+                </p>
+              </div>
+              <div class="bg-white p-6 rounded-lg shadow-sm">
+                <h3 class="text-xl font-semibold text-gray-900 mb-4 flex items-center">
+                  <span class="bg-blue-100 text-blue-600 rounded-full w-10 h-10 flex items-center justify-center mr-3">4</span>
+                  Paiements Mobile Money
+                </h3>
+                <p class="text-gray-700">
+                  Intégration native avec Orange Money, MTN Money, Moov Money et Wave pour faciliter les paiements des charges et automatiser le rapprochement.
+                </p>
+              </div>
+            </div>
+
+            <div class="mt-10 rounded-lg border-2 border-indigo-200 bg-indigo-50 p-6">
+              <h3 class="mb-4 text-xl font-semibold text-gray-900">
+                💡 Ressources complémentaires
+              </h3>
+              <p class="mb-4 text-gray-700">
+                Pour optimiser votre gestion de copropriété :
+              </p>
+              <ul class="space-y-2 text-gray-700">
+                <li>
+                  • <a href="/guides/gerer-copropriete-cote-divoire" class="font-semibold text-[#6366F1] hover:underline">
+                    Guide : Gérer une copropriété en Côte d&apos;Ivoire
+                  </a>
+                </li>
+                <li>
+                  • <a href="/modeles/appel-de-charges-copropriete-cote-divoire" class="font-semibold text-[#6366F1] hover:underline">
+                    Modèle d&apos;appel de charges de copropriété
+                  </a>
+                </li>
+                <li>
+                  • <a href="/maintenance-immobiliere-ticketing-cote-divoire" class="font-semibold text-[#6366F1] hover:underline">
+                    Système de ticketing pour la maintenance
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- FAQ Section -->
+      <section class="py-16 px-4 bg-white">
+        <div class="max-w-7xl mx-auto">
+          <h2 class="text-3xl font-bold text-gray-900 mb-8">
+            Questions fréquentes
+          </h2>
+          <div class="space-y-6">
+            {faqItems.map((item) => (
+              <div class="border-l-4 border-indigo-600 pl-6">
+                <h3 class="text-xl font-semibold text-gray-900 mb-2">
+                  {item.question}
+                </h3>
+                <p class="text-gray-700 leading-relaxed">
+                  {item.answer}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA Section -->
+      <section class="bg-gradient-to-br from-indigo-50 to-purple-50 rounded-2xl p-8 md:p-12 text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          Prêt à moderniser votre gestion de copropriété ?
+        </h2>
+        <p class="text-xl text-gray-700 mb-8 max-w-2xl mx-auto">
+          Découvrez comment ImmoTopia peut simplifier votre gestion et améliorer la transparence avec vos copropriétaires.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a
+            href="/contact?demo=true"
+            class="bg-[#6366F1] text-white font-semibold px-8 py-4 rounded-lg shadow-lg hover:shadow-xl transition-all hover:bg-[#4F46E5] inline-flex items-center justify-center"
+          >
+            Demander une démonstration
+            <svg class="ml-2 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+          </a>
+          <a
+            href="/tarifs"
+            class="bg-white text-[#6366F1] border-2 border-[#6366F1] font-semibold px-8 py-4 rounded-lg hover:bg-indigo-50 transition-all inline-flex items-center justify-center"
+          >
+            Voir les tarifs
+          </a>
+        </div>
+      </section>
+    </article>
+  </main>
+</BaseLayout>
+

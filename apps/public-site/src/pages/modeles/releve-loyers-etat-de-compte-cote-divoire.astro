@@ -1,0 +1,123 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { generateFAQSchema } from '../../lib/structured-data';
+
+const title = "Modèle d'état de compte locatif / relevé de loyers (gratuit) | Côte d'Ivoire";
+const description = "Modèle gratuit d'état de compte locatif (relevé de loyers) à copier : loyers dus, paiements, retards, solde. Découvrez l'automatisation avec ImmoTopia.";
+
+const faqItems = [
+  {
+    question: "Quelle est la différence entre une quittance de loyer et un état de compte locatif ?",
+    answer: "La quittance est un document officiel qui atteste du paiement d'un loyer pour un mois donné. L'état de compte est un relevé global qui liste tous les paiements et impayés d'un locataire sur une période. Les deux sont complémentaires : la quittance pour le locataire, l'état de compte pour votre suivi.",
+  },
+  {
+    question: "À quelle fréquence doit-on produire un état de compte locatif ?",
+    answer: "Un état de compte peut être produit à la demande du locataire ou du bailleur, ou régulièrement (mensuellement, trimestriellement) pour maintenir une transparence sur la situation locative. Il est particulièrement utile en cas de litige ou pour faire le point sur les impayés.",
+  },
+  {
+    question: "Que doit contenir un état de compte locatif ?",
+    answer: "Un état de compte doit lister tous les loyers dus, tous les paiements reçus (avec dates et références), les retards de paiement, les charges éventuelles, et le solde restant dû. Il doit couvrir une période claire (par exemple, du 1er janvier au 31 décembre) et être daté et signé.",
+  },
+  {
+    question: "Comment ImmoTopia génère-t-il automatiquement les états de compte ?",
+    answer: "ImmoTopia génère automatiquement des états de compte locatifs à partir des données enregistrées : loyers dus, paiements reçus (Mobile Money, virement, espèces), retards, charges, et solde. Vous pouvez générer un état de compte pour n'importe quelle période et l'exporter en PDF pour le partager avec le locataire ou le propriétaire.",
+  },
+];
+
+const faqSchema = generateFAQSchema({ questions: faqItems });
+---
+
+<BaseLayout title={title} description={description} currentPath="/modeles/releve-loyers-etat-de-compte-cote-divoire" structuredData={faqSchema}>
+  <main class="bg-white">
+    <article class="max-w-5xl mx-auto px-4 py-8 md:py-12">
+      <section class="relative overflow-hidden bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 py-16 md:py-24 lg:py-32">
+        <div class="container mx-auto max-w-5xl px-4 md:px-6">
+          <div class="text-center">
+            <h1 class="mb-6 text-4xl font-extrabold text-gray-900 md:text-5xl lg:text-6xl">
+              Modèle d&apos;état de compte locatif / relevé de loyers
+            </h1>
+            <p class="mb-8 text-xl text-gray-700 md:text-2xl">
+              Téléchargez gratuitement un modèle d&apos;état de compte locatif et découvrez l&apos;automatisation avec ImmoTopia
+            </p>
+            <div class="flex flex-col gap-4 sm:flex-row sm:justify-center">
+              <a href="/contact?demo=true" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-8 py-4 rounded-lg inline-flex items-center gap-2">
+                Demander une démo
+                <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                </svg>
+              </a>
+              <a href="/gestion-locative-cote-divoire" class="border-2 border-blue-600 text-blue-600 font-semibold px-8 py-4 rounded-lg hover:bg-blue-50">
+                Découvrir la solution
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="py-12 md:py-16">
+        <div class="container mx-auto max-w-4xl px-4 md:px-6">
+          <h2 class="mb-8 text-3xl font-bold text-gray-900 md:text-4xl">
+            Modèle d&apos;état de compte locatif
+          </h2>
+          <div class="bg-gray-50 rounded-lg p-6 border border-gray-200">
+            <p class="text-gray-700 mb-4">
+              Un état de compte locatif doit lister tous les loyers dus, tous les paiements reçus (avec dates et références), 
+              les retards de paiement, les charges éventuelles, et le solde restant dû. Il doit couvrir une période claire 
+              (par exemple, du 1er janvier au 31 décembre) et être daté et signé.
+            </p>
+            <p class="text-gray-700 mb-4">
+              L&apos;état de compte est particulièrement utile pour faire le point sur la situation locative, en cas de litige, 
+              ou pour informer le locataire ou le propriétaire de l&apos;état des paiements.
+            </p>
+            <div class="mt-4">
+              <a href="/modeles/quittance-loyer-cote-divoire" class="text-blue-600 hover:text-blue-800 font-semibold underline">
+                Voir aussi le modèle de quittance de loyer →
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="py-16 md:py-20 bg-gray-50">
+        <div class="container mx-auto max-w-4xl px-4 md:px-6">
+          <h2 class="mb-8 text-3xl font-bold text-gray-900 md:text-4xl">
+            Questions fréquentes
+          </h2>
+          <div class="space-y-6">
+            {faqItems.map((item) => (
+              <div class="border-l-4 border-blue-600 pl-6">
+                <h3 class="text-xl font-semibold text-gray-900 mb-2">
+                  {item.question}
+                </h3>
+                <p class="text-gray-700 leading-relaxed">
+                  {item.answer}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section class="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl p-8 md:p-12 text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          Automatisez vos états de compte avec ImmoTopia
+        </h2>
+        <p class="text-xl text-gray-700 mb-8 max-w-2xl mx-auto">
+          ImmoTopia génère automatiquement des états de compte locatifs à partir des données enregistrées, pour n&apos;importe quelle période.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="/contact?demo=true" class="bg-[#2563EB] text-white font-semibold px-8 py-4 rounded-lg shadow-lg hover:shadow-xl transition-all hover:bg-[#1D4ED8] inline-flex items-center justify-center">
+            Demander une démonstration
+            <svg class="ml-2 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+          </a>
+          <a href="/gestion-locative-cote-divoire" class="bg-white text-[#2563EB] border-2 border-[#2563EB] font-semibold px-8 py-4 rounded-lg hover:bg-blue-50 transition-all inline-flex items-center justify-center">
+            Découvrir la solution
+          </a>
+        </div>
+      </section>
+    </article>
+  </main>
+</BaseLayout>
+

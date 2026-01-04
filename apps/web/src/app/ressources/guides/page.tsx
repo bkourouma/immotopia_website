@@ -27,7 +27,15 @@ export default async function GuidesPage() {
             Guides pratiques
           </h1>
           <p className="text-lg text-gray-600 md:text-xl">
-            Téléchargez nos guides gratuits pour améliorer votre gestion immobilière.
+            Téléchargez nos guides gratuits pour améliorer votre gestion immobilière. Découvrez{' '}
+            <Link href="/fonctionnalites" className="font-semibold text-[#2563EB] hover:underline">
+              toutes nos fonctionnalités
+            </Link>
+            {' '}et{' '}
+            <Link href="/logiciel-immobilier-cote-divoire" className="font-semibold text-[#2563EB] hover:underline">
+              notre ERP immobilier complet
+            </Link>
+            .
           </p>
         </div>
       </section>

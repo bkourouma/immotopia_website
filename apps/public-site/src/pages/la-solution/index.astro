@@ -1,0 +1,178 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const title = 'La Solution ImmoTopia | ERP Immobilier Complet';
+const description = 'Découvrez la solution ImmoTopia : SaaS de gestion, portail d\'annonces et technologies avancées pour professionnels de l\'immobilier en Côte d\'Ivoire.';
+---
+
+<BaseLayout title={title} description={description} currentPath="/la-solution">
+  <main class="bg-white">
+    <article class="max-w-7xl mx-auto px-4 py-8 md:py-12">
+      <!-- Hero Section -->
+      <section class="relative overflow-hidden bg-gradient-to-br from-[#F0F7FF] via-[#E8F2FF] to-[#D6EBFF] py-20 text-center md:py-32">
+        <div class="container relative z-10 mx-auto max-w-[1200px] px-6">
+          <div class="mb-6 inline-flex items-center gap-2 rounded-full border border-[#2563EB]/30 bg-white/80 backdrop-blur-md px-4 py-2 shadow-lg">
+            <svg class="h-4 w-4 text-[#2563EB] animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+            </svg>
+            <span class="text-xs font-bold uppercase tracking-wider text-[#2563EB]">
+              Solution Complète
+            </span>
+          </div>
+          
+          <h1 class="mb-6 text-4xl font-extrabold text-gray-900 md:text-5xl lg:text-6xl">
+            La solution ImmoTopia
+          </h1>
+          
+          <p class="mx-auto mb-10 max-w-3xl text-xl text-gray-700 md:text-2xl">
+            Une plateforme complète qui combine SaaS de gestion, portail d&apos;annonces et technologies avancées pour transformer votre activité immobilière.
+          </p>
+
+          <div class="flex flex-col items-center justify-center gap-4 sm:flex-row">
+            <a
+              href="/contact?demo=true"
+              class="bg-blue-600 text-white shadow-lg transition-all hover:scale-105 hover:bg-blue-700 hover:shadow-xl px-8 py-4 rounded-lg font-bold inline-flex items-center"
+            >
+              Demander une démo
+              <svg class="ml-2 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+              </svg>
+            </a>
+            <a
+              href="/fonctionnalites"
+              class="border-2 border-blue-600 bg-white text-blue-600 transition-all hover:scale-105 hover:bg-blue-50 px-8 py-4 rounded-lg font-semibold inline-flex items-center"
+            >
+              Découvrir les fonctionnalités
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Solutions Grid -->
+      <section class="py-20 md:py-32">
+        <div class="container mx-auto max-w-6xl px-6">
+          <h2 class="mb-12 text-center text-3xl font-bold text-gray-900 md:text-4xl">
+            Trois piliers pour une solution complète
+          </h2>
+          <div class="grid gap-8 md:grid-cols-3">
+            <a
+              href="/la-solution/saas-gestion"
+              class="group rounded-2xl border-2 border-transparent bg-gradient-to-br from-blue-50 to-cyan-50 p-8 transition-all hover:border-blue-300 hover:shadow-xl"
+            >
+              <div class="mb-4 inline-flex h-16 w-16 items-center justify-center rounded-xl bg-gradient-to-br from-blue-500 to-cyan-500 text-white shadow-lg transition-all group-hover:scale-110">
+                <svg class="h-8 w-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                </svg>
+              </div>
+              <h3 class="mb-3 text-2xl font-bold text-gray-900">SaaS de gestion</h3>
+              <p class="mb-4 text-gray-700">
+                Une plateforme SaaS complète pour centraliser toute votre gestion immobilière : biens, clients, contrats, paiements.
+              </p>
+              <span class="text-blue-600 font-semibold inline-flex items-center group-hover:gap-2 transition-all">
+                En savoir plus
+                <svg class="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                </svg>
+              </span>
+            </a>
+
+            <a
+              href="/la-solution/portail-annonces"
+              class="group rounded-2xl border-2 border-transparent bg-gradient-to-br from-purple-50 to-pink-50 p-8 transition-all hover:border-purple-300 hover:shadow-xl"
+            >
+              <div class="mb-4 inline-flex h-16 w-16 items-center justify-center rounded-xl bg-gradient-to-br from-purple-500 to-pink-500 text-white shadow-lg transition-all group-hover:scale-110">
+                <svg class="h-8 w-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                </svg>
+              </div>
+              <h3 class="mb-3 text-2xl font-bold text-gray-900">Portail d&apos;annonces</h3>
+              <p class="mb-4 text-gray-700">
+                Publiez et gérez automatiquement vos annonces immobilières sur tous les canaux depuis un seul endroit.
+              </p>
+              <span class="text-purple-600 font-semibold inline-flex items-center group-hover:gap-2 transition-all">
+                En savoir plus
+                <svg class="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                </svg>
+              </span>
+            </a>
+
+            <a
+              href="/la-solution/technologies"
+              class="group rounded-2xl border-2 border-transparent bg-gradient-to-br from-orange-50 to-amber-50 p-8 transition-all hover:border-orange-300 hover:shadow-xl"
+            >
+              <div class="mb-4 inline-flex h-16 w-16 items-center justify-center rounded-xl bg-gradient-to-br from-orange-500 to-amber-500 text-white shadow-lg transition-all group-hover:scale-110">
+                <svg class="h-8 w-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                </svg>
+              </div>
+              <h3 class="mb-3 text-2xl font-bold text-gray-900">Technologies avancées</h3>
+              <p class="mb-4 text-gray-700">
+                Bénéficiez de l&apos;IA pour automatiser vos tâches et des paiements Mobile Money pour faciliter les transactions.
+              </p>
+              <span class="text-orange-600 font-semibold inline-flex items-center group-hover:gap-2 transition-all">
+                En savoir plus
+                <svg class="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                </svg>
+              </span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Stats Section -->
+      <section class="bg-gray-50 py-20">
+        <div class="container mx-auto max-w-6xl px-6">
+          <div class="grid gap-8 md:grid-cols-3">
+            <div class="text-center">
+              <div class="mb-4 text-5xl font-extrabold text-blue-600">100%</div>
+              <h3 class="mb-2 text-xl font-semibold text-gray-900">Centralisé</h3>
+              <p class="text-gray-600">Tout au même endroit</p>
+            </div>
+            <div class="text-center">
+              <div class="mb-4 text-5xl font-extrabold text-blue-600">+40%</div>
+              <h3 class="mb-2 text-xl font-semibold text-gray-900">Productivité</h3>
+              <p class="text-gray-600">Gain de temps</p>
+            </div>
+            <div class="text-center">
+              <div class="mb-4 text-5xl font-extrabold text-blue-600">24/7</div>
+              <h3 class="mb-2 text-xl font-semibold text-gray-900">Disponibilité</h3>
+              <p class="text-gray-600">Accessible partout</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA Section -->
+      <section class="py-20 md:py-32">
+        <div class="container mx-auto max-w-4xl px-6 text-center">
+          <h2 class="mb-4 text-3xl font-bold text-gray-900 md:text-4xl">
+            Prêt à transformer votre gestion immobilière ?
+          </h2>
+          <p class="mb-8 text-lg text-gray-600 md:text-xl">
+            Découvrez comment ImmoTopia peut simplifier et optimiser votre activité.
+          </p>
+          <div class="flex flex-col items-center justify-center gap-4 sm:flex-row">
+            <a
+              href="/contact?demo=true"
+              class="bg-blue-600 text-white font-semibold px-8 py-4 rounded-lg shadow-lg hover:shadow-xl transition-all hover:bg-blue-700 inline-flex items-center"
+            >
+              Demander une démo gratuite
+              <svg class="ml-2 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+              </svg>
+            </a>
+            <a
+              href="/tarifs"
+              class="border-2 border-blue-600 text-blue-600 hover:bg-blue-50 font-semibold px-8 py-4 rounded-lg transition-all"
+            >
+              Voir les tarifs
+            </a>
+          </div>
+        </div>
+      </section>
+    </article>
+  </main>
+</BaseLayout>
+

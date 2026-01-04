@@ -1,0 +1,169 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { generateFAQSchema } from '../lib/structured-data';
+
+const title = "Logiciel d'annonces immobilières en Côte d'Ivoire | Module ERP ImmoTopia";
+const description = "Gérez vos biens et publiez vos annonces en Côte d'Ivoire : stock centralisé, statuts (disponible/loué/vendu), portail public, génération de leads et intégration CRM, dans l'ERP ImmoTopia.";
+
+const faqItems = [
+  {
+    question: "Peut-on gérer un grand nombre de biens avec ImmoTopia ?",
+    answer: "Oui, le module Biens & Annonces d'ImmoTopia est conçu pour gérer des centaines voire des milliers de biens immobiliers. La base de données centralisée permet une recherche rapide, des filtres avancés et une gestion efficace du stock, que vous soyez une agence de taille moyenne ou un grand promoteur immobilier en Côte d'Ivoire.",
+  },
+  {
+    question: "Peut-on suivre les statuts disponible/réservé/loué/vendu en temps réel ?",
+    answer: "Absolument. Chaque bien dispose d'un statut unique qui se synchronise automatiquement dans tout l'ERP. Quand un bien passe de 'disponible' à 'réservé' puis 'loué' ou 'vendu', toutes les annonces associées sont mises à jour, les équipes sont notifiées, et les données restent cohérentes entre le CRM, la gestion locative et les modules de vente.",
+  },
+  {
+    question: "Les leads du portail public arrivent-ils automatiquement dans le CRM ?",
+    answer: "Oui, tous les contacts générés depuis le portail public (demandes de visite, questions sur un bien, demandes d'informations) sont automatiquement capturés dans le CRM ImmoTopia. Chaque lead est associé au bien concerné, ce qui permet un suivi immédiat et une qualification rapide par votre équipe commerciale.",
+  },
+  {
+    question: "Peut-on créer des annonces à partir d'un bien existant dans ImmoTopia ?",
+    answer: "Oui, c'est l'un des atouts du module. À partir d'une fiche bien complète, vous pouvez générer une ou plusieurs annonces en quelques clics. Les caractéristiques, photos, prix et localisation sont pré-remplis, vous n'avez plus qu'à adapter le texte de description selon le canal de publication. Cela garantit la cohérence des informations et accélère le processus de publication.",
+  },
+];
+
+const faqSchema = generateFAQSchema({ questions: faqItems });
+---
+
+<BaseLayout title={title} description={description} currentPath="/logiciel-annonces-immobilieres-cote-divoire" structuredData={faqSchema}>
+  <main class="bg-white">
+    <article class="max-w-5xl mx-auto px-4 py-8 md:py-12">
+      <!-- Hero Section -->
+      <section class="bg-gradient-to-br from-blue-50 via-white to-blue-50 py-16 md:py-24">
+        <div class="container mx-auto px-4 max-w-6xl">
+          <div class="text-center max-w-4xl mx-auto">
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight">
+              Logiciel d&apos;annonces immobilières en Côte d&apos;Ivoire : stock, publication et leads
+            </h1>
+            <p class="text-xl md:text-2xl text-gray-700 mb-8 leading-relaxed">
+              Le module <strong>Biens & Annonces</strong> intégré à l&apos;ERP immobilier ImmoTopia : 
+              gérez votre stock, publiez vos annonces et générez des leads qualifiés depuis un portail public professionnel.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+              <a
+                href="/contact?demo=true"
+                class="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-8 py-4 rounded-lg transition-colors duration-200 text-lg"
+              >
+                Demander une démo
+              </a>
+              <a
+                href="/logiciel-immobilier-cote-divoire"
+                class="bg-white hover:bg-gray-50 text-blue-600 font-semibold px-8 py-4 rounded-lg border-2 border-blue-600 transition-colors duration-200 text-lg"
+              >
+                Découvrir l&apos;ERP ImmoTopia
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Enjeux Section -->
+      <section class="py-16 bg-white">
+        <div class="container mx-auto px-4 max-w-6xl">
+          <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-8 text-center">
+            Les enjeux pour les agences et promoteurs en Côte d&apos;Ivoire
+          </h2>
+          <div class="grid md:grid-cols-2 gap-8 mt-12">
+            <div class="bg-red-50 border-l-4 border-red-500 p-6 rounded-lg">
+              <h3 class="text-xl font-semibold text-gray-900 mb-3">Stock dispersé et non fiable</h3>
+              <p class="text-gray-700 leading-relaxed">
+                Les informations sur vos biens sont éparpillées : fichiers Excel non synchronisés, 
+                dossiers papier, conversations WhatsApp, tableaux partagés obsolètes. Vous ne savez 
+                jamais avec certitude quels biens sont réellement disponibles, réservés, loués ou vendus.
+              </p>
+            </div>
+            <div class="bg-red-50 border-l-4 border-red-500 p-6 rounded-lg">
+              <h3 class="text-xl font-semibold text-gray-900 mb-3">Annonces incohérentes et doublons</h3>
+              <p class="text-gray-700 leading-relaxed">
+                Vos annonces se retrouvent avec des prix différents, des photos non standard, des 
+                descriptions incomplètes ou des informations contradictoires selon les canaux. 
+                Cela nuit à votre crédibilité et peut créer des malentendus avec les clients.
+              </p>
+            </div>
+            <div class="bg-red-50 border-l-4 border-red-500 p-6 rounded-lg">
+              <h3 class="text-xl font-semibold text-gray-900 mb-3">Statuts non synchronisés</h3>
+              <p class="text-gray-700 leading-relaxed">
+                Un bien déjà loué ou vendu apparaît encore comme disponible sur certains canaux. 
+                Vous perdez du temps à répondre à des demandes sur des biens indisponibles, 
+                et vous risquez de décevoir des clients potentiels.
+              </p>
+            </div>
+            <div class="bg-red-50 border-l-4 border-red-500 p-6 rounded-lg">
+              <h3 class="text-xl font-semibold text-gray-900 mb-3">Leads non suivis, perte de conversion</h3>
+              <p class="text-gray-700 leading-relaxed">
+                Les demandes de visite ou d&apos;informations arrivent par email, téléphone, réseaux sociaux, 
+                mais aucune centralisation. Les leads se perdent, les délais de réponse s&apos;allongent, 
+                et vous ratez des opportunités de vente ou de location.
+              </p>
+            </div>
+          </div>
+          <div class="mt-12 bg-blue-50 border-2 border-blue-200 p-8 rounded-lg">
+            <h3 class="text-2xl font-semibold text-gray-900 mb-4">La solution ImmoTopia</h3>
+            <p class="text-lg text-gray-700 leading-relaxed mb-4">
+              Un module <strong>Biens & Annonces</strong> qui centralise votre stock immobilier, garantit 
+              la cohérence des statuts, facilite la publication d&apos;annonces de qualité et transforme votre 
+              portail public en véritable générateur de leads qualifiés, intégré à votre CRM.
+            </p>
+            <a
+              href="/la-solution/portail-annonces"
+              class="text-blue-600 hover:text-blue-800 font-semibold underline"
+            >
+              Découvrir le portail d&apos;annonces →
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- FAQ Section -->
+      <section class="py-16 bg-gray-50">
+        <div class="container mx-auto max-w-4xl px-4 md:px-6">
+          <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-8">
+            Questions fréquentes
+          </h2>
+          <div class="space-y-6">
+            {faqItems.map((item) => (
+              <div class="border-l-4 border-blue-600 pl-6">
+                <h3 class="text-xl font-semibold text-gray-900 mb-2">
+                  {item.question}
+                </h3>
+                <p class="text-gray-700 leading-relaxed">
+                  {item.answer}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA Section -->
+      <section class="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl p-8 md:p-12 text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          Prêt à optimiser votre diffusion d&apos;annonces ?
+        </h2>
+        <p class="text-xl text-gray-700 mb-8 max-w-2xl mx-auto">
+          Découvrez comment le module Biens & Annonces ImmoTopia peut transformer votre activité commerciale.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a
+            href="/contact?demo=true"
+            class="bg-[#2563EB] text-white font-semibold px-8 py-4 rounded-lg shadow-lg hover:shadow-xl transition-all hover:bg-[#1D4ED8] inline-flex items-center justify-center"
+          >
+            Demander une démonstration
+            <svg class="ml-2 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+          </a>
+          <a
+            href="/pour-qui/agences-immobilieres"
+            class="bg-white text-[#2563EB] border-2 border-[#2563EB] font-semibold px-8 py-4 rounded-lg hover:bg-blue-50 transition-all inline-flex items-center justify-center"
+          >
+            Solutions pour agences
+          </a>
+        </div>
+      </section>
+    </article>
+  </main>
+</BaseLayout>
+

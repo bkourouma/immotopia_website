@@ -83,7 +83,7 @@ export const personas: Persona[] = [
       { label: 'Délai de vente', value: '-30%' },
       { label: 'Suivi projets', value: '100%' },
     ],
-    slug: '/pour-qui/promoteurs',
+    slug: '/pour-qui/promoteurs-immobiliers',
   },
   {
     id: 'syndics',
@@ -143,7 +143,7 @@ export const personas: Persona[] = [
       { label: 'Paiements', value: '100%' },
       { label: 'Impaiements', value: '-40%' },
     ],
-    slug: '/pour-qui/gestionnaires',
+    slug: '/pour-qui/gestionnaires-locatifs',
   },
   {
     id: 'proprietaires',
@@ -173,7 +173,7 @@ export const personas: Persona[] = [
       { label: 'Gain de temps', value: '+50%' },
       { label: 'Suivi', value: '100%' },
     ],
-    slug: '/pour-qui/proprietaires',
+    slug: '/pour-qui/proprietaires-bailleurs',
   },
 ];
 

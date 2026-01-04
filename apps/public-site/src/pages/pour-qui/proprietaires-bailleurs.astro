@@ -1,0 +1,192 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { generateFAQSchema } from '../../lib/structured-data';
+
+const title = 'Logiciel pour propriétaires bailleurs en Côte d\'Ivoire | ImmoTopia';
+const description = 'ImmoTopia aide les propriétaires bailleurs en Côte d\'Ivoire : suivi des loyers, impayés, quittances, paiements Mobile Money, maintenance et reporting, dans un ERP immobilier complet.';
+
+const faqItems = [
+  {
+    question: 'Peut-on suivre les loyers par bien et par locataire ?',
+    answer: 'Oui, ImmoTopia vous permet de suivre chaque bien individuellement avec ses locataires, ses contrats, ses échéances et ses encaissements. Vous avez une vue détaillée par bien (taux d\'occupation, loyers perçus, impayés) et par locataire (historique de paiements, retards, quittances).',
+  },
+  {
+    question: 'Les quittances sont-elles automatiques ?',
+    answer: 'Oui, dès qu\'un paiement est enregistré et rattaché à un contrat et une période, ImmoTopia génère automatiquement une quittance de loyer au format PDF professionnel. La quittance contient toutes les informations légales et peut être envoyée par email ou téléchargée instantanément.',
+  },
+  {
+    question: 'Peut-on encaisser via Mobile Money ?',
+    answer: 'Absolument. ImmoTopia intègre les paiements Mobile Money (Orange Money, MTN Money, Moov Money, Wave). Chaque paiement Mobile Money est automatiquement tracé, rattaché au contrat et à la période concernée, et génère une quittance instantanée.',
+  },
+  {
+    question: 'Peut-on suivre les impayés et retards ?',
+    answer: 'Oui, ImmoTopia détecte automatiquement les retards de paiement dès qu\'une échéance est dépassée. Vous avez un tableau de bord des impayés avec l\'historique complet par locataire et par bien. Vous pouvez structurer vos relances et conserver toutes les preuves de communication.',
+  },
+];
+
+const faqSchema = generateFAQSchema({ questions: faqItems });
+---
+
+<BaseLayout 
+  title={title} 
+  description={description} 
+  currentPath="/pour-qui/proprietaires-bailleurs"
+  structuredData={faqSchema}
+>
+  <main class="bg-white">
+    <article class="max-w-5xl mx-auto px-4 py-8 md:py-12">
+      <!-- Hero Section -->
+      <header class="mb-16 text-center">
+        <div class="mb-6 flex items-center justify-center gap-2 text-sm text-gray-600">
+          <a href="/" class="hover:text-[#2563EB] hover:underline">ImmoTopia</a>
+          <span>•</span>
+          <a href="/pour-qui" class="hover:text-[#2563EB] hover:underline">Solutions par profil</a>
+          <span>•</span>
+          <span class="text-gray-900 font-medium">Propriétaires bailleurs</span>
+        </div>
+        <div class="mb-6 inline-flex items-center gap-2 rounded-full border border-orange-600/30 bg-orange-50 px-4 py-2 text-sm font-medium text-orange-700">
+          <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+          </svg>
+          Pour les propriétaires bailleurs
+        </div>
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight">
+          Le logiciel qui vous donne une vision claire de vos loyers en Côte d&apos;Ivoire
+        </h1>
+        <p class="text-xl md:text-2xl text-gray-700 mb-8 max-w-3xl mx-auto leading-relaxed">
+          Encaissements, quittances, impayés et maintenance — centralisés avec ImmoTopia. Pilotez votre patrimoine locatif avec contrôle et sérénité.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+          <a
+            href="/contact?demo=true"
+            class="bg-gradient-to-r from-orange-600 to-amber-600 hover:from-orange-700 hover:to-amber-700 text-white font-semibold px-8 py-6 text-lg rounded-lg shadow-lg hover:shadow-xl transition-all inline-flex items-center"
+          >
+            Demander une démo
+            <svg class="ml-2 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+          </a>
+          <a
+            href="/gestion-locative-cote-divoire"
+            class="border-2 border-orange-600 text-orange-600 hover:bg-orange-50 font-semibold px-8 py-6 text-lg rounded-lg transition-all"
+          >
+            En savoir plus sur la gestion locative
+          </a>
+        </div>
+      </header>
+
+      <!-- Content Section -->
+      <section class="mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-8">
+          Pourquoi choisir ImmoTopia pour gérer vos biens locatifs ?
+        </h2>
+        <div class="prose prose-lg max-w-none text-gray-700 leading-relaxed">
+          <p class="mb-6 text-xl">
+            ImmoTopia est conçu pour simplifier la gestion locative des propriétaires bailleurs en Côte d&apos;Ivoire.
+          </p>
+          <ul class="list-disc list-inside space-y-4 mb-8">
+            <li><strong>Suivi des loyers</strong> : Vue détaillée par bien et par locataire</li>
+            <li><strong>Quittances automatiques</strong> : Génération instantanée après paiement</li>
+            <li><strong>Paiements Mobile Money</strong> : Intégration Orange Money, MTN Money, Wave</li>
+            <li><strong>Suivi des impayés</strong> : Alertes automatiques et relances personnalisées</li>
+            <li><strong>Gestion de la maintenance</strong> : Système de ticketing pour les interventions</li>
+            <li><strong>Tableaux de bord</strong> : Vue d&apos;ensemble sur votre portefeuille locatif</li>
+          </ul>
+        </div>
+
+        <div class="mt-10 rounded-lg border-2 border-orange-200 bg-orange-50 p-6">
+          <h3 class="mb-4 text-xl font-semibold text-gray-900">
+            💡 Ressources complémentaires
+          </h3>
+          <p class="mb-4 text-gray-700">
+            Pour optimiser votre gestion locative :
+          </p>
+          <ul class="space-y-2 text-gray-700">
+            <li>
+              • <a href="/gestion-locative-cote-divoire" class="font-semibold text-[#F97316] hover:underline">
+                Gestion locative en Côte d&apos;Ivoire
+              </a>
+            </li>
+            <li>
+              • <a href="/paiement-loyer-charges-mobile-money-cote-divoire" class="font-semibold text-[#F97316] hover:underline">
+                Encaisser via Mobile Money
+              </a>
+            </li>
+            <li>
+              • <a href="/guides/reduire-impayes-loyers-cote-divoire" class="font-semibold text-[#F97316] hover:underline">
+                Guide : Réduire les impayés de loyers
+              </a>
+            </li>
+            <li>
+              • <a href="/modeles/contrat-bail-habitation-cote-divoire" class="font-semibold text-[#F97316] hover:underline">
+                Modèle de contrat de bail habitation
+              </a>
+            </li>
+            <li>
+              • <a href="/modeles/quittance-loyer-cote-divoire" class="font-semibold text-[#F97316] hover:underline">
+                Modèle de quittance de loyer
+              </a>
+            </li>
+            <li>
+              • <a href="/modeles/etat-des-lieux-cote-divoire" class="font-semibold text-[#F97316] hover:underline">
+                Modèle d&apos;état des lieux
+              </a>
+            </li>
+            <li>
+              • <a href="/gestion-locative-vs-excel" class="font-semibold text-[#F97316] hover:underline">
+                Pourquoi quitter Excel pour la gestion locative
+              </a>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- FAQ Section -->
+      <section class="mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-8">
+          Questions fréquentes
+        </h2>
+        <div class="space-y-6">
+          {faqItems.map((item) => (
+            <div class="border-l-4 border-orange-600 pl-6">
+              <h3 class="text-xl font-semibold text-gray-900 mb-2">
+                {item.question}
+              </h3>
+              <p class="text-gray-700 leading-relaxed">
+                {item.answer}
+              </p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- CTA Section -->
+      <section class="bg-gradient-to-br from-orange-50 to-amber-50 rounded-2xl p-8 md:p-12 text-center">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          Prêt à simplifier la gestion de vos biens locatifs ?
+        </h2>
+        <p class="text-xl text-gray-700 mb-8 max-w-2xl mx-auto">
+          Découvrez comment ImmoTopia peut automatiser vos processus et réduire les impayés.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a
+            href="/contact?demo=true"
+            class="bg-[#F97316] text-white font-semibold px-8 py-4 rounded-lg shadow-lg hover:shadow-xl transition-all hover:bg-[#EA580C] inline-flex items-center justify-center"
+          >
+            Demander une démonstration
+            <svg class="ml-2 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+          </a>
+          <a
+            href="/tarifs"
+            class="bg-white text-[#F97316] border-2 border-[#F97316] font-semibold px-8 py-4 rounded-lg hover:bg-orange-50 transition-all inline-flex items-center justify-center"
+          >
+            Voir les tarifs
+          </a>
+        </div>
+      </section>
+    </article>
+  </main>
+</BaseLayout>
+

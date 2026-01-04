@@ -54,7 +54,19 @@ export default async function FAQPage() {
               Questions fréquentes
             </h1>
             <p className="text-lg text-gray-600 md:text-xl">
-              Trouvez rapidement les réponses à vos questions sur ImmoTopia
+              Trouvez rapidement les réponses à vos questions sur ImmoTopia. Découvrez{' '}
+              <Link href="/fonctionnalites" className="font-semibold text-[#2563EB] hover:underline">
+                nos fonctionnalités
+              </Link>
+              ,{' '}
+              <Link href="/tarifs" className="font-semibold text-[#2563EB] hover:underline">
+                nos tarifs
+              </Link>
+              {' '}et{' '}
+              <Link href="/pour-qui" className="font-semibold text-[#2563EB] hover:underline">
+                nos solutions par profil
+              </Link>
+              .
             </p>
           </div>
         </section>

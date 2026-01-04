@@ -122,7 +122,15 @@ export default function PortailAnnoncesPage() {
           <ScrollReveal direction="fade" delay={300}>
             <p className="text-base leading-relaxed text-gray-700 md:text-lg font-medium">
               Publiez et gérez automatiquement vos annonces immobilières sur tous les canaux depuis
-              un seul endroit.
+              un seul endroit. Idéal pour les{' '}
+              <Link href="/pour-qui/agences-immobilieres" className="font-semibold text-purple-600 hover:underline">
+                agences immobilières
+              </Link>
+              {' '}qui souhaitent utiliser un{' '}
+              <Link href="/logiciel-annonces-immobilieres-cote-divoire" className="font-semibold text-purple-600 hover:underline">
+                logiciel d'annonces immobilières en Côte d'Ivoire
+              </Link>
+              {' '}performant.
             </p>
           </ScrollReveal>
         </div>
@@ -233,7 +241,11 @@ export default function PortailAnnoncesPage() {
                 Pourquoi choisir notre portail ?
               </h2>
               <p className="mx-auto max-w-[600px] text-lg text-gray-600 md:text-xl">
-                Des avantages concrets pour optimiser votre diffusion.
+                Des avantages concrets pour optimiser votre diffusion. Complétez votre stratégie avec notre{' '}
+                <Link href="/crm-immobilier-cote-divoire" className="font-semibold text-purple-600 hover:underline">
+                  CRM immobilier
+                </Link>
+                {' '}pour un suivi client optimal.
               </p>
             </div>
           </ScrollReveal>

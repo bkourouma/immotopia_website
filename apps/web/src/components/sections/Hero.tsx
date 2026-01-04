@@ -156,6 +156,17 @@ export default function Hero({ className }: HeroProps) {
                     Voir la démo
                   </Link>
                 </Button>
+                <Button
+                  asChild
+                  variant="ghost"
+                  size="lg"
+                  className="group w-full text-white/90 hover:text-white hover:bg-white/10 sm:w-auto px-6 py-5 md:px-8 md:py-6 text-sm sm:text-base font-medium"
+                  onClick={() => trackCTAClick('Découvrir notre solution', 'hero')}
+                >
+                  <Link href="/la-solution" className="flex items-center justify-center">
+                    Découvrir notre solution
+                  </Link>
+                </Button>
               </div>
               {/* Micro-copy de réassurance */}
               <p className="text-center text-xs sm:text-sm text-white/90 drop-shadow-md px-4">

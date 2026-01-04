@@ -111,8 +111,11 @@ export default function LaSolutionPage() {
           
           <ScrollReveal direction="fade" delay={200}>
             <p className="mx-auto max-w-[700px] text-lg leading-relaxed text-gray-700 md:text-xl font-medium">
-              ImmoTopia combine plusieurs modules puissants pour vous offrir une solution de gestion
-              immobilière complète, accessible depuis une seule plateforme.
+              ImmoTopia combine plusieurs modules puissants pour vous offrir une{' '}
+              <Link href="/logiciel-immobilier-cote-divoire" className="font-semibold text-[#2563EB] hover:underline">
+                solution de gestion immobilière complète en Côte d'Ivoire
+              </Link>
+              , accessible depuis une seule plateforme.
             </p>
           </ScrollReveal>
         </div>
@@ -232,7 +235,15 @@ export default function LaSolutionPage() {
                 Pourquoi choisir ImmoTopia ?
               </h2>
               <p className="mx-auto max-w-[600px] text-lg text-gray-600 md:text-xl">
-                Des avantages concrets pour transformer votre façon de travailler.
+                Des avantages concrets pour transformer votre façon de travailler. Découvrez comment notre solution aide les{' '}
+                <Link href="/pour-qui/agences-immobilieres" className="font-semibold text-[#2563EB] hover:underline">
+                  agences immobilières
+                </Link>
+                {' '}et les{' '}
+                <Link href="/pour-qui/gestionnaires-locatifs" className="font-semibold text-[#2563EB] hover:underline">
+                  gestionnaires locatifs
+                </Link>
+                {' '}à optimiser leur activité.
               </p>
             </div>
           </ScrollReveal>
@@ -288,7 +299,11 @@ export default function LaSolutionPage() {
           <ScrollReveal direction="up" delay={200}>
             <p className="mx-auto max-w-[700px] text-lg leading-relaxed text-gray-700 md:text-xl font-medium">
               Tous les modules ImmoTopia sont conçus pour fonctionner ensemble, vous offrant une
-              expérience fluide et une vue d'ensemble complète de votre activité immobilière.
+              expérience fluide et une vue d'ensemble complète de votre activité immobilière. Explorez{' '}
+              <Link href="/la-solution/technologies" className="font-semibold text-[#2563EB] hover:underline">
+                nos technologies
+              </Link>
+              {' '}pour comprendre notre engagement pour la sécurité et la performance.
             </p>
           </ScrollReveal>
 

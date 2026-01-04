@@ -1,0 +1,305 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { generateFAQSchema } from '../../lib/structured-data';
+
+const title = "Comment choisir un logiciel immobilier en Côte d'Ivoire | Guide décision | ImmoTopia";
+const description = "Guide pour choisir le bon logiciel immobilier en Côte d'Ivoire : critères, pièges à éviter, ERP vs Excel, Mobile Money, reporting et accompagnement.";
+
+const faqItems = [
+  {
+    question: "Est-ce qu'un logiciel immobilier est adapté aux petites structures ?",
+    answer: "Oui, absolument. Un bon logiciel immobilier doit être évolutif et s'adapter à votre taille. Vous pouvez commencer avec les modules essentiels (CRM, biens, gestion locative) et activer progressivement d'autres fonctionnalités selon vos besoins. L'important est de choisir une solution qui grandit avec vous.",
+  },
+  {
+    question: "Le Mobile Money est-il vraiment indispensable dans un logiciel immobilier ?",
+    answer: "En Côte d'Ivoire, oui. Plus de 70% des paiements de loyers se font via Mobile Money (Orange Money, MTN Money, Wave). Un logiciel sans intégration Mobile Money vous oblige à saisir manuellement chaque paiement, ce qui génère des erreurs, des oublis et des litiges. L'intégration automatique est un gain de temps et de fiabilité considérable.",
+  },
+  {
+    question: "Comment migrer nos données depuis Excel vers un logiciel immobilier ?",
+    answer: "La plupart des logiciels professionnels proposent un accompagnement pour l'import de vos données depuis Excel ou CSV. Chez ImmoTopia, notre équipe vous aide à structurer et migrer vos biens, contrats, clients et historique de paiements pour une transition en douceur. La migration est généralement réalisée en quelques jours.",
+  },
+  {
+    question: "Faut-il un support local en Côte d'Ivoire ?",
+    answer: "C'est fortement recommandé. Un support local comprend mieux vos pratiques métier, vos contraintes réglementaires et vos besoins spécifiques (Mobile Money, types de baux, etc.). Il peut intervenir rapidement en cas de problème et vous accompagner dans la prise en main.",
+  },
+];
+
+const faqSchema = generateFAQSchema({ questions: faqItems });
+---
+
+<BaseLayout title={title} description={description} currentPath="/guides/choisir-logiciel-immobilier-cote-divoire" structuredData={faqSchema}>
+  <main class="bg-white">
+    <article class="max-w-5xl mx-auto px-4 py-8 md:py-12">
+      <!-- Hero Section -->
+      <section class="relative overflow-hidden bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 py-16 md:py-24 lg:py-32">
+        <div class="container mx-auto max-w-5xl px-4 md:px-6">
+          <div class="text-center">
+            <div class="mb-6 inline-flex items-center gap-2 rounded-full bg-blue-100 px-4 py-2 text-sm font-semibold text-blue-700">
+              <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              Guide décision
+            </div>
+            
+            <h1 class="mb-6 text-4xl font-extrabold text-gray-900 md:text-5xl lg:text-6xl">
+              Comment choisir un logiciel immobilier en Côte d&apos;Ivoire
+            </h1>
+            
+            <p class="mb-8 text-xl text-gray-700 md:text-2xl">
+              Le guide pour faire le bon choix dès maintenant et éviter les erreurs coûteuses. Découvrez{' '}
+              <a href="/logiciel-immobilier-cote-divoire" class="font-semibold text-[#2563EB] hover:underline">
+                notre ERP immobilier en Côte d&apos;Ivoire
+              </a>
+              {' '}et{' '}
+              <a href="/meilleur-logiciel-immobilier-cote-divoire" class="font-semibold text-[#2563EB] hover:underline">
+                pourquoi ImmoTopia est le meilleur choix
+              </a>
+              .
+            </p>
+
+            <div class="flex flex-col gap-4 sm:flex-row sm:justify-center">
+              <a
+                href="/contact?demo=true"
+                class="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-semibold px-8 py-4 rounded-lg inline-flex items-center gap-2"
+              >
+                Demander une démo
+                <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                </svg>
+              </a>
+              <a
+                href="/logiciel-immobilier-cote-divoire"
+                class="border-2 border-blue-600 text-blue-600 font-semibold px-8 py-4 rounded-lg hover:bg-blue-50"
+              >
+                Voir ImmoTopia
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Introduction -->
+      <section class="py-12 md:py-16">
+        <div class="container mx-auto max-w-4xl px-4 md:px-6">
+          <div class="prose prose-lg max-w-none">
+            <p class="text-xl text-gray-700 leading-relaxed">
+              Choisir un logiciel immobilier n&apos;est pas une décision anodine. C&apos;est un <strong>investissement stratégique</strong> qui
+              impacte directement votre efficacité opérationnelle, votre image professionnelle, votre capacité à gérer la croissance
+              et, in fine, votre rentabilité.
+            </p>
+            <p class="text-lg text-gray-600 leading-relaxed mt-4">
+              Ce guide vous donne une <strong>méthode claire et rationnelle</strong> pour choisir le bon logiciel immobilier,
+              adapté à votre activité, à votre taille et au contexte ivoirien. Vous y trouverez les critères indispensables,
+              les erreurs à éviter, une grille de décision et une checklist finale.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Les erreurs les plus fréquentes -->
+      <section class="py-12 md:py-16 bg-gray-50">
+        <div class="container mx-auto max-w-4xl px-4 md:px-6">
+          <h2 class="mb-8 text-3xl font-bold text-gray-900 md:text-4xl text-center">
+            Les 5 erreurs les plus fréquentes
+          </h2>
+
+          <div class="space-y-6">
+            <div class="rounded-xl bg-gradient-to-br from-red-50 to-orange-50 p-8 border-2 border-red-200">
+              <div class="mb-4 flex items-center gap-3">
+                <div class="flex h-10 w-10 items-center justify-center rounded-full bg-red-600 text-white font-bold text-lg">
+                  1
+                </div>
+                <h3 class="text-2xl font-bold text-gray-900">Choisir trop petit (Excel, outils dispersés)</h3>
+              </div>
+              <p class="text-gray-700 mb-4">
+                Beaucoup de professionnels démarrent avec Excel, WhatsApp et des fichiers dispersés. Cela fonctionne
+                pour 5 ou 10 biens, mais devient ingérable au-delà. Vous passez votre temps à chercher l&apos;information,
+                à recouper les données, et à corriger les erreurs.
+              </p>
+              <p class="text-gray-700 font-semibold">
+                ➜ Conséquence : perte de temps, erreurs, impayés non suivis, image amateur.
+              </p>
+            </div>
+
+            <div class="rounded-xl bg-gradient-to-br from-orange-50 to-amber-50 p-8 border-2 border-orange-200">
+              <div class="mb-4 flex items-center gap-3">
+                <div class="flex h-10 w-10 items-center justify-center rounded-full bg-orange-600 text-white font-bold text-lg">
+                  2
+                </div>
+                <h3 class="text-2xl font-bold text-gray-900">Choisir sans Mobile Money</h3>
+              </div>
+              <p class="text-gray-700 mb-4">
+                En Côte d&apos;Ivoire, plus de 70% des paiements de loyers se font via Mobile Money. Un logiciel sans
+                intégration Mobile Money vous oblige à saisir manuellement chaque paiement, à vérifier les références,
+                et à générer les quittances une par une. C&apos;est chronophage et source d&apos;erreurs.
+              </p>
+              <p class="text-gray-700 font-semibold">
+                ➜ Conséquence : saisies manuelles, erreurs d&apos;affectation, litiges avec les locataires.
+              </p>
+            </div>
+
+            <div class="rounded-xl bg-gradient-to-br from-yellow-50 to-amber-50 p-8 border-2 border-yellow-200">
+              <div class="mb-4 flex items-center gap-3">
+                <div class="flex h-10 w-10 items-center justify-center rounded-full bg-yellow-600 text-white font-bold text-lg">
+                  3
+                </div>
+                <h3 class="text-2xl font-bold text-gray-900">Choisir sans accompagnement local</h3>
+              </div>
+              <p class="text-gray-700 mb-4">
+                Un logiciel développé à l&apos;étranger, sans support local, sans compréhension des pratiques ivoiriennes
+                (types de baux, Mobile Money, fiscalité), est difficile à adopter. Vous êtes seul face aux problèmes,
+                avec un support par email qui ne comprend pas vos besoins.
+              </p>
+              <p class="text-gray-700 font-semibold">
+                ➜ Conséquence : adoption difficile, frustration, abandon du logiciel.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Les critères indispensables -->
+      <section class="py-12 md:py-16">
+        <div class="container mx-auto max-w-4xl px-4 md:px-6">
+          <div class="text-center mb-12">
+            <h2 class="mb-4 text-3xl font-bold text-gray-900 md:text-4xl">
+              Les 10 critères indispensables en Côte d&apos;Ivoire
+            </h2>
+            <p class="text-lg text-gray-700">
+              Voici les critères à vérifier absolument avant de choisir votre logiciel immobilier.
+            </p>
+          </div>
+
+          <div class="space-y-6">
+            <div class="rounded-xl bg-white p-6 shadow-md border-l-4 border-blue-600">
+              <div class="mb-3 flex items-center gap-3">
+                <div class="flex h-8 w-8 items-center justify-center rounded-full bg-blue-600 text-white font-bold text-sm">
+                  1
+                </div>
+                <h3 class="text-xl font-bold text-gray-900">Adaptation locale (Mobile Money, pratiques terrain)</h3>
+              </div>
+              <p class="text-gray-700 mb-3">
+                Le logiciel doit être conçu pour le contexte ivoirien : intégration Mobile Money (Orange Money, MTN Money, Wave),
+                types de baux locaux, fiscalité, pratiques de gestion.
+              </p>
+            </div>
+
+            <div class="rounded-xl bg-white p-6 shadow-md border-l-4 border-blue-600">
+              <div class="mb-3 flex items-center gap-3">
+                <div class="flex h-8 w-8 items-center justify-center rounded-full bg-blue-600 text-white font-bold text-sm">
+                  2
+                </div>
+                <h3 class="text-xl font-bold text-gray-900">Modules adaptés à votre activité</h3>
+              </div>
+              <p class="text-gray-700 mb-3">
+                Vérifiez que le logiciel propose les modules dont vous avez besoin : CRM, gestion locative, syndic, promotion, maintenance.
+              </p>
+            </div>
+
+            <div class="rounded-xl bg-white p-6 shadow-md border-l-4 border-blue-600">
+              <div class="mb-3 flex items-center gap-3">
+                <div class="flex h-8 w-8 items-center justify-center rounded-full bg-blue-600 text-white font-bold text-sm">
+                  3
+                </div>
+                <h3 class="text-xl font-bold text-gray-900">Automatisation des tâches</h3>
+              </div>
+              <p class="text-gray-700 mb-3">
+                Quittances automatiques, relances programmées, rapprochement bancaire, alertes d&apos;impayés.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-10 rounded-lg border-2 border-blue-200 bg-blue-50 p-6">
+          <h3 class="mb-4 text-xl font-semibold text-gray-900">
+            💡 Ressources complémentaires
+          </h3>
+          <p class="mb-4 text-gray-700">
+            Pour faire le bon choix :
+          </p>
+          <ul class="space-y-2 text-gray-700">
+            <li>
+              • <a href="/logiciel-immobilier-cote-divoire" class="font-semibold text-[#2563EB] hover:underline">
+                Logiciel immobilier en Côte d&apos;Ivoire
+              </a>
+            </li>
+            <li>
+              • <a href="/meilleur-logiciel-immobilier-cote-divoire" class="font-semibold text-[#2563EB] hover:underline">
+                Le meilleur logiciel immobilier en Côte d&apos;Ivoire
+              </a>
+            </li>
+            <li>
+              • <a href="/pour-qui/agences-immobilieres" class="font-semibold text-[#2563EB] hover:underline">
+                Solution pour agences immobilières
+              </a>
+            </li>
+            <li>
+              • <a href="/pour-qui/gestionnaires-locatifs" class="font-semibold text-[#2563EB] hover:underline">
+                Solution pour gestionnaires locatifs
+              </a>
+            </li>
+            <li>
+              • <a href="/fonctionnalites" class="font-semibold text-[#2563EB] hover:underline">
+                Fonctionnalités essentielles
+              </a>
+            </li>
+            <li>
+              • <a href="/immotopia-vs-excel" class="font-semibold text-[#2563EB] hover:underline">
+                Comparer avec Excel
+              </a>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- FAQ Section -->
+      <section class="py-16 md:py-20 bg-gray-50">
+        <div class="container mx-auto max-w-4xl px-4 md:px-6">
+          <h2 class="mb-8 text-3xl font-bold text-gray-900 md:text-4xl">
+            Questions fréquentes
+          </h2>
+          <div class="space-y-6">
+            {faqItems.map((item) => (
+              <div class="border-l-4 border-blue-600 pl-6">
+                <h3 class="text-xl font-semibold text-gray-900 mb-2">
+                  {item.question}
+                </h3>
+                <p class="text-gray-700 leading-relaxed">
+                  {item.answer}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA Section -->
+      <section class="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl p-8 md:p-12 text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          Prêt à choisir le bon logiciel immobilier ?
+        </h2>
+        <p class="text-xl text-gray-700 mb-8 max-w-2xl mx-auto">
+          Découvrez comment ImmoTopia répond à tous les critères essentiels pour votre activité en Côte d&apos;Ivoire.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a
+            href="/contact?demo=true"
+            class="bg-[#2563EB] text-white font-semibold px-8 py-4 rounded-lg shadow-lg hover:shadow-xl transition-all hover:bg-[#1D4ED8] inline-flex items-center justify-center"
+          >
+            Demander une démonstration
+            <svg class="ml-2 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+          </a>
+          <a
+            href="/logiciel-immobilier-cote-divoire"
+            class="bg-white text-[#2563EB] border-2 border-[#2563EB] font-semibold px-8 py-4 rounded-lg hover:bg-blue-50 transition-all inline-flex items-center justify-center"
+          >
+            Découvrir l&apos;ERP ImmoTopia
+          </a>
+        </div>
+      </section>
+    </article>
+  </main>
+</BaseLayout>
+

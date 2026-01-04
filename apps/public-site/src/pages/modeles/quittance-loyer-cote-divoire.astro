@@ -1,0 +1,178 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { generateFAQSchema } from '../../lib/structured-data';
+
+const title = 'Modèle de quittance de loyer en Côte d\'Ivoire (gratuit)';
+const description = 'Téléchargez un modèle de quittance de loyer (CI) et découvrez comment automatiser quittances, encaissements et suivi des loyers avec l\'ERP immobilier ImmoTopia.';
+
+const modeleQuittance = `QUITTANCE DE LOYER
+
+Bailleur :
+[Nom et prénom du bailleur]
+[Adresse complète]
+[Téléphone] - [Email]
+
+Locataire :
+[Nom et prénom du locataire]
+[Adresse complète]
+
+Bien loué :
+[Adresse complète du bien loué]
+
+Période concernée : [Mois] [Année]
+
+Détail des sommes perçues :
+- Loyer : [Montant] FCFA
+- Charges (si applicable) : [Montant] FCFA
+- Total perçu : [Montant total] FCFA
+
+Mode de paiement : [Espèces / Virement bancaire / Mobile Money / Chèque]
+
+Date de paiement : [Date]
+
+Numéro de quittance : [Numéro]
+
+Fait à [Ville], le [Date]
+
+Signature et cachet du bailleur
+_________________________
+[Nom du bailleur]`;
+
+const faqItems = [
+  {
+    question: 'La quittance de loyer est-elle obligatoire en Côte d\'Ivoire ?',
+    answer: 'La quittance de loyer sert de preuve de paiement pour le locataire et de traçabilité pour le bailleur. Bien qu\'elle ne soit pas toujours légalement obligatoire dans tous les cas, elle est fortement recommandée car elle protège les deux parties en cas de litige.',
+  },
+  {
+    question: 'Peut-on envoyer une quittance de loyer par email ou en PDF ?',
+    answer: 'Oui, une quittance de loyer peut être envoyée par email au format PDF. C\'est même une pratique courante et professionnelle. Le PDF garantit l\'intégrité du document et facilite l\'archivage. Avec ImmoTopia, les quittances sont générées automatiquement au format PDF dès qu\'un paiement est enregistré.',
+  },
+  {
+    question: 'Comment ImmoTopia automatise-t-il la génération des quittances ?',
+    answer: 'ImmoTopia génère automatiquement des quittances conformes dès qu\'un paiement de loyer est enregistré. Que le paiement soit effectué via Mobile Money (Orange Money, MTN Money, Wave), virement bancaire ou autre moyen, la quittance est créée instantanément avec toutes les informations nécessaires. Elle peut être envoyée automatiquement par email au locataire, téléchargée au format PDF, ou archivée dans le dossier du locataire.',
+  },
+];
+
+const faqSchema = generateFAQSchema({ questions: faqItems });
+---
+
+<BaseLayout title={title} description={description} currentPath="/modeles/quittance-loyer-cote-divoire" structuredData={faqSchema}>
+  <main class="bg-white">
+    <article class="max-w-5xl mx-auto px-4 py-8 md:py-12">
+      <section class="relative overflow-hidden bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 py-16 md:py-24 lg:py-32">
+        <div class="container mx-auto max-w-5xl px-4 md:px-6">
+          <div class="text-center">
+            <h1 class="mb-6 text-4xl font-extrabold text-gray-900 md:text-5xl lg:text-6xl">
+              Modèle de quittance de loyer en Côte d&apos;Ivoire
+            </h1>
+            <p class="mb-8 text-xl text-gray-700 md:text-2xl">
+              Téléchargez gratuitement un modèle de quittance de loyer conforme et découvrez comment automatiser la génération avec ImmoTopia
+            </p>
+            <div class="flex flex-col gap-4 sm:flex-row sm:justify-center">
+              <a href="/contact?demo=true" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-8 py-4 rounded-lg inline-flex items-center gap-2">
+                Demander une démo
+                <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                </svg>
+              </a>
+              <a href="/gestion-locative-cote-divoire" class="border-2 border-blue-600 text-blue-600 font-semibold px-8 py-4 rounded-lg hover:bg-blue-50">
+                Découvrir la solution
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="py-12 md:py-16">
+        <div class="container mx-auto max-w-4xl px-4 md:px-6">
+          <h2 class="mb-8 text-3xl font-bold text-gray-900 md:text-4xl">
+            Modèle de quittance de loyer
+          </h2>
+          <div class="bg-gray-50 rounded-lg p-6 border border-gray-200">
+            <pre class="whitespace-pre-wrap font-mono text-sm text-gray-800">{modeleQuittance}</pre>
+            <div class="mt-4 flex gap-4">
+              <button onclick="navigator.clipboard.writeText(`{modeleQuittance}`)" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 inline-flex items-center gap-2">
+                <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                </svg>
+                Copier le modèle
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="py-16 md:py-20 bg-gray-50">
+        <div class="container mx-auto max-w-4xl px-4 md:px-6">
+          <h2 class="mb-8 text-3xl font-bold text-gray-900 md:text-4xl">
+            Questions fréquentes
+          </h2>
+          <div class="space-y-6">
+            {faqItems.map((item) => (
+              <div class="border-l-4 border-blue-600 pl-6">
+                <h3 class="text-xl font-semibold text-gray-900 mb-2">
+                  {item.question}
+                </h3>
+                <p class="text-gray-700 leading-relaxed">
+                  {item.answer}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div class="mt-10 rounded-lg border-2 border-blue-200 bg-blue-50 p-6">
+          <h3 class="mb-4 text-xl font-semibold text-gray-900">
+            💡 Ressources complémentaires
+          </h3>
+          <p class="mb-4 text-gray-700">
+            Pour automatiser vos quittances :
+          </p>
+          <ul class="space-y-2 text-gray-700">
+            <li>
+              • <a href="/gestion-locative-cote-divoire" class="font-semibold text-[#2563EB] hover:underline">
+                Gestion locative en Côte d&apos;Ivoire
+              </a>
+            </li>
+            <li>
+              • <a href="/paiement-loyer-charges-mobile-money-cote-divoire" class="font-semibold text-[#2563EB] hover:underline">
+                Paiement Mobile Money intégré
+              </a>
+            </li>
+            <li>
+              • <a href="/pour-qui/proprietaires-bailleurs" class="font-semibold text-[#2563EB] hover:underline">
+                Pour les propriétaires-bailleurs
+              </a>
+            </li>
+            <li>
+              • <a href="/modeles/releve-loyers-etat-de-compte-cote-divoire" class="font-semibold text-[#2563EB] hover:underline">
+                Modèle de relevé de loyers
+              </a>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl p-8 md:p-12 text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          Automatisez vos quittances avec ImmoTopia
+        </h2>
+        <p class="text-xl text-gray-700 mb-8 max-w-2xl mx-auto">
+          Plus besoin de créer manuellement chaque quittance. ImmoTopia génère automatiquement des quittances conformes dès qu&apos;un paiement est enregistré.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="/contact?demo=true" class="bg-[#2563EB] text-white font-semibold px-8 py-4 rounded-lg shadow-lg hover:shadow-xl transition-all hover:bg-[#1D4ED8] inline-flex items-center justify-center">
+            Demander une démonstration
+            <svg class="ml-2 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+          </a>
+          <a href="/gestion-locative-cote-divoire" class="bg-white text-[#2563EB] border-2 border-[#2563EB] font-semibold px-8 py-4 rounded-lg hover:bg-blue-50 transition-all inline-flex items-center justify-center">
+            Découvrir la solution
+          </a>
+        </div>
+      </section>
+    </article>
+  </main>
+</BaseLayout>
+

@@ -1,0 +1,118 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { generateFAQSchema } from '../lib/structured-data';
+
+const title = 'Logiciel immobilier en Afrique : ERP local ou solution étrangère ?';
+const description = 'Comparer ERP immobiliers locaux et solutions étrangères : adaptation, Mobile Money, support, scalabilité. Guide complet pour choisir le bon logiciel immobilier en Afrique.';
+
+const faqItems = [
+  {
+    question: 'Pourquoi un ERP local est-il plus adapté au marché africain ?',
+    answer: 'Un ERP local comprend les spécificités du marché africain : intégration native du Mobile Money (Orange Money, MTN Money, Wave), conformité aux réglementations locales, support dans les fuseaux horaires africains, et adaptation aux pratiques commerciales locales. Les solutions étrangères nécessitent souvent des personnalisations coûteuses pour ces fonctionnalités.',
+  },
+  {
+    question: 'Les solutions étrangères peuvent-elles intégrer le Mobile Money ?',
+    answer: 'Techniquement oui, mais cela nécessite généralement des développements sur mesure coûteux et des intégrations tierces. Les ERP locaux africains intègrent nativement Orange Money, MTN Money, Moov Money et Wave, avec rapprochement automatique des paiements et génération de quittances conformes aux normes locales.',
+  },
+  {
+    question: 'Le support technique est-il vraiment différent ?',
+    answer: 'Oui, significativement. Les ERP locaux offrent un support dans les fuseaux horaires africains (GMT à GMT+3), en français et langues locales, avec une compréhension des contextes métiers africains. Les solutions étrangères ont souvent un support décalé (horaires européens/américains), des temps de réponse plus longs, et une méconnaissance des spécificités locales.',
+  },
+  {
+    question: 'ImmoTopia fonctionne-t-il dans toute l\'Afrique ?',
+    answer: 'Oui, ImmoTopia est conçu pour l\'ensemble du marché africain. Il intègre les moyens de paiement mobiles de différents pays (Orange Money, MTN Money, Wave, Moov Money), supporte plusieurs devises (FCFA, CDF, etc.), et s\'adapte aux réglementations de chaque pays. Le support est disponible pour toute l\'Afrique francophone et anglophone.',
+  },
+];
+
+const faqSchema = generateFAQSchema({ questions: faqItems });
+---
+
+<BaseLayout title={title} description={description} currentPath="/logiciel-immobilier-afrique" structuredData={faqSchema}>
+  <main class="bg-white">
+    <article class="max-w-5xl mx-auto px-4 py-8 md:py-12">
+      <!-- Hero Section -->
+      <section class="bg-gradient-to-br from-blue-50 to-sky-100 py-20 text-center md:py-32">
+        <div class="container mx-auto max-w-4xl px-6">
+          <h1 class="mb-6 text-4xl font-extrabold text-gray-900 md:text-5xl lg:text-6xl">
+            Logiciel immobilier en Afrique
+          </h1>
+          <p class="text-lg text-gray-600 md:text-xl">
+            ERP local ou solution étrangère ? Guide complet pour choisir le bon logiciel immobilier adapté au marché africain.
+          </p>
+        </div>
+      </section>
+
+      <!-- Content Section -->
+      <section class="py-16 md:py-20">
+        <div class="container mx-auto max-w-4xl px-4 md:px-6">
+          <div class="prose prose-lg max-w-none text-gray-700">
+            <p class="mb-6 text-xl leading-relaxed">
+              Le choix d&apos;un logiciel immobilier en Afrique est crucial. Il faut comparer les ERP locaux et les solutions étrangères sur plusieurs critères : adaptation au marché, intégration Mobile Money, support technique, et coûts.
+            </p>
+            
+            <h2 class="text-3xl font-bold text-gray-900 mb-6">Pourquoi choisir un ERP local ?</h2>
+            
+            <p class="mb-6">
+              Un ERP local comprend les spécificités du marché africain : intégration native du Mobile Money, conformité aux réglementations locales, support dans les fuseaux horaires africains, et adaptation aux pratiques commerciales locales.
+            </p>
+
+            <h2 class="text-3xl font-bold text-gray-900 mb-6">Les avantages d&apos;ImmoTopia</h2>
+            
+            <p class="mb-6">
+              ImmoTopia est conçu pour l&apos;ensemble du marché africain. Il intègre les moyens de paiement mobiles de différents pays, supporte plusieurs devises, et s&apos;adapte aux réglementations de chaque pays. Le support est disponible pour toute l&apos;Afrique francophone et anglophone.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- FAQ Section -->
+      <section class="py-16 md:py-20 bg-gray-50">
+        <div class="container mx-auto max-w-4xl px-4 md:px-6">
+          <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-8">
+            Questions fréquentes
+          </h2>
+          <div class="space-y-6">
+            {faqItems.map((item) => (
+              <div class="border-l-4 border-blue-600 pl-6">
+                <h3 class="text-xl font-semibold text-gray-900 mb-2">
+                  {item.question}
+                </h3>
+                <p class="text-gray-700 leading-relaxed">
+                  {item.answer}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA Section -->
+      <section class="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl p-8 md:p-12 text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          Découvrez ImmoTopia pour l&apos;Afrique
+        </h2>
+        <p class="text-xl text-gray-700 mb-8 max-w-2xl mx-auto">
+          Un ERP immobilier conçu spécifiquement pour le marché africain.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a
+            href="/contact?demo=true"
+            class="bg-[#2563EB] text-white font-semibold px-8 py-4 rounded-lg shadow-lg hover:shadow-xl transition-all hover:bg-[#1D4ED8] inline-flex items-center justify-center"
+          >
+            Demander une démonstration
+            <svg class="ml-2 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+          </a>
+          <a
+            href="/logiciel-immobilier-cote-divoire"
+            class="bg-white text-[#2563EB] border-2 border-[#2563EB] font-semibold px-8 py-4 rounded-lg hover:bg-blue-50 transition-all inline-flex items-center justify-center"
+          >
+            En savoir plus
+          </a>
+        </div>
+      </section>
+    </article>
+  </main>
+</BaseLayout>
+

@@ -1,0 +1,249 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { generateFAQSchema } from '../lib/structured-data';
+
+const title = 'Meilleur logiciel immobilier en Côte d\'Ivoire : critères & comparatif';
+const description = 'Comment choisir le meilleur logiciel immobilier en Côte d\'Ivoire : CRM, biens & annonces, gestion locative, syndic, paiements Mobile Money, maintenance et reporting. Grille de choix + checklist.';
+
+const faqItems = [
+  {
+    question: 'Est-ce adapté aux petites structures ?',
+    answer: 'Oui, ImmoTopia est conçu pour s\'adapter à toutes les tailles de structures. Vous pouvez commencer avec les modules essentiels (CRM, biens, gestion locative) et activer progressivement d\'autres fonctionnalités selon vos besoins et votre croissance. L\'abonnement est modulaire et évolutif.',
+  },
+  {
+    question: 'Peut-on activer seulement certains modules ?',
+    answer: 'Absolument. ImmoTopia est un ERP modulaire. Vous pouvez activer uniquement les modules dont vous avez besoin : CRM, gestion locative, syndic, promotion, etc. Chaque module fonctionne de manière indépendante tout en s\'intégrant parfaitement avec les autres pour une vue globale de votre activité.',
+  },
+  {
+    question: 'Peut-on migrer depuis Excel ?',
+    answer: 'Oui, nous proposons un accompagnement pour l\'import de vos données depuis Excel, CSV ou d\'autres formats. Notre équipe peut vous aider à structurer et migrer vos biens, contrats, clients et historique de paiements pour une transition en douceur sans perte de données.',
+  },
+  {
+    question: 'Les paiements Mobile Money sont-ils supportés ?',
+    answer: 'Oui, ImmoTopia intègre nativement les principaux moyens de paiement utilisés en Côte d\'Ivoire : Orange Money, MTN Money, Moov Money et Wave. Le système permet d\'enregistrer les paiements, de générer automatiquement les quittances et de suivre en temps réel l\'état des paiements.',
+  },
+  {
+    question: 'Le logiciel est-il sécurisé ?',
+    answer: 'Oui, la sécurité est une priorité. ImmoTopia utilise un hébergement sécurisé avec chiffrement SSL, sauvegardes automatiques quotidiennes, et respect des normes de protection des données. Chaque utilisateur a un accès sécurisé avec authentification, et les permissions sont granulaires par rôle.',
+  },
+];
+
+const faqSchema = generateFAQSchema({ questions: faqItems });
+---
+
+<BaseLayout title={title} description={description} currentPath="/meilleur-logiciel-immobilier-cote-divoire" structuredData={faqSchema}>
+  <main class="bg-white">
+    <article class="max-w-5xl mx-auto px-4 py-8 md:py-12">
+      <!-- Hero Section -->
+      <header class="mb-16 text-center">
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight">
+          Meilleur logiciel immobilier en Côte d&apos;Ivoire : comment choisir ?
+        </h1>
+        <p class="text-xl md:text-2xl text-gray-700 mb-8 max-w-3xl mx-auto leading-relaxed">
+          Une grille professionnelle pour sélectionner un ERP adapté à votre activité : agences, syndics, promoteurs, gestionnaires locatifs et propriétaires bailleurs. Découvrez{' '}
+          <a href="/logiciel-immobilier-cote-divoire" class="font-semibold text-[#2563EB] hover:underline">
+            notre ERP immobilier complet
+          </a>
+          {' '}et{' '}
+          <a href="/guides/choisir-logiciel-immobilier-cote-divoire" class="font-semibold text-[#2563EB] hover:underline">
+            notre guide de choix
+          </a>
+          .
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+          <a
+            href="/contact?demo=true"
+            class="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-semibold px-8 py-6 text-lg rounded-lg shadow-lg hover:shadow-xl transition-all inline-flex items-center"
+          >
+            Demander une démo
+            <svg class="ml-2 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+          </a>
+          <a
+            href="/logiciel-immobilier-cote-divoire"
+            class="border-2 border-blue-600 text-blue-600 hover:bg-blue-50 font-semibold px-8 py-6 text-lg rounded-lg transition-all"
+          >
+            Découvrir l&apos;ERP ImmoTopia
+          </a>
+        </div>
+      </header>
+
+      <!-- Section Pourquoi c'est difficile -->
+      <section class="mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-8">
+          Pourquoi est-il difficile de choisir un logiciel immobilier ?
+        </h2>
+        <div class="prose prose-lg max-w-none text-gray-700 leading-relaxed">
+          <p class="mb-6 text-xl">
+            Le marché immobilier en Côte d&apos;Ivoire est en pleine croissance, et les professionnels du secteur font face à des besoins métiers très variés selon leur activité.
+          </p>
+          <div class="grid md:grid-cols-2 gap-6 mb-8">
+            <div class="bg-amber-50 border-l-4 border-amber-500 p-6 rounded-r-lg">
+              <h3 class="text-xl font-semibold text-gray-900 mb-4 flex items-center gap-2">
+                <svg class="h-6 w-6 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                </svg>
+                Besoins métiers différents
+              </h3>
+              <ul class="list-disc pl-6 space-y-2 text-gray-700">
+                <li>Une agence immobilière a besoin d&apos;un CRM puissant et d&apos;un module annonces</li>
+                <li>Un gestionnaire locatif privilégie l&apos;automatisation des quittances et le suivi des impayés</li>
+                <li>Un syndic nécessite la gestion des AG et des appels de charges</li>
+                <li>Un promoteur doit suivre les réservations, ventes et acomptes</li>
+              </ul>
+            </div>
+            <div class="bg-red-50 border-l-4 border-red-500 p-6 rounded-r-lg">
+              <h3 class="text-xl font-semibold text-gray-900 mb-4 flex items-center gap-2">
+                <svg class="h-6 w-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+                Outils dispersés et risques
+              </h3>
+              <ul class="list-disc pl-6 space-y-2 text-gray-700">
+                <li>Données éparpillées entre Excel, WhatsApp, emails et papier</li>
+                <li>Absence de centralisation : impossible d&apos;avoir une vue d&apos;ensemble</li>
+                <li>Risques d&apos;impayés par manque de suivi automatisé</li>
+                <li>Erreurs humaines lors de la saisie manuelle</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section Critères -->
+      <section class="mb-16 bg-gray-50 py-16">
+        <div class="container mx-auto max-w-4xl px-4 md:px-6">
+          <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-8">
+            Les 10 critères qui font la différence
+          </h2>
+          <p class="text-xl text-gray-700 mb-10 max-w-3xl">
+            Voici les critères essentiels à évaluer pour choisir le meilleur logiciel immobilier adapté à votre activité en Côte d&apos;Ivoire.
+          </p>
+          <div class="space-y-6">
+            <div class="rounded-lg border border-gray-200 bg-white p-6">
+              <h3 class="text-xl font-semibold text-gray-900 mb-3">1. Intégration Mobile Money</h3>
+              <p class="text-gray-700">
+                Le logiciel doit intégrer nativement Orange Money, MTN Money, Moov Money et Wave pour faciliter les paiements de loyers et charges.
+              </p>
+            </div>
+            <div class="rounded-lg border border-gray-200 bg-white p-6">
+              <h3 class="text-xl font-semibold text-gray-900 mb-3">2. Modules adaptés à votre activité</h3>
+              <p class="text-gray-700">
+                Vérifiez que le logiciel propose les modules dont vous avez besoin : CRM, gestion locative, syndic, promotion, maintenance.
+              </p>
+            </div>
+            <div class="rounded-lg border border-gray-200 bg-white p-6">
+              <h3 class="text-xl font-semibold text-gray-900 mb-3">3. Automatisation des tâches</h3>
+              <p class="text-gray-700">
+                Quittances automatiques, relances programmées, rapprochement bancaire, alertes d&apos;impayés.
+              </p>
+            </div>
+            <div class="rounded-lg border border-gray-200 bg-white p-6">
+              <h3 class="text-xl font-semibold text-gray-900 mb-3">4. Reporting et tableaux de bord</h3>
+              <p class="text-gray-700">
+                Tableaux de bord en temps réel, rapports personnalisables, export PDF/Excel pour une prise de décision éclairée.
+              </p>
+            </div>
+            <div class="rounded-lg border border-gray-200 bg-white p-6">
+              <h3 class="text-xl font-semibold text-gray-900 mb-3">5. Support et accompagnement</h3>
+              <p class="text-gray-700">
+                Support réactif dans les fuseaux horaires africains, formation incluse, documentation en français.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-10 rounded-lg border-2 border-blue-200 bg-blue-50 p-6">
+          <h3 class="mb-4 text-xl font-semibold text-gray-900">
+            💡 Ressources complémentaires
+          </h3>
+          <p class="mb-4 text-gray-700">
+            Pour découvrir ImmoTopia :
+          </p>
+          <ul class="space-y-2 text-gray-700">
+            <li>
+              • <a href="/logiciel-immobilier-cote-divoire" class="font-semibold text-[#2563EB] hover:underline">
+                Logiciel immobilier en Côte d&apos;Ivoire
+              </a>
+            </li>
+            <li>
+              • <a href="/fonctionnalites" class="font-semibold text-[#2563EB] hover:underline">
+                Fonctionnalités complètes
+              </a>
+            </li>
+            <li>
+              • <a href="/pourquoi-immotopia" class="font-semibold text-[#2563EB] hover:underline">
+                Pourquoi nous choisir
+              </a>
+            </li>
+            <li>
+              • <a href="/paiement-loyer-charges-mobile-money-cote-divoire" class="font-semibold text-[#2563EB] hover:underline">
+                Mobile Money intégré
+              </a>
+            </li>
+            <li>
+              • <a href="/immotopia-vs-excel" class="font-semibold text-[#2563EB] hover:underline">
+                ImmoTopia vs Excel
+              </a>
+            </li>
+            <li>
+              • <a href="/guides/choisir-logiciel-immobilier-cote-divoire" class="font-semibold text-[#2563EB] hover:underline">
+                Guide : Comment choisir un logiciel
+              </a>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- FAQ Section -->
+      <section class="py-16 md:py-20">
+        <div class="container mx-auto max-w-4xl px-4 md:px-6">
+          <h2 class="mb-8 text-3xl font-bold text-gray-900 md:text-4xl">
+            Questions fréquentes
+          </h2>
+          <div class="space-y-6">
+            {faqItems.map((item) => (
+              <div class="border-l-4 border-blue-600 pl-6">
+                <h3 class="text-xl font-semibold text-gray-900 mb-2">
+                  {item.question}
+                </h3>
+                <p class="text-gray-700 leading-relaxed">
+                  {item.answer}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA Section -->
+      <section class="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl p-8 md:p-12 text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          Prêt à choisir le meilleur logiciel immobilier ?
+        </h2>
+        <p class="text-xl text-gray-700 mb-8 max-w-2xl mx-auto">
+          Découvrez comment ImmoTopia répond à tous les critères essentiels pour votre activité.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a
+            href="/contact?demo=true"
+            class="bg-[#2563EB] text-white font-semibold px-8 py-4 rounded-lg shadow-lg hover:shadow-xl transition-all hover:bg-[#1D4ED8] inline-flex items-center justify-center"
+          >
+            Demander une démonstration
+            <svg class="ml-2 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+          </a>
+          <a
+            href="/logiciel-immobilier-cote-divoire"
+            class="bg-white text-[#2563EB] border-2 border-[#2563EB] font-semibold px-8 py-4 rounded-lg hover:bg-blue-50 transition-all inline-flex items-center justify-center"
+          >
+            Découvrir l&apos;ERP ImmoTopia
+          </a>
+        </div>
+      </section>
+    </article>
+  </main>
+</BaseLayout>
+

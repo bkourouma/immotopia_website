@@ -1,0 +1,39 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const title = 'Actualités ImmoTopia | Nouvelles et Mises à jour';
+const description = 'Suivez les dernières nouveautés et mises à jour d\'ImmoTopia.';
+---
+
+<BaseLayout title={title} description={description} currentPath="/ressources/actualites">
+  <main class="bg-white">
+    <article class="max-w-5xl mx-auto px-4 py-8 md:py-12">
+      <!-- Hero Section -->
+      <section class="bg-gradient-to-br from-blue-50 to-sky-100 py-20 text-center md:py-32">
+        <div class="container mx-auto max-w-4xl px-6">
+          <h1 class="mb-6 text-4xl font-extrabold text-gray-900 md:text-5xl">
+            Actualités ImmoTopia
+          </h1>
+          <p class="text-lg text-gray-600 md:text-xl">
+            Suivez les dernières nouveautés et mises à jour d&apos;ImmoTopia.
+          </p>
+        </div>
+      </section>
+
+      <!-- Content Section -->
+      <section class="py-20 md:py-32">
+        <div class="container mx-auto max-w-4xl px-6">
+          <div class="rounded-lg border border-gray-200 bg-gray-50 p-12 text-center">
+            <p class="text-lg text-gray-600">
+              Actualités à venir prochainement...
+            </p>
+            <p class="mt-4 text-sm text-gray-500">
+              Restez informé des dernières nouveautés, mises à jour et événements ImmoTopia.
+            </p>
+          </div>
+        </div>
+      </section>
+    </article>
+  </main>
+</BaseLayout>
+

@@ -41,7 +41,15 @@ export default function TechnologiesPage() {
             </h1>
             <p className="text-lg text-gray-600 md:text-xl">
               Bénéficiez de l'IA pour automatiser vos tâches et des paiements Mobile Money pour
-              faciliter les transactions.
+              faciliter les transactions. Découvrez{' '}
+              <Link href="/pourquoi-immotopia" className="font-semibold text-[#2563EB] hover:underline">
+                pourquoi choisir ImmoTopia
+              </Link>
+              {' '}et{' '}
+              <Link href="/vision/digitalisation-immobilier-afrique" className="font-semibold text-[#2563EB] hover:underline">
+                notre vision pour l'Afrique
+              </Link>
+              .
             </p>
           </ScrollReveal>
         </div>

@@ -1,0 +1,154 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { generateFAQSchema } from '../../lib/structured-data';
+
+const title = "Modèle de contrat de bail habitation en Côte d'Ivoire (gratuit) | ImmoTopia";
+const description = "Téléchargez un modèle de contrat de bail habitation (CI) et découvrez comment centraliser contrats, loyers, quittances et paiements avec l'ERP immobilier ImmoTopia.";
+
+const faqItems = [
+  {
+    question: "Quelle est la différence entre un bail d'habitation et un bail commercial ?",
+    answer: "Un bail d'habitation concerne la location d'un logement destiné à servir de résidence principale ou secondaire au locataire. Un bail commercial, quant à lui, concerne la location d'un local destiné à l'exercice d'une activité commerciale, artisanale ou professionnelle. Les règles juridiques, la durée minimale et les modalités de résiliation diffèrent entre ces deux types de baux.",
+  },
+  {
+    question: "Est-il obligatoire de faire un état des lieux ?",
+    answer: "Bien que la réglementation puisse varier, il est fortement recommandé de réaliser un état des lieux d'entrée et de sortie. L'état des lieux protège à la fois le bailleur et le locataire en documentant l'état du logement au début et à la fin de la location. Il permet d'éviter les litiges concernant les dégradations et facilite la restitution du dépôt de garantie.",
+  },
+  {
+    question: "Comment ImmoTopia simplifie-t-il la gestion des contrats de bail ?",
+    answer: "ImmoTopia centralise tous vos contrats de bail dans un ERP immobilier complet. Chaque contrat est rattaché à un bien et à un locataire, avec un suivi automatique des échéances de loyer, la génération automatique de quittances, et l'intégration des paiements Mobile Money. Vous disposez d'un historique complet (paiements, relances, communications) et pouvez générer des rapports pour vos propriétaires.",
+  },
+];
+
+const faqSchema = generateFAQSchema({ questions: faqItems });
+---
+
+<BaseLayout title={title} description={description} currentPath="/modeles/contrat-bail-habitation-cote-divoire" structuredData={faqSchema}>
+  <main class="bg-white">
+    <article class="max-w-5xl mx-auto px-4 py-8 md:py-12">
+      <section class="relative overflow-hidden bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 py-16 md:py-24 lg:py-32">
+        <div class="container mx-auto max-w-5xl px-4 md:px-6">
+          <div class="text-center">
+            <h1 class="mb-6 text-4xl font-extrabold text-gray-900 md:text-5xl lg:text-6xl">
+              Modèle de contrat de bail habitation en Côte d&apos;Ivoire
+            </h1>
+            <p class="mb-8 text-xl text-gray-700 md:text-2xl">
+              Téléchargez gratuitement un modèle de contrat de bail habitation conforme et découvrez comment centraliser vos contrats avec ImmoTopia
+            </p>
+            <div class="flex flex-col gap-4 sm:flex-row sm:justify-center">
+              <a href="/contact?demo=true" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-8 py-4 rounded-lg inline-flex items-center gap-2">
+                Demander une démo
+                <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                </svg>
+              </a>
+              <a href="/gestion-locative-cote-divoire" class="border-2 border-blue-600 text-blue-600 font-semibold px-8 py-4 rounded-lg hover:bg-blue-50">
+                Découvrir la solution
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="py-12 md:py-16">
+        <div class="container mx-auto max-w-4xl px-4 md:px-6">
+          <h2 class="mb-8 text-3xl font-bold text-gray-900 md:text-4xl">
+            Modèle de contrat de bail habitation
+          </h2>
+          <div class="bg-gray-50 rounded-lg p-6 border border-gray-200">
+            <p class="text-gray-700 mb-4">
+              Ce modèle de contrat de bail habitation est fourni à titre indicatif et doit être adapté à votre situation spécifique. 
+              Nous vous recommandons de le faire valider par un professionnel du droit (avocat, notaire) avant signature.
+            </p>
+            <p class="text-gray-700 mb-4">
+              Le contrat doit inclure : identités du bailleur et du locataire, description du bien, durée du bail, montant du loyer et charges, 
+              modalités de paiement, dépôt de garantie, obligations des parties, conditions de résiliation, et état des lieux.
+            </p>
+            <div class="mt-4">
+              <a href="/modeles/etat-des-lieux-cote-divoire" class="text-blue-600 hover:text-blue-800 font-semibold underline">
+                Voir aussi le modèle d&apos;état des lieux →
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="py-16 md:py-20 bg-gray-50">
+        <div class="container mx-auto max-w-4xl px-4 md:px-6">
+          <h2 class="mb-8 text-3xl font-bold text-gray-900 md:text-4xl">
+            Questions fréquentes
+          </h2>
+          <div class="space-y-6">
+            {faqItems.map((item) => (
+              <div class="border-l-4 border-blue-600 pl-6">
+                <h3 class="text-xl font-semibold text-gray-900 mb-2">
+                  {item.question}
+                </h3>
+                <p class="text-gray-700 leading-relaxed">
+                  {item.answer}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div class="mt-10 rounded-lg border-2 border-blue-200 bg-blue-50 p-6">
+          <h3 class="mb-4 text-xl font-semibold text-gray-900">
+            💡 Ressources complémentaires
+          </h3>
+          <p class="mb-4 text-gray-700">
+            Pour gérer vos contrats de bail :
+          </p>
+          <ul class="space-y-2 text-gray-700">
+            <li>
+              • <a href="/gestion-locative-cote-divoire" class="font-semibold text-[#2563EB] hover:underline">
+                Gestion locative en Côte d&apos;Ivoire
+              </a>
+            </li>
+            <li>
+              • <a href="/pour-qui/proprietaires-bailleurs" class="font-semibold text-[#2563EB] hover:underline">
+                Pour les propriétaires-bailleurs
+              </a>
+            </li>
+            <li>
+              • <a href="/pour-qui/gestionnaires-locatifs" class="font-semibold text-[#2563EB] hover:underline">
+                Pour les gestionnaires locatifs
+              </a>
+            </li>
+            <li>
+              • <a href="/modeles/etat-des-lieux-cote-divoire" class="font-semibold text-[#2563EB] hover:underline">
+                Modèle d&apos;état des lieux
+              </a>
+            </li>
+            <li>
+              • <a href="/modeles/quittance-loyer-cote-divoire" class="font-semibold text-[#2563EB] hover:underline">
+                Modèle de quittance
+              </a>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl p-8 md:p-12 text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          Centralisez vos contrats avec ImmoTopia
+        </h2>
+        <p class="text-xl text-gray-700 mb-8 max-w-2xl mx-auto">
+          ImmoTopia centralise tous vos contrats de bail, avec suivi automatique des échéances, génération de quittances et intégration des paiements Mobile Money.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="/contact?demo=true" class="bg-[#2563EB] text-white font-semibold px-8 py-4 rounded-lg shadow-lg hover:shadow-xl transition-all hover:bg-[#1D4ED8] inline-flex items-center justify-center">
+            Demander une démonstration
+            <svg class="ml-2 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+          </a>
+          <a href="/gestion-locative-cote-divoire" class="bg-white text-[#2563EB] border-2 border-[#2563EB] font-semibold px-8 py-4 rounded-lg hover:bg-blue-50 transition-all inline-flex items-center justify-center">
+            Découvrir la solution
+          </a>
+        </div>
+      </section>
+    </article>
+  </main>
+</BaseLayout>
+

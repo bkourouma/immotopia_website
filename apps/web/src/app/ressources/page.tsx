@@ -98,7 +98,15 @@ export default function RessourcesPage() {
           <ScrollReveal direction="fade" delay={200}>
             <p className="mx-auto max-w-[700px] text-lg leading-relaxed text-gray-700 md:text-xl font-medium">
               Accédez à nos ressources pour améliorer votre gestion immobilière et découvrir les
-              meilleures pratiques du secteur.
+              meilleures pratiques du secteur. Découvrez{' '}
+              <Link href="/fonctionnalites" className="font-semibold text-[#2563EB] hover:underline">
+                toutes nos fonctionnalités
+              </Link>
+              {' '}et{' '}
+              <Link href="/logiciel-immobilier-cote-divoire" className="font-semibold text-[#2563EB] hover:underline">
+                notre ERP immobilier complet
+              </Link>
+              .
             </p>
           </ScrollReveal>
         </div>

@@ -173,7 +173,15 @@ export default function TarifsPage() {
               Des tarifs simples, pensés pour les professionnels de l'immobilier
             </h1>
             <p className="mx-auto mb-8 max-w-2xl text-lg leading-relaxed text-gray-700 md:text-xl">
-              Choisissez l'offre adaptée à votre agence ou votre activité de gestion. Centralisez vos biens, clients et locations sur une seule plateforme.
+              Choisissez l'offre adaptée à votre agence ou votre activité de gestion. Centralisez vos biens, clients et locations sur une seule plateforme. Découvrez{' '}
+              <Link href="/fonctionnalites" className="font-semibold text-[#2563EB] hover:underline">
+                toutes nos fonctionnalités
+              </Link>
+              {' '}et{' '}
+              <Link href="/logiciel-immobilier-cote-divoire" className="font-semibold text-[#2563EB] hover:underline">
+                notre ERP immobilier complet
+              </Link>
+              .
             </p>
 
             {/* CTA Group */}

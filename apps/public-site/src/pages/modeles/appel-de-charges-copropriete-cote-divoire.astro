@@ -1,0 +1,121 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { generateFAQSchema } from '../../lib/structured-data';
+
+const title = "Modèle d'appel de charges de copropriété (gratuit) | Côte d'Ivoire | ImmoTopia";
+const description = "Modèle gratuit d'appel de charges de copropriété (appel de fonds) à copier : budget, quote-part, échéance, modalités de paiement. Automatisez avec ImmoTopia (syndic + Mobile Money).";
+
+const faqItems = [
+  {
+    question: "Quelle est la différence entre appel de charges et appel de fonds ?",
+    answer: "L'appel de charges concerne les charges courantes de copropriété (entretien, gardiennage, électricité parties communes, etc.) qui sont récurrentes. L'appel de fonds concerne des dépenses exceptionnelles ou des travaux nécessitant un financement ponctuel. Les deux peuvent être gérés avec le même processus, mais l'appel de fonds nécessite généralement une décision en assemblée générale.",
+  },
+  {
+    question: "Comment calculer la quote-part de chaque copropriétaire ?",
+    answer: "La quote-part est calculée en fonction des tantièmes de chaque lot. Si un lot représente 50/1000 des tantièmes totaux, il paiera 50/1000 du montant total des charges. Les tantièmes sont définis dans le règlement de copropriété et reflètent généralement la superficie et la valeur de chaque lot.",
+  },
+  {
+    question: "Peut-on payer les charges de copropriété via Mobile Money ?",
+    answer: "Oui, en Côte d'Ivoire, les solutions Mobile Money (Orange Money, MTN Money, Moov Money, Wave) sont largement adoptées et peuvent être intégrées pour faciliter le paiement des charges. Cela améliore significativement le taux de recouvrement en offrant une méthode de paiement simple, rapide et sécurisée aux copropriétaires.",
+  },
+  {
+    question: "Comment ImmoTopia automatise-t-il les appels de charges ?",
+    answer: "ImmoTopia permet de créer des budgets prévisionnels, de générer automatiquement des appels de charges avec références uniques par lot et période, d'encaisser via Mobile Money avec rapprochement automatique, de suivre les impayés avec relances automatiques, et de produire des rapports pour les assemblées générales. Tout est centralisé et automatisé.",
+  },
+];
+
+const faqSchema = generateFAQSchema({ questions: faqItems });
+---
+
+<BaseLayout title={title} description={description} currentPath="/modeles/appel-de-charges-copropriete-cote-divoire" structuredData={faqSchema}>
+  <main class="bg-white">
+    <article class="max-w-5xl mx-auto px-4 py-8 md:py-12">
+      <section class="relative overflow-hidden bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 py-16 md:py-24 lg:py-32">
+        <div class="container mx-auto max-w-5xl px-4 md:px-6">
+          <div class="text-center">
+            <h1 class="mb-6 text-4xl font-extrabold text-gray-900 md:text-5xl lg:text-6xl">
+              Modèle d&apos;appel de charges de copropriété
+            </h1>
+            <p class="mb-8 text-xl text-gray-700 md:text-2xl">
+              Téléchargez gratuitement un modèle d&apos;appel de charges conforme et découvrez comment automatiser avec ImmoTopia
+            </p>
+            <div class="flex flex-col gap-4 sm:flex-row sm:justify-center">
+              <a href="/contact?demo=true" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-8 py-4 rounded-lg inline-flex items-center gap-2">
+                Demander une démo
+                <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                </svg>
+              </a>
+              <a href="/logiciel-syndic-copropriete-cote-divoire" class="border-2 border-blue-600 text-blue-600 font-semibold px-8 py-4 rounded-lg hover:bg-blue-50">
+                Découvrir la solution syndic
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="py-12 md:py-16">
+        <div class="container mx-auto max-w-4xl px-4 md:px-6">
+          <h2 class="mb-8 text-3xl font-bold text-gray-900 md:text-4xl">
+            Modèle d&apos;appel de charges
+          </h2>
+          <div class="bg-gray-50 rounded-lg p-6 border border-gray-200">
+            <p class="text-gray-700 mb-4">
+              Un appel de charges doit inclure : les informations de la résidence, la période concernée, le détail des charges, 
+              la répartition par lot avec tantièmes et montants dus, les échéances de paiement, et les modalités de paiement (Mobile Money, virement bancaire).
+            </p>
+            <p class="text-gray-700 mb-4">
+              Chaque copropriétaire doit recevoir un appel de charges avec une référence unique (lot + période) pour faciliter le suivi des paiements.
+            </p>
+            <div class="mt-4">
+              <a href="/guides/gerer-copropriete-cote-divoire" class="text-blue-600 hover:text-blue-800 font-semibold underline">
+                Voir aussi le guide complet de gestion de copropriété →
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="py-16 md:py-20 bg-gray-50">
+        <div class="container mx-auto max-w-4xl px-4 md:px-6">
+          <h2 class="mb-8 text-3xl font-bold text-gray-900 md:text-4xl">
+            Questions fréquentes
+          </h2>
+          <div class="space-y-6">
+            {faqItems.map((item) => (
+              <div class="border-l-4 border-blue-600 pl-6">
+                <h3 class="text-xl font-semibold text-gray-900 mb-2">
+                  {item.question}
+                </h3>
+                <p class="text-gray-700 leading-relaxed">
+                  {item.answer}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section class="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl p-8 md:p-12 text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          Automatisez vos appels de charges avec ImmoTopia
+        </h2>
+        <p class="text-xl text-gray-700 mb-8 max-w-2xl mx-auto">
+          ImmoTopia génère automatiquement les appels de charges, facilite les paiements Mobile Money, et suit les impayés avec relances automatiques.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="/contact?demo=true" class="bg-[#2563EB] text-white font-semibold px-8 py-4 rounded-lg shadow-lg hover:shadow-xl transition-all hover:bg-[#1D4ED8] inline-flex items-center justify-center">
+            Demander une démonstration
+            <svg class="ml-2 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+          </a>
+          <a href="/logiciel-syndic-copropriete-cote-divoire" class="bg-white text-[#2563EB] border-2 border-[#2563EB] font-semibold px-8 py-4 rounded-lg hover:bg-blue-50 transition-all inline-flex items-center justify-center">
+            Découvrir la solution syndic
+          </a>
+        </div>
+      </section>
+    </article>
+  </main>
+</BaseLayout>
+

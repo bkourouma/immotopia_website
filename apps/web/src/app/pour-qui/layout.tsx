@@ -1,3 +1,4 @@
+import React from 'react';
 import { generateMetadata } from '../../lib/seo';
 
 export const metadata = generateMetadata({

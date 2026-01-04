@@ -1,0 +1,125 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { generateFAQSchema } from '../../lib/structured-data';
+
+const title = "Réduire les impayés de loyers en Côte d'Ivoire : méthodes & checklist | ImmoTopia";
+const description = "Guide complet pour réduire les impayés de loyers en Côte d'Ivoire : sélection, échéances, relances, preuves, paiements Mobile Money et reporting. Checklist opérationnelle.";
+
+const faqItems = [
+  {
+    question: "À partir de quand faut-il relancer un locataire en retard ?",
+    answer: "Idéalement dès J+1 après l'échéance. Une relance courtoise immédiate permet souvent de résoudre un simple oubli. Attendez J+3 pour une relance plus ferme, puis J+7 pour proposer un plan de paiement si nécessaire. Plus vous attendez, plus le recouvrement devient difficile.",
+  },
+  {
+    question: "Comment garder une trace de tous les paiements et relances ?",
+    answer: "Utilisez un système centralisé qui enregistre chaque paiement avec sa date, son montant, le bien concerné et le mois de loyer. Documentez également toutes les relances (date, canal, réponse). ImmoTopia automatise cette traçabilité avec un historique complet par locataire et par bien.",
+  },
+  {
+    question: "Mobile Money : comment éviter les paiements non identifiés ?",
+    answer: "Exigez toujours une référence dans le libellé du paiement (ex: 'Loyer Villa A - Janvier 2025'). Avec ImmoTopia, les paiements Mobile Money sont automatiquement rapprochés grâce à l'intégration Orange Money, MTN Money et Wave, ce qui élimine les erreurs d'affectation.",
+  },
+  {
+    question: "ImmoTopia peut-il vraiment aider à réduire les impayés ?",
+    answer: "Oui, en automatisant les relances, en facilitant les paiements Mobile Money, en générant automatiquement les quittances et en offrant une vision claire des impayés via des tableaux de bord. L'automatisation réduit les oublis et accélère le recouvrement, tandis que la traçabilité renforce votre position en cas de litige.",
+  },
+];
+
+const faqSchema = generateFAQSchema({ questions: faqItems });
+---
+
+<BaseLayout title={title} description={description} currentPath="/guides/reduire-impayes-loyers-cote-divoire" structuredData={faqSchema}>
+  <main class="bg-white">
+    <article class="max-w-5xl mx-auto px-4 py-8 md:py-12">
+      <section class="relative overflow-hidden bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 py-16 md:py-24 lg:py-32">
+        <div class="container mx-auto max-w-5xl px-4 md:px-6">
+          <div class="text-center">
+            <h1 class="mb-6 text-4xl font-extrabold text-gray-900 md:text-5xl lg:text-6xl">
+              Réduire les impayés de loyers en Côte d&apos;Ivoire
+            </h1>
+            <p class="mb-8 text-xl text-gray-700 md:text-2xl">
+              Guide complet : sélection, échéances, relances, preuves, paiements Mobile Money et reporting
+            </p>
+            <div class="flex flex-col gap-4 sm:flex-row sm:justify-center">
+              <a href="/contact?demo=true" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-8 py-4 rounded-lg inline-flex items-center gap-2">
+                Demander une démo
+                <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                </svg>
+              </a>
+              <a href="/gestion-locative-cote-divoire" class="border-2 border-blue-600 text-blue-600 font-semibold px-8 py-4 rounded-lg hover:bg-blue-50">
+                Découvrir la solution
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="py-12 md:py-16">
+        <div class="container mx-auto max-w-4xl px-4 md:px-6">
+          <h2 class="mb-8 text-3xl font-bold text-gray-900 md:text-4xl">
+            Les méthodes pour réduire les impayés
+          </h2>
+          <div class="grid gap-6 md:grid-cols-2">
+            <div class="rounded-lg bg-white p-6 shadow-sm border border-gray-200">
+              <h3 class="text-xl font-semibold text-gray-900 mb-3">Sélection rigoureuse</h3>
+              <p class="text-gray-700">Vérifiez les références, les revenus et l&apos;historique de paiement des locataires avant la signature du bail. Une sélection rigoureuse réduit considérablement les risques d&apos;impayés.</p>
+            </div>
+            <div class="rounded-lg bg-white p-6 shadow-sm border border-gray-200">
+              <h3 class="text-xl font-semibold text-gray-900 mb-3">Relances automatiques</h3>
+              <p class="text-gray-700">Mettez en place des relances automatiques dès J+1 après l&apos;échéance. Les relances courtoises et régulières améliorent significativement le taux de recouvrement.</p>
+            </div>
+            <div class="rounded-lg bg-white p-6 shadow-sm border border-gray-200">
+              <h3 class="text-xl font-semibold text-gray-900 mb-3">Paiements facilités</h3>
+              <p class="text-gray-700">Offrez des moyens de paiement variés (Mobile Money, virement bancaire) et communiquez clairement les références avant chaque échéance pour éviter les paiements non identifiés.</p>
+            </div>
+            <div class="rounded-lg bg-white p-6 shadow-sm border border-gray-200">
+              <h3 class="text-xl font-semibold text-gray-900 mb-3">Traçabilité complète</h3>
+              <p class="text-gray-700">Conservez un historique complet de tous les paiements et relances. Cette traçabilité renforce votre position en cas de litige et facilite le recouvrement.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="py-16 md:py-20 bg-gray-50">
+        <div class="container mx-auto max-w-4xl px-4 md:px-6">
+          <h2 class="mb-8 text-3xl font-bold text-gray-900 md:text-4xl">
+            Questions fréquentes
+          </h2>
+          <div class="space-y-6">
+            {faqItems.map((item) => (
+              <div class="border-l-4 border-blue-600 pl-6">
+                <h3 class="text-xl font-semibold text-gray-900 mb-2">
+                  {item.question}
+                </h3>
+                <p class="text-gray-700 leading-relaxed">
+                  {item.answer}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section class="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl p-8 md:p-12 text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          Prêt à réduire vos impayés de loyers ?
+        </h2>
+        <p class="text-xl text-gray-700 mb-8 max-w-2xl mx-auto">
+          Découvrez comment ImmoTopia peut automatiser vos relances et améliorer votre recouvrement.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="/contact?demo=true" class="bg-[#2563EB] text-white font-semibold px-8 py-4 rounded-lg shadow-lg hover:shadow-xl transition-all hover:bg-[#1D4ED8] inline-flex items-center justify-center">
+            Demander une démonstration
+            <svg class="ml-2 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+          </a>
+          <a href="/gestion-locative-cote-divoire" class="bg-white text-[#2563EB] border-2 border-[#2563EB] font-semibold px-8 py-4 rounded-lg hover:bg-blue-50 transition-all inline-flex items-center justify-center">
+            Découvrir la solution
+          </a>
+        </div>
+      </section>
+    </article>
+  </main>
+</BaseLayout>
+

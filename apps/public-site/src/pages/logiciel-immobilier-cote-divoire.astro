@@ -1,0 +1,387 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { generateFAQSchema } from '../lib/structured-data';
+
+const title = 'Logiciel immobilier en Côte d\'Ivoire | ERP ImmoTopia';
+const description = 'ImmoTopia est un ERP immobilier SaaS en Côte d\'Ivoire : CRM, gestion des biens et annonces, gestion locative, syndic de copropriété, promotion immobilière, paiements Mobile Money et maintenance.';
+
+const faqItems = [
+  {
+    question: 'ImmoTopia est-il adapté aux petites agences immobilières ?',
+    answer: 'Absolument. ImmoTopia est conçu pour s\'adapter à tous les types de structures, des petites agences aux grands groupes. Vous pouvez commencer avec les modules essentiels (CRM, biens, gestion locative) et activer progressivement d\'autres fonctionnalités selon vos besoins. L\'abonnement est flexible et évolutif.',
+  },
+  {
+    question: 'Peut-on activer seulement certains modules d\'ImmoTopia ?',
+    answer: 'Oui, ImmoTopia fonctionne en modules. Vous pouvez activer uniquement ceux dont vous avez besoin : CRM, gestion locative, syndic, promotion immobilière, etc. Chaque module est indépendant mais s\'intègre parfaitement avec les autres pour une vue globale de votre activité.',
+  },
+  {
+    question: 'Est-ce que ImmoTopia est multi-tenant et multi-utilisateurs ?',
+    answer: 'Oui, ImmoTopia est entièrement multi-tenant. Chaque organisation a son propre espace sécurisé. Vous pouvez créer autant d\'utilisateurs que nécessaire avec des rôles et permissions personnalisés (administrateur, gestionnaire, commercial, comptable, etc.).',
+  },
+  {
+    question: 'Comment se passe le déploiement d\'ImmoTopia ?',
+    answer: 'ImmoTopia est une solution SaaS accessible via navigateur web. Aucune installation n\'est nécessaire. Après votre inscription, vous accédez immédiatement à votre espace. Notre équipe vous accompagne dans la configuration initiale, l\'import de vos données et la formation de vos équipes.',
+  },
+  {
+    question: 'Quels moyens de paiement sont supportés par ImmoTopia ?',
+    answer: 'ImmoTopia intègre nativement les principaux moyens de paiement utilisés en Côte d\'Ivoire : Orange Money, MTN Money, Moov Money et Wave. Le système génère automatiquement les quittances et reçus pour chaque transaction, avec un suivi en temps réel des paiements.',
+  },
+  {
+    question: 'Les données sont-elles sécurisées sur ImmoTopia ?',
+    answer: 'Oui, la sécurité est une priorité. ImmoTopia utilise un hébergement sécurisé avec chiffrement SSL, sauvegardes automatiques quotidiennes, et respect des normes de protection des données. Chaque utilisateur a un accès sécurisé avec authentification, et les permissions sont granulaires.',
+  },
+];
+
+const faqSchema = generateFAQSchema({ questions: faqItems });
+---
+
+<BaseLayout 
+  title={title} 
+  description={description} 
+  currentPath="/logiciel-immobilier-cote-divoire"
+  structuredData={faqSchema}
+>
+  <main class="bg-white">
+    <article class="max-w-5xl mx-auto px-4 py-8 md:py-12">
+      <!-- Hero Section -->
+      <header class="mb-16 text-center">
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight">
+          Logiciel immobilier en Côte d&apos;Ivoire : ERP complet pour professionnels
+        </h1>
+        <p class="text-xl md:text-2xl text-gray-700 mb-8 max-w-3xl mx-auto leading-relaxed">
+          ImmoTopia est l&apos;ERP immobilier SaaS qui centralise toute votre activité :{' '}
+          <a href="/crm-immobilier-cote-divoire" class="font-semibold text-[#2563EB] hover:underline">
+            CRM
+          </a>
+          , gestion des biens, annonces,{' '}
+          <a href="/gestion-locative-cote-divoire" class="font-semibold text-[#2563EB] hover:underline">
+            gestion locative
+          </a>
+          , syndic, promotion immobilière et{' '}
+          <a href="/paiement-loyer-charges-mobile-money-cote-divoire" class="font-semibold text-[#2563EB] hover:underline">
+            paiements Mobile Money
+          </a>
+          . Découvrez{' '}
+          <a href="/la-solution" class="font-semibold text-[#2563EB] hover:underline">
+            notre solution complète
+          </a>
+          {' '}et{' '}
+          <a href="/fonctionnalites" class="font-semibold text-[#2563EB] hover:underline">
+            toutes les fonctionnalités
+          </a>
+          .
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+          <a
+            href="/contact?demo=true"
+            class="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-semibold px-8 py-6 text-lg rounded-lg shadow-lg hover:shadow-xl transition-all inline-flex items-center"
+          >
+            Demander une démo
+            <svg class="ml-2 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+          </a>
+          <a
+            href="/tarifs"
+            class="border-2 border-blue-600 text-blue-600 hover:bg-blue-50 font-semibold px-8 py-6 text-lg rounded-lg transition-all"
+          >
+            Voir les tarifs
+          </a>
+        </div>
+      </header>
+
+      <!-- Section Problèmes -->
+      <section class="mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-8">
+          Les défis de la gestion immobilière en Côte d&apos;Ivoire
+        </h2>
+        <div class="prose prose-lg max-w-none text-gray-700 leading-relaxed">
+          <p class="mb-6 text-xl">
+            À Abidjan et dans les grandes villes ivoiriennes, les professionnels de l&apos;immobilier font face à des défis quotidiens qui impactent leur productivité et leur rentabilité.
+          </p>
+          <div class="bg-red-50 border-l-4 border-red-500 p-6 rounded-r-lg mb-6">
+            <h3 class="text-xl font-semibold text-gray-900 mb-4 flex items-center gap-2">
+              <svg class="h-6 w-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+              </svg>
+              Gestion dispersée et outils inadaptés
+            </h3>
+            <ul class="list-disc pl-6 space-y-2">
+              <li>Données éparpillées entre Excel, WhatsApp, dossiers papier et emails</li>
+              <li>Absence de centralisation : impossible d&apos;avoir une vue d&apos;ensemble en temps réel</li>
+              <li>Perte de temps considérable à chercher des informations</li>
+              <li>Risques d&apos;erreurs humaines lors de la saisie manuelle</li>
+            </ul>
+          </div>
+          <div class="bg-amber-50 border-l-4 border-amber-500 p-6 rounded-r-lg mb-6">
+            <h3 class="text-xl font-semibold text-gray-900 mb-4 flex items-center gap-2">
+              <svg class="h-6 w-6 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V3m0 9v3m0 3.001V21M21 12h-3.819M3 12h3.819M18.819 12a8.001 8.001 0 01-15.638 0" />
+              </svg>
+              Gestion financière et impayés
+            </h3>
+            <ul class="list-disc pl-6 space-y-2">
+              <li>Suivi manuel des loyers et charges, source d&apos;oublis et d&apos;impayés</li>
+              <li>Paiements Mobile Money non tracés automatiquement</li>
+              <li>Quittances générées manuellement, processus chronophage</li>
+              <li>Absence d&apos;alertes automatiques pour les retards de paiement</li>
+            </ul>
+          </div>
+          <div class="bg-blue-50 border-l-4 border-blue-500 p-6 rounded-r-lg">
+            <h3 class="text-xl font-semibold text-gray-900 mb-4 flex items-center gap-2">
+              <svg class="h-6 w-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+              </svg>
+              Manque de visibilité et de reporting
+            </h3>
+            <ul class="list-disc pl-6 space-y-2">
+              <li>Impossible de générer des tableaux de bord en temps réel</li>
+              <li>Absence de reporting automatisé pour les dirigeants</li>
+              <li>Difficultés à analyser la performance commerciale</li>
+              <li>Pas de traçabilité complète des actions et interactions clients</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section Définition ERP -->
+      <section class="mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-8">
+          Qu&apos;est-ce qu&apos;un ERP immobilier ?
+        </h2>
+        <div class="prose prose-lg max-w-none text-gray-700 leading-relaxed">
+          <p class="mb-6 text-xl">
+            Un <strong>ERP (Enterprise Resource Planning)</strong> immobilier est une solution logicielle complète qui centralise et automatise l&apos;ensemble des processus métiers d&apos;une organisation immobilière.
+          </p>
+          <div class="mb-8">
+            <h3 class="text-2xl font-semibold text-gray-900 mb-4">Différence entre un logiciel simple et un ERP complet</h3>
+            <div class="grid md:grid-cols-2 gap-6 mb-6">
+              <div class="border border-gray-200 rounded-lg p-6 bg-gray-50">
+                <h4 class="text-lg font-semibold text-gray-900 mb-3">Logiciel simple</h4>
+                <ul class="list-disc pl-5 space-y-2 text-gray-700">
+                  <li>Gère un seul aspect (ex: gestion locative)</li>
+                  <li>Données isolées, pas d&apos;intégration</li>
+                  <li>Processus manuels entre les outils</li>
+                  <li>Pas de vue globale de l&apos;activité</li>
+                </ul>
+              </div>
+              <div class="border-2 border-blue-500 rounded-lg p-6 bg-blue-50">
+                <h4 class="text-lg font-semibold text-gray-900 mb-3">ERP complet (ImmoTopia)</h4>
+                <ul class="list-disc pl-5 space-y-2 text-gray-700">
+                  <li>Centralise tous les processus métiers</li>
+                  <li>Modules intégrés, données partagées</li>
+                  <li>Automatisation des workflows</li>
+                  <li>Tableaux de bord et reporting unifiés</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="bg-gradient-to-r from-blue-50 to-indigo-50 p-8 rounded-lg border border-blue-200">
+            <h3 class="text-2xl font-semibold text-gray-900 mb-6">Les bénéfices d&apos;un ERP immobilier</h3>
+            <div class="grid md:grid-cols-3 gap-6">
+              <div class="flex items-start gap-3">
+                <svg class="h-6 w-6 text-green-600 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <div>
+                  <h4 class="font-semibold text-gray-900 mb-2">Centralisation</h4>
+                  <p class="text-gray-700">Toutes vos données (clients, biens, contrats, paiements) dans un seul système accessible à toute l&apos;équipe.</p>
+                </div>
+              </div>
+              <div class="flex items-start gap-3">
+                <svg class="h-6 w-6 text-green-600 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                </svg>
+                <div>
+                  <h4 class="font-semibold text-gray-900 mb-2">Automatisation</h4>
+                  <p class="text-gray-700">Réduction du temps administratif grâce à l&apos;automatisation des tâches répétitives (quittances, relances, rapprochements).</p>
+                </div>
+              </div>
+              <div class="flex items-start gap-3">
+                <svg class="h-6 w-6 text-green-600 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                </svg>
+                <div>
+                  <h4 class="font-semibold text-gray-900 mb-2">Visibilité</h4>
+                  <p class="text-gray-700">Tableaux de bord et reporting en temps réel pour prendre des décisions éclairées.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section Modules -->
+      <section class="mb-16 bg-gray-50 py-16">
+        <div class="container mx-auto max-w-4xl px-4 md:px-6">
+          <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-8">
+            Les modules de l&apos;ERP ImmoTopia
+          </h2>
+          <div class="grid md:grid-cols-2 gap-6">
+            <div class="bg-white p-6 rounded-lg shadow-sm">
+              <h3 class="text-xl font-semibold text-gray-900 mb-3">
+                <a href="/crm-immobilier-cote-divoire" class="text-[#2563EB] hover:underline">
+                  CRM Immobilier
+                </a>
+              </h3>
+              <p class="text-gray-700">
+                Gestion centralisée des prospects, clients et propriétaires. Suivi des visites, pipeline commercial et matching automatique.
+              </p>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow-sm">
+              <h3 class="text-xl font-semibold text-gray-900 mb-3">
+                <a href="/gestion-locative-cote-divoire" class="text-[#2563EB] hover:underline">
+                  Gestion Locative
+                </a>
+              </h3>
+              <p class="text-gray-700">
+                Suivi des contrats, loyers, quittances automatiques et gestion des impayés avec alertes personnalisées.
+              </p>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow-sm">
+              <h3 class="text-xl font-semibold text-gray-900 mb-3">
+                <a href="/logiciel-syndic-copropriete-cote-divoire" class="text-[#2563EB] hover:underline">
+                  Syndic de Copropriété
+                </a>
+              </h3>
+              <p class="text-gray-700">
+                Gestion des lots, tantièmes, appels de charges, assemblées générales et espace copropriétaires.
+              </p>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow-sm">
+              <h3 class="text-xl font-semibold text-gray-900 mb-3">
+                <a href="/paiement-loyer-charges-mobile-money-cote-divoire" class="text-[#2563EB] hover:underline">
+                  Paiements Mobile Money
+                </a>
+              </h3>
+              <p class="text-gray-700">
+                Intégration Orange Money, MTN Money, Moov Money et Wave avec rapprochement automatique et quittances instantanées.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section Pour qui -->
+      <section class="mb-16 bg-white py-16">
+        <div class="container mx-auto max-w-4xl px-4 md:px-6">
+          <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-8">
+            ImmoTopia s&apos;adapte à votre profil
+          </h2>
+          <div class="grid md:grid-cols-2 gap-6">
+            <div class="bg-blue-50 p-6 rounded-lg">
+              <h3 class="text-xl font-semibold text-gray-900 mb-3">
+                <a href="/pour-qui/agences-immobilieres" class="text-[#2563EB] hover:underline">
+                  Pour les agences immobilières
+                </a>
+              </h3>
+              <p class="text-gray-700">
+                Centralisez votre activité commerciale et locative dans un seul ERP.
+              </p>
+            </div>
+            <div class="bg-green-50 p-6 rounded-lg">
+              <h3 class="text-xl font-semibold text-gray-900 mb-3">
+                <a href="/pour-qui/gestionnaires-locatifs" class="text-[#2563EB] hover:underline">
+                  Pour les gestionnaires locatifs
+                </a>
+              </h3>
+              <p class="text-gray-700">
+                Automatisez la gestion de vos portefeuilles locatifs avec paiements Mobile Money.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section Ressources -->
+      <section class="mb-16 bg-gray-50 py-16">
+        <div class="container mx-auto max-w-4xl px-4 md:px-6">
+          <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-8">
+            Ressources pour choisir votre logiciel
+          </h2>
+          <div class="space-y-4">
+            <div class="bg-white p-6 rounded-lg shadow-sm">
+              <h3 class="text-xl font-semibold text-gray-900 mb-2">
+                <a href="/meilleur-logiciel-immobilier-cote-divoire" class="text-[#2563EB] hover:underline">
+                  Le meilleur logiciel immobilier en Côte d&apos;Ivoire
+                </a>
+              </h3>
+              <p class="text-gray-700">
+                Découvrez pourquoi ImmoTopia est considéré comme la référence en Côte d&apos;Ivoire.
+              </p>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow-sm">
+              <h3 class="text-xl font-semibold text-gray-900 mb-2">
+                <a href="/guides/choisir-logiciel-immobilier-cote-divoire" class="text-[#2563EB] hover:underline">
+                  Guide : Comment choisir un logiciel immobilier
+                </a>
+              </h3>
+              <p class="text-gray-700">
+                Les critères essentiels pour faire le bon choix selon votre activité.
+              </p>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow-sm">
+              <h3 class="text-xl font-semibold text-gray-900 mb-2">
+                <a href="/logiciel-immobilier-afrique" class="text-[#2563EB] hover:underline">
+                  Logiciel immobilier pour l&apos;Afrique
+                </a>
+              </h3>
+              <p class="text-gray-700">
+                Une solution conçue pour le marché africain avec paiements Mobile Money intégrés.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- FAQ Section -->
+      <section class="mb-16">
+        <div class="container mx-auto max-w-4xl px-4 md:px-6">
+          <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-8">
+            Questions fréquentes
+          </h2>
+          <div class="space-y-6">
+            {faqItems.map((item) => (
+              <div class="border-l-4 border-blue-600 pl-6">
+                <h3 class="text-xl font-semibold text-gray-900 mb-2">
+                  {item.question}
+                </h3>
+                <p class="text-gray-700 leading-relaxed">
+                  {item.answer}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA Section -->
+      <section class="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl p-8 md:p-12 text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          Prêt à transformer votre gestion immobilière ?
+        </h2>
+        <p class="text-xl text-gray-700 mb-8 max-w-2xl mx-auto">
+          Découvrez comment ImmoTopia peut centraliser et automatiser toute votre activité immobilière.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a
+            href="/contact?demo=true"
+            class="bg-[#2563EB] text-white font-semibold px-8 py-4 rounded-lg shadow-lg hover:shadow-xl transition-all hover:bg-[#1D4ED8] inline-flex items-center justify-center"
+          >
+            Demander une démonstration
+            <svg class="ml-2 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+          </a>
+          <a
+            href="/tarifs"
+            class="bg-white text-[#2563EB] border-2 border-[#2563EB] font-semibold px-8 py-4 rounded-lg hover:bg-blue-50 transition-all inline-flex items-center justify-center"
+          >
+            Voir les tarifs
+          </a>
+        </div>
+      </section>
+    </article>
+  </main>
+</BaseLayout>
+

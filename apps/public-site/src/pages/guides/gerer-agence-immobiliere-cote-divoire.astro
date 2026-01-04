@@ -1,0 +1,124 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { generateFAQSchema } from '../../lib/structured-data';
+
+const title = 'Gérer une agence immobilière en Côte d\'Ivoire : guide complet | ImmoTopia';
+const description = 'Guide complet pour gérer une agence immobilière en Côte d\'Ivoire : organisation, CRM, biens, visites, loyers, paiements, reporting et performance commerciale.';
+
+const faqItems = [
+  {
+    question: "Comment organiser efficacement une agence immobilière ?",
+    answer: "Une agence immobilière efficace nécessite une organisation claire : CRM pour gérer les prospects et visites, gestion centralisée des biens avec statuts en temps réel, suivi des mandats et contrats, automatisation des quittances et paiements, et reporting pour piloter la performance. Un ERP immobilier comme ImmoTopia centralise tous ces processus.",
+  },
+  {
+    question: "Quels sont les KPIs essentiels pour une agence immobilière ?",
+    answer: "Les KPIs essentiels sont : nombre de leads entrants, taux de qualification, nombre de visites organisées, taux de conversion visite → offre, délai moyen de vente/location, nombre de transactions conclues, chiffre d'affaires généré, et performance par agent. Un bon ERP calcule automatiquement ces indicateurs.",
+  },
+  {
+    question: "Comment gérer efficacement les visites immobilières ?",
+    answer: "Organisez les visites avec un système de planning qui montre les disponibilités des agents en temps réel, envoyez des confirmations et rappels automatiques, optimisez les itinéraires pour maximiser le nombre de visites, et capturez les retours après visite pour relancer les prospects intéressés.",
+  },
+];
+
+const faqSchema = generateFAQSchema({ questions: faqItems });
+---
+
+<BaseLayout title={title} description={description} currentPath="/guides/gerer-agence-immobiliere-cote-divoire" structuredData={faqSchema}>
+  <main class="bg-white">
+    <article class="max-w-5xl mx-auto px-4 py-8 md:py-12">
+      <section class="relative overflow-hidden bg-gradient-to-br from-blue-600 via-blue-700 to-blue-900 text-white py-16 md:py-24">
+        <div class="container mx-auto px-4 py-16 sm:px-6 sm:py-24 lg:px-8">
+          <div class="mx-auto max-w-4xl text-center">
+            <div class="mb-6 inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-sm font-medium backdrop-blur-sm">
+              Guide stratégique pour dirigeants d&apos;agences
+            </div>
+            <h1 class="mb-6 text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">
+              Gérer une agence immobilière en Côte d&apos;Ivoire
+            </h1>
+            <p class="mb-8 text-xl text-gray-200">
+              Guide complet pour structurer et développer votre agence immobilière : organisation, CRM, biens, visites, loyers, paiements et reporting.
+            </p>
+            <div class="flex flex-col gap-4 sm:flex-row sm:justify-center">
+              <a href="/contact?demo=true" class="bg-white text-blue-600 font-semibold px-8 py-4 rounded-lg hover:bg-gray-100 inline-flex items-center gap-2">
+                Demander une démo
+                <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                </svg>
+              </a>
+              <a href="/pour-qui/agences-immobilieres" class="border-2 border-white text-white font-semibold px-8 py-4 rounded-lg hover:bg-white/10">
+                Solutions pour agences
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="py-12 md:py-16">
+        <div class="container mx-auto max-w-4xl px-4 md:px-6">
+          <h2 class="mb-8 text-3xl font-bold text-gray-900 md:text-4xl">
+            Les piliers d&apos;une agence immobilière performante
+          </h2>
+          <div class="grid gap-6 md:grid-cols-2">
+            <div class="rounded-lg bg-white p-6 shadow-sm border border-gray-200">
+              <h3 class="text-xl font-semibold text-gray-900 mb-3">CRM immobilier</h3>
+              <p class="text-gray-700">Gérez vos prospects, qualifiez-les, organisez les visites et suivez votre pipeline de vente/location jusqu&apos;à la signature.</p>
+            </div>
+            <div class="rounded-lg bg-white p-6 shadow-sm border border-gray-200">
+              <h3 class="text-xl font-semibold text-gray-900 mb-3">Gestion des biens</h3>
+              <p class="text-gray-700">Centralisez votre stock immobilier avec statuts en temps réel (disponible/loué/vendu) et publiez vos annonces automatiquement.</p>
+            </div>
+            <div class="rounded-lg bg-white p-6 shadow-sm border border-gray-200">
+              <h3 class="text-xl font-semibold text-gray-900 mb-3">Gestion locative</h3>
+              <p class="text-gray-700">Automatisez les quittances, suivez les paiements Mobile Money, gérez les impayés et produisez des rapports pour vos propriétaires.</p>
+            </div>
+            <div class="rounded-lg bg-white p-6 shadow-sm border border-gray-200">
+              <h3 class="text-xl font-semibold text-gray-900 mb-3">Reporting & KPIs</h3>
+              <p class="text-gray-700">Pilotez votre activité avec des tableaux de bord en temps réel : performance commerciale, encaissements, impayés, rentabilité.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="py-16 md:py-20 bg-gray-50">
+        <div class="container mx-auto max-w-4xl px-4 md:px-6">
+          <h2 class="mb-8 text-3xl font-bold text-gray-900 md:text-4xl">
+            Questions fréquentes
+          </h2>
+          <div class="space-y-6">
+            {faqItems.map((item) => (
+              <div class="border-l-4 border-blue-600 pl-6">
+                <h3 class="text-xl font-semibold text-gray-900 mb-2">
+                  {item.question}
+                </h3>
+                <p class="text-gray-700 leading-relaxed">
+                  {item.answer}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section class="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl p-8 md:p-12 text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          Prêt à optimiser votre agence immobilière ?
+        </h2>
+        <p class="text-xl text-gray-700 mb-8 max-w-2xl mx-auto">
+          Découvrez comment ImmoTopia peut transformer la gestion de votre agence.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="/contact?demo=true" class="bg-[#2563EB] text-white font-semibold px-8 py-4 rounded-lg shadow-lg hover:shadow-xl transition-all hover:bg-[#1D4ED8] inline-flex items-center justify-center">
+            Demander une démonstration
+            <svg class="ml-2 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+          </a>
+          <a href="/pour-qui/agences-immobilieres" class="bg-white text-[#2563EB] border-2 border-[#2563EB] font-semibold px-8 py-4 rounded-lg hover:bg-blue-50 transition-all inline-flex items-center justify-center">
+            Solutions pour agences
+          </a>
+        </div>
+      </section>
+    </article>
+  </main>
+</BaseLayout>
+

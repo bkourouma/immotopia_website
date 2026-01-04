@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Link from 'next/link';
 import { Clock, FolderKanban, Target, Rocket, Puzzle, Handshake } from 'lucide-react';
 import { ScrollReveal } from '@monorepo/ui';
 import { cn } from '@/lib/utils';
@@ -76,7 +77,14 @@ export default function ProblemSolution({ className }: ProblemSolutionProps) {
             </h2>
             <p className="mx-auto max-w-3xl text-base text-gray-600 sm:text-lg md:text-xl">
               Les difficultés que rencontrent toutes les agences immobilières et syndics — et comment{' '}
-              <span className="font-semibold text-[#2563EB]">ImmoTopia</span> les élimine.
+              <Link href="/pourquoi-immotopia" className="font-semibold text-[#2563EB] hover:underline">
+                ImmoTopia
+              </Link>{' '}
+              les élimine. Découvrez comment notre{' '}
+              <Link href="/gestion-locative-cote-divoire" className="font-semibold text-[#2563EB] hover:underline">
+                solution de gestion locative en Côte d'Ivoire
+              </Link>{' '}
+              transforme votre activité.
             </p>
           </div>
         </ScrollReveal>
@@ -128,7 +136,21 @@ export default function ProblemSolution({ className }: ProblemSolutionProps) {
                         </div>
                         <h4 className="text-lg font-semibold text-gray-900">{solution.title}</h4>
                       </div>
-                      <p className="text-sm leading-relaxed text-gray-700">{solution.description}</p>
+                      <p className="text-sm leading-relaxed text-gray-700">
+                        {solution.description}
+                        {index === 1 && (
+                          <>
+                            {' '}
+                            <Link
+                              href="/paiement-loyer-charges-mobile-money-cote-divoire"
+                              className="font-semibold text-[#2563EB] hover:underline"
+                            >
+                              Paiement par Mobile Money
+                            </Link>
+                            {' '}intégré.
+                          </>
+                        )}
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -136,6 +158,29 @@ export default function ProblemSolution({ className }: ProblemSolutionProps) {
             ))}
           </div>
         </div>
+        
+        {/* SEO Links Section */}
+        <ScrollReveal direction="fade" delay={700}>
+          <div className="mt-12 text-center">
+            <p className="text-sm text-gray-600 mb-4">
+              Découvrez nos solutions spécialisées :{' '}
+              <Link
+                href="/gestion-locative-cote-divoire"
+                className="font-semibold text-[#2563EB] hover:underline"
+              >
+                gestion locative en Côte d'Ivoire
+              </Link>
+              {' '}et{' '}
+              <Link
+                href="/paiement-loyer-charges-mobile-money-cote-divoire"
+                className="font-semibold text-[#2563EB] hover:underline"
+              >
+                paiement de loyers par Mobile Money
+              </Link>
+              .
+            </p>
+          </div>
+        </ScrollReveal>
       </div>
     </section>
   );

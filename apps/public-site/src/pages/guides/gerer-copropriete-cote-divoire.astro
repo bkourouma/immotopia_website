@@ -1,0 +1,125 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { generateFAQSchema } from '../../lib/structured-data';
+
+const title = "Gérer une copropriété en Côte d'Ivoire : guide complet (charges, AG, impayés) | ImmoTopia";
+const description = "Guide complet pour gérer une copropriété en Côte d'Ivoire : organisation, charges, appels de fonds, impayés, maintenance, communication et reporting. Checklist + bonnes pratiques.";
+
+const faqItems = [
+  {
+    question: "Comment organiser efficacement les charges de copropriété ?",
+    answer: "Commencez par définir clairement les postes de charges (gardiennage, nettoyage, électricité parties communes, maintenance, etc.). Créez un budget prévisionnel annuel, puis générez des appels de charges réguliers (mensuels ou trimestriels) avec des montants clairs par lot basés sur les tantièmes. Utilisez un système de référencement unique (lot + période) pour faciliter le suivi des paiements.",
+  },
+  {
+    question: "Comment réduire les impayés de charges de copropriété ?",
+    answer: "La clé est la transparence et la structure : envoyez les appels de charges à l'avance avec des échéances claires, facilitez les paiements (Mobile Money), mettez en place des relances automatiques et courtoises, proposez des plans de paiement si nécessaire, et maintenez un historique accessible pour chaque copropriétaire.",
+  },
+  {
+    question: "Comment suivre efficacement la maintenance des parties communes ?",
+    answer: "Mettez en place un système de déclaration d'incidents (avec photos si possible), priorisez les interventions selon l'urgence, affectez-les à des prestataires qualifiés, suivez les devis et validations, et conservez un historique complet de toutes les interventions. Un reporting régulier permet d'anticiper les besoins de maintenance préventive.",
+  },
+  {
+    question: "Comment ImmoTopia peut-il aider à gérer une copropriété ?",
+    answer: "ImmoTopia centralise toute la gestion de copropriété dans un ERP complet : lots et tantièmes, appels de charges automatiques, paiements Mobile Money intégrés, gestion des impayés avec relances, maintenance des parties communes, espace copropriétaires sécurisé, organisation des AG, et reporting en temps réel. Tout est automatisé, tracé et accessible 24/7.",
+  },
+];
+
+const faqSchema = generateFAQSchema({ questions: faqItems });
+---
+
+<BaseLayout title={title} description={description} currentPath="/guides/gerer-copropriete-cote-divoire" structuredData={faqSchema}>
+  <main class="bg-white">
+    <article class="max-w-5xl mx-auto px-4 py-8 md:py-12">
+      <section class="relative overflow-hidden bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 py-16 md:py-24 lg:py-32">
+        <div class="container mx-auto max-w-5xl px-4 md:px-6">
+          <div class="text-center">
+            <h1 class="mb-6 text-4xl font-extrabold text-gray-900 md:text-5xl lg:text-6xl">
+              Gérer une copropriété en Côte d&apos;Ivoire
+            </h1>
+            <p class="mb-8 text-xl text-gray-700 md:text-2xl">
+              Guide complet : organisation, charges, appels de fonds, impayés, maintenance, communication et reporting
+            </p>
+            <div class="flex flex-col gap-4 sm:flex-row sm:justify-center">
+              <a href="/contact?demo=true" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-8 py-4 rounded-lg inline-flex items-center gap-2">
+                Demander une démo
+                <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                </svg>
+              </a>
+              <a href="/pour-qui/syndics" class="border-2 border-blue-600 text-blue-600 font-semibold px-8 py-4 rounded-lg hover:bg-blue-50">
+                Solutions pour syndics
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="py-12 md:py-16">
+        <div class="container mx-auto max-w-4xl px-4 md:px-6">
+          <h2 class="mb-8 text-3xl font-bold text-gray-900 md:text-4xl">
+            Les piliers d&apos;une gestion de copropriété efficace
+          </h2>
+          <div class="grid gap-6 md:grid-cols-2">
+            <div class="rounded-lg bg-white p-6 shadow-sm border border-gray-200">
+              <h3 class="text-xl font-semibold text-gray-900 mb-3">Gestion des charges</h3>
+              <p class="text-gray-700">Organisez les charges, créez des budgets prévisionnels, générez des appels de charges avec références uniques, et facilitez les paiements via Mobile Money.</p>
+            </div>
+            <div class="rounded-lg bg-white p-6 shadow-sm border border-gray-200">
+              <h3 class="text-xl font-semibold text-gray-900 mb-3">Suivi des impayés</h3>
+              <p class="text-gray-700">Mettez en place des relances automatiques, proposez des plans de paiement, et maintenez un historique complet pour chaque copropriétaire.</p>
+            </div>
+            <div class="rounded-lg bg-white p-6 shadow-sm border border-gray-200">
+              <h3 class="text-xl font-semibold text-gray-900 mb-3">Maintenance</h3>
+              <p class="text-gray-700">Gérez les déclarations d&apos;incidents, priorisez les interventions, affectez des prestataires, et conservez un historique complet de toutes les interventions.</p>
+            </div>
+            <div class="rounded-lg bg-white p-6 shadow-sm border border-gray-200">
+              <h3 class="text-xl font-semibold text-gray-900 mb-3">Communication & transparence</h3>
+              <p class="text-gray-700">Offrez un espace copropriétaires sécurisé, communiquez les décisions d&apos;AG, et produisez des rapports réguliers pour une transparence totale.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="py-16 md:py-20 bg-gray-50">
+        <div class="container mx-auto max-w-4xl px-4 md:px-6">
+          <h2 class="mb-8 text-3xl font-bold text-gray-900 md:text-4xl">
+            Questions fréquentes
+          </h2>
+          <div class="space-y-6">
+            {faqItems.map((item) => (
+              <div class="border-l-4 border-blue-600 pl-6">
+                <h3 class="text-xl font-semibold text-gray-900 mb-2">
+                  {item.question}
+                </h3>
+                <p class="text-gray-700 leading-relaxed">
+                  {item.answer}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section class="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl p-8 md:p-12 text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          Prêt à optimiser votre gestion de copropriété ?
+        </h2>
+        <p class="text-xl text-gray-700 mb-8 max-w-2xl mx-auto">
+          Découvrez comment ImmoTopia peut transformer la gestion de votre copropriété.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="/contact?demo=true" class="bg-[#2563EB] text-white font-semibold px-8 py-4 rounded-lg shadow-lg hover:shadow-xl transition-all hover:bg-[#1D4ED8] inline-flex items-center justify-center">
+            Demander une démonstration
+            <svg class="ml-2 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+          </a>
+          <a href="/logiciel-syndic-copropriete-cote-divoire" class="bg-white text-[#2563EB] border-2 border-[#2563EB] font-semibold px-8 py-4 rounded-lg hover:bg-blue-50 transition-all inline-flex items-center justify-center">
+            Découvrir la solution syndic
+          </a>
+        </div>
+      </section>
+    </article>
+  </main>
+</BaseLayout>
+

@@ -1,0 +1,213 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { generateFAQSchema } from '../lib/structured-data';
+
+const title = "Tableaux de bord & KPI immobilier en Côte d'Ivoire | ImmoTopia";
+const description = "Pilotage immobilier en Côte d'Ivoire : tableaux de bord et KPI (CRM, ventes, loyers, impayés, charges copropriété, maintenance, programmes neufs) alimentés par l'ERP ImmoTopia.";
+
+const faqItems = [
+  {
+    question: "Peut-on avoir un tableau de bord par agence ou par équipe ?",
+    answer: "Oui, ImmoTopia permet de créer des tableaux de bord personnalisés par agence, par équipe ou par utilisateur. Chaque dirigeant peut avoir sa vue direction avec les KPI globaux, tandis que chaque responsable opérationnel (commercial, gestionnaire locatif, syndic) peut avoir son propre tableau de bord focalisé sur ses métiers.",
+  },
+  {
+    question: "Peut-on suivre les impayés en temps réel ?",
+    answer: "Absolument. Le tableau de bord de gestion locative affiche en temps réel les impayés, les retards de paiement et les montants en souffrance. Vous pouvez voir immédiatement quels locataires sont en retard, depuis combien de jours, et les montants concernés. Des alertes automatiques vous notifient dès qu'un paiement est en retard.",
+  },
+  {
+    question: "Peut-on exporter les rapports ?",
+    answer: "Oui, tous les tableaux de bord et rapports peuvent être exportés en différents formats (PDF, Excel, CSV) pour être partagés avec vos équipes, vos clients ou vos partenaires. Vous pouvez exporter des rapports périodiques (mensuels, trimestriels, annuels) ou des rapports personnalisés selon vos besoins.",
+  },
+  {
+    question: "Les KPI sont-ils personnalisables ?",
+    answer: "Oui, ImmoTopia offre une grande flexibilité dans la personnalisation des KPI et des tableaux de bord. Vous pouvez choisir quels indicateurs afficher, comment les calculer, et comment les présenter. Chaque métier (commercial, gestion locative, syndic, maintenance, promotion) a ses propres KPI prédéfinis, mais vous pouvez également créer vos propres indicateurs personnalisés.",
+  },
+];
+
+const faqSchema = generateFAQSchema({ questions: faqItems });
+---
+
+<BaseLayout title={title} description={description} currentPath="/tableaux-de-bord-kpi-immobilier-cote-divoire" structuredData={faqSchema}>
+  <main class="bg-white">
+    <article class="max-w-5xl mx-auto px-4 py-8 md:py-12">
+      <!-- Hero Section -->
+      <section class="relative overflow-hidden bg-gradient-to-br from-blue-50 via-sky-50 to-indigo-50 py-16 md:py-24 lg:py-32">
+        <div class="container mx-auto max-w-5xl px-4 md:px-6">
+          <div class="text-center">
+            <div class="mb-6 inline-flex items-center gap-2 rounded-full bg-blue-100 px-4 py-2 text-sm font-semibold text-blue-700">
+              <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+              </svg>
+              Module décisionnel de l'ERP ImmoTopia
+            </div>
+            
+            <h1 class="mb-6 text-4xl font-extrabold text-gray-900 md:text-5xl lg:text-6xl">
+              Tableaux de bord immobilier en Côte d&apos;Ivoire : KPI et pilotage en temps réel
+            </h1>
+            
+            <p class="mx-auto mb-8 max-w-3xl text-lg text-gray-600 md:text-xl">
+              Reporting alimenté par l&apos;ERP ImmoTopia : CRM,{' '}
+              <a href="/gestion-locative-cote-divoire" class="font-semibold text-[#2563EB] hover:underline">
+                gestion locative
+              </a>
+              , syndic, paiements Mobile Money, maintenance et promotion. 
+              Décisions rapides, transparence totale, contrôle de votre activité immobilière.
+            </p>
+
+            <div class="flex flex-col items-center justify-center gap-4 sm:flex-row">
+              <a
+                href="/contact?demo=true"
+                class="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-8 py-4 rounded-lg transition-colors text-lg inline-flex items-center"
+              >
+                Demander une démo
+                <svg class="ml-2 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                </svg>
+              </a>
+              <a
+                href="/logiciel-immobilier-cote-divoire"
+                class="bg-white hover:bg-gray-50 text-blue-600 font-semibold px-8 py-4 rounded-lg border-2 border-blue-600 transition-colors text-lg inline-flex items-center"
+              >
+                Découvrir l&apos;ERP ImmoTopia
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section Problèmes -->
+      <section class="py-16 md:py-24">
+        <div class="container mx-auto max-w-5xl px-4 md:px-6">
+          <div class="mb-12 text-center">
+            <h2 class="mb-4 text-3xl font-bold text-gray-900 md:text-4xl">
+              Le pilotage à l&apos;aveugle : un problème récurrent en Côte d&apos;Ivoire
+            </h2>
+            <p class="mx-auto max-w-3xl text-lg text-gray-600">
+              Sans tableau de bord consolidé, les dirigeants d&apos;agences immobilières naviguent à vue, 
+              avec des données dispersées et des décisions prises trop tard.
+            </p>
+          </div>
+
+          <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            <div class="rounded-lg border border-red-100 bg-red-50 p-6">
+              <svg class="mb-4 h-8 w-8 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+              </svg>
+              <h3 class="mb-2 text-xl font-semibold text-gray-900">Données dispersées</h3>
+              <p class="text-gray-600">
+                Informations éparpillées entre Excel, WhatsApp, cahiers et mémoires. 
+                Impossible d&apos;avoir une vision consolidée de l&apos;activité.
+              </p>
+            </div>
+
+            <div class="rounded-lg border border-red-100 bg-red-50 p-6">
+              <svg class="mb-4 h-8 w-8 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V3m0 9v3m0 3.001V21M21 12h-3.819M3 12h3.819M18.819 12a8.001 8.001 0 01-15.638 0" />
+              </svg>
+              <h3 class="mb-2 text-xl font-semibold text-gray-900">Encaissements non consolidés</h3>
+              <p class="text-gray-600">
+                Difficile de savoir en temps réel quels loyers ont été encaissés, 
+                quels paiements sont en attente, et quels montants sont en souffrance.
+              </p>
+            </div>
+
+            <div class="rounded-lg border border-red-100 bg-red-50 p-6">
+              <svg class="mb-4 h-8 w-8 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              <h3 class="mb-2 text-xl font-semibold text-gray-900">Impayés détectés trop tard</h3>
+              <p class="text-gray-600">
+                Les retards de paiement ne sont découverts qu&apos;après plusieurs semaines, 
+                quand il est déjà trop tard pour agir efficacement.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section Solutions -->
+      <section class="bg-gray-50 py-16 md:py-24">
+        <div class="container mx-auto max-w-5xl px-4 md:px-6">
+          <h2 class="mb-8 text-center text-3xl font-bold text-gray-900 md:text-4xl">
+            Les tableaux de bord ImmoTopia : pilotage en temps réel
+          </h2>
+          <div class="grid gap-6 md:grid-cols-2">
+            <div class="rounded-lg border border-gray-200 bg-white p-6">
+              <h3 class="text-xl font-semibold text-gray-900 mb-3">Dashboard CRM</h3>
+              <p class="text-gray-700">
+                Suivez vos performances commerciales : leads entrants, taux de conversion, pipeline de ventes et locations, performance par commercial.
+              </p>
+            </div>
+            <div class="rounded-lg border border-gray-200 bg-white p-6">
+              <h3 class="text-xl font-semibold text-gray-900 mb-3">Dashboard Gestion Locative</h3>
+              <p class="text-gray-700">
+                Vue d&apos;ensemble sur vos loyers, impayés, taux d&apos;occupation, encaissements Mobile Money et rentabilité par bien.
+              </p>
+            </div>
+            <div class="rounded-lg border border-gray-200 bg-white p-6">
+              <h3 class="text-xl font-semibold text-gray-900 mb-3">Dashboard Syndic</h3>
+              <p class="text-gray-700">
+                Suivi des charges de copropriété : taux de recouvrement, impayés par lot, budgets prévisionnels vs réalisés.
+              </p>
+            </div>
+            <div class="rounded-lg border border-gray-200 bg-white p-6">
+              <h3 class="text-xl font-semibold text-gray-900 mb-3">Dashboard Direction</h3>
+              <p class="text-gray-700">
+                Vue consolidée pour les dirigeants : CA global, rentabilité, performance par activité, indicateurs clés.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- FAQ Section -->
+      <section class="py-16 md:py-20">
+        <div class="container mx-auto max-w-4xl px-4 md:px-6">
+          <h2 class="mb-8 text-3xl font-bold text-gray-900 md:text-4xl">
+            Questions fréquentes
+          </h2>
+          <div class="space-y-6">
+            {faqItems.map((item) => (
+              <div class="border-l-4 border-blue-600 pl-6">
+                <h3 class="text-xl font-semibold text-gray-900 mb-2">
+                  {item.question}
+                </h3>
+                <p class="text-gray-700 leading-relaxed">
+                  {item.answer}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA Section -->
+      <section class="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl p-8 md:p-12 text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          Prêt à piloter votre activité avec des données fiables ?
+        </h2>
+        <p class="text-xl text-gray-700 mb-8 max-w-2xl mx-auto">
+          Découvrez comment les tableaux de bord ImmoTopia peuvent transformer votre prise de décision.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a
+            href="/contact?demo=true"
+            class="bg-[#2563EB] text-white font-semibold px-8 py-4 rounded-lg shadow-lg hover:shadow-xl transition-all hover:bg-[#1D4ED8] inline-flex items-center justify-center"
+          >
+            Demander une démonstration
+            <svg class="ml-2 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+          </a>
+          <a
+            href="/logiciel-immobilier-cote-divoire"
+            class="bg-white text-[#2563EB] border-2 border-[#2563EB] font-semibold px-8 py-4 rounded-lg hover:bg-blue-50 transition-all inline-flex items-center justify-center"
+          >
+            Découvrir l&apos;ERP ImmoTopia
+          </a>
+        </div>
+      </section>
+    </article>
+  </main>
+</BaseLayout>
+

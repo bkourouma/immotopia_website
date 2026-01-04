@@ -26,12 +26,24 @@ export default function SaasGestionPage() {
       <section className="bg-gradient-to-br from-blue-50 to-sky-100 py-20 text-center md:py-32">
         <div className="container mx-auto max-w-4xl px-6">
           <ScrollReveal direction="fade">
+            <div className="mb-6">
+              <Link href="/la-solution" className="text-sm text-[#2563EB] hover:underline">
+                ← Retour à notre solution complète
+              </Link>
+            </div>
             <h1 className="mb-6 text-4xl font-extrabold text-gray-900 md:text-5xl">
               SaaS de gestion immobilière
             </h1>
             <p className="text-lg text-gray-600 md:text-xl">
-              Une plateforme SaaS complète pour centraliser toute votre gestion immobilière : biens,
-              clients, contrats, paiements.
+              Une plateforme SaaS complète pour centraliser toute votre{' '}
+              <Link href="/gestion-locative-cote-divoire" className="font-semibold text-[#2563EB] hover:underline">
+                gestion locative en Côte d'Ivoire
+              </Link>
+              {' '}: biens, clients, contrats, paiements. Découvrez{' '}
+              <Link href="/fonctionnalites" className="font-semibold text-[#2563EB] hover:underline">
+                toutes les fonctionnalités
+              </Link>
+              {' '}disponibles.
             </p>
           </ScrollReveal>
         </div>
@@ -111,7 +123,15 @@ export default function SaasGestionPage() {
                   Prêt à transformer votre gestion immobilière ?
                 </h2>
                 <p className="mb-8 text-lg text-gray-600 md:text-xl">
-                  Découvrez comment ImmoTopia peut simplifier et optimiser votre activité.
+                  Découvrez comment ImmoTopia peut simplifier et optimiser votre activité. Particulièrement adapté aux{' '}
+                  <Link href="/pour-qui/gestionnaires-locatifs" className="font-semibold text-[#2563EB] hover:underline">
+                    gestionnaires locatifs
+                  </Link>
+                  {' '}qui souhaitent{' '}
+                  <Link href="/guides/structurer-portefeuille-immobilier-rentable" className="font-semibold text-[#2563EB] hover:underline">
+                    structurer leur portefeuille immobilier rentable
+                  </Link>
+                  .
                 </p>
                 <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
                   <Button asChild size="lg">

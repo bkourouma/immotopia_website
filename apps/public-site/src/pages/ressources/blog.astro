@@ -1,0 +1,65 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const title = 'Blog ImmoTopia | Articles et Actualités';
+const description = 'Articles, conseils et actualités sur la gestion immobilière professionnelle.';
+---
+
+<BaseLayout title={title} description={description} currentPath="/ressources/blog">
+  <main class="bg-white">
+    <article class="max-w-7xl mx-auto px-4 py-8 md:py-12">
+      <!-- Hero Section -->
+      <section class="relative overflow-hidden py-20 text-center md:py-32">
+        <div class="container relative mx-auto max-w-4xl px-6">
+          <div class="mb-6 inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-blue-500/10 to-purple-500/10 px-4 py-2 text-sm font-medium text-blue-700 backdrop-blur-sm">
+            <svg class="h-4 w-4 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+            </svg>
+            <span>Ressources & Actualités</span>
+          </div>
+
+          <h1 class="mb-6 bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 bg-clip-text text-4xl font-extrabold text-transparent md:text-5xl lg:text-6xl">
+            Blog ImmoTopia
+          </h1>
+
+          <p class="mb-8 text-lg text-gray-700 md:text-xl">
+            Articles, conseils et actualités sur la gestion immobilière professionnelle.
+          </p>
+
+          <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <a
+              href="/contact?demo=true"
+              class="bg-blue-600 text-white font-semibold px-8 py-4 rounded-lg shadow-lg hover:shadow-xl transition-all hover:bg-blue-700 inline-flex items-center justify-center"
+            >
+              Demander une démo
+              <svg class="ml-2 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+              </svg>
+            </a>
+            <a
+              href="/ressources/guides"
+              class="border-2 border-blue-600 text-blue-600 hover:bg-blue-50 font-semibold px-8 py-4 rounded-lg transition-all"
+            >
+              Voir les guides
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Content Section -->
+      <section class="py-20">
+        <div class="container mx-auto max-w-4xl px-6">
+          <div class="rounded-lg border border-gray-200 bg-gray-50 p-12 text-center">
+            <p class="text-lg text-gray-600">
+              Articles à venir prochainement...
+            </p>
+            <p class="mt-4 text-sm text-gray-500">
+              Le blog ImmoTopia sera bientôt disponible avec des articles sur la gestion immobilière, les meilleures pratiques et les actualités du secteur.
+            </p>
+          </div>
+        </div>
+      </section>
+    </article>
+  </main>
+</BaseLayout>
+

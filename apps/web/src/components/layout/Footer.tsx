@@ -91,17 +91,17 @@ export default function Footer() {
             </div>
           </ScrollReveal>
 
-          {/* Navigation */}
+          {/* Solution */}
           <ScrollReveal direction="up" delay={100}>
             <div className="mb-6">
-              <h4 className="mb-6 text-base font-semibold text-white">Navigation</h4>
+              <h4 className="mb-6 text-base font-semibold text-white">Solution</h4>
               <ul className="space-y-3">
                 {[
                   { href: '/la-solution', label: 'La Solution' },
                   { href: '/fonctionnalites', label: 'Fonctionnalités' },
-                  { href: '/pour-qui', label: 'Pour Qui ?' },
+                  { href: '/pourquoi-immotopia', label: 'Pourquoi ImmoTopia' },
+                  { href: '/la-solution/technologies', label: 'Technologies' },
                   { href: '/tarifs', label: 'Tarifs' },
-                  { href: '/ressources', label: 'Ressources' },
                 ].map((item, index) => (
                   <li key={item.href}>
                     <Link
@@ -117,17 +117,17 @@ export default function Footer() {
             </div>
           </ScrollReveal>
 
-          {/* Resources */}
+          {/* Pour Qui */}
           <ScrollReveal direction="up" delay={200}>
             <div className="mb-6">
-              <h4 className="mb-6 text-base font-semibold text-white">Ressources</h4>
+              <h4 className="mb-6 text-base font-semibold text-white">Pour Qui</h4>
               <ul className="space-y-3">
                 {[
-                  { href: '/blog', label: 'Blog' },
-                  { href: '/ressources/faq', label: 'FAQ' },
-                  { href: '/ressources/guides', label: 'Guides pratiques' },
-                  { href: '/ressources/actualites', label: 'Actualités' },
-                  { href: '/pourquoi-immotopia', label: 'Pourquoi ImmoTopia' },
+                  { href: '/pour-qui/agences-immobilieres', label: 'Agences immobilières' },
+                  { href: '/pour-qui/gestionnaires-locatifs', label: 'Gestionnaires locatifs' },
+                  { href: '/pour-qui/proprietaires-bailleurs', label: 'Propriétaires-bailleurs' },
+                  { href: '/pour-qui/syndics', label: 'Syndics' },
+                  { href: '/pour-qui/promoteurs-immobiliers', label: 'Promoteurs immobiliers' },
                 ].map((item) => (
                   <li key={item.href}>
                     <Link
@@ -143,30 +143,57 @@ export default function Footer() {
             </div>
           </ScrollReveal>
 
-          {/* Contact */}
+          {/* Ressources & Pages Clés */}
           <ScrollReveal direction="up" delay={300}>
             <div className="mb-6">
-              <h4 className="mb-6 text-base font-semibold text-white">Contact</h4>
+              <h4 className="mb-6 text-base font-semibold text-white">Ressources</h4>
               <ul className="mb-6 space-y-3">
-                <li>
-                  <Link
-                    href="/contact"
-                    className="group flex items-center gap-2 text-sm text-gray-300 transition-all duration-300 hover:translate-x-1 hover:text-white"
-                  >
-                    <ArrowRight className="h-3 w-3 opacity-0 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0" />
-                    <span>Nous contacter</span>
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/contact?demo=true"
-                    className="group flex items-center gap-2 text-sm font-medium text-blue-400 transition-all duration-300 hover:translate-x-1 hover:text-blue-300"
-                  >
-                    <ArrowRight className="h-3 w-3 transition-all duration-300 group-hover:translate-x-1" />
-                    <span>Demander une démo</span>
-                  </Link>
-                </li>
+                {[
+                  { href: '/ressources/guides', label: 'Guides pratiques' },
+                  { href: '/ressources/faq', label: 'FAQ' },
+                  { href: '/blog', label: 'Blog' },
+                  { href: '/ressources/actualites', label: 'Actualités' },
+                ].map((item) => (
+                  <li key={item.href}>
+                    <Link
+                      href={item.href}
+                      className="group flex items-center gap-2 text-sm text-gray-300 transition-all duration-300 hover:translate-x-1 hover:text-white"
+                    >
+                      <ArrowRight className="h-3 w-3 opacity-0 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0" />
+                      <span>{item.label}</span>
+                    </Link>
+                  </li>
+                ))}
               </ul>
+              <h4 className="mb-4 text-base font-semibold text-white">Pages Clés</h4>
+              <ul className="space-y-3">
+                {[
+                  { href: '/gestion-locative-cote-divoire', label: 'Gestion locative Côte d\'Ivoire' },
+                  { href: '/logiciel-immobilier-cote-divoire', label: 'Logiciel immobilier CI' },
+                  { href: '/paiement-loyer-charges-mobile-money-cote-divoire', label: 'Paiement Mobile Money' },
+                  { href: '/crm-immobilier-cote-divoire', label: 'CRM immobilier' },
+                  { href: '/logiciel-immobilier-afrique', label: 'Logiciel immobilier Afrique' },
+                ].map((item) => (
+                  <li key={item.href}>
+                    <Link
+                      href={item.href}
+                      className="group flex items-center gap-2 text-sm text-gray-300 transition-all duration-300 hover:translate-x-1 hover:text-white"
+                    >
+                      <ArrowRight className="h-3 w-3 opacity-0 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0" />
+                      <span>{item.label}</span>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+              <div className="mt-6 pt-6 border-t border-white/10">
+                <Link
+                  href="/contact?demo=true"
+                  className="group flex items-center gap-2 text-sm font-medium text-blue-400 transition-all duration-300 hover:translate-x-1 hover:text-blue-300"
+                >
+                  <ArrowRight className="h-3 w-3 transition-all duration-300 group-hover:translate-x-1" />
+                  <span>Demander une démo</span>
+                </Link>
+              </div>
               <div className="space-y-3">
                 <a
                   href={`mailto:${contactEmail}`}

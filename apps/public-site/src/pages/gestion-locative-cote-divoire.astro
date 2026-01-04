@@ -1,0 +1,307 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { generateFAQSchema } from '../lib/structured-data';
+
+const title = "Gestion locative en Côte d'Ivoire | Module ERP ImmoTopia";
+const description = "Gestion locative en Côte d'Ivoire : loyers, quittances, contrats et paiements Mobile Money intégrés dans l'ERP immobilier ImmoTopia.";
+
+const faqItems = [
+  {
+    question: "La gestion locative est-elle un module indépendant dans ImmoTopia ?",
+    answer: "Non, la gestion locative est un module intégré à l'ERP immobilier ImmoTopia. Elle fonctionne en synergie avec le CRM, la gestion des biens, la comptabilité et le reporting. Cette intégration permet une vision globale de votre activité immobilière, depuis la prospection jusqu'à la gestion des loyers et la comptabilité.",
+  },
+  {
+    question: "Les quittances sont-elles générées automatiquement ?",
+    answer: "Oui, ImmoTopia génère automatiquement des quittances conformes aux exigences légales ivoiriennes dès qu'un paiement de loyer est enregistré. Que le paiement soit effectué via Mobile Money (Orange Money, MTN Money, Wave) ou par un autre moyen, la quittance est créée instantanément et peut être envoyée automatiquement au locataire par email.",
+  },
+  {
+    question: "Le paiement par Mobile Money est-il obligatoire ?",
+    answer: "Non, le paiement par Mobile Money n'est pas obligatoire. ImmoTopia accepte tous les moyens de paiement : espèces, virement bancaire, chèque, ou Mobile Money. Cependant, l'intégration native du Mobile Money permet un rapprochement automatique des paiements, ce qui réduit considérablement le temps de traitement et les erreurs.",
+  },
+  {
+    question: "Est-ce adapté aux petites agences immobilières ?",
+    answer: "Absolument. ImmoTopia est conçu pour s'adapter à tous les types d'activités immobilières, des petites agences aux grandes structures. Le module de gestion locative est accessible et intuitif, même pour les équipes qui débutent avec un logiciel.",
+  },
+];
+
+const faqSchema = generateFAQSchema({ questions: faqItems });
+---
+
+<BaseLayout 
+  title={title} 
+  description={description} 
+  currentPath="/gestion-locative-cote-divoire"
+  structuredData={faqSchema}
+>
+  <main class="bg-white">
+    <article class="max-w-5xl mx-auto px-4 py-8 md:py-12">
+      <!-- Hero Section -->
+      <section class="relative overflow-hidden bg-gradient-to-br from-blue-50 via-sky-50 to-indigo-50 py-16 md:py-24 lg:py-32">
+        <div class="container mx-auto max-w-5xl px-4 md:px-6">
+          <div class="text-center">
+            <div class="mb-6 inline-flex items-center gap-2 rounded-full bg-blue-100 px-4 py-2 text-sm font-semibold text-blue-700">
+              <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+              </svg>
+              Module de l'ERP ImmoTopia
+            </div>
+            
+            <h1 class="mb-6 text-4xl font-extrabold text-gray-900 md:text-5xl lg:text-6xl">
+              Gestion locative en Côte d&apos;Ivoire
+            </h1>
+            
+            <p class="mx-auto mb-8 max-w-3xl text-xl text-gray-700 md:text-2xl">
+              Un module clé de l&apos;ERP immobilier ImmoTopia pour automatiser vos loyers, quittances et paiements Mobile Money
+            </p>
+            
+            <p class="mx-auto mb-10 max-w-2xl text-lg text-gray-600">
+              La gestion locative s&apos;intègre naturellement dans un ERP immobilier complet qui centralise votre CRM, vos biens, votre comptabilité et votre reporting. Découvrez{' '}
+              <a href="/la-solution/saas-gestion" class="font-semibold text-[#2563EB] hover:underline">
+                notre SaaS de gestion
+              </a>
+              {' '}et{' '}
+              <a href="/pour-qui/gestionnaires-locatifs" class="font-semibold text-[#2563EB] hover:underline">
+                comment ImmoTopia aide les gestionnaires locatifs
+              </a>
+              {' '}et{' '}
+              <a href="/pour-qui/proprietaires-bailleurs" class="font-semibold text-[#2563EB] hover:underline">
+                les propriétaires-bailleurs
+              </a>
+              {' '}en Côte d&apos;Ivoire.
+            </p>
+
+            <div class="flex flex-col items-center justify-center gap-4 sm:flex-row">
+              <a
+                href="/contact?demo=true"
+                class="bg-blue-600 text-white shadow-lg transition-all hover:scale-105 hover:bg-blue-700 hover:shadow-xl px-8 py-4 rounded-lg font-bold inline-flex items-center"
+              >
+                Demander une démo
+                <svg class="ml-2 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                </svg>
+              </a>
+              <a
+                href="/logiciel-immobilier-cote-divoire"
+                class="border-2 border-blue-600 bg-white text-blue-600 transition-all hover:scale-105 hover:bg-blue-50 px-8 py-4 rounded-lg font-semibold inline-flex items-center"
+              >
+                Découvrir l&apos;ERP ImmoTopia
+                <svg class="ml-2 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section Problèmes -->
+      <section class="py-16 md:py-20">
+        <div class="container mx-auto max-w-4xl px-4 md:px-6">
+          <h2 class="mb-8 text-3xl font-bold text-gray-900 md:text-4xl">
+            Les réalités de la gestion locative en Côte d&apos;Ivoire
+          </h2>
+          
+          <div class="prose prose-lg max-w-none text-gray-700">
+            <p class="mb-6 text-lg leading-relaxed">
+              À Abidjan et dans les grandes villes ivoiriennes, la gestion locative professionnelle fait face à des défis spécifiques. Les agences immobilières, gestionnaires locatifs et propriétaires bailleurs doivent gérer un portefeuille croissant de biens locatifs tout en faisant face à des contraintes opérationnelles récurrentes.
+            </p>
+
+            <div class="mb-8 grid gap-6 md:grid-cols-2">
+              <div class="rounded-lg border-l-4 border-red-500 bg-red-50 p-6">
+                <div class="mb-3 flex items-center gap-2">
+                  <svg class="h-6 w-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                  </svg>
+                  <h3 class="text-xl font-semibold text-gray-900">Les impayés récurrents</h3>
+                </div>
+                <p class="text-gray-700">
+                  Le suivi manuel des loyers impayés expose les professionnels à des pertes financières significatives. Sans système centralisé, les relances sont tardives et peu efficaces.
+                </p>
+              </div>
+
+              <div class="rounded-lg border-l-4 border-amber-500 bg-amber-50 p-6">
+                <div class="mb-3 flex items-center gap-2">
+                  <svg class="h-6 w-6 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                  </svg>
+                  <h3 class="text-xl font-semibold text-gray-900">Suivi manuel chronophage</h3>
+                </div>
+                <p class="text-gray-700">
+                  Les tableaux Excel non partagés, les dossiers papier et les communications dispersées (WhatsApp, SMS, emails) créent de la confusion et des erreurs.
+                </p>
+              </div>
+
+              <div class="rounded-lg border-l-4 border-orange-500 bg-orange-50 p-6">
+                <div class="mb-3 flex items-center gap-2">
+                  <svg class="h-6 w-6 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                  </svg>
+                  <h3 class="text-xl font-semibold text-gray-900">Paiements non tracés</h3>
+                </div>
+                <p class="text-gray-700">
+                  Les paiements Mobile Money (Orange Money, MTN Money, Wave) sont fréquents mais souvent non rattachés aux contrats, rendant le rapprochement bancaire complexe. Découvrez notre{' '}
+                  <a href="/paiement-loyer-charges-mobile-money-cote-divoire" class="font-semibold text-[#2563EB] hover:underline">
+                    solution de paiement Mobile Money intégrée
+                  </a>
+                  {' '}pour automatiser l&apos;encaissement.
+                </p>
+              </div>
+
+              <div class="rounded-lg border-l-4 border-blue-500 bg-blue-50 p-6">
+                <div class="mb-3 flex items-center gap-2">
+                  <svg class="h-6 w-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                  </svg>
+                  <h3 class="text-xl font-semibold text-gray-900">Quittances manuelles</h3>
+                </div>
+                <p class="text-gray-700">
+                  La génération manuelle des quittances est source d&apos;erreurs et de perte de temps. Les quittances doivent être conformes aux exigences légales ivoiriennes.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section Solutions -->
+      <section class="py-16 md:py-20 bg-gray-50">
+        <div class="container mx-auto max-w-4xl px-4 md:px-6">
+          <h2 class="mb-8 text-3xl font-bold text-gray-900 md:text-4xl">
+            Comment ImmoTopia transforme la gestion locative
+          </h2>
+          
+          <div class="prose prose-lg max-w-none text-gray-700">
+            <p class="mb-6 text-lg leading-relaxed">
+              Le module de gestion locative ImmoTopia automatise les processus, centralise les données et offre une visibilité complète sur votre portefeuille locatif.
+            </p>
+
+            <div class="mb-8 grid gap-6 md:grid-cols-2">
+              <div class="rounded-lg border-l-4 border-green-500 bg-green-50 p-6">
+                <div class="mb-3 flex items-center gap-2">
+                  <svg class="h-6 w-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  <h3 class="text-xl font-semibold text-gray-900">Quittances automatiques</h3>
+                </div>
+                <p class="text-gray-700">
+                  Génération automatique des quittances conformes dès qu&apos;un paiement est enregistré, avec envoi automatique par email.
+                </p>
+              </div>
+
+              <div class="rounded-lg border-l-4 border-green-500 bg-green-50 p-6">
+                <div class="mb-3 flex items-center gap-2">
+                  <svg class="h-6 w-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                  </svg>
+                  <h3 class="text-xl font-semibold text-gray-900">Paiements Mobile Money</h3>
+                </div>
+                <p class="text-gray-700">
+                  Intégration native avec Orange Money, MTN Money, Moov Money et Wave pour un rapprochement automatique.
+                </p>
+              </div>
+
+              <div class="rounded-lg border-l-4 border-green-500 bg-green-50 p-6">
+                <div class="mb-3 flex items-center gap-2">
+                  <svg class="h-6 w-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                  </svg>
+                  <h3 class="text-xl font-semibold text-gray-900">Tableaux de bord</h3>
+                </div>
+                <p class="text-gray-700">
+                  Vue d&apos;ensemble en temps réel sur vos loyers, impayés, taux d&apos;occupation et rentabilité.
+                </p>
+              </div>
+
+              <div class="rounded-lg border-l-4 border-green-500 bg-green-50 p-6">
+                <div class="mb-3 flex items-center gap-2">
+                  <svg class="h-6 w-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
+                  </svg>
+                  <h3 class="text-xl font-semibold text-gray-900">Alertes automatiques</h3>
+                </div>
+                <p class="text-gray-700">
+                  Notifications automatiques pour les échéances, retards de paiement et relances personnalisées.
+                </p>
+              </div>
+            </div>
+
+            <div class="mt-10 rounded-lg border-2 border-blue-200 bg-blue-50 p-6">
+              <h3 class="mb-4 text-xl font-semibold text-gray-900">
+                💡 Ressources complémentaires
+              </h3>
+              <p class="mb-4 text-gray-700">
+                Pour aller plus loin dans votre gestion locative, consultez nos ressources :
+              </p>
+              <ul class="space-y-2 text-gray-700">
+                <li>
+                  • <a href="/guides/reduire-impayes-loyers-cote-divoire" class="font-semibold text-[#2563EB] hover:underline">
+                    Guide : Réduire les impayés de loyers
+                  </a>
+                </li>
+                <li>
+                  • <a href="/modeles/contrat-bail-habitation-cote-divoire" class="font-semibold text-[#2563EB] hover:underline">
+                    Modèle de contrat de bail habitation
+                  </a>
+                </li>
+                <li>
+                  • <a href="/gestion-locative-vs-excel" class="font-semibold text-[#2563EB] hover:underline">
+                    Pourquoi quitter Excel pour la gestion locative ?
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- FAQ Section -->
+      <section class="py-16 md:py-20">
+        <div class="container mx-auto max-w-4xl px-4 md:px-6">
+          <h2 class="mb-8 text-3xl font-bold text-gray-900 md:text-4xl">
+            Questions fréquentes
+          </h2>
+          <div class="space-y-6">
+            {faqItems.map((item) => (
+              <div class="border-l-4 border-blue-600 pl-6">
+                <h3 class="text-xl font-semibold text-gray-900 mb-2">
+                  {item.question}
+                </h3>
+                <p class="text-gray-700 leading-relaxed">
+                  {item.answer}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA Section -->
+      <section class="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl p-8 md:p-12 text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          Prêt à automatiser votre gestion locative ?
+        </h2>
+        <p class="text-xl text-gray-700 mb-8 max-w-2xl mx-auto">
+          Découvrez comment ImmoTopia peut transformer votre gestion locative et réduire les impayés.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a
+            href="/contact?demo=true"
+            class="bg-[#2563EB] text-white font-semibold px-8 py-4 rounded-lg shadow-lg hover:shadow-xl transition-all hover:bg-[#1D4ED8] inline-flex items-center justify-center"
+          >
+            Demander une démonstration
+            <svg class="ml-2 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+          </a>
+          <a
+            href="/tarifs"
+            class="bg-white text-[#2563EB] border-2 border-[#2563EB] font-semibold px-8 py-4 rounded-lg hover:bg-blue-50 transition-all inline-flex items-center justify-center"
+          >
+            Voir les tarifs
+          </a>
+        </div>
+      </section>
+    </article>
+  </main>
+</BaseLayout>
+

@@ -1,0 +1,302 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { generateFAQSchema } from '../lib/structured-data';
+
+const title = "CRM immobilier en Côte d'Ivoire | Module ERP ImmoTopia";
+const description = "CRM immobilier en Côte d'Ivoire : prospects, visites, pipeline, matching client ↔ biens et suivi des interactions, intégré à l'ERP ImmoTopia.";
+
+const faqItems = [
+  {
+    question: "Le CRM est-il adapté aux petites agences immobilières ?",
+    answer: "Absolument. Le CRM ImmoTopia est conçu pour s'adapter à tous les types d'agences, des plus petites aux plus grandes. Même pour un agent commercial indépendant, le CRM permet de centraliser ses prospects, de suivre ses visites et de ne jamais oublier une relance.",
+  },
+  {
+    question: "Peut-on gérer plusieurs commerciaux dans le CRM ?",
+    answer: "Oui, ImmoTopia est multi-utilisateurs avec gestion des rôles et permissions. Vous pouvez créer plusieurs comptes commerciaux, chacun avec son propre accès. Le CRM permet de suivre les performances individuelles tout en conservant une vue d'ensemble consolidée pour le directeur d'agence.",
+  },
+  {
+    question: "Peut-on suivre les visites et relances dans le CRM ?",
+    answer: "Oui, le suivi des visites est une fonctionnalité clé du CRM ImmoTopia. Vous pouvez planifier des visites, enregistrer des comptes rendus détaillés, et programmer des relances automatiques. Le système vous alerte avant chaque visite et après chaque visite pour ne jamais oublier de faire le suivi.",
+  },
+  {
+    question: "Le matching client ↔ biens est-il automatique ?",
+    answer: "Oui, le CRM ImmoTopia propose un système de matching automatique. Lorsque vous enregistrez les critères de recherche d'un prospect, le système compare automatiquement ces critères avec votre base de biens disponibles et vous propose les meilleures correspondances.",
+  },
+];
+
+const faqSchema = generateFAQSchema({ questions: faqItems });
+---
+
+<BaseLayout 
+  title={title} 
+  description={description} 
+  currentPath="/crm-immobilier-cote-divoire"
+  structuredData={faqSchema}
+>
+  <main class="bg-white">
+    <article class="max-w-5xl mx-auto px-4 py-8 md:py-12">
+      <!-- Hero Section -->
+      <section class="relative overflow-hidden bg-gradient-to-br from-blue-50 via-sky-50 to-indigo-50 py-16 md:py-24 lg:py-32">
+        <div class="container mx-auto max-w-5xl px-4 md:px-6">
+          <div class="text-center">
+            <div class="mb-6 inline-flex items-center gap-2 rounded-full bg-blue-100 px-4 py-2 text-sm font-semibold text-blue-700">
+              <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+              </svg>
+              Module de l'ERP ImmoTopia
+            </div>
+            
+            <h1 class="mb-6 text-4xl font-extrabold text-gray-900 md:text-5xl lg:text-6xl">
+              CRM immobilier en Côte d&apos;Ivoire : prospects, visites et ventes centralisés
+            </h1>
+            
+            <p class="mx-auto mb-8 max-w-3xl text-xl text-gray-700 md:text-2xl">
+              Un CRM immobilier intégré à un ERP complet pour transformer votre efficacité commerciale
+            </p>
+            
+            <p class="mx-auto mb-10 max-w-2xl text-lg text-gray-600">
+              Le CRM ImmoTopia s&apos;intègre naturellement dans un{' '}
+              <a href="/logiciel-immobilier-cote-divoire" class="font-semibold text-[#2563EB] hover:underline">
+                ERP immobilier complet
+              </a>
+              {' '}qui centralise vos biens, vos annonces, votre{' '}
+              <a href="/gestion-locative-cote-divoire" class="font-semibold text-[#2563EB] hover:underline">
+                gestion locative
+              </a>
+              , votre comptabilité et votre reporting. Découvrez{' '}
+              <a href="/fonctionnalites" class="font-semibold text-[#2563EB] hover:underline">
+                toutes les fonctionnalités CRM
+              </a>
+              {' '}et{' '}
+              <a href="/pour-qui/agences-immobilieres" class="font-semibold text-[#2563EB] hover:underline">
+                comment les agences immobilières utilisent notre CRM
+              </a>
+              {' '}en Côte d&apos;Ivoire.
+            </p>
+
+            <div class="flex flex-col items-center justify-center gap-4 sm:flex-row">
+              <a
+                href="/contact?demo=true"
+                class="bg-blue-600 text-white shadow-lg transition-all hover:scale-105 hover:bg-blue-700 hover:shadow-xl px-8 py-4 rounded-lg font-bold inline-flex items-center"
+              >
+                Demander une démo
+                <svg class="ml-2 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                </svg>
+              </a>
+              <a
+                href="/logiciel-immobilier-cote-divoire"
+                class="border-2 border-blue-600 bg-white text-blue-600 transition-all hover:scale-105 hover:bg-blue-50 px-8 py-4 rounded-lg font-semibold inline-flex items-center"
+              >
+                Découvrir l&apos;ERP ImmoTopia
+                <svg class="ml-2 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section Problèmes -->
+      <section class="py-16 md:py-20">
+        <div class="container mx-auto max-w-4xl px-4 md:px-6">
+          <h2 class="mb-8 text-3xl font-bold text-gray-900 md:text-4xl">
+            Les défis de la gestion commerciale immobilière en Côte d&apos;Ivoire
+          </h2>
+          
+          <div class="prose prose-lg max-w-none text-gray-700">
+            <p class="mb-6 text-lg leading-relaxed">
+              À Abidjan et dans les grandes villes ivoiriennes, les agences immobilières et les commerciaux font face à des défis récurrents qui impactent leur productivité et leur taux de conversion.
+            </p>
+
+            <div class="mb-8 grid gap-6 md:grid-cols-2">
+              <div class="rounded-lg border-l-4 border-red-500 bg-red-50 p-6">
+                <div class="mb-3 flex items-center gap-2">
+                  <svg class="h-6 w-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                  </svg>
+                  <h3 class="text-xl font-semibold text-gray-900">Prospects dispersés</h3>
+                </div>
+                <p class="text-gray-700">
+                  Les contacts sont éparpillés entre WhatsApp, appels téléphoniques, emails et tableaux Excel non synchronisés. Impossible d&apos;avoir une vue d&apos;ensemble de tous vos prospects.
+                </p>
+              </div>
+
+              <div class="rounded-lg border-l-4 border-amber-500 bg-amber-50 p-6">
+                <div class="mb-3 flex items-center gap-2">
+                  <svg class="h-6 w-6 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  <h3 class="text-xl font-semibold text-gray-900">Relances oubliées</h3>
+                </div>
+                <p class="text-gray-700">
+                  Sans système centralisé, les relances sont oubliées, les opportunités manquées et le taux de conversion diminue.
+                </p>
+              </div>
+
+              <div class="rounded-lg border-l-4 border-orange-500 bg-orange-50 p-6">
+                <div class="mb-3 flex items-center gap-2">
+                  <svg class="h-6 w-6 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                  </svg>
+                  <h3 class="text-xl font-semibold text-gray-900">Matching manuel</h3>
+                </div>
+                <p class="text-gray-700">
+                  La recherche manuelle de biens correspondant aux critères des prospects est chronophage et source d&apos;erreurs.
+                </p>
+              </div>
+
+              <div class="rounded-lg border-l-4 border-blue-500 bg-blue-50 p-6">
+                <div class="mb-3 flex items-center gap-2">
+                  <svg class="h-6 w-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                  </svg>
+                  <h3 class="text-xl font-semibold text-gray-900">Manque de visibilité</h3>
+                </div>
+                <p class="text-gray-700">
+                  Difficile de suivre les performances des commerciaux et d&apos;identifier les opportunités prioritaires.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section Solutions -->
+      <section class="py-16 md:py-20 bg-gray-50">
+        <div class="container mx-auto max-w-4xl px-4 md:px-6">
+          <h2 class="mb-8 text-3xl font-bold text-gray-900 md:text-4xl">
+            Comment le CRM ImmoTopia transforme votre activité commerciale
+          </h2>
+          
+          <div class="prose prose-lg max-w-none text-gray-700">
+            <p class="mb-6 text-lg leading-relaxed">
+              Le CRM ImmoTopia centralise tous vos contacts, automatise les relances et optimise votre pipeline commercial.
+            </p>
+
+            <div class="mb-8 grid gap-6 md:grid-cols-2">
+              <div class="rounded-lg border-l-4 border-green-500 bg-green-50 p-6">
+                <div class="mb-3 flex items-center gap-2">
+                  <svg class="h-6 w-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                  </svg>
+                  <h3 class="text-xl font-semibold text-gray-900">Centralisation des contacts</h3>
+                </div>
+                <p class="text-gray-700">
+                  Tous vos prospects, clients et propriétaires dans une seule base de données accessible en temps réel.
+                </p>
+              </div>
+
+              <div class="rounded-lg border-l-4 border-green-500 bg-green-50 p-6">
+                <div class="mb-3 flex items-center gap-2">
+                  <svg class="h-6 w-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                  </svg>
+                  <h3 class="text-xl font-semibold text-gray-900">Suivi des visites</h3>
+                </div>
+                <p class="text-gray-700">
+                  Planification, comptes rendus détaillés et relances automatiques pour ne jamais oublier un suivi.
+                </p>
+              </div>
+
+              <div class="rounded-lg border-l-4 border-green-500 bg-green-50 p-6">
+                <div class="mb-3 flex items-center gap-2">
+                  <svg class="h-6 w-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                  </svg>
+                  <h3 class="text-xl font-semibold text-gray-900">Matching automatique</h3>
+                </div>
+                <p class="text-gray-700">
+                  Proposition automatique des biens correspondant aux critères de recherche de vos prospects.
+                </p>
+              </div>
+
+              <div class="rounded-lg border-l-4 border-green-500 bg-green-50 p-6">
+                <div class="mb-3 flex items-center gap-2">
+                  <svg class="h-6 w-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                  </svg>
+                  <h3 class="text-xl font-semibold text-gray-900">Pipeline commercial</h3>
+                </div>
+                <p class="text-gray-700">
+                  Suivi du parcours de chaque prospect de la prospection à la signature avec indicateurs de performance.
+                </p>
+              </div>
+            </div>
+
+            <div class="mt-10 rounded-lg border-2 border-blue-200 bg-blue-50 p-6">
+              <h3 class="mb-4 text-xl font-semibold text-gray-900">
+                💡 Ressources complémentaires
+              </h3>
+              <p class="mb-4 text-gray-700">
+                Pour optimiser votre utilisation du CRM immobilier :
+              </p>
+              <ul class="space-y-2 text-gray-700">
+                <li>
+                  • <a href="/logiciel-annonces-immobilieres-cote-divoire" class="font-semibold text-[#2563EB] hover:underline">
+                    Logiciel de diffusion d&apos;annonces
+                  </a>
+                </li>
+                <li>
+                  • <a href="/guides/crm-immobilier-bonnes-pratiques" class="font-semibold text-[#2563EB] hover:underline">
+                    Guide : Bonnes pratiques CRM immobilier
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- FAQ Section -->
+      <section class="py-16 md:py-20">
+        <div class="container mx-auto max-w-4xl px-4 md:px-6">
+          <h2 class="mb-8 text-3xl font-bold text-gray-900 md:text-4xl">
+            Questions fréquentes
+          </h2>
+          <div class="space-y-6">
+            {faqItems.map((item) => (
+              <div class="border-l-4 border-blue-600 pl-6">
+                <h3 class="text-xl font-semibold text-gray-900 mb-2">
+                  {item.question}
+                </h3>
+                <p class="text-gray-700 leading-relaxed">
+                  {item.answer}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA Section -->
+      <section class="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl p-8 md:p-12 text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          Prêt à optimiser votre activité commerciale ?
+        </h2>
+        <p class="text-xl text-gray-700 mb-8 max-w-2xl mx-auto">
+          Découvrez comment le CRM ImmoTopia peut transformer votre efficacité commerciale.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a
+            href="/contact?demo=true"
+            class="bg-[#2563EB] text-white font-semibold px-8 py-4 rounded-lg shadow-lg hover:shadow-xl transition-all hover:bg-[#1D4ED8] inline-flex items-center justify-center"
+          >
+            Demander une démonstration
+            <svg class="ml-2 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+          </a>
+          <a
+            href="/tarifs"
+            class="bg-white text-[#2563EB] border-2 border-[#2563EB] font-semibold px-8 py-4 rounded-lg hover:bg-blue-50 transition-all inline-flex items-center justify-center"
+          >
+            Voir les tarifs
+          </a>
+        </div>
+      </section>
+    </article>
+  </main>
+</BaseLayout>
+

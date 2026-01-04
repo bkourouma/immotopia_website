@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import { Mail, Phone, MessageSquare, Sparkles, Clock, CheckCircle2 } from 'lucide-react';
 import DemoRequestForm from '../../components/forms/DemoRequestForm';
 import { useSearchParams } from 'next/navigation';
@@ -107,8 +108,24 @@ export default function ContactPage() {
           <ScrollReveal direction="fade" delay={200}>
             <p className="mx-auto max-w-[700px] text-lg leading-relaxed text-gray-700 md:text-xl font-medium">
               {isDemo
-                ? 'Découvrez ImmoTopia en action avec une démonstration personnalisée adaptée à vos besoins.'
-                : 'Nous sommes là pour répondre à vos questions et vous aider à trouver la solution adaptée à vos besoins.'}
+                ? 'Découvrez ImmoTopia en action avec une démonstration personnalisée adaptée à vos besoins. Explorez{' '}
+                  <Link href="/fonctionnalites" className="font-semibold text-[#2563EB] hover:underline">
+                    nos fonctionnalités
+                  </Link>
+                  {' '}et{' '}
+                  <Link href="/tarifs" className="font-semibold text-[#2563EB] hover:underline">
+                    nos tarifs
+                  </Link>
+                  {' '}avant la démo.'
+                : 'Nous sommes là pour répondre à vos questions et vous aider à trouver la solution adaptée à vos besoins. Découvrez{' '}
+                  <Link href="/fonctionnalites" className="font-semibold text-[#2563EB] hover:underline">
+                    nos fonctionnalités
+                  </Link>
+                  {' '}et{' '}
+                  <Link href="/logiciel-immobilier-cote-divoire" className="font-semibold text-[#2563EB] hover:underline">
+                    notre ERP immobilier complet
+                  </Link>
+                  .'}
             </p>
           </ScrollReveal>
         </div>

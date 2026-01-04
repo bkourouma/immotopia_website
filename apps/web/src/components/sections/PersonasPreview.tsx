@@ -15,9 +15,9 @@ interface PersonasPreviewProps {
 }
 
 export default function PersonasPreview({ className, showTitle = true }: PersonasPreviewProps) {
-  // Filter to show only Agences and Gestionnaires on landing page (2 main personas)
+  // Show main personas on landing page with SEO links
   const mainPersonas = personas.filter(
-    (p) => p.id === 'agences-immobilieres' || p.id === 'gestionnaires'
+    (p) => p.id === 'agences-immobilieres' || p.id === 'gestionnaires' || p.id === 'syndics' || p.id === 'proprietaires'
   );
 
   return (
@@ -60,7 +60,7 @@ export default function PersonasPreview({ className, showTitle = true }: Persona
         )}
 
         {/* Enhanced Grid with hover effects */}
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {mainPersonas.map((persona: Persona, index: number) => (
             <ScrollReveal key={persona.id} direction="up" delay={index * 100}>
               <div className="group relative">

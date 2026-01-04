@@ -1,0 +1,273 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { generateFAQSchema } from '../lib/structured-data';
+
+const title = 'ImmoTopia vs Excel : pourquoi passer à un ERP immobilier | Côte d\'Ivoire';
+const description = 'Excel suffit pour démarrer, mais pas pour piloter une agence ou un portefeuille. Comparez Excel vs ImmoTopia (ERP immobilier) : CRM, loyers, syndic, paiements Mobile Money, maintenance et reporting.';
+
+const faqItems = [
+  {
+    question: 'Peut-on migrer depuis Excel vers ImmoTopia ?',
+    answer: 'Oui, la migration depuis Excel est possible. Notre équipe vous accompagne pour importer vos données (biens, contrats, clients, historique de paiements) depuis vos fichiers Excel ou CSV. Nous vous aidons également à structurer et nettoyer vos données pour une transition en douceur.',
+  },
+  {
+    question: 'Est-ce compliqué à mettre en place ?',
+    answer: 'Non, ImmoTopia est une solution SaaS accessible via navigateur web. Aucune installation n\'est nécessaire. Après votre inscription, vous accédez immédiatement à votre espace. Notre équipe vous accompagne dans la configuration initiale, l\'import de vos données et la formation de vos équipes.',
+  },
+  {
+    question: 'Est-ce adapté aux petites agences ?',
+    answer: 'Absolument. ImmoTopia est conçu pour s\'adapter à tous les types de structures, des petites agences aux grands groupes. Vous pouvez commencer avec les modules essentiels (CRM, biens, gestion locative) et activer progressivement d\'autres fonctionnalités selon vos besoins.',
+  },
+  {
+    question: 'Les paiements Mobile Money sont-ils obligatoires ?',
+    answer: 'Non, les paiements Mobile Money ne sont pas obligatoires. Cependant, c\'est une fonctionnalité très utile en Côte d\'Ivoire où la majorité des paiements de loyers se font via Orange Money, MTN Money, Moov Money ou Wave. ImmoTopia permet d\'enregistrer et tracer ces paiements facilement.',
+  },
+];
+
+const faqSchema = generateFAQSchema({ questions: faqItems });
+---
+
+<BaseLayout title={title} description={description} currentPath="/immotopia-vs-excel" structuredData={faqSchema}>
+  <main class="bg-white">
+    <article class="max-w-5xl mx-auto px-4 py-8 md:py-12">
+      <!-- Hero Section -->
+      <header class="mb-16 text-center">
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight">
+          ImmoTopia vs Excel : quel outil pour gérer l&apos;immobilier en Côte d&apos;Ivoire ?
+        </h1>
+        <p class="text-xl md:text-2xl text-gray-700 mb-8 max-w-3xl mx-auto leading-relaxed">
+          Excel pour démarrer, ERP pour grandir et sécuriser. Découvrez{' '}
+          <a href="/logiciel-immobilier-cote-divoire" class="font-semibold text-[#2563EB] hover:underline">
+            notre ERP immobilier complet
+          </a>
+          {' '}et{' '}
+          <a href="/gestion-locative-vs-excel" class="font-semibold text-[#2563EB] hover:underline">
+            pourquoi quitter Excel pour la gestion locative
+          </a>
+          .
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+          <a
+            href="/contact?demo=true"
+            class="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-semibold px-8 py-6 text-lg rounded-lg shadow-lg hover:shadow-xl transition-all inline-flex items-center"
+          >
+            Demander une démo
+            <svg class="ml-2 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+          </a>
+          <a
+            href="/logiciel-immobilier-cote-divoire"
+            class="border-2 border-blue-600 text-blue-600 hover:bg-blue-50 font-semibold px-8 py-6 text-lg rounded-lg transition-all"
+          >
+            Découvrir l&apos;ERP ImmoTopia
+          </a>
+        </div>
+      </header>
+
+      <!-- Section Quand Excel est suffisant -->
+      <section class="mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-8">
+          Quand Excel est suffisant
+        </h2>
+        <div class="prose prose-lg max-w-none text-gray-700 leading-relaxed">
+          <p class="mb-6 text-xl">
+            Excel peut être un outil adapté pour démarrer dans l&apos;immobilier, notamment dans certains contextes bien précis.
+          </p>
+          <div class="bg-blue-50 border-l-4 border-blue-500 p-6 rounded-r-lg mb-6">
+            <h3 class="text-xl font-semibold text-gray-900 mb-4">Petit volume</h3>
+            <p class="text-gray-700 mb-4">
+              Si vous gérez moins de 10 biens et que votre activité est simple (quelques locations, peu de transactions), Excel peut suffire. Un fichier avec quelques colonnes (adresse, loyer, locataire, date de paiement) est gérable manuellement.
+            </p>
+          </div>
+          <div class="bg-blue-50 border-l-4 border-blue-500 p-6 rounded-r-lg mb-6">
+            <h3 class="text-xl font-semibold text-gray-900 mb-4">Peu d&apos;utilisateurs</h3>
+            <p class="text-gray-700 mb-4">
+              Si vous travaillez seul ou en binôme, et que vous pouvez vous coordonner facilement, Excel peut fonctionner. Le problème survient dès que plusieurs personnes doivent accéder aux mêmes données simultanément.
+            </p>
+          </div>
+          <div class="bg-blue-50 border-l-4 border-blue-500 p-6 rounded-r-lg">
+            <h3 class="text-xl font-semibold text-gray-900 mb-4">Processus simple</h3>
+            <p class="text-gray-700">
+              Si votre processus est linéaire et répétitif (un bien → un locataire → un loyer mensuel), Excel peut suffire. Dès que vous avez besoin de workflows complexes (visites, contrats, quittances, relances, maintenance), Excel devient limitant.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section Limites d'Excel -->
+      <section class="mb-16 bg-gray-50 py-16">
+        <div class="container mx-auto max-w-4xl px-4 md:px-6">
+          <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-8">
+            Les limites d&apos;Excel dans l&apos;immobilier en Côte d&apos;Ivoire
+          </h2>
+          <div class="prose prose-lg max-w-none text-gray-700 leading-relaxed">
+            <p class="mb-6 text-xl">
+              À mesure que votre activité immobilière grandit, Excel révèle ses limites structurelles.
+            </p>
+            <div class="space-y-6">
+              <div class="border border-red-200 bg-red-50 p-6 rounded-lg">
+                <h3 class="text-xl font-semibold text-gray-900 mb-3 flex items-center gap-2">
+                  <svg class="h-6 w-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                  </svg>
+                  Données dispersées, versions multiples
+                </h3>
+                <p class="text-gray-700">
+                  Avec Excel, vos données sont souvent réparties entre plusieurs fichiers (biens, contrats, paiements, clients). Chaque collaborateur peut avoir sa propre version, ce qui crée de la confusion.
+                </p>
+              </div>
+              <div class="border border-red-200 bg-red-50 p-6 rounded-lg">
+                <h3 class="text-xl font-semibold text-gray-900 mb-3 flex items-center gap-2">
+                  <svg class="h-6 w-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                  </svg>
+                  Pas de traçabilité ni audit
+                </h3>
+                <p class="text-gray-700">
+                  Excel ne conserve pas d&apos;historique des modifications. Impossible de savoir qui a modifié quoi et quand. En cas de litige ou de contrôle, vous ne pouvez pas prouver l&apos;état de vos données à un moment précis.
+                </p>
+              </div>
+              <div class="border border-red-200 bg-red-50 p-6 rounded-lg">
+                <h3 class="text-xl font-semibold text-gray-900 mb-3 flex items-center gap-2">
+                  <svg class="h-6 w-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                  </svg>
+                  Statuts non fiables (loué/vendu)
+                </h3>
+                <p class="text-gray-700">
+                  Dans Excel, le statut d&apos;un bien (disponible, loué, vendu) est une simple cellule que n&apos;importe qui peut modifier. Aucune validation, aucun workflow. Résultat : des biens marqués comme disponibles alors qu&apos;ils sont déjà loués.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section Avantages ImmoTopia -->
+      <section class="mb-16">
+        <div class="container mx-auto max-w-4xl px-4 md:px-6">
+          <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-8">
+            Pourquoi passer à un ERP immobilier comme ImmoTopia ?
+          </h2>
+          <div class="prose prose-lg max-w-none text-gray-700">
+            <p class="mb-6 text-xl">
+              Un ERP immobilier comme ImmoTopia centralise tous vos processus métiers dans un système intégré, avec des données partagées, des workflows automatisés et une vue globale de l&apos;activité.
+            </p>
+            <div class="grid gap-6 md:grid-cols-2">
+              <div class="rounded-lg border-l-4 border-green-500 bg-green-50 p-6">
+                <h3 class="text-xl font-semibold text-gray-900 mb-3">Centralisation complète</h3>
+                <p class="text-gray-700">
+                  Toutes vos données (clients, biens, contrats, paiements) dans un seul système accessible à toute l&apos;équipe.
+                </p>
+              </div>
+              <div class="rounded-lg border-l-4 border-green-500 bg-green-50 p-6">
+                <h3 class="text-xl font-semibold text-gray-900 mb-3">Automatisation</h3>
+                <p class="text-gray-700">
+                  Quittances automatiques, relances programmées, rapprochement Mobile Money, alertes d&apos;impayés.
+                </p>
+              </div>
+              <div class="rounded-lg border-l-4 border-green-500 bg-green-50 p-6">
+                <h3 class="text-xl font-semibold text-gray-900 mb-3">Visibilité en temps réel</h3>
+                <p class="text-gray-700">
+                  Tableaux de bord et reporting en temps réel pour prendre des décisions éclairées.
+                </p>
+              </div>
+              <div class="rounded-lg border-l-4 border-green-500 bg-green-50 p-6">
+                <h3 class="text-xl font-semibold text-gray-900 mb-3">Traçabilité complète</h3>
+                <p class="text-gray-700">
+                  Historique de toutes les actions, modifications et transactions pour une sécurité juridique totale.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- FAQ Section -->
+      <section class="py-16 md:py-20 bg-gray-50">
+        <div class="container mx-auto max-w-4xl px-4 md:px-6">
+          <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-8">
+            Questions fréquentes
+          </h2>
+          <div class="space-y-6">
+            {faqItems.map((item) => (
+              <div class="border-l-4 border-blue-600 pl-6">
+                <h3 class="text-xl font-semibold text-gray-900 mb-2">
+                  {item.question}
+                </h3>
+                <p class="text-gray-700 leading-relaxed">
+                  {item.answer}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div class="mt-10 rounded-lg border-2 border-blue-200 bg-blue-50 p-6">
+          <h3 class="mb-4 text-xl font-semibold text-gray-900">
+            💡 Ressources complémentaires
+          </h3>
+          <p class="mb-4 text-gray-700">
+            Pour aller plus loin :
+          </p>
+          <ul class="space-y-2 text-gray-700">
+            <li>
+              • <a href="/fonctionnalites" class="font-semibold text-[#2563EB] hover:underline">
+                Fonctionnalités ImmoTopia
+              </a>
+            </li>
+            <li>
+              • <a href="/pourquoi-immotopia" class="font-semibold text-[#2563EB] hover:underline">
+                Pourquoi choisir ImmoTopia
+              </a>
+            </li>
+            <li>
+              • <a href="/pour-qui/agences-immobilieres" class="font-semibold text-[#2563EB] hover:underline">
+                Pour les agences immobilières
+              </a>
+            </li>
+            <li>
+              • <a href="/pour-qui/gestionnaires-locatifs" class="font-semibold text-[#2563EB] hover:underline">
+                Pour les gestionnaires locatifs
+              </a>
+            </li>
+            <li>
+              • <a href="/gestion-locative-vs-excel" class="font-semibold text-[#2563EB] hover:underline">
+                Gestion locative vs Excel
+              </a>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- CTA Section -->
+      <section class="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl p-8 md:p-12 text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          Prêt à passer à un ERP immobilier professionnel ?
+        </h2>
+        <p class="text-xl text-gray-700 mb-8 max-w-2xl mx-auto">
+          Découvrez comment ImmoTopia peut transformer votre gestion immobilière.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a
+            href="/contact?demo=true"
+            class="bg-[#2563EB] text-white font-semibold px-8 py-4 rounded-lg shadow-lg hover:shadow-xl transition-all hover:bg-[#1D4ED8] inline-flex items-center justify-center"
+          >
+            Demander une démonstration
+            <svg class="ml-2 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+          </a>
+          <a
+            href="/logiciel-immobilier-cote-divoire"
+            class="bg-white text-[#2563EB] border-2 border-[#2563EB] font-semibold px-8 py-4 rounded-lg hover:bg-blue-50 transition-all inline-flex items-center justify-center"
+          >
+            Découvrir l&apos;ERP ImmoTopia
+          </a>
+        </div>
+      </section>
+    </article>
+  </main>
+</BaseLayout>
+

@@ -1,0 +1,177 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { generateFAQSchema } from '../../lib/structured-data';
+
+const title = 'Logiciel pour promoteurs immobiliers en Côte d\'Ivoire | ImmoTopia';
+const description = 'ImmoTopia aide les promoteurs en Côte d\'Ivoire : gestion des programmes et lots, réservations, CRM, suivi acquéreurs, paiements et reporting, intégré à un ERP immobilier complet.';
+
+const faqItems = [
+  {
+    question: 'Peut-on gérer plusieurs programmes et lots ?',
+    answer: 'Oui, ImmoTopia permet de gérer plusieurs programmes simultanément, chacun avec ses phases, bâtiments et lots. Vous pouvez créer autant de programmes que nécessaire, définir les caractéristiques de chaque lot (surface, prix, étage, orientation) et suivre leur statut en temps réel (disponible, réservé, vendu).',
+  },
+  {
+    question: 'Peut-on réserver un lot et suivre son statut ?',
+    answer: 'Absolument. Le système permet de réserver un lot pour un prospect, de gérer les annulations, et de maintenir un historique complet. Les statuts sont synchronisés automatiquement pour éviter les doublons ou conflits de réservation.',
+  },
+  {
+    question: 'Peut-on suivre les acquéreurs et leurs paiements ?',
+    answer: 'Oui, chaque acquéreur dispose d\'un dossier complet avec ses informations, documents (contrat, pièces d\'identité), échéancier de paiement et historique des acomptes versés. Les paiements sont rattachés au lot et à l\'acquéreur, avec traçabilité complète.',
+  },
+  {
+    question: 'Le CRM est-il inclus pour la commercialisation ?',
+    answer: 'Oui, le module CRM immobilier est intégré. Vous pouvez gérer vos prospects, planifier des visites, suivre le pipeline commercial (de la prospection à la signature), enregistrer les relances et mesurer la performance de votre équipe commerciale.',
+  },
+];
+
+const faqSchema = generateFAQSchema({ questions: faqItems });
+---
+
+<BaseLayout 
+  title={title} 
+  description={description} 
+  currentPath="/pour-qui/promoteurs-immobiliers"
+  structuredData={faqSchema}
+>
+  <main class="bg-white">
+    <article class="max-w-5xl mx-auto px-4 py-8 md:py-12">
+      <!-- Hero Section -->
+      <header class="mb-16 text-center">
+        <div class="mb-6 flex items-center justify-center gap-2 text-sm text-gray-600">
+          <a href="/" class="hover:text-[#2563EB] hover:underline">ImmoTopia</a>
+          <span>•</span>
+          <a href="/pour-qui" class="hover:text-[#2563EB] hover:underline">Solutions par profil</a>
+          <span>•</span>
+          <span class="text-gray-900 font-medium">Promoteurs immobiliers</span>
+        </div>
+        <div class="mb-6 inline-flex items-center gap-2 rounded-full border border-purple-600/30 bg-purple-50 px-4 py-2 text-sm font-medium text-purple-700">
+          <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+          </svg>
+          Pour les promoteurs immobiliers
+        </div>
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight">
+          Le logiciel qui pilote vos programmes immobiliers en Côte d&apos;Ivoire
+        </h1>
+        <p class="text-xl md:text-2xl text-gray-700 mb-8 max-w-3xl mx-auto leading-relaxed">
+          Gérez vos lots, réservations, CRM, paiements et reporting dans un ERP immobilier intégré. Maîtrisez votre stock, accélérez vos ventes et rassurez vos investisseurs.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+          <a
+            href="/contact?demo=true"
+            class="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-semibold px-8 py-6 text-lg rounded-lg shadow-lg hover:shadow-xl transition-all inline-flex items-center"
+          >
+            Demander une démo
+            <svg class="ml-2 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+          </a>
+          <a
+            href="/crm-immobilier-cote-divoire"
+            class="border-2 border-purple-600 text-purple-600 hover:bg-purple-50 font-semibold px-8 py-6 text-lg rounded-lg transition-all"
+          >
+            Découvrir le CRM immobilier
+          </a>
+        </div>
+      </header>
+
+      <!-- Content Section -->
+      <section class="mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-8">
+          Pourquoi choisir ImmoTopia pour la promotion immobilière ?
+        </h2>
+        <div class="prose prose-lg max-w-none text-gray-700 leading-relaxed">
+          <p class="mb-6 text-xl">
+            ImmoTopia est conçu pour répondre aux besoins spécifiques des promoteurs immobiliers en Côte d&apos;Ivoire.
+          </p>
+          <ul class="list-disc list-inside space-y-4 mb-8">
+            <li><strong>Gestion des programmes et lots</strong> : Suivi complet de vos projets immobiliers</li>
+            <li><strong>Réservations et statuts</strong> : Gestion en temps réel de la disponibilité des lots</li>
+            <li><strong>CRM intégré</strong> : Suivi des prospects et pipeline commercial</li>
+            <li><strong>Suivi des acquéreurs</strong> : Dossiers complets avec échéanciers de paiement</li>
+            <li><strong>Paiements et acomptes</strong> : Traçabilité complète des versements</li>
+            <li><strong>Reporting et tableaux de bord</strong> : Vue d&apos;ensemble sur vos ventes et stock</li>
+          </ul>
+        </div>
+
+        <div class="mt-10 rounded-lg border-2 border-purple-200 bg-purple-50 p-6">
+          <h3 class="mb-4 text-xl font-semibold text-gray-900">
+            💡 Ressources complémentaires
+          </h3>
+          <p class="mb-4 text-gray-700">
+            Pour optimiser votre activité de promotion immobilière :
+          </p>
+          <ul class="space-y-2 text-gray-700">
+            <li>
+              • <a href="/fonctionnalites" class="font-semibold text-[#9333EA] hover:underline">
+                Fonctionnalités de suivi de projet
+              </a>
+            </li>
+            <li>
+              • <a href="/logiciel-immobilier-cote-divoire" class="font-semibold text-[#9333EA] hover:underline">
+                Logiciel immobilier en Côte d&apos;Ivoire
+              </a>
+            </li>
+            <li>
+              • <a href="/crm-immobilier-cote-divoire" class="font-semibold text-[#9333EA] hover:underline">
+                CRM pour la commercialisation
+              </a>
+            </li>
+            <li>
+              • <a href="/tableaux-de-bord-kpi-immobilier-cote-divoire" class="font-semibold text-[#9333EA] hover:underline">
+                Tableaux de bord KPI pour le reporting
+              </a>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- FAQ Section -->
+      <section class="mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-8">
+          Questions fréquentes
+        </h2>
+        <div class="space-y-6">
+          {faqItems.map((item) => (
+            <div class="border-l-4 border-purple-600 pl-6">
+              <h3 class="text-xl font-semibold text-gray-900 mb-2">
+                {item.question}
+              </h3>
+              <p class="text-gray-700 leading-relaxed">
+                {item.answer}
+              </p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- CTA Section -->
+      <section class="bg-gradient-to-br from-purple-50 to-pink-50 rounded-2xl p-8 md:p-12 text-center">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          Prêt à optimiser votre commercialisation ?
+        </h2>
+        <p class="text-xl text-gray-700 mb-8 max-w-2xl mx-auto">
+          Découvrez comment ImmoTopia peut accélérer vos ventes et améliorer le suivi de vos programmes.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a
+            href="/contact?demo=true"
+            class="bg-[#9333EA] text-white font-semibold px-8 py-4 rounded-lg shadow-lg hover:shadow-xl transition-all hover:bg-[#7E22CE] inline-flex items-center justify-center"
+          >
+            Demander une démonstration
+            <svg class="ml-2 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+          </a>
+          <a
+            href="/tarifs"
+            class="bg-white text-[#9333EA] border-2 border-[#9333EA] font-semibold px-8 py-4 rounded-lg hover:bg-purple-50 transition-all inline-flex items-center justify-center"
+          >
+            Voir les tarifs
+          </a>
+        </div>
+      </section>
+    </article>
+  </main>
+</BaseLayout>
+

@@ -1,0 +1,125 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { generateFAQSchema } from '../../lib/structured-data';
+
+const title = "Paiement loyer Mobile Money en Côte d'Ivoire : guide complet | ImmoTopia";
+const description = "Guide complet pour intégrer et optimiser les paiements Mobile Money dans votre gestion locative : Orange Money, MTN Money, Wave, références, quittances et suivi.";
+
+const faqItems = [
+  {
+    question: "Le Mobile Money est-il fiable pour encaisser des loyers ?",
+    answer: "Oui, le Mobile Money (Orange Money, MTN Money, Moov Money, Wave) est fiable et largement adopté en Côte d'Ivoire. Les transactions sont sécurisées et tracées. Le principal risque n'est pas la technologie, mais l'absence de process : paiements non identifiés, pas de référence, pas de quittance. Avec un bon système de gestion, le Mobile Money devient un atout majeur.",
+  },
+  {
+    question: "Que faire si un locataire paie sans référence ?",
+    answer: "Contactez immédiatement le locataire pour identifier le paiement (bien, mois concerné). Notez l'heure et le montant exact pour rapprocher la transaction. Confirmez par écrit (SMS/email) et émettez la quittance. Pour éviter ce problème, communiquez systématiquement la référence avant chaque échéance et refusez les paiements non identifiés.",
+  },
+  {
+    question: "Comment prouver qu'un loyer a été payé en Mobile Money ?",
+    answer: "Conservez l'historique des transactions Mobile Money (SMS de confirmation, relevé opérateur). Émettez systématiquement une quittance de loyer après chaque paiement. Avec ImmoTopia, chaque paiement est enregistré avec date, montant, référence et bien concerné, et une quittance PDF est générée automatiquement.",
+  },
+  {
+    question: "ImmoTopia peut-il m'aider à gérer les paiements Mobile Money ?",
+    answer: "Oui. ImmoTopia rattache chaque paiement Mobile Money à un contrat, un bien et une période. Il génère automatiquement les quittances, met à jour les états de compte, suit les impayés, et produit des reportings d'encaissements. Vous gagnez du temps et évitez les erreurs.",
+  },
+];
+
+const faqSchema = generateFAQSchema({ questions: faqItems });
+---
+
+<BaseLayout title={title} description={description} currentPath="/guides/paiement-loyer-mobile-money-cote-divoire" structuredData={faqSchema}>
+  <main class="bg-white">
+    <article class="max-w-5xl mx-auto px-4 py-8 md:py-12">
+      <section class="relative overflow-hidden bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 py-16 md:py-24 lg:py-32">
+        <div class="container mx-auto max-w-5xl px-4 md:px-6">
+          <div class="text-center">
+            <h1 class="mb-6 text-4xl font-extrabold text-gray-900 md:text-5xl lg:text-6xl">
+              Paiement loyer Mobile Money en Côte d&apos;Ivoire
+            </h1>
+            <p class="mb-8 text-xl text-gray-700 md:text-2xl">
+              Guide complet pour intégrer et optimiser les paiements Mobile Money dans votre gestion locative
+            </p>
+            <div class="flex flex-col gap-4 sm:flex-row sm:justify-center">
+              <a href="/contact?demo=true" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-8 py-4 rounded-lg inline-flex items-center gap-2">
+                Demander une démo
+                <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                </svg>
+              </a>
+              <a href="/paiement-loyer-charges-mobile-money-cote-divoire" class="border-2 border-blue-600 text-blue-600 font-semibold px-8 py-4 rounded-lg hover:bg-blue-50">
+                Découvrir la solution
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="py-12 md:py-16">
+        <div class="container mx-auto max-w-4xl px-4 md:px-6">
+          <h2 class="mb-8 text-3xl font-bold text-gray-900 md:text-4xl">
+            Pourquoi intégrer le Mobile Money dans votre gestion locative
+          </h2>
+          <div class="grid gap-6 md:grid-cols-2">
+            <div class="rounded-lg bg-white p-6 shadow-sm border border-gray-200">
+              <h3 class="text-xl font-semibold text-gray-900 mb-3">Facilité pour les locataires</h3>
+              <p class="text-gray-700">Plus de 70% des paiements de loyers se font via Mobile Money en Côte d&apos;Ivoire. Offrir cette option améliore le taux de recouvrement et la satisfaction des locataires.</p>
+            </div>
+            <div class="rounded-lg bg-white p-6 shadow-sm border border-gray-200">
+              <h3 class="text-xl font-semibold text-gray-900 mb-3">Traçabilité complète</h3>
+              <p class="text-gray-700">Chaque transaction Mobile Money est tracée avec date, montant, référence et bien concerné. Les quittances sont générées automatiquement.</p>
+            </div>
+            <div class="rounded-lg bg-white p-6 shadow-sm border border-gray-200">
+              <h3 class="text-xl font-semibold text-gray-900 mb-3">Réduction des erreurs</h3>
+              <p class="text-gray-700">L&apos;intégration automatique élimine les erreurs de saisie manuelle et les oublis. Le rapprochement avec les échéances est instantané.</p>
+            </div>
+            <div class="rounded-lg bg-white p-6 shadow-sm border border-gray-200">
+              <h3 class="text-xl font-semibold text-gray-900 mb-3">Gain de temps</h3>
+              <p class="text-gray-700">Plus besoin de comparer manuellement les relevés Mobile Money avec vos tableaux. Tout est automatisé et synchronisé en temps réel.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="py-16 md:py-20 bg-gray-50">
+        <div class="container mx-auto max-w-4xl px-4 md:px-6">
+          <h2 class="mb-8 text-3xl font-bold text-gray-900 md:text-4xl">
+            Questions fréquentes
+          </h2>
+          <div class="space-y-6">
+            {faqItems.map((item) => (
+              <div class="border-l-4 border-blue-600 pl-6">
+                <h3 class="text-xl font-semibold text-gray-900 mb-2">
+                  {item.question}
+                </h3>
+                <p class="text-gray-700 leading-relaxed">
+                  {item.answer}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section class="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl p-8 md:p-12 text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          Prêt à optimiser vos paiements Mobile Money ?
+        </h2>
+        <p class="text-xl text-gray-700 mb-8 max-w-2xl mx-auto">
+          Découvrez comment ImmoTopia peut automatiser vos paiements Mobile Money.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="/contact?demo=true" class="bg-[#2563EB] text-white font-semibold px-8 py-4 rounded-lg shadow-lg hover:shadow-xl transition-all hover:bg-[#1D4ED8] inline-flex items-center justify-center">
+            Demander une démonstration
+            <svg class="ml-2 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+          </a>
+          <a href="/paiement-loyer-charges-mobile-money-cote-divoire" class="bg-white text-[#2563EB] border-2 border-[#2563EB] font-semibold px-8 py-4 rounded-lg hover:bg-blue-50 transition-all inline-flex items-center justify-center">
+            Découvrir la solution
+          </a>
+        </div>
+      </section>
+    </article>
+  </main>
+</BaseLayout>
+

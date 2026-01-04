@@ -1,0 +1,134 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const title = 'Portail d\'annonces immobilières | ImmoTopia';
+const description = 'Publiez et gérez automatiquement vos annonces immobilières sur tous les canaux depuis un seul endroit avec le portail d\'annonces ImmoTopia.';
+---
+
+<BaseLayout title={title} description={description} currentPath="/la-solution/portail-annonces">
+  <main class="bg-white">
+    <article class="max-w-5xl mx-auto px-4 py-8 md:py-12">
+      <!-- Hero Section -->
+      <section class="relative overflow-hidden bg-gradient-to-br from-[#F0F7FF] via-[#E8F2FF] to-[#D6EBFF] py-16 text-center md:py-24">
+        <div class="container relative z-10 mx-auto max-w-4xl px-6">
+          <div class="mb-6">
+            <a href="/la-solution" class="text-sm text-[#2563EB] hover:underline inline-flex items-center">
+              <svg class="mr-2 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+              </svg>
+              Retour à la solution
+            </a>
+          </div>
+          
+          <div class="mb-4 inline-flex items-center gap-2 rounded-full border border-purple-500/30 bg-white/80 backdrop-blur-md px-4 py-2 shadow-lg">
+            <svg class="h-4 w-4 text-purple-600 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+            </svg>
+            <span class="text-xs font-bold uppercase tracking-wider text-purple-600">
+              Portail d'Annonces
+            </span>
+          </div>
+          
+          <h1 class="mb-4 text-3xl font-extrabold leading-tight text-gray-900 md:text-4xl lg:text-5xl">
+            Portail d&apos;annonces immobilières
+          </h1>
+          
+          <p class="text-base leading-relaxed text-gray-700 md:text-lg font-medium">
+            Publiez et gérez automatiquement vos annonces immobilières sur tous les canaux depuis un seul endroit. Idéal pour les{' '}
+            <a href="/pour-qui/agences-immobilieres" class="font-semibold text-purple-600 hover:underline">
+              agences immobilières
+            </a>
+            {' '}qui souhaitent utiliser un{' '}
+            <a href="/logiciel-annonces-immobilieres-cote-divoire" class="font-semibold text-purple-600 hover:underline">
+              logiciel d&apos;annonces immobilières en Côte d&apos;Ivoire
+            </a>
+            {' '}performant.
+          </p>
+        </div>
+      </section>
+
+      <!-- Features Section -->
+      <section class="py-20 md:py-32">
+        <div class="container mx-auto max-w-6xl px-6">
+          <h2 class="mb-12 text-center text-3xl font-bold text-gray-900 md:text-4xl lg:text-5xl">
+            Gagnez du temps avec la publication automatique
+          </h2>
+          <div class="grid gap-6 md:grid-cols-2">
+            <div class="rounded-lg border border-gray-200 bg-white p-6">
+              <div class="mb-3 flex items-center gap-3">
+                <svg class="h-6 w-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <h3 class="text-xl font-semibold text-gray-900">Publication automatique</h3>
+              </div>
+              <p class="text-gray-700">
+                Publiez vos annonces en quelques clics sur plusieurs sites d&apos;annonces simultanément.
+              </p>
+            </div>
+            <div class="rounded-lg border border-gray-200 bg-white p-6">
+              <div class="mb-3 flex items-center gap-3">
+                <svg class="h-6 w-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                </svg>
+                <h3 class="text-xl font-semibold text-gray-900">Synchronisation en temps réel</h3>
+              </div>
+              <p class="text-gray-700">
+                Synchronisation automatique des disponibilités sur tous les canaux.
+              </p>
+            </div>
+            <div class="rounded-lg border border-gray-200 bg-white p-6">
+              <div class="mb-3 flex items-center gap-3">
+                <svg class="h-6 w-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                </svg>
+                <h3 class="text-xl font-semibold text-gray-900">Gestion centralisée</h3>
+              </div>
+              <p class="text-gray-700">
+                Gérez toutes vos annonces depuis une seule interface, avec photos et descriptions optimisées.
+              </p>
+            </div>
+            <div class="rounded-lg border border-gray-200 bg-white p-6">
+              <div class="mb-3 flex items-center gap-3">
+                <svg class="h-6 w-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                </svg>
+                <h3 class="text-xl font-semibold text-gray-900">Suivi des statistiques</h3>
+              </div>
+              <p class="text-gray-700">
+                Analysez les performances de vos annonces (vues, contacts, visites) pour optimiser votre stratégie.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA Section -->
+      <section class="bg-gradient-to-br from-purple-50 to-pink-50 rounded-2xl p-8 md:p-12 text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          Prêt à automatiser vos annonces ?
+        </h2>
+        <p class="text-xl text-gray-700 mb-8 max-w-2xl mx-auto">
+          Découvrez comment le portail d&apos;annonces ImmoTopia peut transformer votre diffusion immobilière.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a
+            href="/contact?demo=true"
+            class="bg-[#9333EA] text-white font-semibold px-8 py-4 rounded-lg shadow-lg hover:shadow-xl transition-all hover:bg-[#7E22CE] inline-flex items-center justify-center"
+          >
+            Demander une démonstration
+            <svg class="ml-2 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+          </a>
+          <a
+            href="/tarifs"
+            class="bg-white text-[#9333EA] border-2 border-[#9333EA] font-semibold px-8 py-4 rounded-lg hover:bg-purple-50 transition-all inline-flex items-center justify-center"
+          >
+            Voir les tarifs
+          </a>
+        </div>
+      </section>
+    </article>
+  </main>
+</BaseLayout>
+

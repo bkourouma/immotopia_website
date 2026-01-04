@@ -1,0 +1,124 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { generateFAQSchema } from '../../lib/structured-data';
+
+const title = 'Digitaliser la gestion immobilière en Afrique | Vision ImmoTopia';
+const description = 'Pourquoi et comment digitaliser la gestion immobilière en Afrique : enjeux, défis, opportunités et rôle des ERP immobiliers africains.';
+
+const faqItems = [
+  {
+    question: 'Pourquoi la digitalisation est-elle cruciale pour l\'immobilier africain ?',
+    answer: 'La digitalisation permet de structurer un secteur largement informel, de réduire les pertes financières liées aux impayés et à la mauvaise gestion, d\'améliorer la transparence, de faciliter l\'accès au financement et de professionnaliser les acteurs. Elle transforme l\'immobilier d\'un secteur opaque en un écosystème moderne, traçable et efficient.',
+  },
+  {
+    question: 'Quels sont les principaux obstacles à la digitalisation immobilière en Afrique ?',
+    answer: 'Les obstacles incluent : la résistance au changement des acteurs habitués aux méthodes traditionnelles, le manque de formation digitale, la connectivité internet inégale, les coûts perçus des solutions technologiques, et la complexité de l\'écosystème avec de nombreux acteurs informels. Cependant, ces obstacles diminuent rapidement avec la pénétration mobile et l\'émergence de solutions adaptées au contexte africain.',
+  },
+  {
+    question: 'Comment un ERP immobilier s\'adapte-t-il aux spécificités africaines ?',
+    answer: 'Un ERP immobilier africain doit intégrer : le paiement Mobile Money (Orange Money, MTN, Wave, Moov), la gestion multi-devises, la flexibilité pour gérer l\'informel, des interfaces multilingues, un fonctionnement en mode déconnecté partiel, et des workflows adaptés aux pratiques locales (cautions multiples, garants, paiements fractionnés). Il doit être accessible, abordable et pensé pour les réalités du terrain.',
+  },
+  {
+    question: 'Comment ImmoTopia contribue-t-il à la digitalisation immobilière en Afrique ?',
+    answer: 'ImmoTopia est un ERP immobilier conçu pour l\'Afrique, intégrant Mobile Money, multi-devises, et workflows adaptés aux pratiques locales. Il centralise CRM, gestion locative, syndic, promotion et comptabilité dans une solution SaaS accessible. ImmoTopia accompagne la professionnalisation du secteur en offrant des outils de niveau international adaptés aux réalités africaines, sans compromis sur la qualité.',
+  },
+];
+
+const faqSchema = generateFAQSchema({ questions: faqItems });
+---
+
+<BaseLayout title={title} description={description} currentPath="/vision/digitalisation-immobilier-afrique" structuredData={faqSchema}>
+  <main class="bg-white">
+    <article class="max-w-5xl mx-auto px-4 py-8 md:py-12">
+      <!-- Hero Section -->
+      <section class="bg-gradient-to-br from-blue-50 to-sky-100 py-20 text-center md:py-32">
+        <div class="container mx-auto max-w-4xl px-6">
+          <h1 class="mb-6 text-4xl font-extrabold text-gray-900 md:text-5xl lg:text-6xl">
+            Digitaliser la gestion immobilière en Afrique
+          </h1>
+          <p class="text-lg text-gray-600 md:text-xl">
+            Enjeux, défis, opportunités et rôle des ERP immobiliers africains dans la transformation digitale du secteur.
+          </p>
+        </div>
+      </section>
+
+      <!-- Content Section -->
+      <section class="py-16 md:py-20">
+        <div class="container mx-auto max-w-4xl px-4 md:px-6">
+          <div class="prose prose-lg max-w-none text-gray-700">
+            <p class="mb-6 text-xl leading-relaxed">
+              Le secteur immobilier africain connaît une transformation digitale majeure. Cette évolution répond à des enjeux structurels : professionnalisation d&apos;un secteur largement informel, réduction des impayés, amélioration de la transparence, et facilitation de l&apos;accès au financement.
+            </p>
+            
+            <h2 class="text-3xl font-bold text-gray-900 mb-6">Pourquoi digitaliser l&apos;immobilier en Afrique ?</h2>
+            
+            <p class="mb-6">
+              La digitalisation transforme l&apos;immobilier d&apos;un secteur opaque en un écosystème moderne, traçable et efficient. Elle permet de structurer un secteur largement informel, de réduire les pertes financières liées aux impayés et à la mauvaise gestion, d&apos;améliorer la transparence, de faciliter l&apos;accès au financement et de professionnaliser les acteurs.
+            </p>
+
+            <h2 class="text-3xl font-bold text-gray-900 mb-6">Les spécificités d&apos;un ERP immobilier africain</h2>
+            
+            <p class="mb-6">
+              Un ERP immobilier africain doit intégrer : le paiement Mobile Money (Orange Money, MTN, Wave, Moov), la gestion multi-devises, la flexibilité pour gérer l&apos;informel, des interfaces multilingues, un fonctionnement en mode déconnecté partiel, et des workflows adaptés aux pratiques locales.
+            </p>
+
+            <h2 class="text-3xl font-bold text-gray-900 mb-6">L&apos;impact de la digitalisation</h2>
+            
+            <p class="mb-6">
+              La digitalisation améliore significativement la rentabilité : réduction des impayés de 30-50% grâce aux relances automatiques, gain de temps de 60-70% sur les tâches administratives, diminution des erreurs comptables, meilleure visibilité financière permettant des décisions éclairées, et capacité à gérer plus de biens avec les mêmes ressources.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- FAQ Section -->
+      <section class="py-16 md:py-20 bg-gray-50">
+        <div class="container mx-auto max-w-4xl px-4 md:px-6">
+          <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-8">
+            Questions fréquentes
+          </h2>
+          <div class="space-y-6">
+            {faqItems.map((item) => (
+              <div class="border-l-4 border-blue-600 pl-6">
+                <h3 class="text-xl font-semibold text-gray-900 mb-2">
+                  {item.question}
+                </h3>
+                <p class="text-gray-700 leading-relaxed">
+                  {item.answer}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA Section -->
+      <section class="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl p-8 md:p-12 text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          Prêt à digitaliser votre gestion immobilière ?
+        </h2>
+        <p class="text-xl text-gray-700 mb-8 max-w-2xl mx-auto">
+          Découvrez comment ImmoTopia peut vous accompagner dans votre transformation digitale.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a
+            href="/contact?demo=true"
+            class="bg-[#2563EB] text-white font-semibold px-8 py-4 rounded-lg shadow-lg hover:shadow-xl transition-all hover:bg-[#1D4ED8] inline-flex items-center justify-center"
+          >
+            Demander une démonstration
+            <svg class="ml-2 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+          </a>
+          <a
+            href="/logiciel-immobilier-afrique"
+            class="bg-white text-[#2563EB] border-2 border-[#2563EB] font-semibold px-8 py-4 rounded-lg hover:bg-blue-50 transition-all inline-flex items-center justify-center"
+          >
+            En savoir plus sur ImmoTopia
+          </a>
+        </div>
+      </section>
+    </article>
+  </main>
+</BaseLayout>
+

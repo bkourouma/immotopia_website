@@ -1,0 +1,183 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { generateFAQSchema } from '../../lib/structured-data';
+
+const title = 'Logiciel pour agences immobilières en Côte d\'Ivoire | ImmoTopia';
+const description = 'ImmoTopia est un ERP immobilier conçu pour les agences immobilières en Côte d\'Ivoire : CRM, biens, annonces, gestion locative, paiements Mobile Money et reporting.';
+
+const faqItems = [
+  {
+    question: 'Est-ce adapté aux petites agences immobilières ?',
+    answer: 'Absolument. ImmoTopia est conçu pour s\'adapter à toutes les tailles d\'agences, des petites structures avec 5-20 biens aux agences moyennes et grandes. Vous pouvez commencer avec les modules essentiels (CRM, biens, annonces) et activer progressivement d\'autres fonctionnalités selon vos besoins.',
+  },
+  {
+    question: 'Peut-on gérer à la fois la vente et la location ?',
+    answer: 'Oui, ImmoTopia permet de gérer simultanément vos activités de vente et de location. Chaque bien peut avoir un statut (à vendre, à louer, vendu, loué) et vous pouvez suivre les mandats de vente, les visites, les offres d\'achat, ainsi que les contrats de location et les loyers dans un seul système centralisé.',
+  },
+  {
+    question: 'Peut-on suivre plusieurs agents commerciaux ?',
+    answer: 'Oui, ImmoTopia est multi-utilisateurs. Vous pouvez créer des comptes pour tous vos agents commerciaux avec des rôles et permissions personnalisés. Chaque agent peut gérer son portefeuille de prospects, ses visites et ses mandats, tandis que le dirigeant a une vue d\'ensemble sur l\'activité de toute l\'équipe via le tableau de bord.',
+  },
+];
+
+const faqSchema = generateFAQSchema({ questions: faqItems });
+---
+
+<BaseLayout 
+  title={title} 
+  description={description} 
+  currentPath="/pour-qui/agences-immobilieres"
+  structuredData={faqSchema}
+>
+  <main class="bg-white">
+    <article class="max-w-5xl mx-auto px-4 py-8 md:py-12">
+      <!-- Hero Section -->
+      <header class="mb-16 text-center">
+        <div class="mb-6 flex items-center justify-center gap-2 text-sm text-gray-600">
+          <a href="/" class="hover:text-[#2563EB] hover:underline">ImmoTopia</a>
+          <span>•</span>
+          <a href="/pour-qui" class="hover:text-[#2563EB] hover:underline">Solutions par profil</a>
+          <span>•</span>
+          <span class="text-gray-900 font-medium">Agences immobilières</span>
+        </div>
+        <div class="mb-6 inline-flex items-center gap-2 rounded-full border border-blue-600/30 bg-blue-50 px-4 py-2 text-sm font-medium text-blue-700">
+          <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+          </svg>
+          Pour les agences immobilières
+        </div>
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight">
+          Le logiciel immobilier pensé pour les agences immobilières en Côte d&apos;Ivoire
+        </h1>
+        <p class="text-xl md:text-2xl text-gray-700 mb-8 max-w-3xl mx-auto leading-relaxed">
+          Centralisez vos biens, vos clients et vos encaissements dans un seul ERP. Gagnez du temps, réduisez les erreurs et pilotez votre activité en temps réel.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+          <a
+            href="/contact?demo=true"
+            class="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-semibold px-8 py-6 text-lg rounded-lg shadow-lg hover:shadow-xl transition-all inline-flex items-center"
+          >
+            Demander une démo
+            <svg class="ml-2 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+          </a>
+          <a
+            href="/fonctionnalites"
+            class="border-2 border-blue-600 text-blue-600 hover:bg-blue-50 font-semibold px-8 py-6 text-lg rounded-lg transition-all"
+          >
+            Voir toutes les fonctionnalités
+          </a>
+        </div>
+      </header>
+
+      <!-- Content Section -->
+      <section class="mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-8">
+          Pourquoi choisir ImmoTopia pour votre agence ?
+        </h2>
+        <div class="prose prose-lg max-w-none text-gray-700 leading-relaxed">
+          <p class="mb-6 text-xl">
+            ImmoTopia est conçu spécifiquement pour répondre aux besoins des agences immobilières en Côte d&apos;Ivoire. Notre solution centralise toute votre activité sur une seule plateforme.
+          </p>
+          <ul class="list-disc list-inside space-y-4 mb-8">
+            <li><strong>CRM immobilier intégré</strong> : Suivez vos prospects, clients et mandats en temps réel</li>
+            <li><strong>Gestion centralisée des biens</strong> : Gérez vos annonces, visites et transactions</li>
+            <li><strong>Portail d&apos;annonces automatisé</strong> : Diffusez vos biens sur un portail professionnel</li>
+            <li><strong>Gestion locative complète</strong> : Suivez les loyers, charges et paiements</li>
+            <li><strong>Paiements Mobile Money</strong> : Intégration Orange Money, MTN Money, Wave</li>
+            <li><strong>Reporting et tableaux de bord</strong> : Pilotez votre activité avec des indicateurs clés</li>
+          </ul>
+        </div>
+
+        <div class="mt-10 rounded-lg border-2 border-blue-200 bg-blue-50 p-6">
+          <h3 class="mb-4 text-xl font-semibold text-gray-900">
+            💡 Ressources complémentaires
+          </h3>
+          <p class="mb-4 text-gray-700">
+            Pour optimiser votre activité d&apos;agence immobilière :
+          </p>
+          <ul class="space-y-2 text-gray-700">
+            <li>
+              • <a href="/la-solution/portail-annonces" class="font-semibold text-[#2563EB] hover:underline">
+                Portail d&apos;annonces automatisé
+              </a>
+            </li>
+            <li>
+              • <a href="/crm-immobilier-cote-divoire" class="font-semibold text-[#2563EB] hover:underline">
+                CRM immobilier en Côte d&apos;Ivoire
+              </a>
+            </li>
+            <li>
+              • <a href="/logiciel-annonces-immobilieres-cote-divoire" class="font-semibold text-[#2563EB] hover:underline">
+                Logiciel de diffusion d&apos;annonces
+              </a>
+            </li>
+            <li>
+              • <a href="/guides/gerer-agence-immobiliere-cote-divoire" class="font-semibold text-[#2563EB] hover:underline">
+                Guide : Gérer une agence immobilière en Côte d&apos;Ivoire
+              </a>
+            </li>
+            <li>
+              • <a href="/guides/crm-immobilier-bonnes-pratiques" class="font-semibold text-[#2563EB] hover:underline">
+                Guide : Bonnes pratiques CRM immobilier
+              </a>
+            </li>
+            <li>
+              • <a href="/immotopia-vs-excel" class="font-semibold text-[#2563EB] hover:underline">
+                Pourquoi quitter Excel pour votre agence
+              </a>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- FAQ Section -->
+      <section class="mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-8">
+          Questions fréquentes
+        </h2>
+        <div class="space-y-6">
+          {faqItems.map((item) => (
+            <div class="border-l-4 border-blue-600 pl-6">
+              <h3 class="text-xl font-semibold text-gray-900 mb-2">
+                {item.question}
+              </h3>
+              <p class="text-gray-700 leading-relaxed">
+                {item.answer}
+              </p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- CTA Section -->
+      <section class="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl p-8 md:p-12 text-center">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          Prêt à transformer votre agence immobilière ?
+        </h2>
+        <p class="text-xl text-gray-700 mb-8 max-w-2xl mx-auto">
+          Découvrez comment ImmoTopia peut améliorer votre productivité et simplifier votre gestion quotidienne.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a
+            href="/contact?demo=true"
+            class="bg-[#2563EB] text-white font-semibold px-8 py-4 rounded-lg shadow-lg hover:shadow-xl transition-all hover:bg-[#1D4ED8] inline-flex items-center justify-center"
+          >
+            Demander une démonstration
+            <svg class="ml-2 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+          </a>
+          <a
+            href="/tarifs"
+            class="bg-white text-[#2563EB] border-2 border-[#2563EB] font-semibold px-8 py-4 rounded-lg hover:bg-blue-50 transition-all inline-flex items-center justify-center"
+          >
+            Voir les tarifs
+          </a>
+        </div>
+      </section>
+    </article>
+  </main>
+</BaseLayout>
+

@@ -1,0 +1,220 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { generateFAQSchema } from '../lib/structured-data';
+
+const title = "Maintenance immobilière & ticketing en Côte d'Ivoire | Module ERP ImmoTopia";
+const description = "Gestion des incidents et maintenance immobilière en Côte d'Ivoire : tickets avec photos, priorités, prestataires, devis, interventions et rapports, intégrés à l'ERP ImmoTopia (locatif & copropriété).";
+
+const faqItems = [
+  {
+    question: "Les locataires peuvent-ils déclarer un incident directement dans ImmoTopia ?",
+    answer: "Oui, le module maintenance ImmoTopia permet aux locataires de déclarer des incidents directement depuis leur espace locataire. Ils peuvent créer un ticket, joindre des photos, décrire le problème et suivre le statut de leur demande en temps réel. Cette fonctionnalité améliore la communication et réduit les délais de traitement des interventions.",
+  },
+  {
+    question: "Peut-on joindre des photos et suivre le statut d'un ticket en temps réel ?",
+    answer: "Oui, c'est l'un des points forts du module maintenance ImmoTopia. Chaque ticket peut inclure plusieurs photos prises directement depuis l'application mobile ou uploadées depuis un ordinateur. Le statut du ticket (nouveau, en cours, en attente, clos) est mis à jour en temps réel et visible par tous les acteurs concernés (déclarant, gestionnaire, prestataire).",
+  },
+  {
+    question: "Peut-on affecter un prestataire et suivre l'intervention jusqu'à la clôture ?",
+    answer: "Oui, le module maintenance permet d'affecter un prestataire à chaque ticket. Le gestionnaire peut sélectionner un prestataire depuis la base de contacts, lui transmettre les informations du ticket (photos, description, localisation) et suivre l'avancement de l'intervention. Le prestataire peut mettre à jour le statut, ajouter des commentaires et des photos de l'intervention.",
+  },
+  {
+    question: "Peut-on générer des rapports de maintenance pour l'assemblée générale de copropriété ?",
+    answer: "Oui, ImmoTopia génère automatiquement des rapports de maintenance détaillés qui peuvent être exportés et présentés en assemblée générale. Ces rapports incluent le nombre d'incidents par type, les temps de résolution moyens, les coûts par catégorie, l'historique des interventions et les prestataires sollicités.",
+  },
+];
+
+const faqSchema = generateFAQSchema({ questions: faqItems });
+---
+
+<BaseLayout title={title} description={description} currentPath="/maintenance-immobiliere-ticketing-cote-divoire" structuredData={faqSchema}>
+  <main class="bg-white">
+    <article class="max-w-5xl mx-auto px-4 py-8 md:py-12">
+      <!-- Hero Section -->
+      <section class="relative overflow-hidden bg-gradient-to-br from-blue-50 via-sky-50 to-indigo-50 py-16 md:py-24 lg:py-32">
+        <div class="container mx-auto max-w-5xl px-4 md:px-6">
+          <div class="text-center">
+            <div class="mb-6 inline-flex items-center gap-2 rounded-full bg-blue-100 px-4 py-2 text-sm font-semibold text-blue-700">
+              <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+              </svg>
+              Module transversal de l'ERP ImmoTopia
+            </div>
+            
+            <h1 class="mb-6 text-4xl font-extrabold text-gray-900 md:text-5xl lg:text-6xl">
+              Maintenance immobilière en Côte d&apos;Ivoire : tickets, prestataires et suivi centralisé
+            </h1>
+            
+            <p class="mx-auto mb-8 max-w-3xl text-xl text-gray-700 md:text-2xl">
+              Module maintenance intégré à l&apos;ERP immobilier ImmoTopia (locatif + copropriété)
+            </p>
+            
+            <p class="mx-auto mb-10 max-w-2xl text-lg text-gray-600">
+              La maintenance immobilière s&apos;intègre naturellement dans un ERP immobilier complet. Il couvre les incidents en gestion locative et en copropriété, avec traçabilité complète, coordination des prestataires et reporting. Découvrez{' '}
+              <a href="/fonctionnalites" class="font-semibold text-[#2563EB] hover:underline">
+                toutes nos fonctionnalités
+              </a>
+              {' '}et{' '}
+              <a href="/pour-qui/syndics" class="font-semibold text-[#2563EB] hover:underline">
+                notre solution pour les syndics
+              </a>
+              .
+            </p>
+
+            <div class="flex flex-col items-center justify-center gap-4 sm:flex-row">
+              <a
+                href="/contact?demo=true"
+                class="bg-blue-600 text-white shadow-lg transition-all hover:scale-105 hover:bg-blue-700 hover:shadow-xl px-8 py-4 rounded-lg font-bold inline-flex items-center"
+              >
+                Demander une démo
+                <svg class="ml-2 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                </svg>
+              </a>
+              <a
+                href="/logiciel-immobilier-cote-divoire"
+                class="border-2 border-blue-600 bg-white text-blue-600 transition-all hover:scale-105 hover:bg-blue-50 px-8 py-4 rounded-lg font-semibold inline-flex items-center"
+              >
+                Découvrir l&apos;ERP ImmoTopia
+                <svg class="ml-2 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section Problèmes -->
+      <section class="py-16 md:py-20">
+        <div class="container mx-auto max-w-4xl px-4 md:px-6">
+          <h2 class="mb-8 text-3xl font-bold text-gray-900 md:text-4xl">
+            Les défis de la maintenance immobilière en Côte d&apos;Ivoire
+          </h2>
+          
+          <div class="prose prose-lg max-w-none text-gray-700">
+            <p class="mb-6 text-lg leading-relaxed">
+              À Abidjan et dans les grandes villes ivoiriennes, la gestion des incidents immobiliers fait face à des défis opérationnels récurrents.
+            </p>
+
+            <div class="mb-8 rounded-lg bg-red-50 border-l-4 border-red-500 p-6">
+              <h3 class="mb-4 flex items-center gap-2 text-xl font-semibold text-red-900">
+                <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                </svg>
+                Problèmes courants sans outil structuré
+              </h3>
+              <ul class="space-y-3 text-gray-700">
+                <li class="flex items-start gap-3">
+                  <svg class="mt-1 h-5 w-5 flex-shrink-0 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                  </svg>
+                  <span><strong>Incidents gérés par appels ou WhatsApp :</strong> Les informations se perdent, pas de traçabilité, pas d&apos;historique.</span>
+                </li>
+                <li class="flex items-start gap-3">
+                  <svg class="mt-1 h-5 w-5 flex-shrink-0 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                  </svg>
+                  <span><strong>Absence de photos et de preuves :</strong> Sans photos jointes, il est difficile de qualifier l&apos;urgence ou d&apos;expliquer le problème au prestataire.</span>
+                </li>
+                <li class="flex items-start gap-3">
+                  <svg class="mt-1 h-5 w-5 flex-shrink-0 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                  </svg>
+                  <span><strong>Pas d&apos;historique et de responsabilités claires :</strong> Impossible de savoir qui a déclaré quoi, quand, et comment le problème a été résolu.</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section Solutions -->
+      <section class="bg-gray-50 py-16 md:py-20">
+        <div class="container mx-auto max-w-4xl px-4 md:px-6">
+          <h2 class="mb-8 text-3xl font-bold text-gray-900 md:text-4xl">
+            Comment ImmoTopia transforme la gestion de la maintenance
+          </h2>
+          
+          <div class="prose prose-lg max-w-none text-gray-700">
+            <div class="mb-8 grid gap-6 md:grid-cols-2">
+              <div class="rounded-lg border-l-4 border-green-500 bg-green-50 p-6">
+                <h3 class="text-xl font-semibold text-gray-900 mb-3">Tickets structurés</h3>
+                <p class="text-gray-700">
+                  Chaque incident devient un ticket avec photos, description, priorité, statut et historique complet.
+                </p>
+              </div>
+              <div class="rounded-lg border-l-4 border-green-500 bg-green-50 p-6">
+                <h3 class="text-xl font-semibold text-gray-900 mb-3">Coordination prestataires</h3>
+                <p class="text-gray-700">
+                  Affectation de prestataires, transmission des informations, suivi des interventions jusqu&apos;à la clôture.
+                </p>
+              </div>
+              <div class="rounded-lg border-l-4 border-green-500 bg-green-50 p-6">
+                <h3 class="text-xl font-semibold text-gray-900 mb-3">Portail locataires/copropriétaires</h3>
+                <p class="text-gray-700">
+                  Déclaration d&apos;incidents directement depuis l&apos;espace personnel, avec suivi en temps réel.
+                </p>
+              </div>
+              <div class="rounded-lg border-l-4 border-green-500 bg-green-50 p-6">
+                <h3 class="text-xl font-semibold text-gray-900 mb-3">Reporting et analyses</h3>
+                <p class="text-gray-700">
+                  Rapports détaillés pour assemblées générales, analyses des coûts et temps de résolution.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- FAQ Section -->
+      <section class="py-16 md:py-20">
+        <div class="container mx-auto max-w-4xl px-4 md:px-6">
+          <h2 class="mb-8 text-3xl font-bold text-gray-900 md:text-4xl">
+            Questions fréquentes
+          </h2>
+          <div class="space-y-6">
+            {faqItems.map((item) => (
+              <div class="border-l-4 border-blue-600 pl-6">
+                <h3 class="text-xl font-semibold text-gray-900 mb-2">
+                  {item.question}
+                </h3>
+                <p class="text-gray-700 leading-relaxed">
+                  {item.answer}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA Section -->
+      <section class="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl p-8 md:p-12 text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          Prêt à structurer votre gestion de maintenance ?
+        </h2>
+        <p class="text-xl text-gray-700 mb-8 max-w-2xl mx-auto">
+          Découvrez comment le module maintenance ImmoTopia peut améliorer votre réactivité et votre traçabilité.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a
+            href="/contact?demo=true"
+            class="bg-[#2563EB] text-white font-semibold px-8 py-4 rounded-lg shadow-lg hover:shadow-xl transition-all hover:bg-[#1D4ED8] inline-flex items-center justify-center"
+          >
+            Demander une démonstration
+            <svg class="ml-2 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+          </a>
+          <a
+            href="/logiciel-immobilier-cote-divoire"
+            class="bg-white text-[#2563EB] border-2 border-[#2563EB] font-semibold px-8 py-4 rounded-lg hover:bg-blue-50 transition-all inline-flex items-center justify-center"
+          >
+            Découvrir l&apos;ERP ImmoTopia
+          </a>
+        </div>
+      </section>
+    </article>
+  </main>
+</BaseLayout>
+

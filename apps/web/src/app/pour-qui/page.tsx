@@ -77,8 +77,23 @@ export default function PourQuiPage() {
           
           <ScrollReveal direction="fade" delay={200}>
             <p className="mx-auto max-w-[700px] text-lg leading-relaxed text-gray-700 md:text-xl font-medium">
-              ImmoTopia s'adapte aux besoins spécifiques des agences immobilières, gestionnaires locatifs et syndics. Découvrez
-              comment notre solution répond à vos défis quotidiens.
+              ImmoTopia s'adapte aux besoins spécifiques des{' '}
+              <Link href="/pour-qui/agences-immobilieres" className="font-semibold text-[#2563EB] hover:underline">
+                agences immobilières
+              </Link>
+              ,{' '}
+              <Link href="/pour-qui/gestionnaires-locatifs" className="font-semibold text-[#2563EB] hover:underline">
+                gestionnaires locatifs
+              </Link>
+              {' '}et{' '}
+              <Link href="/pour-qui/syndics" className="font-semibold text-[#2563EB] hover:underline">
+                syndics
+              </Link>
+              . Découvrez comment notre solution répond à vos défis quotidiens. Explorez{' '}
+              <Link href="/fonctionnalites" className="font-semibold text-[#2563EB] hover:underline">
+                toutes les fonctionnalités
+              </Link>
+              {' '}disponibles.
             </p>
           </ScrollReveal>
         </div>
@@ -154,7 +169,15 @@ export default function PourQuiPage() {
                 Pourquoi ImmoTopia ?
               </h2>
               <p className="mx-auto max-w-[600px] text-lg text-gray-600 md:text-xl">
-                Des solutions pensées pour chaque profil professionnel.
+                Des solutions pensées pour chaque profil professionnel. Que vous soyez{' '}
+                <Link href="/pour-qui/promoteurs-immobiliers" className="font-semibold text-[#2563EB] hover:underline">
+                  promoteur immobilier
+                </Link>
+                {' '}ou{' '}
+                <Link href="/pour-qui/proprietaires-bailleurs" className="font-semibold text-[#2563EB] hover:underline">
+                  propriétaire-bailleur
+                </Link>
+                , ImmoTopia a une solution adaptée.
               </p>
             </div>
           </ScrollReveal>

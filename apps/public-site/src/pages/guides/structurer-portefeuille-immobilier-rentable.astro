@@ -1,0 +1,125 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { generateFAQSchema } from '../../lib/structured-data';
+
+const title = "Structurer un portefeuille immobilier rentable en Côte d'Ivoire : guide | ImmoTopia";
+const description = "Guide complet pour structurer et optimiser un portefeuille immobilier rentable en Côte d'Ivoire : diversification, rentabilité, impayés, maintenance et reporting.";
+
+const faqItems = [
+  {
+    question: "Quelle est la différence entre rentabilité brute et rentabilité nette ?",
+    answer: "La rentabilité brute se calcule en divisant les loyers annuels par le prix d'achat du bien (loyers annuels / prix d'achat × 100). La rentabilité nette prend en compte tous les coûts : charges, impôts, maintenance, assurances, vacance locative, impayés. C'est la rentabilité nette qui reflète la vraie performance de votre portefeuille.",
+  },
+  {
+    question: "Comment savoir si mon portefeuille est bien diversifié ?",
+    answer: "Un portefeuille bien diversifié répartit les risques sur plusieurs axes : types de biens (appartements, villas, commerces), quartiers ou villes différentes, gammes de loyers variées, et profils de locataires diversifiés. Évitez de concentrer plus de 30% de vos revenus locatifs sur un seul bien ou un seul quartier.",
+  },
+  {
+    question: "Quels sont les coûts cachés qui réduisent la rentabilité ?",
+    answer: "Les principaux coûts cachés sont : la vacance locative (périodes sans locataire), les impayés non provisionnés, les petites réparations fréquentes, les frais de gestion si vous déléguez, les charges non récupérables, et l'obsolescence (travaux de mise aux normes). Un bon reporting les rend visibles.",
+  },
+  {
+    question: "Comment un ERP immobilier aide-t-il à piloter un portefeuille ?",
+    answer: "Un ERP centralise toutes les données (biens, contrats, loyers, charges, maintenance) et automatise le suivi. Vous obtenez des tableaux de bord en temps réel sur la rentabilité par bien, les impayés, les échéances de contrats, et les coûts de maintenance. Cela vous permet de prendre des décisions basées sur des données fiables, pas sur des estimations.",
+  },
+];
+
+const faqSchema = generateFAQSchema({ questions: faqItems });
+---
+
+<BaseLayout title={title} description={description} currentPath="/guides/structurer-portefeuille-immobilier-rentable" structuredData={faqSchema}>
+  <main class="bg-white">
+    <article class="max-w-5xl mx-auto px-4 py-8 md:py-12">
+      <section class="relative overflow-hidden bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 py-16 md:py-24 lg:py-32">
+        <div class="container mx-auto max-w-5xl px-4 md:px-6">
+          <div class="text-center">
+            <h1 class="mb-6 text-4xl font-extrabold text-gray-900 md:text-5xl lg:text-6xl">
+              Structurer un portefeuille immobilier rentable en Côte d&apos;Ivoire
+            </h1>
+            <p class="mb-8 text-xl text-gray-700 md:text-2xl">
+              Guide complet : diversification, rentabilité, impayés, maintenance et reporting
+            </p>
+            <div class="flex flex-col gap-4 sm:flex-row sm:justify-center">
+              <a href="/contact?demo=true" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-8 py-4 rounded-lg inline-flex items-center gap-2">
+                Demander une démo
+                <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                </svg>
+              </a>
+              <a href="/tableaux-de-bord-kpi-immobilier-cote-divoire" class="border-2 border-blue-600 text-blue-600 font-semibold px-8 py-4 rounded-lg hover:bg-blue-50">
+                Découvrir les tableaux de bord
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="py-12 md:py-16">
+        <div class="container mx-auto max-w-4xl px-4 md:px-6">
+          <h2 class="mb-8 text-3xl font-bold text-gray-900 md:text-4xl">
+            Les clés d&apos;un portefeuille immobilier rentable
+          </h2>
+          <div class="grid gap-6 md:grid-cols-2">
+            <div class="rounded-lg bg-white p-6 shadow-sm border border-gray-200">
+              <h3 class="text-xl font-semibold text-gray-900 mb-3">Diversification</h3>
+              <p class="text-gray-700">Répartissez vos biens sur plusieurs types (appartements, villas, commerces), quartiers et gammes de loyers pour réduire les risques et optimiser la rentabilité.</p>
+            </div>
+            <div class="rounded-lg bg-white p-6 shadow-sm border border-gray-200">
+              <h3 class="text-xl font-semibold text-gray-900 mb-3">Rentabilité nette</h3>
+              <p class="text-gray-700">Calculez la rentabilité nette en tenant compte de tous les coûts : charges, impôts, maintenance, vacance locative, impayés. C&apos;est la seule vraie mesure de performance.</p>
+            </div>
+            <div class="rounded-lg bg-white p-6 shadow-sm border border-gray-200">
+              <h3 class="text-xl font-semibold text-gray-900 mb-3">Suivi des impayés</h3>
+              <p class="text-gray-700">Maintenez un taux d&apos;impayés inférieur à 3% du total des loyers annuels. Mettez en place des relances automatiques et un processus de sélection rigoureux des locataires.</p>
+            </div>
+            <div class="rounded-lg bg-white p-6 shadow-sm border border-gray-200">
+              <h3 class="text-xl font-semibold text-gray-900 mb-3">Reporting régulier</h3>
+              <p class="text-gray-700">Analysez vos indicateurs clés chaque mois (taux d&apos;occupation, impayés, rentabilité) et faites une revue approfondie trimestrielle pour ajuster votre stratégie.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="py-16 md:py-20 bg-gray-50">
+        <div class="container mx-auto max-w-4xl px-4 md:px-6">
+          <h2 class="mb-8 text-3xl font-bold text-gray-900 md:text-4xl">
+            Questions fréquentes
+          </h2>
+          <div class="space-y-6">
+            {faqItems.map((item) => (
+              <div class="border-l-4 border-blue-600 pl-6">
+                <h3 class="text-xl font-semibold text-gray-900 mb-2">
+                  {item.question}
+                </h3>
+                <p class="text-gray-700 leading-relaxed">
+                  {item.answer}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section class="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl p-8 md:p-12 text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          Prêt à optimiser votre portefeuille immobilier ?
+        </h2>
+        <p class="text-xl text-gray-700 mb-8 max-w-2xl mx-auto">
+          Découvrez comment ImmoTopia peut vous aider à piloter votre portefeuille avec des données fiables.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="/contact?demo=true" class="bg-[#2563EB] text-white font-semibold px-8 py-4 rounded-lg shadow-lg hover:shadow-xl transition-all hover:bg-[#1D4ED8] inline-flex items-center justify-center">
+            Demander une démonstration
+            <svg class="ml-2 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+          </a>
+          <a href="/tableaux-de-bord-kpi-immobilier-cote-divoire" class="bg-white text-[#2563EB] border-2 border-[#2563EB] font-semibold px-8 py-4 rounded-lg hover:bg-blue-50 transition-all inline-flex items-center justify-center">
+            Découvrir les tableaux de bord
+          </a>
+        </div>
+      </section>
+    </article>
+  </main>
+</BaseLayout>
+

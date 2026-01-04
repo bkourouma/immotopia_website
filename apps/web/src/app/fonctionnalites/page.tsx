@@ -121,7 +121,19 @@ export default function FonctionnalitesPage() {
           
           <ScrollReveal direction="fade" delay={100}>
             <p className="mx-auto mb-8 max-w-2xl text-lg leading-relaxed text-gray-700 md:text-xl">
-              ImmoTopia centralise vos biens, clients, locations, paiements et performances — sans Excel, sans dispersion.
+              ImmoTopia centralise vos biens, clients, locations, paiements et performances — sans Excel, sans dispersion. Découvrez notre{' '}
+              <Link href="/la-solution/saas-gestion" className="font-semibold text-[#2563EB] hover:underline">
+                module SaaS de gestion
+              </Link>
+              {' '}et notre{' '}
+              <Link href="/la-solution/portail-annonces" className="font-semibold text-[#2563EB] hover:underline">
+                portail d'annonces
+              </Link>
+              {' '}pour une solution complète. Comparez avec{' '}
+              <Link href="/immotopia-vs-excel" className="font-semibold text-[#2563EB] hover:underline">
+                ImmoTopia vs Excel
+              </Link>
+              {' '}pour comprendre les avantages.
             </p>
           </ScrollReveal>
           
@@ -200,7 +212,11 @@ export default function FonctionnalitesPage() {
                   CRM immobilier : votre copilote commercial
                 </h2>
                 <p className="mx-auto max-w-3xl text-lg leading-relaxed text-gray-700 md:text-xl">
-                  Un CRM puissant et complet, spécialement conçu pour l'immobilier. Transformez vos prospects en clients avec un suivi intelligent et des automatisations qui font la différence.
+                  Un{' '}
+                  <Link href="/crm-immobilier-cote-divoire" className="font-semibold text-emerald-600 hover:underline">
+                    CRM immobilier puissant et complet
+                  </Link>
+                  , spécialement conçu pour l'immobilier. Transformez vos prospects en clients avec un suivi intelligent et des automatisations qui font la différence.
                 </p>
               </div>
             </ScrollReveal>
@@ -335,7 +351,11 @@ export default function FonctionnalitesPage() {
                 <strong>Objectif :</strong> centralisation et contrôle
               </p>
               <p className="mb-6 text-base italic text-gray-600">
-                Tous vos biens et dossiers accessibles en un seul endroit
+                Tous vos biens et dossiers accessibles en un seul endroit. Découvrez notre{' '}
+                <Link href="/gestion-locative-cote-divoire" className="font-semibold text-[#2563EB] hover:underline">
+                  solution de gestion locative en Côte d'Ivoire
+                </Link>
+                {' '}pour optimiser votre activité.
               </p>
             </div>
           </ScrollReveal>
@@ -417,7 +437,15 @@ export default function FonctionnalitesPage() {
                 <strong>Objectif :</strong> fiabilité et gain de temps
               </p>
               <p className="mb-6 text-base italic text-gray-600">
-                Sécurisez vos flux financiers et automatisez ce qui vous fait perdre du temps
+                Sécurisez vos flux financiers et automatisez ce qui vous fait perdre du temps. Encaisser vos loyers via{' '}
+                <Link href="/paiement-loyer-charges-mobile-money-cote-divoire" className="font-semibold text-[#2563EB] hover:underline">
+                  paiement Mobile Money
+                </Link>
+                {' '}et suivez vos performances avec nos{' '}
+                <Link href="/tableaux-de-bord-kpi-immobilier-cote-divoire" className="font-semibold text-[#2563EB] hover:underline">
+                  tableaux de bord KPI
+                </Link>
+                .
               </p>
             </div>
           </ScrollReveal>
@@ -538,7 +566,11 @@ export default function FonctionnalitesPage() {
           
           <ScrollReveal direction="fade" delay={100}>
             <p className="mb-8 text-lg text-white/90 md:text-xl">
-              Moins d'administratif, plus de ventes. Une seule plateforme, toute votre activité.
+              Moins d'administratif, plus de ventes. Une seule plateforme, toute votre activité. Gérez la{' '}
+              <Link href="/maintenance-immobiliere-ticketing-cote-divoire" className="font-semibold text-white underline hover:text-white/80">
+                maintenance immobilière avec notre système de ticketing
+              </Link>
+              {' '}et pilotez votre activité avec des indicateurs clés.
             </p>
           </ScrollReveal>
           
@@ -565,12 +597,12 @@ export default function FonctionnalitesPage() {
                 variant="outline"
                 className="border-2 border-white/30 bg-white/10 backdrop-blur-sm text-white transition-all duration-300 hover:border-white/50 hover:bg-white/20"
                 onClick={() => {
-                  trackCTAClick('Créer mon compte', 'fonctionnalites_final_cta');
-                  trackClarity('cta_creer_mon_compte_fonctionnalites_final');
+                  trackCTAClick('Voir les tarifs', 'fonctionnalites_final_cta');
+                  trackClarity('cta_voir_tarifs_fonctionnalites_final');
                 }}
               >
-                <Link href="/contact?signup=true" className="font-semibold">
-                  Créer mon compte
+                <Link href="/tarifs" className="font-semibold">
+                  Voir les tarifs
                 </Link>
               </Button>
             </div>
