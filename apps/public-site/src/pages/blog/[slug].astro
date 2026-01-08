@@ -1,12 +1,13 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getAllBlogPosts, getBlogPost } from '../../lib/api/blog';
+import { marked } from 'marked';
 import '../../styles/markdown.css';
 
 export async function getStaticPaths() {
   try {
     const posts = await getAllBlogPosts();
-    
+
     // Return all blog post slugs for static generation
     return posts.map((post) => ({
       params: { slug: post.slug },
@@ -34,6 +35,9 @@ if (!post || !slug) {
 
 const title = post.seoTitle || post.title;
 const description = post.seoDescription || post.description;
+
+// Convert markdown content to HTML
+const htmlContent = marked.parse(post.content);
 ---
 
 <BaseLayout title={`${title} | Blog ImmoTopia`} description={description} currentPath={`/blog/${slug}`}>
@@ -90,7 +94,7 @@ const description = post.seoDescription || post.description;
           />
         )}
         <div class="prose prose-lg max-w-none">
-          <div set:html={post.content} />
+          <div set:html={htmlContent} />
         </div>
       </div>
     </div>

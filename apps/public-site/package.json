@@ -12,7 +12,8 @@
     "@monorepo/contracts": "workspace:*",
     "@monorepo/ui": "workspace:*",
     "@monorepo/utils": "workspace:*",
-    "astro": "^5.16.6"
+    "astro": "^5.16.6",
+    "marked": "^17.0.1"
   },
   "devDependencies": {
     "@astrojs/mdx": "^4.3.13",
