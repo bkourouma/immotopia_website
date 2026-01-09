@@ -6,7 +6,7 @@
 import { getAllBlogPosts } from '../lib/api/blog';
 
 export async function GET() {
-  const siteUrl = import.meta.env.PUBLIC_APP_URL || 'https://immotopia.immo-annonces.fr';
+  const siteUrl = import.meta.env.PUBLIC_APP_URL || 'https://immotopia.cloud';
   const siteName = import.meta.env.PUBLIC_SITE_NAME || 'ImmoTopia';
   
   // Fetch blog posts
